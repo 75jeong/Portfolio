@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jeong Jinho Portfolio</title>
+<meta name="description" content="Jeong Jinho（鄭 珍昊）— Product / UI/UX Designer in Tokyo. 画面ではなく、事業の判断をデザインする。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jeong Jinho Portfolio">
+<meta property="og:description" content="Jeong Jinho（鄭 珍昊）— Product / UI/UX Designer in Tokyo. 画面ではなく、事業の判断をデザインする。">
+<meta property="og:image" content="/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316151D'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-weight='700' font-size='30' text-anchor='middle' fill='%23F3F1F8'%3EJJ%3C/text%3E%3C/svg%3E">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+@font-face{font-family:"Pretendard JP";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/PretendardJP-Regular.subset.woff2) format("woff2")}
+@font-face{font-family:"Pretendard JP";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/PretendardJP-Medium.subset.woff2) format("woff2")}
+@font-face{font-family:"Pretendard JP";font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/PretendardJP-Bold.subset.woff2) format("woff2")}
+@font-face{font-family:"Pretendard JP";font-weight:800;font-style:normal;font-display:swap;src:url(assets/fonts/PretendardJP-ExtraBold.subset.woff2) format("woff2")}
+/* Layout: a "decision record" — each case is a document; meta column on the left, the five-stage flow on the right, with the 決定 stage highlighted like a marker pen on a spec. */
+:root{
+  --bg:#F1F2F4; --surface:#FFFFFF; --ink:#15171C; --muted:#5A606C; --line:#D8DBE1;
+  --accent:#2340C8; --decide-bg:#FFF1A8; --decide-edge:#E5C400; --decide-ink:#15171C;
+  --photo-bg:#0B0B0C;
+  --f-display:"Bricolage Grotesque","Pretendard JP",system-ui,sans-serif;
+  --f-body:"Pretendard JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --s-0:.8125rem; --s-1:.9375rem; --s-2:1.0625rem; --s-3:1.375rem; --s-4:1.875rem; --s-5:clamp(2.4rem,6vw,4.25rem);
+  --wrap:84rem;--bg-page:var(--bg);--gutter:clamp(20px,5vw,72px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1013; --surface:#16191E; --ink:#ECEEF2; --muted:#9BA2AE; --line:#2A2F37;
+  --accent:#93A5FF; --decide-bg:#3A3413; --decide-edge:#E5C400; --decide-ink:#FFF3B0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1013; --surface:#16191E; --ink:#ECEEF2; --muted:#9BA2AE; --line:#2A2F37;
+  --accent:#93A5FF; --decide-bg:#3A3413; --decide-edge:#E5C400; --decide-ink:#FFF3B0; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--s-1);line-height:1.8;margin:0;padding-inline:var(--gutter);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:var(--s-0);letter-spacing:.04em}
+.label{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* language + draft toggles */
+html:not([data-lang="en"]) .en,html:not([data-lang="ko"]) .ko{display:none!important}
+html[data-lang="en"] .ja,html[data-lang="ko"] .ja{display:none!important}
+html[data-lang="ko"]{--f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;--f-display:"Bricolage Grotesque","Noto Sans KR",system-ui,sans-serif}
+html[data-lang="ko"] body{word-break:keep-all}
+html[data-tbc="off"] .tbc{background:none;border:0;padding:0}
+html[data-tbc="off"] .tbc::after{display:none}
+.tbc{border-bottom:1.5px dashed var(--accent);padding-bottom:1px}
+.tbc::after{content:"要確認";font-family:var(--f-mono);font-size:.625rem;letter-spacing:.06em;color:var(--accent);vertical-align:super;margin-left:3px}
+html[data-lang="en"] .tbc::after{content:"TBC"}
+html[data-lang="ko"] .tbc::after{content:"확인 필요"}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-inline:calc(var(--gutter) * -1);padding:12px var(--gutter)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bar .mark{font-family:var(--f-display);font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.bar nav{display:flex;gap:14px;flex-wrap:wrap}
+.bar nav a{color:var(--muted);text-decoration:none;font-size:var(--s-0)}
+.bar nav a:hover{color:var(--ink)}
+.toggles{display:flex;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{font:600 .75rem/1 var(--f-mono);letter-spacing:.06em;background:transparent;color:var(--muted);border:0;padding:7px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:clamp(24px,5vw,64px);align-items:end;padding-block:clamp(40px,7vw,88px) 40px}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:var(--s-5);line-height:1.02;letter-spacing:-.03em}
+.hero h1 .hl{background:linear-gradient(transparent 58%,var(--decide-bg) 58%);padding-inline:.05em}
+.hero .who{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-bottom:22px}
+.hero .who strong{font-family:var(--f-display);font-size:var(--s-3);font-weight:700}
+.hero .lede{margin-top:22px;max-width:36em;font-size:var(--s-2);color:var(--ink)}
+.hero .lede + .lede{margin-top:12px;color:var(--muted);font-size:var(--s-1)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.facts div{background:var(--bg);padding:12px 14px}
+.facts b{display:block;font-family:var(--f-display);font-size:var(--s-4);line-height:1.1;font-variant-numeric:tabular-nums}
+.facts span{font-size:var(--s-0);color:var(--muted)}
+.photo{background:var(--photo-bg);aspect-ratio:832/1000;max-width:100%;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.photo figcaption{position:absolute;left:12px;bottom:10px;color:#C9CCD3;font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.08em}
+
+.draftnote{border:1px dashed var(--accent);color:var(--ink);padding:12px 16px;font-size:var(--s-0);display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.draftnote .label{color:var(--accent)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:24px;margin-bottom:32px}
+.sec-head h2{font-family:var(--f-display);font-size:var(--s-4);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.sec-head p{color:var(--muted);max-width:40em}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.pr{display:flex;flex-direction:column;gap:10px;min-width:0}
+.pr h3{font-size:var(--s-3);line-height:1.4;font-weight:700}
+.pr p{color:var(--muted)}
+.pr .from{font-size:var(--s-0);color:var(--ink)}
+.pr .from a{font-weight:500}
+
+/* flow legend */
+.flowkey{display:flex;flex-wrap:wrap;gap:0;margin-top:4px;font-family:var(--f-mono);font-size:.75rem}
+.flowkey span{padding:6px 10px;border:1px solid var(--line);margin-left:-1px;color:var(--muted)}
+
+/* case */
+.case{display:grid;grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding-block:44px;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:0;padding-top:8px}
+.meta{align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 68px);display:flex;flex-direction:column;gap:14px}
+.meta .no{font-family:var(--f-mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em}
+.meta h3{font-family:var(--f-display);font-size:var(--s-4);line-height:1.1;letter-spacing:-.02em}
+.meta .kicker{font-size:var(--s-1);line-height:1.6;font-weight:500}
+.meta dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0;font-size:var(--s-0)}
+.meta dt{font-family:var(--f-mono);color:var(--muted);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;padding-top:2px}
+.meta dd{margin:0}
+.meta .links{font-size:var(--s-0);display:flex;flex-direction:column;gap:2px}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;min-width:0}
+.step{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:18px;padding-block:18px;border-top:1px solid var(--line)}
+.step:first-child{border-top:0;padding-top:0}
+.step .k{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.step .k b{display:block;font-family:var(--f-body);font-size:var(--s-1);letter-spacing:0;color:var(--ink);font-weight:700;margin-top:2px}
+.step .v{display:flex;flex-direction:column;gap:10px;max-width:42em}
+.step ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+.why{display:flex;flex-direction:column;gap:14px}
+.why > div{display:grid;gap:4px}
+.why .q{font-weight:700;font-size:var(--s-2);line-height:1.5}
+.why .a{font-size:var(--s-1)}
+.why .a::before{content:"なぜ → ";font-family:var(--f-mono);font-size:.75rem;letter-spacing:.04em;opacity:.7}
+html[data-lang="en"] .why .a::before{content:"Why → "}
+html[data-lang="ko"] .why .a::before{content:"왜 → "}
+.alt{font-size:var(--s-0);opacity:.85}
+.result{font-weight:500}
+
+/* list */
+.works{width:100%;border-collapse:collapse;font-size:var(--s-0)}
+.works-box{overflow-x:auto}
+.works th{text-align:left;font-family:var(--f-mono);font-weight:400;font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 12px 8px 0;border-bottom:1px solid var(--ink)}
+.works td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.works td:first-child{font-variant-numeric:tabular-nums;font-family:var(--f-mono);color:var(--muted);white-space:nowrap}
+.works td.n{font-weight:700;white-space:nowrap}
+.works td.p{color:var(--muted);min-width:16rem}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl > li{display:grid;grid-template-columns:6rem minmax(0,1fr);gap:18px;padding-block:12px;border-bottom:1px solid var(--line)}
+.tl .y{font-family:var(--f-mono);font-size:var(--s-0);color:var(--muted);font-variant-numeric:tabular-nums}
+.tl b{font-weight:700}
+.tl p{color:var(--muted);font-size:var(--s-0)}
+.two{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:48px}
+.side{display:flex;flex-direction:column;gap:22px}
+.side h3{font-size:var(--s-2);font-weight:700;margin-bottom:6px}
+.side p,.side li{color:var(--muted);font-size:var(--s-0)}
+.side ul{margin:0;padding-left:1.1em}
+
+.contact{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:baseline}
+.contact .big{font-family:var(--f-display);font-size:var(--s-4);font-weight:700;letter-spacing:-.02em;user-select:all;word-break:break-all}
+footer{padding-block:28px 48px;color:var(--muted);font-size:var(--s-0)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .photo{max-width:340px;aspect-ratio:4/5}
+  .principles{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .meta{position:static}
+  .sec-head{grid-template-columns:1fr;gap:8px}
+  .two{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .step{grid-template-columns:1fr;gap:6px}
+  .facts{grid-template-columns:1fr 1fr 1fr}
+  .facts b{font-size:var(--s-3)}
+  .bar nav{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+}
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  body{font-size:10pt;padding:0;background:#fff}
+  .bar,.noprint{display:none!important}
+  .meta{position:static}
+  section{padding-block:22px}
+  .case{padding-block:22px;break-inside:auto}
+  .case .meta{break-after:avoid}
+  .step{break-inside:avoid}
+  .sec-head{break-after:avoid}
+  .hero{padding-block:8px 20px}
+  .newpage{break-before:page}
+  a{color:var(--ink)}
+  .hero{grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr)}
+  .photo{max-width:100%;aspect-ratio:832/1000}
+  .principles{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .sec-head{grid-template-columns:minmax(0,11.5rem) minmax(0,1fr);gap:22px}
+  .case{grid-template-columns:minmax(0,11.5rem) minmax(0,1fr);gap:22px}
+  .case + .case{break-before:page}
+  .step{grid-template-columns:6rem minmax(0,1fr);gap:12px;padding-block:12px}
+  .two{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
+  .facts b{font-size:var(--s-3)}
+  .hero h1{font-size:2.6rem}
+}
+
+/* video hero: its own dark world in both themes, colors pulled from the footage */
+.hero-v{--ink:#F3F1F8;--muted:#ABA8BD;--line:rgba(255,255,255,.14);--hero-bg:#16151D;--ray-a:#7C6BFF;--ray-b:#C77BE8;--ray-c:#FF9A57;
+  position:relative;isolation:isolate;overflow:hidden;background:var(--hero-bg);color:var(--ink);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);color-scheme:dark}
+.hero-video,.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;z-index:-2;max-width:none}
+.hero-poster{display:none}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(22,21,29,.55) 0%,rgba(22,21,29,.15) 45%,rgba(22,21,29,0) 70%),linear-gradient(90deg,rgba(22,21,29,.55) 0%,rgba(22,21,29,0) 55%)}
+.hero-v .hero{padding-block:clamp(48px,8vw,104px) clamp(150px,19vw,260px);align-items:center}
+.hero-v .hero h1 .hl{background:linear-gradient(90deg,var(--ray-a),var(--ray-b) 55%,var(--ray-c));-webkit-background-clip:text;background-clip:text;color:transparent;padding-inline:0}
+.hero-v .label{color:var(--muted)}
+.hero-v .lede{color:var(--ink)}
+.hero-v .lede + .lede{color:var(--muted)}
+.hero-v .facts{background:var(--line);border-color:var(--line)}
+.hero-v .facts div{background:rgba(22,21,29,.55);backdrop-filter:blur(6px)}
+.hero-v .photo{background:transparent;overflow:visible;mix-blend-mode:lighten}
+.hero-v .photo img{-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 97%);mask-image:linear-gradient(180deg,#000 60%,transparent 97%)}
+.hero-v .photo figcaption{bottom:14%;color:var(--muted)}
+.hero-v .hero > div:first-child{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.hero-video{display:none}.hero-poster{display:block}.hero-v .hero > div:first-child{animation:none}}
+@media print{
+  .hero-v{margin:0;padding-inline:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero-video{display:none}.hero-poster{display:block}
+  .hero-v .hero{padding-block:24px 150px}
+  .hero-v .facts div{backdrop-filter:none}
+}
+
+.tl > li{grid-template-columns:8.5rem minmax(0,1fr);padding-block:16px}
+.job{display:flex;flex-direction:column;gap:4px;min-width:0}
+.job-h{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.job-h b{font-size:var(--s-2)}
+.job-h .role{font-size:var(--s-0);color:var(--accent)}
+.job .desc{color:var(--muted);font-size:var(--s-0)}
+.job ul{margin:4px 0 0;padding-left:1.1em;font-size:var(--s-0);display:flex;flex-direction:column;gap:2px}
+.clients{margin:8px 0 0;display:grid;grid-template-columns:minmax(0,1fr);gap:0;border-left:2px solid var(--line);padding-left:14px}
+.clients dt{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin-top:10px}
+.clients dt:first-child{margin-top:0}
+.clients dt .mono{color:var(--muted);font-size:.6875rem}
+.clients dd{margin:0;font-size:var(--s-0);color:var(--muted)}
+.dated{list-style:none;padding-left:0!important;display:flex;flex-direction:column;gap:6px}
+.dated li{display:grid;grid-template-columns:4.2rem minmax(0,1fr);gap:8px}
+.dated .mono{font-size:.6875rem;padding-top:2px}
+@media (max-width:520px){.tl > li{grid-template-columns:1fr;gap:4px}}
+@media print{.tl > li{break-inside:avoid}}
+@media (min-width:861px){#career .side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px);align-self:start}}
+@media print{#career .side{position:static}}
+
+/* hero melts into the page ground in either theme */
+.hero-v{--fade-to:var(--bg)}
+.hero-v::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,
+    color-mix(in srgb,var(--fade-to) 0%,transparent) 0%,
+    color-mix(in srgb,var(--fade-to) 18%,transparent) 30%,
+    color-mix(in srgb,var(--fade-to) 55%,transparent) 62%,
+    color-mix(in srgb,var(--fade-to) 88%,transparent) 86%,
+    var(--fade-to) 100%)}
+@media print{.hero-v{--fade-to:#fff}}
+
+/* roomier rhythm on screen */
+@media screen{
+  body{font-size:1rem;line-height:1.9}
+  .hero-v .hero h1{font-size:clamp(2.6rem,6.2vw,6rem)}
+  .hero .lede{max-width:40em}
+  .hero-v .hero{gap:clamp(32px,7vw,120px);padding-block:clamp(72px,11vw,160px) clamp(180px,22vw,320px)}
+  .hero .lede{margin-top:32px}
+  .hero .lede + .lede{margin-top:18px}
+  .facts{margin-top:44px}
+  .facts div{padding:18px 20px}
+  .draftnote{margin-block:24px 0}
+  section{padding-block:clamp(80px,11vw,160px)}
+  .sec-head{grid-template-columns:minmax(0,19rem) minmax(0,1fr);column-gap:clamp(28px,6vw,104px);row-gap:12px;margin-bottom:clamp(40px,6vw,88px)}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem)}
+  .principles{gap:clamp(32px,5vw,72px)}
+  .pr{gap:14px}
+  .case{grid-template-columns:minmax(0,19rem) minmax(0,1fr);gap:clamp(28px,6vw,104px);padding-block:clamp(64px,8vw,120px)}
+  .meta{gap:18px;top:calc(env(safe-area-inset-top,0px) + 96px)}
+  .meta h3{font-size:clamp(1.9rem,3vw,2.5rem)}
+  .step{grid-template-columns:8.5rem minmax(0,1fr);gap:28px;padding-block:28px}
+  .step .v{gap:14px;max-width:46em}
+  .why{gap:24px}
+  .works td{padding:16px 20px 16px 0}
+  .works th{padding:10px 20px 10px 0}
+  .two{gap:clamp(40px,7vw,120px)}
+  .tl > li{padding-block:24px;gap:28px;grid-template-columns:9.5rem minmax(0,1fr)}
+  .side{gap:36px}
+  #contact{padding-block:clamp(96px,12vw,180px)}
+  .contact .big{font-size:clamp(1.6rem,3.6vw,2.8rem)}
+  footer{padding-block:40px 72px}
+}
+@media screen and (max-width:860px){
+  .sec-head{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .tl > li{grid-template-columns:7rem minmax(0,1fr)}
+}
+@media screen and (max-width:520px){
+  .step{grid-template-columns:1fr;gap:8px}
+  .tl > li{grid-template-columns:1fr;gap:4px}
+}
+
+/* contact: full-bleed scene, text sits on the dark cliff at bottom-left */
+.contact-v{--ink:#F4EFE8;--muted:#C9BFB2;--accent:#FFD7A8;--line:rgba(255,255,255,.18);
+  position:relative;isolation:isolate;overflow:hidden;background:#15131A;color:var(--ink);color-scheme:dark;
+  margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);border-top:0;
+  min-height:clamp(560px,62vw,1080px);display:flex;align-items:flex-end;padding-block:0 0}
+.contact-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 45%;z-index:-2}
+.contact-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(180deg,var(--bg-page) 0%,color-mix(in srgb,var(--bg-page) 55%,transparent) 9%,transparent 24%),
+  linear-gradient(0deg,rgba(12,10,14,.82) 0%,rgba(12,10,14,.45) 26%,transparent 50%),
+  linear-gradient(90deg,rgba(12,10,14,.45) 0%,transparent 50%)}
+.contact-inner{width:100%;display:flex;flex-direction:column;gap:clamp(40px,6vw,88px);padding-block:clamp(120px,14vw,220px) 0}
+.contact-v .contact{align-items:flex-end;justify-content:space-between}
+.contact-v .label{color:var(--muted)}
+.contact-v .big{color:var(--ink);font-size:clamp(1.8rem,4.4vw,3.6rem);text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.contact-v .links a{color:var(--ink)}
+.contact-v .links a:hover{color:var(--accent)}
+.contact-v footer{color:var(--muted);border-top:1px solid var(--line);padding-block:24px 32px}
+@media screen{#contact.contact-v{padding-block:0}}
+@media print{
+  .contact-v{margin:0;padding-inline:18px;min-height:150mm;break-before:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .contact-shade{background:linear-gradient(0deg,rgba(12,10,14,.82) 0%,rgba(12,10,14,.45) 26%,transparent 50%)}
+  .contact-inner{padding-block:60px 0}
+}
+@media screen and (max-width:520px){.contact-v .big{font-size:1.3rem;word-break:normal;overflow-wrap:anywhere}.contact-bg{object-position:58% 45%}}
+.cta{display:inline-flex;align-items:center;font:600 .75rem/1 var(--f-mono);letter-spacing:.06em;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:999px;padding:8px 14px;border:1px solid var(--ink)}
+.cta:hover{background:transparent;color:var(--ink)}
+html[data-lang="ja"] .cta,html[data-lang="ko"] .cta{font-family:var(--f-body);letter-spacing:0}
+.copy-mail{display:block;background:none;border:0;padding:0;margin:0;text-align:left;font-family:var(--f-display);font-weight:700;letter-spacing:-.02em;cursor:pointer;color:inherit}
+.copy-mail:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 32px);transform:translateX(-50%);z-index:20;background:#F4EFE8;color:#15131A;font:600 .9375rem/1 var(--f-body);padding:14px 22px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+@media (prefers-reduced-motion:no-preference){.toast:not([hidden]){animation:toast-in .25s ease-out}}
+@keyframes toast-in{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@media print{.toast{display:none!important}}
+a.mark{color:var(--ink);text-decoration:none}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* mobile menu */
+.menu-btn,.menu-close{display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.menu-modal{position:fixed;inset:0;z-index:40;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;
+  padding:calc(env(safe-area-inset-top,0px) + 12px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 28px);overflow-y:auto}
+.menu-modal[hidden]{display:none!important}
+.menu-head{display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.menu-head .menu-close{display:inline-flex}
+.menu-head .mark{font-family:var(--f-display);font-weight:800;font-size:1rem}
+.menu-nav{display:flex;flex-direction:column;margin-top:28px;border-top:1px solid var(--line)}
+.menu-nav a{display:block;padding:18px 2px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:1.5rem;letter-spacing:-.01em}
+.menu-nav a:active{color:var(--accent)}
+.menu-foot{margin-top:auto;padding-top:32px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.menu-foot .cta{padding:12px 18px;font-size:.875rem}
+.menu-foot .seg button{padding:10px 14px}
+@media (prefers-reduced-motion:no-preference){.menu-modal:not([hidden]){animation:menu-in .22s ease-out}}
+@keyframes menu-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  .bar nav,.bar .toggles .seg,.bar .toggles .cta{display:none}
+  .bar .menu-btn{display:inline-flex}
+}
+body.menu-open{overflow:hidden}
+</style>
+</head>
+<body>
+
+<div class="bar noprint"><div class="wrap">
+<a class="mark" href="#top" id="home-link" aria-label="Back to top">Jeong Jinho</a>
+<nav aria-label="sections">
+<a href="#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="#cases"><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></a>
+<a href="#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="toggles">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="true" data-lang="ja" id="lang-ja" type="button">JA</button>
+<button aria-pressed="false" data-lang="en" id="lang-en" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" id="lang-ko" type="button">KO</button>
+</div>
+<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+<button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+</div>
+</div></div>
+<div class="menu-modal noprint" id="menu-modal" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="menu-head">
+<span class="mark">Jeong Jinho</span>
+<button type="button" class="menu-close" id="menu-close" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+</div>
+<nav class="menu-nav" aria-label="sections (mobile)">
+<a href="#top" data-top="1"><span class="ja">トップ</span><span class="en">Top</span><span class="ko">처음으로</span></a>
+<a href="#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="#cases"><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></a>
+<a href="#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="menu-foot">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="true" data-lang="ja" class="menu-lang" type="button">JA</button>
+<button aria-pressed="false" data-lang="en" class="menu-lang" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" class="menu-lang" type="button">KO</button>
+</div>
+<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+</div>
+</div>
+<header class="hero-v" id="top">
+<video aria-hidden="true" autoplay="" class="hero-video" loop="" muted="" playsinline="" poster="assets/poster.jpg" preload="auto"><source src="assets/hero.mp4" type="video/mp4"/></video>
+<img alt="" aria-hidden="true" class="hero-poster" src="assets/poster.jpg"/>
+<div aria-hidden="true" class="hero-shade"></div>
+<div class="wrap hero">
+<div>
+<div class="who">
+<strong>Jeong Jinho <span class="ja">鄭 珍昊</span><span class="ko">정진호</span></strong>
+<span class="label">Product Designer · Tokyo</span>
+</div>
+<h1 class="ja">画面ではなく、<br/><span class="hl">事業の判断</span>を<br/>デザインする。</h1>
+<h1 class="en">Designing <span class="hl">decisions</span>,<br/>not just screens.</h1><h1 class="ko">화면이 아니라<br/><span class="hl">사업의 판단</span>을<br/>디자인합니다.</h1>
+<p class="lede ja">ソウルで2000年に学生ベンチャーの創業メンバーとしてキャリアを始め、2010年にLINE（旧Naver Japan）入社を機に来日。大企業からシードのスタートアップまで、0→1のプロダクトづくりを中心に20年以上デザインをしてきました。</p>
+<p class="lede en">I started in 2000 as a founding member of a student venture in Korea and moved to Tokyo in 2010 to join LINE (then Naver Japan). For 20+ years I have designed products from zero to one, for large Japanese companies and seed-stage startups alike.</p><p class="lede ko">2000년 학생 벤처 창업 멤버로 디자인을 시작했고, 2010년 LINE(당시 Naver Japan)에 입사하면서 일본으로 건너왔습니다. 일본의 대기업부터 시드 단계 스타트업까지, 주로 0에서 1을 만드는 프로덕트를 20년 넘게 디자인해 왔습니다.</p>
+<p class="lede ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。どのプロジェクトも「問題定義 → リサーチ → 制約 → 決定 → 改善」の順に読めます。</p>
+<p class="lede en">This portfolio focuses less on the size of outcomes and more on why I made each call. Every project reads in the same order: problem, research, constraints, decision, iteration.</p><p class="lede ko">이 포트폴리오는 성과가 얼마나 컸는지보다 "왜 그렇게 결정했는지"에 초점을 맞췄습니다. 모든 프로젝트를 문제정의 → 리서치 → 제약조건 → 결정 → 개선 순서로 정리했습니다.</p>
+<div class="facts">
+<div><b>20+</b><span class="ja">年のデザイン経験</span><span class="en">years designing</span><span class="ko">년 디자인 경력</span></div>
+<div><b>2010</b><span class="ja">来日・LINE入社</span><span class="en">moved to Tokyo, LINE</span><span class="ko">일본으로 · LINE 입사</span></div>
+<div><b>30+</b><span class="ja">社のクライアント</span><span class="en">client companies</span><span class="ko">곳의 클라이언트</span></div>
+</div>
+</div>
+<figure class="photo" style="margin:0">
+<img alt="Jeong Jinho portrait" src="assets/photo.jpg">
+<figcaption>TOKYO · 2026</figcaption>
+</img></figure>
+</div>
+</header>
+<main class="wrap">
+<!-- HOW I DECIDE -->
+<section id="how">
+<div class="sec-head">
+<h2><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></h2>
+<p class="ja">プロジェクトの規模が違っても、決めるときに立ち返る問いは同じです。下のケーススタディはすべて、この3つのどれかで説明できます。</p>
+<p class="en">Project sizes vary, but the questions I return to when deciding stay the same. Every case study below traces back to one of these three.</p><p class="ko">프로젝트 규모는 제각각이어도, 결정을 내릴 때 스스로에게 던지는 질문은 늘 같습니다. 아래 케이스 스터디도 모두 이 세 가지 중 하나에서 출발했습니다.</p>
+</div>
+<div class="principles">
+<div class="pr">
+<span class="label">01</span>
+<h3 class="ja">「なぜ作るのか」を先に言葉にする</h3>
+<h3 class="en">Put "why build this" into words first</h3><h3 class="ko">"왜 만드는가"부터 말로 정리한다</h3>
+<p class="ja">優先度が低い案件ほど、目的を一文で言えるかが通るかどうかを決めます。機能より先に、ユーザーの迷いとKPIのつながりを示します。</p>
+<p class="en">The lower a project's priority, the more its survival depends on stating its purpose in one sentence. I link the user's hesitation to a KPI before talking about features.</p><p class="ko">우선순위가 낮은 프로젝트일수록, 목적을 한 문장으로 설명할 수 있는지가 성패를 가릅니다. 기능을 이야기하기 전에, 사용자가 어디서 망설이는지와 그것이 어떤 지표로 이어지는지부터 보여줍니다.</p>
+</div>
+<div class="pr">
+<span class="label">02</span>
+<h3 class="ja">速さは、足すより削ることで作る</h3>
+<h3 class="en">Speed comes from removing, not adding</h3><h3 class="ko">속도는 더하는 게 아니라 덜어내서 만든다</h3>
+<p class="ja">体験の価値が「すぐに届くこと」なら、その間にあるものはすべて疑います。ランディングページのような「あって当然」のものも例外にしません。</p>
+<p class="en">When the value of an experience is how fast it arrives, I question everything in between, including things everyone assumes you need, like a landing page.</p><p class="ko">빨리 닿는 것 자체가 가치인 경험이라면, 그 사이에 놓인 것을 하나하나 다시 봅니다. 랜딩 페이지처럼 "당연히 있어야 한다"고 여기는 것도 예외는 아닙니다.</p>
+</div>
+<div class="pr">
+<span class="label">03</span>
+<h3 class="ja">個人ではなく、組織に残る形にする</h3>
+<h3 class="en">Leave it in the organization, not in a person</h3><h3 class="ko">사람이 아니라 조직에 남도록 만든다</h3>
+<p class="ja">ツールの導入、デザインシステム、KPIの定義。自分がいなくても判断が再現される仕組みまでをデザインの範囲と考えています。</p>
+<p class="en">Tooling, design systems, KPI definitions. I count the structures that let a team repeat good decisions without me as part of the design work.</p><p class="ko">툴 도입, 디자인 시스템, KPI 정의까지. 제가 없어도 팀이 좋은 판단을 이어갈 수 있는 구조를 만드는 것도 디자인의 일이라고 생각합니다.</p>
+</div>
+</div>
+</section>
+<!-- CASES -->
+<section id="cases">
+<div class="sec-head">
+<h2><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></h2>
+</div>
+<!-- CASE 1: ONE -->
+<article class="case" id="onepay">
+<aside class="meta">
+<span class="no">CASE 01 · 2017–2018</span>
+<h3>ONE PAYMENT</h3>
+<p class="kicker ja">スマホがそのままレジになる。カードリーダーなしで、対面でカード決済を受けられるアプリ。</p>
+<p class="kicker en">Your phone becomes the register. An app for taking card payments in person, with no card reader.</p><p class="kicker ko">스마트폰이 곧 계산대가 됩니다. 카드 리더기 없이 얼굴을 마주하고 카드 결제를 받을 수 있는 앱.</p>
+<dl>
+<dt>Client</dt><dd>ONE Financial</dd>
+<dt>Role</dt><dd>Chief Designer / Creative Director</dd>
+<dt>Stage</dt><dd>Seed → Pre-Series A</dd>
+<dt>Scope</dt><dd>iOS, Brand, Merchant kit, Web</dd>
+<dt>Team</dt><dd><span class="ja">創業者1、エンジニア1、デザイナー1</span><span class="en">1 founder, 1 engineer, 1 designer</span><span class="ko">창업자 1, 엔지니어 1, 디자이너 1</span></dd>
+</dl>
+<div class="links">
+<a href="https://www.behance.net/gallery/75267003/ONE-PAYMENT" rel="noopener" target="_blank">Behance: ONE PAYMENT ↗</a>
+</div>
+</aside>
+<ol class="flow">
+<li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
+<p class="ja">小さなお店や個人がカード決済を始めるには、専用のカードリーダーを用意する必要がありました。リーダーの費用に加え、複雑な審査と高い手数料が、<strong>「まず売ってみたい」人の入口</strong>をふさいでいました。</p>
+<p class="en">For small shops and individuals, accepting cards meant buying a dedicated card reader. The reader cost, a complicated approval process and high fees blocked <strong>people who just wanted to start selling</strong>.</p><p class="ko">작은 가게나 개인이 카드 결제를 받으려면 전용 카드 리더기가 있어야 했습니다. 리더기 비용에 까다로운 심사, 높은 수수료까지 겹치면서 <strong>"일단 한번 팔아보고 싶은" 사람들</strong>에게 카드 결제는 문턱이 너무 높았습니다.</p>
+</div></li>
+<li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
+<ul class="ja"><li>Squareなど先行するスマホ決済は、磁気ストライプを読むためのリーダーが前提だった。</li><li>対象は、現金決済しかできない小規模事業者と個人。カード決済は導入までの審査が複雑で手数料も高く、導入をためらっていた。</li><li>お客さん側は、その店でカードが使えるかを店頭で判断している。</li></ul>
+<ul class="en"><li>Existing mobile payment services such as Square depended on a reader for the magnetic stripe.</li><li>The target was small businesses and individuals that only took cash. Card payments meant a complicated approval process and high fees, so they held back.</li><li>Customers decide at the storefront whether a shop takes cards.</li></ul>
+<ul class="ko"><li>Square 같은 기존 스마트폰 결제 서비스는 카드 마그네틱을 읽는 리더기가 있어야만 쓸 수 있었다.</li><li>주요 대상은 현금 결제만 받던 소상공인과 개인 판매자. 카드 결제는 도입 심사가 복잡하고 수수료도 높아서 선뜻 들이지 못하고 있었다.</li><li>손님은 가게 앞에서 이미 카드를 쓸 수 있는지 없는지를 보고 판단한다.</li></ul>
+</div></li>
+<li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
+<ul class="ja"><li>創業者・エンジニア・デザイナーの3人チーム。デザインは自分ひとり。</li><li>カード情報を扱うため、使う側にも払う側にも「安心」が伝わる必要がある。</li><li>ITに慣れていない店主でも、その場ですぐ使えること。</li></ul>
+<ul class="en"><li>A three-person team: founder, engineer and me as the only designer.</li><li>It handled card data, so both the merchant and the paying customer had to feel safe.</li><li>Shop owners who aren’t comfortable with tech had to be able to use it on the spot.</li></ul>
+<ul class="ko"><li>창업자, 엔지니어, 디자이너 세 명뿐인 팀. 디자인은 혼자 맡았다.</li><li>카드 정보를 다루는 만큼, 결제를 받는 사람과 내는 사람 모두 안심할 수 있어야 했다.</li><li>IT에 익숙하지 않은 가게 주인도 그 자리에서 바로 쓸 수 있어야 했다.</li></ul>
+</div></li>
+<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<div>
+<p class="q ja">iPhoneのカメラでカードを撮影し、OCRで読み取る</p>
+<p class="q en">Read the card with the iPhone camera and OCR</p><p class="q ko">iPhone 카메라로 카드를 찍으면 OCR로 읽어 들이게 한다</p>
+<p class="a ja">リーダーこそが入口をふさいでいた原因でした。手元のスマホだけで完結させることが、最大の差別化であり、最大のハードルの解消でした。</p>
+<p class="a en">The reader was the very thing blocking the entrance. Finishing everything on the phone in hand was both the key differentiator and the removal of the biggest hurdle.</p><p class="a ko">문턱을 만든 주범이 바로 리더기였습니다. 손에 든 스마트폰 하나로 끝나게 만드는 것이 가장 큰 차별점이자, 가장 높은 장벽을 허무는 방법이었습니다.</p>
+</div>
+<div>
+<p class="q ja">ロゴは「リング」一つに絞る</p>
+<p class="q en">Reduce the logo to a single ring</p><p class="q ko">로고는 "링" 하나로 단순하게</p>
+<p class="a ja">リングは無限の拡張と機会の象徴です。ロゴの単純さを、そのままサービスの単純さへのこだわりにつなげました。</p>
+<p class="a en">The ring stands for endless expansion and opportunity. The simplicity of the logo carried straight into the simplicity of the service.</p><p class="a ko">링에는 끝없이 넓어지는 가능성과 기회라는 의미를 담았습니다. 로고의 단순함이 그대로 서비스의 단순함으로 이어지도록 했습니다.</p>
+</div>
+<div>
+<p class="q ja">加盟店向けのステッカーキットを作る</p>
+<p class="q en">Make a sticker starter kit for merchants</p><p class="q ko">가맹점용 스티커 키트를 만든다</p>
+<p class="a ja">対面決済では、お客さんが店頭で「カードが使える」と分からなければ使われません。学園祭の模擬店のような小さな売り手でも、貼るだけで始められるようにしました。</p>
+<p class="a en">In person, nobody pays by card unless they can see at the storefront that cards are accepted. Even a school festival stall could start just by putting up a sticker.</p><p class="a ko">대면 결제는 손님이 가게 앞에서 "여기 카드 되네"라고 알아봐야 비로소 쓰입니다. 학교 축제 부스 같은 작은 판매자도 스티커만 붙이면 바로 시작할 수 있게 했습니다.</p>
+</div>
+</div></li>
+<li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
+<p class="result ja">Incubate FundからプレシリーズAで1億円を調達。THE BRIDGE、GIZMODO、PR TIMESなどで紹介されました。</p>
+<p class="result en">Raised ¥100M in a pre-Series A from Incubate Fund. Covered by THE BRIDGE, GIZMODO and PR TIMES.</p><p class="result ko">Incubate Fund에서 프리시리즈 A로 1억 엔을 투자받았고, THE BRIDGE, GIZMODO, PR TIMES 등에 소개되었습니다.</p>
+<p class="ja">その後「1分でできる商品ページ作成機能」を追加し、対面だけでなくオンラインでの決済にも広げました。</p>
+<p class="en">Later added a one-minute product page builder, extending payments from in person to online.</p><p class="ko">이후 "1분이면 만드는 상품 페이지" 기능을 더해, 대면 결제를 넘어 온라인 결제까지 쓸 수 있게 넓혔습니다.</p>
+</div></li>
+</ol>
+</article>
+<article class="case" id="one">
+<aside class="meta">
+<span class="no">CASE 02 · 2018–2019</span>
+<h3>ONE</h3>
+<p class="kicker ja">レシートを撮るだけで10円。お金が届くまでの速さを、細部まで削って作ったフィンテック。</p>
+<p class="kicker en">Snap a receipt, get ¥10. A fintech product where the speed of getting paid was built by cutting every detail.</p><p class="kicker ko">영수증 한 장을 찍으면 10엔. 돈이 들어오기까지의 속도를 위해 군더더기를 하나하나 덜어낸 핀테크 앱.</p>
+<dl>
+<dt>Client</dt><dd>ONE Financial</dd>
+<dt>Role</dt><dd>Chief Designer / Creative Director</dd>
+<dt>Stage</dt><dd>Pivot</dd>
+<dt>Scope</dt><dd>iOS, Web, Brand, Sales tools</dd>
+<dt>Team</dt><dd><span class="ja">創業者1、エンジニア1、デザイナー1</span><span class="en">1 founder, 1 engineer, 1 designer</span><span class="ko">창업자 1, 엔지니어 1, 디자이너 1</span></dd>
+</dl>
+<div class="links">
+<a href="https://www.behance.net/gallery/75379631/ONE" rel="noopener" target="_blank">Behance: ONE ↗</a>
+</div>
+</aside>
+<ol class="flow">
+<li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
+<p class="ja">ONEは「レシートを買い取り、購買データを企業のマーケティングに使う」事業です。お金を払うのは企業、アプリを使うのは一般ユーザー。同じプロダクトで<strong>2種類の相手</strong>を納得させる必要がありました。</p>
+<p class="en">ONE bought receipts from consumers and turned the purchase data into a marketing tool for companies. Companies paid; consumers used the app. One product had to win over <strong>two different audiences</strong>.</p><p class="ko">ONE은 소비자에게 영수증을 사들이고, 그 구매 데이터를 기업의 마케팅에 활용하는 사업이었습니다. 돈을 내는 쪽은 기업이고 앱을 쓰는 쪽은 일반 사용자. 하나의 프로덕트로 <strong>성격이 전혀 다른 두 고객</strong>을 동시에 설득해야 했습니다.</p>
+<p class="ja">ユーザー側の問いは「本当にすぐお金がもらえるのか」、企業側の問いは「このデータで何ができるのか」でした。</p>
+<p class="en">The consumer's question was "do I really get paid right away?" The company's question was "what can I do with this data?"</p><p class="ko">사용자는 "정말 바로 돈을 주는 걸까?"를, 기업은 "이 데이터로 뭘 할 수 있을까?"를 궁금해했습니다.</p>
+</div></li>
+<li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
+<ul class="ja">
+<li>先行する「ポイント・お小遣い系」アプリは、報酬が届くまで数日かかり、途中で離脱されやすい。</li>
+<li>企業側が知りたかったのは「自社の商品が、どこで、どんな性別の人に、どのタイミングで買われているのか」。ONEはこの問いに明確に答えられるソリューションを目指した。</li>
+</ul>
+<ul class="en">
+<li>Existing points and rewards apps took days to pay out, and users dropped off along the way.</li>
+<li>What companies wanted to know was where their products were bought, by what gender, and at what time of day. ONE aimed to be the clear answer to that question.</li>
+</ul><ul class="ko"><li>기존 포인트·용돈 앱은 보상이 들어오기까지 며칠씩 걸려, 그 사이에 떠나는 사용자가 많았다.</li><li>기업이 정말 알고 싶었던 건 "우리 제품이 어디서, 어떤 성별의 사람에게, 몇 시쯤 팔리는가"였다. ONE은 이 질문에 분명한 답을 주는 솔루션을 목표로 했다.</li></ul>
+</div></li>
+<li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
+<ul class="ja">
+<li>創業者・エンジニア・デザイナーの3人チーム。デザインは自分ひとり。</li>
+<li>お金を扱うため、単純さと同時に「怪しくない」信頼感が必要。</li>
+<li>営業は企業向けの説明材料を必要としていた。</li>
+</ul>
+<ul class="en">
+<li>A three-person team: founder, engineer and me as the only designer.</li>
+<li>It handled money, so it had to feel simple and trustworthy at the same time.</li>
+<li>Sales needed material to explain the product to corporate clients.</li>
+</ul><ul class="ko"><li>창업자, 엔지니어, 디자이너 세 명뿐인 팀. 디자인은 혼자 맡았다.</li><li>돈이 오가는 서비스라, 쉬우면서도 "수상해 보이지 않는" 신뢰감이 필요했다.</li><li>영업팀에는 기업 고객에게 보여줄 설명 자료가 필요했다.</li></ul>
+</div></li>
+<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<div>
+<p class="q ja">一般ユーザー向けのランディングページを作らず、App Storeに直接送る</p>
+<p class="q en">Skip the consumer landing page and send people straight to the App Store</p><p class="q ko">일반 사용자용 랜딩 페이지 대신 App Store로 곧장 연결한다</p>
+<p class="a ja">ユーザーが最終判断するのはストアの画面です。LPを挟むとタップが1回増え、「お金がすぐ届く」約束の前に摩擦が生まれます。代わりに、LPは企業クライアント向けに作り直し、営業ツールとして使えるようにしました。</p>
+<p class="a en">People make the final call on the store page. A landing page added one more tap and friction before the promise of instant money. I rebuilt the landing page for corporate clients instead, as a sales tool.</p><p class="a ko">사용자가 최종적으로 설치를 결정하는 곳은 스토어 화면입니다. 랜딩 페이지를 한 번 더 거치면 그만큼 탭이 늘고, "바로 돈이 들어온다"는 약속 앞에 걸림돌이 생깁니다. 대신 랜딩 페이지는 기업 고객용으로 새로 만들어 영업 도구로 쓰도록 했습니다.</p>
+</div>
+<div>
+<p class="q ja">撮影から入金までの画面を、細部まで最短にする</p>
+<p class="q en">Make the path from photo to payout as short as possible, down to the details</p><p class="q ko">촬영부터 입금까지 걸리는 단계를 끝까지 줄인다</p>
+<p class="a ja">このアプリの価値は「瞬時にお金が届く」体験そのものです。機能説明を増やすより、体験の速さそのものを説明にしました。</p>
+<p class="a en">The product's value was the instant payout itself. Instead of explaining features, I let the speed of the experience do the explaining.</p><p class="a ko">이 앱의 가치는 "찍자마자 돈이 들어오는" 경험 그 자체였습니다. 기능을 길게 설명하기보다, 빠른 경험이 곧 설명이 되도록 했습니다.</p>
+</div>
+</div></li>
+<li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
+<p class="result ja">App Store 総合1位。TechCrunch、Business Insider、THE BRIDGEなどで紹介。</p>
+<p class="result en">#1 overall on the Japanese App Store. Covered by TechCrunch, Business Insider and THE BRIDGE.</p><p class="result ko">일본 App Store 종합 1위를 기록했고, TechCrunch, Business Insider, THE BRIDGE 등에 소개되었습니다.</p>
+</div></li>
+</ol>
+</article>
+<!-- CASE 2: KYASH -->
+<article class="case" id="kyash">
+<aside class="meta">
+<span class="no">CASE 03 · 2022</span>
+<h3>Kyash Widget</h3>
+<p class="kicker ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</p>
+<p class="kicker en">It was low on the business roadmap. Putting "why build this" into words got the balance widget shipped anyway.</p><p class="kicker ko">사업 우선순위에서는 밀려 있었습니다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔습니다.</p>
+<dl>
+<dt>Client</dt><dd>Kyash Inc.</dd>
+<dt>Role</dt><dd>Product Designer</dd>
+<dt>Stage</dt><dd>Growth</dd>
+<dt>Scope</dt><dd>iOS Widget</dd>
+<dt>Team</dt><dd><span class="ja">Mobileチーム（10%ルール）</span><span class="en">Mobile team (10% rule)</span><span class="ko">Mobile 팀 (10% 룰)</span></dd>
+</dl>
+<div class="links">
+<a href="https://note.com/jinho/n/n629ea2fb964d" rel="noopener" target="_blank">note: Kyash Widget ↗</a>
+</div>
+</aside>
+<ol class="flow">
+<li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
+<p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
+<p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했습니다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제까지 이어지지 않는 경우가 많았습니다</strong>.</p>
+</div></li>
+<li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
+<ul class="ja">
+<li>自分自身がKyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
+<li>ウィジェットが効くのは「頻繁に使い、一瞬の確認で満足が得られる機能」。複数の候補を比べ、残高表示が最も価値が高いと判断。</li>
+</ul>
+<ul class="en">
+<li>As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
+<li>Widgets work best for features used often, where a glance is enough. I compared several candidates and chose the balance as the most valuable.</li>
+</ul><ul class="ko"><li>저 역시 Kyash 사용자로서, 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯이 빛을 발하는 건 "자주 쓰고, 잠깐 확인하는 것만으로 충분한 기능"이다. 여러 후보를 견줘 본 끝에 잔액 표시가 가장 쓸모 있다고 판단했다.</li></ul>
+</div></li>
+<li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
+<ul class="ja">
+<li>事業の優先度は低く、正式なロードマップには載っていない。</li>
+<li>Mobileチームの「10%ルール」（業務時間の一部を自由に使える制度）の中で進める。</li>
+<li>ウィジェットは表示領域と操作が限られる。小〜大サイズでもアプリらしさを保つ必要がある。</li>
+</ul>
+<ul class="en">
+<li>Low business priority; not on the official roadmap.</li>
+<li>Built within the Mobile team's "10% rule," time set aside for self-directed work.</li>
+<li>Widgets have little space and limited interaction, and every size from small to large still had to feel like Kyash.</li>
+</ul><ul class="ko"><li>사업 우선순위가 낮아 공식 로드맵에는 올라 있지 않았다.</li><li>Mobile 팀의 "10% 룰"(업무 시간 일부를 자율적으로 쓸 수 있는 제도) 안에서 진행했다.</li><li>위젯은 보여줄 수 있는 공간도, 조작할 수 있는 방법도 제한적이다. 작은 크기부터 큰 크기까지 어디서든 Kyash다운 느낌을 지켜야 했다.</li></ul>
+</div></li>
+<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<div>
+<p class="q ja">作る前に「なぜ作るのか」を一文にしてチームと合わせる</p>
+<p class="q en">Agree on "why we're building this" in one sentence before building</p><p class="q ko">만들기 전에 "왜 만드는가"를 한 문장으로 정리해 팀과 공유한다</p>
+<p class="a ja">10%ルールの時間は限られていて、機能を詰め込むと完成しません。「支払い前の迷いをなくし、決済失敗を減らす」という目的が、何を入れないかの判断基準になりました。</p>
+<p class="a en">10% time is limited, and a feature-stuffed widget would never ship. The purpose, "remove the hesitation before paying and reduce failed payments," became the test for what to leave out.</p><p class="a ko">10% 룰로 쓸 수 있는 시간은 한정적이라, 이것저것 넣다 보면 끝내 완성하지 못합니다. "결제 직전의 망설임을 없애고, 결제가 막히는 일을 줄인다"는 목적이 무엇을 빼야 할지 정하는 기준이 되었습니다.</p>
+</div>
+<div>
+<p class="q ja">表示は残高だけ。支払い元の切り替えは長押しに</p>
+<p class="q en">Show only the balance; switch funding source with a long press</p><p class="q ko">화면엔 잔액만 보여주고, 결제 수단 변경은 길게 눌러서</p>
+<p class="a ja">一目で読めることを最優先にしました。切り替えは毎回必要な操作ではないので、画面には出さず長押しに回しました。</p>
+<p class="a en">Glanceability came first. Switching isn't needed every time, so I kept it off the surface and put it behind a long press.</p><p class="a ko">한눈에 읽히는 게 가장 중요했습니다. 결제 수단 변경은 매번 하는 동작이 아니어서, 화면에 꺼내 두지 않고 길게 누르면 나오도록 했습니다.</p>
+</div>
+<div>
+<p class="q ja">決済の失敗を減らす施策としてKPIに結びつけて説明する</p>
+<p class="q en">Frame it as a payment-failure fix tied to KPIs</p><p class="q ko">"결제가 막히는 일을 줄이는 기능"으로, KPI와 엮어서 설명한다</p>
+<p class="a ja">「便利な機能」だと優先度は上がりません。決済失敗の減少は取扱高に直結するので、事業側と同じ言葉で話せます。</p>
+<p class="a en">"Convenient" doesn't move priority. Fewer failed payments connects directly to transaction volume, so it speaks the business side's language.</p><p class="a ko">"있으면 편한 기능"이라는 말로는 우선순위가 올라가지 않습니다. 결제가 막히는 일이 줄면 거래액이 곧바로 늘어나니, 사업 쪽과 같은 언어로 대화할 수 있었습니다.</p>
+</div>
+</div></li>
+<li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
+<p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。</p>
+<p class="result en">Released as a widget that shows the balance without opening the app.</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했습니다.</p>
+</div></li>
+</ol>
+</article>
+<!-- CASE 3: COOKPAD -->
+<article class="case" id="cookpad">
+<aside class="meta">
+<span class="no">CASE 04 · 2014–2015</span>
+<h3>Cookpad<br/>産地直送便</h3>
+<p class="kicker ja">「注文までが分かりにくい」という声に、画面の数ではなく「一目で分かる」ビジュアルで応えた。</p>
+<p class="kicker en">Users said ordering was confusing. I answered with visuals that explain the service at a glance, not with more screens.</p><p class="kicker ko">"주문하기가 어렵다"는 목소리에, 화면을 늘리는 대신 "한눈에 이해되는" 비주얼로 답했습니다.</p>
+<dl>
+<dt>Client</dt><dd>Cookpad Inc.</dd>
+<dt>Role</dt><dd>Creative Director &amp; Growth Hacker (User First Team)</dd>
+<dt>Scope</dt><dd>Web renewal, EC flow</dd>
+<dt>Team</dt><dd><span class="ja">ディレクター1、開発1（外部）</span><span class="en">1 director, 1 external developer</span><span class="ko">디렉터 1, 개발 1 (외부)</span></dd>
+</dl>
+<div class="links">
+<a href="https://www.behance.net/gallery/75050257/Cookpad-" rel="noopener" target="_blank">Behance ↗</a>
+</div>
+</aside>
+<ol class="flow">
+<li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
+<p class="ja">旬の野菜や産地の食材を届けるEC。ユーザーから「注文までの流れが難しい」という声が続いていました。</p>
+<p class="en">An e-commerce service delivering seasonal produce straight from farms. Users kept saying the path to ordering felt difficult.</p><p class="ko">제철 채소와 산지의 식재료를 집까지 보내주는 EC 서비스. 사용자들 사이에서 "주문하는 과정이 어렵다"는 의견이 꾸준히 나오고 있었습니다.</p>
+</div></li>
+<li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
+<ul class="ja">
+<li>チームに届いていたユーザーの声を整理し、つまずく場所を特定。</li>
+<li>アクセス解析で、どの画面で離脱が多いかを確認した。</li>
+<li>「産地直送」という価値が、最初の画面で伝わっていないことが分かった。</li>
+</ul>
+<ul class="en">
+<li>Sorted the user feedback the team had collected to find where people got stuck.</li>
+<li>Checked analytics to find the pages with the most drop-off.</li>
+<li>Found that the value of "direct from the farm" wasn't coming through on the first screen.</li>
+</ul><ul class="ko"><li>팀에 쌓여 있던 사용자 의견을 정리해, 사람들이 어디서 막히는지를 찾아냈다.</li><li>접속 데이터를 분석해 이탈이 많은 화면을 확인했다.</li><li>"산지 직송"이라는 가치가 첫 화면에서 제대로 전달되지 않는다는 걸 알게 됐다.</li></ul>
+</div></li>
+<li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
+<ul class="ja">
+<li>Cookpadの中の一事業で、少人数チーム。</li>
+<li>既存のシステム環境を維持したまま、新しい画面を提示しなければならなかった。</li>
+<li>生鮮食品は「誰が、どこで」の信頼がないと買われない。</li>
+</ul>
+<ul class="en">
+<li>A small team running one business inside Cookpad.</li>
+<li>The existing system had to stay as it was, while still presenting a new set of screens.</li>
+<li>People don't buy fresh food without trusting who grew it and where.</li>
+</ul><ul class="ko"><li>Cookpad 안에서 운영되는 하나의 사업으로, 팀 규모가 작았다.</li><li>기존 시스템 환경을 유지하면서도 새로운 화면을 제시해야만 했다.</li><li>신선식품은 "누가, 어디서 키웠는지" 믿을 수 있어야 팔린다.</li></ul>
+</div></li>
+<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<div>
+<p class="q ja">「サービスが一目で分かる」ビジュアルを最優先にする</p>
+<p class="q en">Put "understand the service at a glance" visuals first</p><p class="q ko">"서비스가 한눈에 이해되는" 비주얼을 가장 먼저 챙긴다</p>
+<p class="a ja">注文が難しく感じる原因は、手順の多さだけでなく「何を買っているのか分からない」ことにもありました。産地や旬の意味、信頼性が伝わって初めて、手順が短く感じられます。</p>
+<p class="a en">Ordering felt hard not only because of the steps, but because people weren't sure what they were buying. Once the origin, the season and the trust came through, the same steps felt shorter.</p><p class="a ko">주문이 어렵게 느껴진 건 단계가 많아서만은 아니었습니다. "내가 뭘 사는 건지 잘 모르겠다"는 것도 큰 이유였습니다. 산지와 제철이 주는 의미, 그리고 믿음이 먼저 전해지면 같은 단계도 훨씬 짧게 느껴집니다.</p>
+</div>
+<div>
+<p class="q ja">全体の流れを整理し、サイト全体のスタイルを統一する</p>
+<p class="q en">Reorganize the whole flow and unify the site's styling</p><p class="q ko">주문 흐름 전체를 다시 짜고, 사이트 전체의 스타일을 하나로 맞춘다</p>
+<p class="a ja">部分的な修正を重ねるより、流れ全体を見直したほうが「分かりにくさ」の原因を一度に取り除けると考えました。</p>
+<p class="a en">Rather than patching individual pages, reviewing the whole flow could remove the confusion at its source.</p><p class="a ko">한 곳씩 고쳐 나가기보다 흐름 전체를 다시 보는 편이, "어렵다"는 느낌의 원인을 한 번에 걷어낼 수 있다고 판단했습니다.</p>
+</div>
+</div></li>
+<li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
+<p class="result ja">リニューアル後、PVが増え、離脱率が下がりました。</p>
+<p class="ja">その後このサービスは、Cookpadの生鮮食品事業における貴重なPoCとなり、現在のさまざまなオフライン事業の展開にも活かされています。</p>
+<p class="result en">After the renewal, page views went up and the bounce rate went down.</p>
+<p class="en">The service later became a valuable proof of concept for Cookpad's fresh food business, and its lessons carried into the many offline businesses Cookpad runs today.</p><p class="result ko">리뉴얼 후 페이지뷰는 늘고 이탈률은 줄었습니다.</p><p class="ko">이후 이 서비스는 Cookpad가 신선식품 사업에 나서는 데 귀중한 PoC 경험이 되었고, 지금의 다양한 오프라인 사업 전개에도 밑거름이 되었습니다.</p>
+</div></li>
+</ol>
+</article>
+<!-- CASE 4: JIFFCY -->
+<article class="case" id="jiffcy">
+<aside class="meta">
+<span class="no">CASE 05 · 2025–</span>
+<h3>Jiffcy</h3>
+<p class="kicker ja">知っている友だちだけのクローズドSNS。友だちがゼロの最初の数分を、どう設計するか。</p>
+<p class="kicker en">A closed social app for friends who already know each other. How to design the first minutes, when you have zero friends.</p><p class="kicker ko">서로 아는 친구끼리만 연결되는 폐쇄형 SNS. 아직 친구가 한 명도 없는 첫 몇 분을 어떻게 설계할 것인가.</p>
+<dl>
+<dt>Product</dt><dd>iOS app for Gen Z</dd>
+<dt>Role</dt><dd>Product Designer<br/><span class="ja">デザインアーキテクチャ・ブランディングをリード</span><span class="en">Led design architecture &amp; branding</span><span class="ko">디자인 아키텍처·브랜딩 리드</span></dd>
+<dt>Target</dt><dd><span class="ja">10代後半〜20代前半の女性</span><span class="en">Women, late teens to early 20s</span><span class="ko">10대 후반~20대 초반 여성</span></dd>
+<dt>Stage</dt><dd><span class="ja">リリース済み</span><span class="en">Live</span><span class="ko">출시 완료</span></dd>
+<dt>Scope</dt><dd>Messaging &amp; calls, Dots, Onboarding, Brand</dd>
+</dl>
+</aside>
+<ol class="flow">
+<li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
+<p class="ja">Jiffcyは開かれたSNSではなく、QRコードで1人ずつ友だちを追加する仕組みです。新規ユーザーは最初、友だちがいない状態から始まるため、<strong>価値を感じる前に離脱</strong>しやすい構造でした。</p>
+<p class="en">Jiffcy isn't an open social network: you add friends one at a time by QR code. New users start with no friends at all, so they tend to <strong>leave before they feel any value</strong>.</p><p class="ko">Jiffcy는 누구에게나 열린 SNS가 아니라, QR 코드로 친구를 한 명씩 추가하는 방식입니다. 새로 가입한 사용자는 친구가 한 명도 없는 상태에서 시작하기 때문에, <strong>앱의 재미를 느끼기도 전에 떠나기 쉬웠습니다</strong>.</p>
+</div></li>
+<li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
+<ul class="ja">
+<li>主な機能「Dots」は、友だち同士で写真・動画を送り合うと自動でコラージュができる。価値は「相手がいる」ことに依存している。</li>
+</ul>
+<ul class="en">
+<li>The core feature, Dots, turns photos and videos exchanged between friends into an automatic collage. Its value depends on having someone on the other side.</li>
+</ul><ul class="ko"><li>핵심 기능 "Dots"는 친구와 사진·영상을 주고받으면 콜라주가 자동으로 만들어진다. 즉, 함께할 친구가 있어야 비로소 가치가 생긴다.</li></ul>
+</div></li>
+<li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
+<ul class="ja">
+<li>「クローズドであること」はプロダクトの核なので、公開タイムラインで空白を埋めることはできない。</li>
+<li>友だち追加はQRで対面が前提。オンボーディング中に必ず完了できるとは限らない。</li>
+</ul>
+<ul class="en">
+<li>Being closed is the core of the product, so an open public feed can't fill the empty state.</li>
+<li>Adding friends by QR assumes meeting in person, so it can't always be completed during onboarding.</li>
+</ul><ul class="ko"><li>"폐쇄형"이라는 점이 이 서비스의 핵심이라, 공개 피드로 빈 화면을 채울 수는 없다.</li><li>친구 추가는 QR로, 직접 만나서 하는 게 전제다. 가입하는 그 자리에서 꼭 끝낼 수 있는 건 아니다.</li></ul>
+</div></li>
+<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<div>
+<p class="q ja">一人でも続けて写真を投稿できる機能を加え、オンボーディングで紹介する</p>
+<p class="q en">Add solo continuous photo posting and introduce it in onboarding</p><p class="q ko">혼자서도 사진을 계속 올릴 수 있는 기능을 더하고, 온보딩에서 먼저 보여준다</p>
+<p class="a ja">友だちがいなくても「自分の記録」として価値を感じられれば、友だちを誘う理由が後から生まれる。価値の順番を入れ替える判断。</p>
+<p class="a en">If people get value from it as their own record before they have friends, a reason to invite friends follows. It reverses the order in which value arrives.</p><p class="a ko">친구가 없어도 "나만의 기록"으로 재미를 느낄 수 있다면, 친구를 부를 이유는 그다음에 자연스럽게 생긴다. 가치를 느끼는 순서를 바꾼 판단.</p>
+</div>
+<div>
+<p class="q ja">順番は「プロフィール写真 → 最初のDot → QR」</p>
+<p class="q en">Order: profile photo → first Dot → QR</p><p class="q ko">순서는 "프로필 사진 → 첫 Dot → QR"</p>
+<p class="a ja">いきなり友だち追加を求めず、まず自分を表現し、Dotを一つ作ってからQRを見せる。友だちに見せたいものがある状態で追加をお願いするため。</p>
+<p class="a en">Don't ask for friends up front. Let people express themselves, make one Dot, then show the QR, so they have something worth showing when they're asked to add someone.</p><p class="a ko">처음부터 친구를 추가하라고 하지 않는다. 먼저 나를 표현하고 Dot을 하나 만든 다음 QR을 보여준다. 친구에게 보여줄 무언가가 생긴 뒤에 초대를 권하기 위해서다.</p>
+</div>
+</div></li>
+<li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
+<p class="ja">導入後のオンボーディング完了率や友だち追加率を確認しながら、チームと改善点を議論し、継続的に改善を進めています（現在進行中）。</p>
+<p class="en">We're tracking onboarding completion and friend-add rates after the change, and keep discussing and shipping improvements with the team (ongoing).</p><p class="ko">도입 후 온보딩 완료율과 친구 추가율을 확인하면서, 개선할 점을 팀과 계속 논의하며 다듬어 가고 있습니다. (현재 진행 중)</p>
+</div></li>
+</ol>
+</article>
+</section>
+<!-- NOW -->
+<section id="now">
+<div class="sec-head">
+<h2><span class="ja">いま取り組んでいること</span><span class="en">Now</span><span class="ko">지금 하고 있는 일</span></h2>
+<p class="ja">2026年4月から株式会社medimoのUI/UXデザイナー。医療×AIの領域で、画面だけでなく事業側との合意づくりまでを担当しています。</p>
+<p class="en">UI/UX Designer at medimo since April 2026. In medical AI, I work on the screens and also on building agreement with the business side.</p><p class="ko">2026년 4월부터 medimo에서 UI/UX 디자이너로 일하고 있습니다. 의료 AI 분야에서 화면 설계는 물론, 사업 쪽과 방향을 맞추는 일까지 함께 맡고 있습니다.</p>
+</div>
+<div class="principles">
+<div class="pr">
+<span class="label">medimo · Team</span>
+<h3 class="ja">BPMNで業務フローを描き、KPIで「なぜ必要か」を合意する</h3>
+<h3 class="en">Map the workflow in BPMN, agree on "why it matters" with KPIs</h3><h3 class="ko">BPMN으로 업무 흐름을 그리고, KPI로 "왜 필요한지"에 대한 합의를 만든다</h3>
+<p class="ja">事業上の優先度が高い機能のBPMNを自ら作成し、PdMとともにKPIと成果指標を整理しました。この機能がなぜ必要で、何を変えるのかを事業側に説明する資料として活用しています。</p>
+<p class="en">I drew the BPMN for high-priority features myself and worked with the PdM to define KPIs and outcome metrics. We use them to show the business side why each feature is needed and what it changes.</p><p class="ko">사업 우선순위가 높은 기능의 BPMN을 직접 그리고, PdM과 함께 KPI와 성과 지표를 정리했습니다. 이 기능이 왜 필요하고 무엇을 바꾸는지 사업 쪽에 설명하는 자료로 쓰고 있습니다.</p>
+</div>
+<div class="pr">
+<span class="label">medimo · Success</span>
+<h3 class="ja">顧客のニーズから、いまのプロダクトを磨き込む</h3>
+<h3 class="en">Refining the product from what customers need</h3><h3 class="ko">고객의 니즈에서 출발해 지금의 제품을 다듬는다</h3>
+<p class="ja">Successチームに所属し、顧客のニーズを把握しながら、現在のプロダクトのUI/UXをさらに高度化しています。</p>
+<p class="en">As part of the Success team, I learn what customers need and use it to keep raising the UI/UX of the current product.</p><p class="ko">Success팀에 소속되어 고객의 니즈를 파악하며, 현재 제품의 UI/UX를 한층 더 고도화하는 일을 하고 있습니다.</p>
+</div>
+<div class="pr">
+<span class="label">AI × UX</span>
+<h3 class="ja">AIを「機能」ではなく「体験」として設計する</h3>
+<h3 class="en">Designing AI as an experience, not a feature</h3><h3 class="ko">AI를 "기능"이 아닌 "경험"으로 설계한다</h3>
+<p class="ja">Prompt → UX Flow → UI → 信頼の設計 → フォールバック → 人への引き継ぎ。説明可能性、エラー時の体験、プライバシーを最初から設計に含めます。</p>
+<p class="en">Prompt → UX flow → UI → trust → fallback → human handoff. Explainability, error states and privacy are part of the design from the start.</p><p class="ko">Prompt → UX 흐름 → UI → 신뢰 설계 → 대체 동작(Fallback) → 사람에게 넘기기. 설명 가능성, 오류가 났을 때의 경험, 개인정보 보호를 처음부터 설계에 담습니다.</p>
+</div>
+</div>
+</section>
+<!-- OTHER WORK -->
+<section class="newpage" id="works">
+<div class="sec-head">
+<h2><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></h2>
+</div>
+<div class="works-box">
+<table class="works">
+<thead><tr><th>Year</th><th>Project</th><th>Type</th><th><span class="ja">判断のポイント</span><span class="en">The call</span><span class="ko">판단 포인트</span></th></tr></thead>
+<tbody>
+<tr><td>2025</td><td class="n"><a href="https://conference.findy-code.io/" rel="noopener" target="_blank">Findy Conference</a></td><td>Event platform</td><td class="p"><span class="ja">0→1フェーズでサービスを設計し、事業は10→50フェーズへ成長。</span><span class="en">Designed the service at 0→1; the business grew into the 10→50 phase.</span><span class="ko">0에서 1을 만드는 단계부터 서비스를 설계했고, 사업은 10에서 50으로 커지는 단계까지 성장했다.</span></td></tr>
+<tr><td>2025</td><td class="n"><a href="https://jellness.co.jp/" rel="noopener" target="_blank">JELLNESS</a></td><td>Travel for seniors</td><td class="p"><span class="ja">50〜60代へのインタビューから、サービス・ブランド・管理ツールを設計。</span><span class="en">Designed service, brand and admin tool from interviews with people in their 50s and 60s.</span><span class="ko">50~60대 사용자 인터뷰를 바탕으로 서비스, 브랜드, 관리 툴을 설계했다.</span></td></tr>
+<tr><td>2025</td><td class="n"><a href="https://www.behance.net/gallery/224713557/RLWRLD" rel="noopener" target="_blank">RLWRLD</a></td><td>Brand, Corporate site</td><td class="p"><span class="ja">ロゴ、Web、名刺、リーフレットまで事業初期のアセットを一式で設計。</span><span class="en">Designed the full early-stage kit: logo, web, cards, leaflets.</span><span class="ko">로고, 웹사이트, 명함, 리플렛까지 사업 초기에 필요한 브랜드 요소를 한 번에 설계했다.</span></td></tr>
+<tr><td>2025</td><td class="n"><a href="https://pikabon.com/" rel="noopener" target="_blank">PIKABON</a></td><td>Brand, Corporate site</td><td class="p"><span class="ja">ファンライト事業を展開する企業。第二創業期を記念した新しいロゴ、Webサイト、名刺までを担当した。</span><span class="en">A company in the fan-light business. Designed a new logo, website and business cards to mark its second founding.</span><span class="ko">팬라이트 사업을 전개하고 있는 회사로, 제2의 창업기를 기념한 새로운 로고, 웹사이트, 명함까지 담당했다.</span></td></tr>
+<tr><td>2024</td><td class="n"><a href="https://ktjapan.co.jp/" rel="noopener" target="_blank">KT Japan</a></td><td>Corporate site, Leaflet</td><td class="p"><span class="ja">韓国大手通信の日本法人が日本市場でどう見えるべきかについて、クライアントと綿密にコミュニケーションを取りながらWebサイトのリニューアルを担当。その後、展示会向けのリーフレット制作なども担当した。</span><span class="en">Worked closely with the client on how a Korean telecom's Japan arm should come across in the Japanese market, and led the website renewal. Later also made leaflets for trade shows.</span><span class="ko">한국 대형 통신사의 일본 법인이 일본 시장에서 어떤 모습으로 보여야 하는지에 대해 고객과 면밀히 소통하며 웹사이트 리뉴얼을 담당했고, 이후 전시회용 리플렛 제작 등도 맡았다.</span></td></tr>
+<tr><td>2024</td><td class="n"><a href="https://apps.apple.com/jp/app/id1578203317" rel="noopener" target="_blank">Switch</a></td><td>iOS call recording</td><td class="p"><span class="ja">日本市場への初期のソフトランディングに向けて、日本向けのUI/UXを担当。課金率は着実に上昇した。</span><span class="en">Designed the UI/UX for Japanese users to help the app land softly in the Japanese market. The paid conversion rate rose steadily.</span><span class="ko">일본 시장에 안정적으로 안착하기 위한 초기 단계에서 일본 사용자에 맞춘 UI/UX를 담당했고, 결제율이 꾸준히 상승했다.</span></td></tr>
+<tr><td>2024</td><td class="n"><a href="https://spot-workcanvas.com/" rel="noopener" target="_blank">WORKSPOT</a></td><td>Gramn · Spot work for hairdressers</td><td class="p"><span class="ja">美容師のためのスキマバイトサービス。PoC段階の上流工程から参画し、事業のブランディングからWebサイト設計までを担当した。</span><span class="en">A short-shift job service for hairdressers. Joined upstream at the PoC stage and handled everything from the business's branding to the website design.</span><span class="ko">미용사들을 위한 스키마바이트(짧은 시간 단위 아르바이트) 서비스. PoC 단계의 상류 공정부터 참여해, 사업의 브랜딩부터 웹사이트 설계까지 담당했다.</span></td></tr>
+<tr><td>2023</td><td class="n"><a href="https://wealth-park.com/" rel="noopener" target="_blank">WealthPark</a></td><td>Fintech (B2B2C)</td><td class="p"><span class="ja">家賃収入を投資に回す機能を、ゼロベースで仮説を立てて設計。</span><span class="en">Designed a rent-to-investment feature from zero-based hypotheses.</span><span class="ko">부동산 월세 수입을 투자로 돌릴 수 있는 기능을, 백지에서 가설을 세워 설계했다.</span></td></tr>
+<tr><td>2023</td><td class="n"><a href="https://official.metame.ne.jp/" rel="noopener" target="_blank">MetaMe</a></td><td>B2C growth</td><td class="p"><span class="ja">グロースデザインと新機能の提案。</span><span class="en">Growth design and new feature proposals.</span><span class="ko">그로스 디자인과 새 기능 제안.</span></td></tr>
+<tr><td>2023</td><td class="n"><a href="https://www.gnusnetwork.com/" rel="noopener" target="_blank">GNUS Network</a></td><td>Service site renewal</td><td class="p"><span class="ja">既存のサービスページを新たにリニューアルする作業を担当した。</span><span class="en">Renewed the existing service pages.</span><span class="ko">기존 서비스 페이지를 새롭게 리뉴얼하는 작업을 담당했다.</span></td></tr>
+<tr><td>2023</td><td class="n"><a href="http://intro.oround.com/" rel="noopener" target="_blank">oround</a></td><td>Landing page</td><td class="p"><span class="ja">Oh Print Meの新規事業サービスのランディングページを担当。主な事業内容をどうアピールできるかを提案した。</span><span class="en">Landing page for a new service from Oh Print Me. Proposed how to present the core of the business.</span><span class="ko">Oh Print Me의 신규 사업 서비스 랜딩 페이지를 담당했다. 주요 사업 내용을 어떻게 어필할 수 있을지 제안했다.</span></td></tr>
+<tr><td>2023</td><td class="n"><a href="https://aruyo.me/" rel="noopener" target="_blank">Aruyo</a></td><td>Shared office · Landing page</td><td class="p"><span class="ja">小田原市にあるシェアオフィスのランディングページを担当。小田原市と連携してさまざまな社会活動ができる場所なので、その魅力をどう表現するかを考えて設計した。</span><span class="en">Landing page for a shared office in Odawara. It's a place for all kinds of community activities in partnership with the city, so the design focused on how to express that appeal.</span><span class="ko">오다와라시에 위치한 셰어오피스의 랜딩 페이지를 담당했다. 오다와라시와 연계해 다양한 사회 활동을 할 수 있는 공간이라, 그 매력을 어떻게 표현할지 고민하며 설계했다.</span></td></tr>
+<tr><td>2016–17</td><td class="n"><a href="https://www.behance.net/gallery/75265419/aeoncom" rel="noopener" target="_blank">AEON.com</a></td><td>Corporate site</td><td class="p"><span class="ja">当時まだ珍しかったSketch＋Zeplinを社内に導入。エンジニアとの受け渡しを変え、業務スピードを3割以上改善。</span><span class="en">Introduced Sketch and Zeplin when both were still rare in Japan, changing designer–engineer handoff and speeding up work by 30%+.</span><span class="ko">당시 일본에서는 드물었던 Sketch와 Zeplin을 사내에 도입했다. 디자이너와 엔지니어가 결과물을 주고받는 방식을 바꿔, 작업 속도를 30% 넘게 끌어올렸다.</span></td></tr>
+<tr><td>2015</td><td class="n"><a href="https://www.behance.net/gallery/75156055/Compathy" rel="noopener" target="_blank">Compathy</a></td><td>Travel planning</td><td class="p"><span class="ja">写真の日時・位置から旅程を自動生成するサービスのリブランドと計画機能を設計。社内事情で未リリース。</span><span class="en">Rebrand and trip-planning feature for a service that builds itineraries from photo time and location. Not released due to company circumstances.</span><span class="ko">사진의 촬영 시간과 위치로 여행 일정을 자동으로 만들어 주는 서비스. 리브랜딩과 여행 계획 기능을 설계했지만, 회사 사정으로 출시되지는 못했다.</span></td></tr>
+<tr><td>2013</td><td class="n"><a href="https://www.behance.net/gallery/75038823/LINE-for-Windows" rel="noopener" target="_blank">LINE for Windows</a></td><td>Desktop messenger</td><td class="p"><span class="ja">スマホ前提のメッセンジャーを、デスクトップの使い方に合わせて再設計。</span><span class="en">Redesigned a phone-first messenger for how people work on a desktop.</span><span class="ko">스마트폰에 맞춰진 메신저를, 데스크톱에서 일하는 방식에 맞게 다시 설계했다.</span></td></tr>
+<tr><td>2013</td><td class="n"><a href="https://www.behance.net/gallery/75040255/LINE-Antivirus" rel="noopener" target="_blank">LINE Antivirus</a></td><td>Android security</td><td class="p"><span class="ja">審査の緩いAndroidで、専門知識のない人にも「安心」が伝わる画面に。</span><span class="en">Made security understandable for non-experts on Android, where app review is looser.</span><span class="ko">앱 심사가 느슨한 Android 환경에서, 보안을 잘 모르는 사람도 "안심"하고 쓸 수 있는 화면을 만들었다.</span></td></tr>
+<tr><td>2011</td><td class="n"><a href="https://www.behance.net/gallery/74998877/BIGBANG" rel="noopener" target="_blank">BIGBANG</a></td><td>Official artist app</td><td class="p"><span class="ja">ファンとアーティストが直接交流できる場を設計。KARA、w-indsなどのアーティストアプリ基盤に発展。</span><span class="en">Designed a space for fans to talk with the artist directly. It grew into a platform for KARA, w-inds and other artists.</span><span class="ko">팬과 아티스트가 직접 소통하는 공간을 설계했고, 이후 KARA, w-inds 등 여러 아티스트 앱의 플랫폼으로 확장되었다.</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- CAREER -->
+<section class="newpage" id="career">
+<div class="sec-head">
+<h2><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></h2>
+<p class="ja">ソウルで始まり、東京で15年以上。大手企業、初期スタートアップ、フリーランスとして、事業の意思決定の現場にいました。</p><p class="en">Started in Seoul, 15+ years in Tokyo. In large companies, early startups and as a freelancer, I've been in the room where business decisions are made.</p><p class="ko">서울에서 시작해 도쿄에서 15년 넘게 일했습니다. 대기업, 초기 스타트업, 프리랜서로 일하며 늘 사업의 의사결정 가까이에 있었습니다.</p>
+</div>
+<div class="two">
+<ol class="tl">
+<li><span class="y">2026.04 —</span><div class="job">
+<div class="job-h"><b>medimo</b><span class="role"><span class="ja">UI/UX デザイナー</span><span class="en">UI/UX Designer</span><span class="ko">UI/UX 디자이너</span></span></div>
+<p class="desc"><span class="ja">医療AIカルテのB2Bサービス</span><span class="en">B2B AI medical records service</span><span class="ko">의료 AI 차트 B2B 서비스</span></p>
+<ul><li><span class="ja">UI/UX設計、UXリサーチ</span><span class="en">UI/UX design and UX research</span><span class="ko">UI/UX 설계, UX 리서치</span></li><li><span class="ja">Successチームとして顧客ニーズを把握し、現行プロダクトのUI/UXを高度化</span><span class="en">On the Success team, turning customer needs into UI/UX improvements to the current product</span><span class="ko">Success팀에서 고객 니즈를 파악하며 현재 제품의 UI/UX 고도화</span></li><li><span class="ja">事業優先度の高い機能のBPMN作成と、PdMとのKPI・成果指標の整理</span><span class="en">BPMN for high-priority features and KPI/outcome metrics with the PdM</span><span class="ko">사업 우선순위가 높은 기능의 BPMN 작성과 PdM과의 KPI·성과 지표 정리</span></li></ul>
+</div></li>
+<li><span class="y">2024.08 —</span><div class="job">
+<div class="job-h"><b><span class="ja">フリーランス</span><span class="en">Freelance</span><span class="ko">프리랜스</span> · aftworks</b><span class="role"><span class="ja">プロダクト / BXデザイナー</span><span class="en">Product / BX Designer</span><span class="ko">프로덕트 / BX 디자이너</span></span></div>
+<p class="desc"><span class="ja">スタートアップの0→1を中心に、プロダクト、ブランド、コーポレートサイトを担当</span><span class="en">Product, brand and corporate sites, mostly for startups at 0→1</span><span class="ko">주로 0에서 1을 만드는 스타트업의 프로덕트, 브랜드, 기업 사이트를 맡고 있다</span></p>
+<dl class="clients">
+<dt><b>Jiffcy</b><span class="mono">2025.07 —</span></dt><dd><span class="ja">10代後半〜20代前半の女性向けメッセージ＆通話アプリのデザインアーキテクチャとブランディングをリード。写真機能「Dots」のUI/UX設計</span><span class="en">Led design architecture and branding for a messaging and calling app for women in their late teens to early 20s. UI/UX for the photo feature Dots</span><span class="ko">10대 후반~20대 초반 여성을 위한 메시지·통화 앱의 디자인 구조와 브랜딩을 이끌었다. 사진 기능 "Dots"의 UI/UX도 설계했다</span></dd>
+<dt><b>Findy</b><span class="mono">2025.02 — 11</span></dt><dd><span class="ja">Findy Conferenceのサービスデザイン。0→1で設計し、事業は10→50フェーズへ成長</span><span class="en">Service design for Findy Conference, from 0→1 through the business's growth into the 10→50 phase</span><span class="ko">Findy Conference의 서비스 디자인. 0에서 1을 만드는 단계부터 맡았고, 사업은 10에서 50으로 커지는 단계까지 성장했다</span></dd>
+<dt><b>JELLNESS</b><span class="mono">2025.07 — 11</span></dt><dd><span class="ja">50〜60代のアクティブシニア向け旅行サービス。ユーザーインタビューをもとにサービス、ブランド、管理ツール、コーポレートサイトを設計</span><span class="en">Travel service for active seniors in their 50s and 60s. Designed the service, brand, admin tool and corporate site from user interviews</span><span class="ko">50~60대 액티브 시니어를 위한 여행 서비스. 사용자 인터뷰를 바탕으로 서비스, 브랜드, 관리 툴, 기업 사이트를 설계했다</span></dd>
+<dt><b>RLWRLD</b><span class="mono">2025.04 — 10</span></dt><dd><span class="ja">ロゴ、Webサイト、名刺、リーフレットなど、事業初期に必要なアセット一式</span><span class="en">Logo, website, business cards and leaflets: the full early-stage brand kit</span><span class="ko">로고, 웹사이트, 명함, 리플렛 등 사업 초기에 필요한 브랜드 요소 전반</span></dd>
+<dt><b>KT Japan</b><span class="mono">2024.09 — 2026.01</span></dt><dd><span class="ja">韓国大手通信KTの日本法人のWebサイトとリーフレット</span><span class="en">Website and leaflets for the Japan arm of Korean telecom KT</span><span class="ko">한국 대형 통신사 KT의 일본 법인 웹사이트와 리플렛</span></dd>
+<dt><b>Switch</b><span class="mono">2024.09 — 2025.02</span></dt><dd><span class="ja">通話録音アプリのUI/UX改善とマーケティング</span><span class="en">UI/UX improvements and marketing for a call recording app</span><span class="ko">통화 녹음 앱의 UI/UX 개선과 마케팅</span></dd>
+<dt><b>PIKABON</b><span class="mono">2024.11 — 2025.01</span></dt><dd><span class="ja">グローバルなファンライト制作会社のコーポレートサイト</span><span class="en">Corporate site for a global fan-light maker</span><span class="ko">글로벌 응원봉 제작사의 기업 사이트</span></dd>
+</dl>
+</div></li>
+<li><span class="y">2023.11 — 2024.08</span><div class="job">
+<div class="job-h"><b>Relic</b><span class="role"><span class="ja">デザインチームマネージャー 兼 プレイヤー</span><span class="en">Design team manager and hands-on designer</span><span class="ko">디자인 팀 매니저 겸 실무 디자이너</span></span></div>
+<p class="desc"><span class="ja">イノベーションマネジメント・プラットフォーム</span><span class="en">Innovation management platform</span><span class="ko">이노베이션 매니지먼트 플랫폼</span></p>
+<ul><li><span class="ja">「MetaMe」（B2C）のグロースデザイン、新機能の設計・提案</span><span class="en">Growth design and new features for MetaMe (B2C)</span><span class="ko">"MetaMe"(B2C)의 그로스 디자인, 새 기능 설계와 제안</span></li><li><span class="ja">Gramn社の新規サービス（B2B2C）「WORKSPOT」のデザイン</span><span class="en">New B2B2C service WORKSPOT for Gramn</span><span class="ko">Gramn의 신규 서비스(B2B2C) "WORKSPOT" 디자인</span></li><li><span class="ja">韓国企業の日本支社設立支援</span><span class="en">Supported Korean companies setting up in Japan</span><span class="ko">한국 기업의 일본 지사 설립 지원</span></li></ul>
+</div></li>
+<li><span class="y">2023.02 — 2023.10</span><div class="job">
+<div class="job-h"><b>WealthPark</b><span class="role"><span class="ja">プロダクトデザイナー（Fintech事業部）</span><span class="en">Product Designer, Fintech</span><span class="ko">프로덕트 디자이너 (핀테크 사업부)</span></span></div>
+<p class="desc"><span class="ja">海外投資家向けアセットマネジメント、不動産DX</span><span class="en">Asset management and real estate DX</span><span class="ko">해외 투자자를 위한 자산 관리, 부동산 DX</span></p>
+<ul><li><span class="ja">不動産オーナーの家賃収入を投資に回せる機能（B2B2C）を、ゼロベースで仮説を立てて設計</span><span class="en">Designed a feature that lets property owners invest their rental income (B2B2C), from zero-based hypotheses</span><span class="ko">부동산 오너가 월세 수입을 바로 투자로 돌릴 수 있는 기능(B2B2C)을, 백지에서 가설을 세워 설계했다</span></li></ul>
+</div></li>
+<li><span class="y">2020.06 — 2023.01</span><div class="job">
+<div class="job-h"><b>Kyash</b><span class="role"><span class="ja">プロダクトデザイナー</span><span class="en">Product Designer</span><span class="ko">프로덕트 디자이너</span></span></div>
+<p class="desc"><span class="ja">デジタルウォレットアプリ</span><span class="en">Digital wallet app</span><span class="ko">디지털 월렛 앱</span></p>
+<ul><li><span class="ja">アプリ（iOS/Android）の新機能設計。あと払い、残高ウィジェットなど</span><span class="en">New app features for iOS and Android, including buy-now-pay-later and the balance widget</span><span class="ko">iOS/Android 앱의 새 기능 설계. 후불 결제, 잔액 위젯 등</span></li><li><span class="ja">サービスサイトのリニューアル</span><span class="en">Service site renewal</span><span class="ko">서비스 사이트 리뉴얼</span></li></ul>
+</div></li>
+<li><span class="y">2019.02 — 2020.05</span><div class="job">
+<div class="job-h"><b>BUILD</b><span class="role"><span class="ja">サービスデザイナー</span><span class="en">Service Designer</span><span class="ko">서비스 디자이너</span></span></div>
+<p class="desc"><span class="ja">外国人向け不動産サービス「3FLOOR」</span><span class="en">3FLOOR, a real estate service for foreign residents</span><span class="ko">외국인을 위한 부동산 서비스 "3FLOOR"</span></p>
+<ul><li><span class="ja">サービス全体のデザイン</span><span class="en">Design across the whole service</span><span class="ko">서비스 전반의 디자인</span></li></ul>
+</div></li>
+<li><span class="y">2017.11 — 2019.01</span><div class="job">
+<div class="job-h"><b>ONE Financial</b><span class="role"><span class="ja">チーフデザイナー</span><span class="en">Chief Designer</span><span class="ko">치프 디자이너</span></span></div>
+<p class="desc"><span class="ja">ショッピングアプリ、売上管理クラウド</span><span class="en">Shopping app and sales management cloud</span><span class="ko">쇼핑 앱, 매출 관리 클라우드</span></p>
+<ul><li><span class="ja">「ONE PAYMENT」カードリーダー不要の対面決済アプリを設計・リリース。Incubate FundからPre-Aで1億円を調達</span><span class="en">Designed and launched ONE PAYMENT, an in-person card payment app with no reader. ¥100M Pre-A from Incubate Fund</span><span class="ko">리더기 없이 대면 결제를 받을 수 있는 앱 "ONE PAYMENT"를 설계·출시. Incubate Fund에서 프리시리즈 A 1억 엔 투자 유치</span></li><li><span class="ja">「ONE」へ事業転換。データ買取型マーケティングプラットフォーム。アプリ、コーポレートサイト、営業サイト。App Store 1位</span><span class="en">Pivoted to ONE, a data-buying marketing platform: app, corporate site and sales site. #1 on the App Store</span><span class="ko">"ONE"으로 사업을 전환. 데이터를 사들이는 마케팅 플랫폼으로, 앱·기업 사이트·영업 사이트를 디자인했다. App Store 1위</span></li></ul>
+</div></li>
+<li><span class="y">2016.03 — 2017.10</span><div class="job">
+<div class="job-h"><b>AEON.com</b><span class="role"><span class="ja">デザイン総括</span><span class="en">Head of Design</span><span class="ko">디자인 총괄</span></span></div>
+<p class="desc"><span class="ja">イオンのECサイト運営</span><span class="en">AEON's e-commerce operator</span><span class="ko">이온그룹의 EC 사이트 운영사</span></p>
+<ul><li><span class="ja">トップ、決済、商品詳細、検索結果画面の改善（PC/SP）</span><span class="en">Improved the home, checkout, product and search pages (PC/SP)</span><span class="ko">메인, 결제, 상품 상세, 검색 결과 화면 개선(PC/모바일)</span></li><li><span class="ja">コーポレートサイト。Sketch＋Zeplinの導入で業務スピード3割以上改善</span><span class="en">Corporate site; introduced Sketch and Zeplin, speeding up work by 30%+</span><span class="ko">기업 사이트 디자인. Sketch와 Zeplin을 도입해 작업 속도를 30% 넘게 높였다</span></li></ul>
+</div></li>
+<li><span class="y">2015.07 — 2016.02</span><div class="job">
+<div class="job-h"><b>Wanderlust</b><span class="role"><span class="ja">デザイナー</span><span class="en">Designer</span><span class="ko">디자이너</span></span></div>
+<p class="desc"><span class="ja">旅行記共有サービス「Compathy」</span><span class="en">Compathy, a travel log sharing service</span><span class="ko">여행기 공유 서비스 "Compathy"</span></p>
+<ul><li><span class="ja">旅行プラン作成機能（Beta）のプロダクトデザイン</span><span class="en">Product design for the trip planner (beta)</span><span class="ko">여행 계획 만들기 기능(베타)의 프로덕트 디자인</span></li><li><span class="ja">Compathy Magazine、コーポレートサイトのデザインとHTML/CSS</span><span class="en">Design and HTML/CSS for Compathy Magazine and the corporate site</span><span class="ko">Compathy Magazine과 기업 사이트의 디자인, HTML/CSS 작업</span></li></ul>
+</div></li>
+<li><span class="y">2014.03 — 2015.06</span><div class="job">
+<div class="job-h"><b>Cookpad</b><span class="role"><span class="ja">プロダクトデザイナー（User First Team）</span><span class="en">Product Designer, User First Team</span><span class="ko">프로덕트 디자이너 (User First Team)</span></span></div>
+<p class="desc"><span class="ja">料理レシピ投稿・検索サービス</span><span class="en">Recipe sharing and search service</span><span class="ko">요리 레시피 공유·검색 서비스</span></p>
+<ul><li><span class="ja">「産地直送便」「撮るレシピ」「料理動画」のプロダクトデザイン</span><span class="en">Product design for 産地直送便, 撮るレシピ and cooking videos</span><span class="ko">"산지직송편", "찍는 레시피", "요리 동영상"의 프로덕트 디자인</span></li><li><span class="ja">サイト運営と新機能設計、コーポレートサイト</span><span class="en">Site operations, new features and the corporate site</span><span class="ko">사이트 운영과 새 기능 설계, 기업 사이트</span></li></ul>
+</div></li>
+<li><span class="y">2013.02 — 2014.03</span><div class="job">
+<div class="job-h"><b>CROOZ</b><span class="role"><span class="ja">デザイナー</span><span class="en">Designer</span><span class="ko">디자이너</span></span></div>
+<p class="desc"><span class="ja">ファッションECを中心としたネットサービス</span><span class="en">Internet services centered on fashion e-commerce</span><span class="ko">패션 EC를 중심으로 한 인터넷 서비스</span></p>
+<ul><li><span class="ja">Webブラウザ型TCG「ラグナブレイク・サーガ」のUIとイベントロゴ</span><span class="en">UI and event logos for the browser card game Ragna Break Saga</span><span class="ko">웹 브라우저 카드 게임 "라그나 브레이크 사가"의 UI와 이벤트 로고</span></li><li><span class="ja">SHOPLIST.comのブランディング再構築提案</span><span class="en">Rebranding proposal for SHOPLIST.com</span><span class="ko">SHOPLIST.com 브랜드 리뉴얼 제안</span></li></ul>
+</div></li>
+<li><span class="y">2010.11 — 2013.02</span><div class="job">
+<div class="job-h"><b>NAVER JAPAN (LINE)</b><span class="role"><span class="ja">UIデザイナー</span><span class="en">UI Designer</span><span class="ko">UI 디자이너</span></span></div>
+<p class="desc"><span class="ja">来日のきっかけ</span><span class="en">The job that brought me to Japan</span><span class="ko">일본으로 오게 된 계기가 된 회사</span></p>
+<ul><li><span class="ja">LINE：アンチウイルス（Android）、アプリ内通知、シークレットセール、Windows版</span><span class="en">LINE: Antivirus (Android), in-app notifications, secret sale, Windows app</span><span class="ko">LINE: 안티바이러스(Android), 앱 내 알림, 시크릿 세일, Windows 버전</span></li><li><span class="ja">BIGBANG公式アプリ、NAVERまとめ、K-style、Appmax、Pick2など</span><span class="en">BIGBANG official app, NAVER Matome, K-style, Appmax, Pick2 and more</span><span class="ko">BIGBANG 공식 앱, NAVER 마토메, K-style, Appmax, Pick2 등</span></li></ul>
+</div></li>
+<li><span class="y">2007.10 — 2010.10</span><div class="job">
+<div class="job-h"><b>Vi-nyl (Seoul)</b><span class="role"><span class="ja">UI/UXデザイナー</span><span class="en">UI/UX Designer</span><span class="ko">UI/UX 디자이너</span></span></div>
+<p class="desc"><span class="ja">新規事業のUI/UXデザイン。大手企業のUI提案と運用</span><span class="en">UI/UX for new businesses; UI proposals and operations for large companies</span><span class="ko">신규 사업의 UI/UX 디자인, 대기업 대상 UI 제안과 운영</span></p>
+</div></li>
+<li><span class="y">2000.09 — 2005.05</span><div class="job">
+<div class="job-h"><b>Thiat (Seoul)</b><span class="role"><span class="ja">創業メンバー</span><span class="en">Founding member</span><span class="ko">창업 멤버</span></span></div>
+<p class="desc"><span class="ja">学生ベンチャーとして自社サービスの企画・運営</span><span class="en">Planned and ran our own services as a student venture</span><span class="ko">학생 벤처에서 자체 서비스를 기획하고 운영했다</span></p>
+</div></li>
+</ol>
+<div class="side">
+<div><h3><span class="ja">得意なこと</span><span class="en">Strengths</span><span class="ko">강점</span></h3><ul>
+<li><span class="ja">定量・定性データから仮説を立て、課題解決のUIを提案</span><span class="en">Forming hypotheses from quantitative and qualitative data and proposing UI that solves the problem</span><span class="ko">정량·정성 데이터로 가설을 세우고, 문제를 푸는 UI를 제안한다</span></li>
+<li><span class="ja">ブランド戦略に基づくデザイン設計とクリエイティブディレクション</span><span class="en">Brand-strategy-driven design and creative direction</span><span class="ko">브랜드 전략을 바탕으로 한 디자인 설계와 크리에이티브 디렉션</span></li>
+<li><span class="ja">スマートフォンアプリのUI/UX、プロトタイプ、ストーリーボード</span><span class="en">Mobile app UI/UX, prototypes and storyboards</span><span class="ko">스마트폰 앱 UI/UX, 프로토타입, 스토리보드</span></li>
+<li><span class="ja">アジャイル開発（Scrum、User Story Mapping）、Lean Startup、デザイン思考</span><span class="en">Agile (Scrum, user story mapping), Lean Startup and design thinking</span><span class="ko">애자일 개발(Scrum, User Story Mapping), 린 스타트업, 디자인 씽킹</span></li>
+<li><span class="ja">複雑な情報を図解で分かりやすく伝える</span><span class="en">Making complex information clear through diagrams</span><span class="ko">복잡한 정보를 도식으로 쉽게 풀어내기</span></li>
+<li><span class="ja">HTML、CSS、JavaScript、GitHubの実務経験</span><span class="en">Hands-on HTML, CSS, JavaScript and GitHub</span><span class="ko">HTML, CSS, JavaScript, GitHub 실무 경험</span></li>
+</ul></div>
+<div><h3><span class="ja">ツール</span><span class="en">Tools</span><span class="ko">툴</span></h3><p>Figma · Adobe CC · STUDIO · Claude · Vercel · WordPress · HTML/CSS/JS</p></div>
+<div><h3><span class="ja">登壇・コミュニティ</span><span class="en">Talks &amp; community</span><span class="ko">발표 · 커뮤니티</span></h3><ul class="dated">
+<li><span class="mono">2014.07</span><span class="ja">東京デモデー by Startup Alliance（登壇）</span><span class="en">Tokyo Demo Day by Startup Alliance (speaker)</span><span class="ko">도쿄 데모데이 by Startup Alliance (연사)</span></li>
+<li><span class="mono">2015.04</span><span class="ja">「シリコンバレーの韓国人」ソウル by Startup Alliance（登壇）</span><span class="en">“Koreans in Silicon Valley” Seoul by Startup Alliance (speaker)</span><span class="ko">“실리콘밸리의 한국인” 서울 by Startup Alliance (연사)</span></li>
+<li><span class="mono">2015 —</span><span class="ja">Korean Meetup Party in Tokyo 運営（日韓スタートアップ支援）</span><span class="en">Organizer, Korean Meetup Party in Tokyo, supporting Korea–Japan startups</span><span class="ko">Korean Meetup Party in Tokyo 운영 (한일 스타트업 교류)</span></li>
+<li><span class="mono">2015.11</span><span class="ja">Compathy Magazine インタビュー</span><span class="en">Interview, Compathy Magazine</span><span class="ko">Compathy Magazine 인터뷰</span></li>
+<li><span class="mono">—</span><span class="ja">EO Planetに韓国スタートアップの日本進出について寄稿</span><span class="en">Columns on EO Planet about Korean startups entering Japan</span><span class="ko">EO Planet에 한국 스타트업의 일본 진출에 대한 글 기고</span></li>
+</ul></div>
+<div><h3><span class="ja">言語</span><span class="en">Languages</span><span class="ko">언어</span></h3><p><span class="ja">韓国語（ネイティブ）・日本語（ビジネス）</span><span class="en">Korean (native), Japanese (business)</span><span class="ko">한국어 (모국어), 일본어 (비즈니스)</span></p></div>
+</div>
+</div>
+</section>
+</main>
+<section class="contact-v" id="contact">
+<img alt="" aria-hidden="true" class="contact-bg" src="assets/contact.jpg"/>
+<div aria-hidden="true" class="contact-shade"></div>
+<div class="wrap contact-inner">
+<div class="contact">
+<div>
+<span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
+<button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jeongjinho.img75@gmail.com</button>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
+</div>
+<div class="links" style="display:flex;gap:18px;flex-wrap:wrap">
+<a href="https://www.linkedin.com/in/jeong75/" rel="noopener" target="_blank">LinkedIn ↗</a>
+<a href="https://youtrust.jp/users/jeong75" rel="noopener" target="_blank">YOUTRUST ↗</a>
+<a href="https://www.behance.net/aftworks" rel="noopener" target="_blank">Behance ↗</a>
+<a href="https://aftworks.com/" rel="noopener" target="_blank">aftworks.com ↗</a>
+</div>
+</div>
+<footer>© 2026 Jeong Jinho · aftworks</footer>
+</div>
+</section>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){root.dataset.lang=l;root.lang=l;
+    document.querySelectorAll('[data-lang]').forEach(function(b){if(b.tagName==='BUTTON')b.setAttribute('aria-pressed',String(b.dataset.lang===l))});
+    try{localStorage.setItem('pf-lang',l)}catch(e){}}
+  var init='ja';
+  try{init=localStorage.getItem('pf-lang')||init}catch(e){}
+  if(location.hash==='#en')init='en'; if(location.hash==='#ja')init='ja'; if(location.hash==='#ko')init='ko';
+  setLang(init);
+  document.getElementById('lang-ja').addEventListener('click',function(){setLang('ja')});
+  document.getElementById('lang-en').addEventListener('click',function(){setLang('en')});
+  document.getElementById('lang-ko').addEventListener('click',function(){setLang('ko')});
+  var mail=document.getElementById('copy-mail'),toast=document.getElementById('toast'),tt;
+  function showToast(){try{window.getSelection().removeAllRanges()}catch(e){}toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},1800)}
+  function selectMail(){var r=document.createRange();r.selectNodeContents(mail);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r)}
+  mail.addEventListener('click',function(){
+    var text=mail.textContent.trim();
+    try{navigator.clipboard.writeText(text).then(showToast,function(){selectMail();try{if(document.execCommand('copy'))showToast()}catch(e){}})}
+    catch(e){selectMail();try{if(document.execCommand('copy'))showToast()}catch(e2){}}
+  });
+  document.getElementById('home-link').addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});try{history.replaceState(null,'',location.pathname+location.search)}catch(_){}});
+  var modal=document.getElementById('menu-modal'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
+  function openMenu(){modal.hidden=false;document.body.classList.add('menu-open');openBtn.setAttribute('aria-expanded','true');closeBtn.focus()}
+  function closeMenu(refocus){modal.hidden=true;document.body.classList.remove('menu-open');openBtn.setAttribute('aria-expanded','false');if(refocus)openBtn.focus()}
+  openBtn.addEventListener('click',openMenu);
+  closeBtn.addEventListener('click',function(){closeMenu(true)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closeMenu(true)});
+  modal.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){closeMenu(false);if(a.dataset.top){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}})});
+  modal.querySelectorAll('.menu-lang').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  matchMedia('(min-width:761px)').addEventListener('change',function(m){if(m.matches&&!modal.hidden)closeMenu(false)});
+})();
+</script>
+
+</body>
+</html>
