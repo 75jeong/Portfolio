@@ -370,17 +370,21 @@ body.menu-open{overflow:hidden}
   .hero-v .photo figcaption{bottom:10px;left:14px;color:#C9CCD3}
 }
 
+/* easing tokens */
+:root{--spring:cubic-bezier(.2,.7,.2,1);--snap:cubic-bezier(.65,0,.35,1)}
+
+
 /* ===== motion =====
    Only active when JS adds html.motion (skipped for reduced-motion, print and no-JS). */
 .step.decide .k b span{background:linear-gradient(var(--decide-bg),var(--decide-bg)) no-repeat 0 88%/100% 42%;padding-inline:.1em;margin-inline:-.1em}
 @media screen{
-  html.motion :is(.hero .who,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey){
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey){
     opacity:0;transform:translate3d(0,28px,0);
-    transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
-  html.motion :is(.hero .who,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
+    transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform 1s var(--spring);transition-delay:var(--d,0ms)}
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
 
   /* typewriter */
-  html.motion :is(.hero h1,.sec-head h2,.meta .no,.copy-mail){visibility:hidden}
+  html.motion :is(.sec-head h2,.meta .no,.copy-mail){visibility:hidden}
   html.motion .tw .ch.on,html.motion .tw.typed,html.motion .tw.typed .ch,html.motion .tw .hl{visibility:visible}
   html.motion .tw:not(.typed) .ch:not(.on){visibility:hidden}
   html.motion .tw{position:relative}
@@ -392,7 +396,7 @@ body.menu-open{overflow:hidden}
 
   /* portrait: wipe up from the bottom */
   html.motion .hero .photo{clip-path:inset(100% 0 0 0);transition:clip-path 1.4s cubic-bezier(.75,0,.2,1)}
-  html.motion .hero .photo img{transform:scale(1.08);transition:transform 2s cubic-bezier(.2,.7,.2,1)}
+  html.motion .hero .photo img{transform:scale(1.08);transition:transform 2s var(--spring)}
   html.motion .hero .photo.in{clip-path:inset(0 0 0 0)}
   html.motion .hero .photo.in img{transform:none}
 
@@ -401,7 +405,7 @@ body.menu-open{overflow:hidden}
   html.motion .hero-v.vid-on .hero-video{opacity:1}
 
   /* top bar drops in */
-  html.motion .bar{animation:bar-in .8s cubic-bezier(.2,.7,.2,1) both}
+  html.motion .bar{animation:bar-in .8s var(--spring) both}
   @keyframes bar-in{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
 
   /* 決定: marker pen sweeps across */
@@ -412,6 +416,20 @@ body.menu-open{overflow:hidden}
   html.motion .contact-bg{transform:scale(1.12);transition:transform 2.6s cubic-bezier(.2,.7,.2,1)}
   html.motion .contact-v.in .contact-bg{transform:none}
 }
+
+/* cursor glow: the background lifts softly around the pointer (mouse/trackpad only) */
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .6s ease;
+  background:radial-gradient(var(--glow-r,560px) circle at var(--gx,50%) var(--gy,50%),var(--glow-c),transparent 70%) fixed}
+.glow.on{opacity:1}
+.glow-page{--glow-c:rgba(255,255,255,.055)}
+:root[data-theme="light"] .glow-page{--glow-c:rgba(255,255,255,.95)}
+.glow-local{position:absolute}
+.hero-v .glow-local{--glow-c:rgba(206,190,255,.13);--glow-r:640px}
+.contact-v .glow-local{--glow-c:rgba(255,224,190,.10);--glow-r:600px}
+@media print{.glow{display:none}}
+
+/* hero key phrase: gradient drifts with the pointer (desktop); static elsewhere */
+.hero-v .hero h1 .hl{background-image:linear-gradient(90deg,var(--ray-a),var(--ray-b) 25%,var(--ray-c) 50%,var(--ray-b) 75%,var(--ray-a));background-size:200% 100%;background-position:var(--hl-p,0%) 0}
 
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
@@ -1111,7 +1129,7 @@ body.menu-open{overflow:hidden}
   var root=document.documentElement;
   if(!root.classList.contains('motion'))return;
   window.__motionReady=true;
-  var RV='.hero .who,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.flowkey';
+  var RV='.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.flowkey';
   var LANGS=['ja','en','ko'];
   function shown(el){return el.getClientRects().length>0}
   function langSiblings(el){
@@ -1201,10 +1219,8 @@ body.menu-open{overflow:hidden}
     var fx=document.querySelector('.facts');if(fx){reveal(fx,300);fx.querySelectorAll('b').forEach(function(b,i){countUp(b,450+i*150)})}
     var dn=document.querySelector('.draftnote');if(dn)reveal(dn,700);
   }
-  var h1=heroH1();
-  if(h1)type(h1,{delay:550,total:1300,max:110,hold:1600});
-  setTimeout(afterHero,1450);
-  document.querySelectorAll('.hero h1').forEach(function(h){if(h!==h1)wrap(h)});
+  document.querySelectorAll('.hero h1').forEach(function(h){reveal(h,350)});
+  setTimeout(afterHero,1000);
 
   /* ---------- scroll reveal ---------- */
   var heroScope=document.querySelector('.hero');
@@ -1248,12 +1264,31 @@ body.menu-open{overflow:hidden}
   /* ---------- language switch ---------- */
   new MutationObserver(function(){
     twEls.forEach(function(el){if(el._twStarted)finish(el)});
-    document.querySelectorAll('.hero h1').forEach(function(h){clearTimeout(h._twT);h.classList.remove('typed');if(h._caret&&h._caret.parentNode)h._caret.remove()});
-    var nh=heroH1();if(nh)type(nh,{delay:80,total:1000,max:90,hold:1400});
     document.querySelectorAll('.hero .lede').forEach(function(p){p.classList.add('in')});
   }).observe(root,{attributes:true,attributeFilter:['data-lang']});
 })();
 </script>
 
+<script>
+/* cursor glow */
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mk(cls,parent,before){var d=document.createElement('div');d.className='glow '+cls;d.setAttribute('aria-hidden','true');if(before)parent.insertBefore(d,before);else parent.appendChild(d);return d}
+  var layers=[mk('glow-page',document.body,document.body.firstChild)];
+  var hs=document.querySelector('.hero-shade');if(hs)layers.push(mk('glow-local',hs.parentNode,hs.nextSibling));
+  var cs=document.querySelector('.contact-shade');if(cs)layers.push(mk('glow-local',cs.parentNode,cs.nextSibling));
+  var tx=innerWidth/2,ty=innerHeight/2,x=tx,y=ty,raf=0;
+  var hero=document.querySelector('.hero-v'),heroOn=true;
+  if(hero&&'IntersectionObserver' in window)new IntersectionObserver(function(es){heroOn=es[0].isIntersecting}).observe(hero);
+  function paint(){layers.forEach(function(l){l.style.setProperty('--gx',x.toFixed(1)+'px');l.style.setProperty('--gy',y.toFixed(1)+'px')});
+    if(hero&&heroOn)hero.style.setProperty('--hl-p',Math.max(0,Math.min(100,x/innerWidth*100)).toFixed(2)+'%')}
+  function loop(){x+=(tx-x)*.14;y+=(ty-y)*.14;paint();if(Math.abs(tx-x)+Math.abs(ty-y)>.3)raf=requestAnimationFrame(loop);else raf=0}
+  addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;tx=e.clientX;ty=e.clientY;
+    layers.forEach(function(l){l.classList.add('on')});
+    if(reduce){x=tx;y=ty;paint()}else if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
+  document.documentElement.addEventListener('mouseleave',function(){layers.forEach(function(l){l.classList.remove('on')})});
+})();
+</script>
 </body>
 </html>
