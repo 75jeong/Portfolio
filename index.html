@@ -378,10 +378,10 @@ body.menu-open{overflow:hidden}
    Only active when JS adds html.motion (skipped for reduced-motion, print and no-JS). */
 .step.decide .k b span{background:linear-gradient(var(--decide-bg),var(--decide-bg)) no-repeat 0 88%/100% 42%;padding-inline:.1em;margin-inline:-.1em}
 @media screen{
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey){
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey){
     opacity:0;transform:translate3d(0,28px,0);
     transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform 1s var(--spring);transition-delay:var(--d,0ms)}
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
 
   /* typewriter */
   html.motion :is(.sec-head h2,.meta .no,.copy-mail){visibility:hidden}
@@ -484,6 +484,14 @@ html.motion .in .rw-mark rect{opacity:1}
 .p-spec{background:#FFFFFF;border:1px solid var(--line)}
 .cs-43{aspect-ratio:4/3;object-fit:cover}
 @media print{html.motion .rw-mark rect{opacity:1}}
+
+/* 1:1 booking button in the contact scene */
+.book{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 18px 13px 16px;border-radius:999px;background:#F4EFE8;color:#15131A;text-decoration:none;font:600 .9375rem/1 var(--f-body);box-shadow:0 10px 30px rgba(0,0,0,.25);transition:background-color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.book i{font-style:normal;opacity:.6}
+.book:hover{background:#FFD7A8}
+@media (prefers-reduced-motion:no-preference){.book:hover{transform:translateY(-2px)}}
+.book:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
+@media print{.book{box-shadow:none;border:1px solid #15131A}}
 
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
@@ -1178,6 +1186,7 @@ html.motion .in .rw-mark rect{opacity:1}
 <div>
 <span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
 <button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jinho@aftworks.com</button>
+<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></a>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:18px;flex-wrap:wrap">
@@ -1368,7 +1377,8 @@ html.motion .in .rw-mark rect{opacity:1}
     contact.classList.add('in');
     contact.querySelectorAll('.contact .label').forEach(function(l){reveal(l,250)});
     if(mailEl)type(mailEl,{delay:550,total:1100,max:45,min:22,hold:2200});
-    contact.querySelectorAll('.contact .links a').forEach(function(a,i){reveal(a,900+i*90)});
+    var bk=contact.querySelector('.book');if(bk)reveal(bk,800);
+    contact.querySelectorAll('.contact .links a').forEach(function(a,i){reveal(a,1000+i*90)});
     var f=contact.querySelector('footer');if(f)reveal(f,1300);
   },{threshold:0.3});cio.observe(contact)}
 
