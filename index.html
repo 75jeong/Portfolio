@@ -378,10 +378,10 @@ body.menu-open{overflow:hidden}
    Only active when JS adds html.motion (skipped for reduced-motion, print and no-JS). */
 .step.decide .k b span{background:linear-gradient(var(--decide-bg),var(--decide-bg)) no-repeat 0 88%/100% 42%;padding-inline:.1em;margin-inline:-.1em}
 @media screen{
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey){
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey){
     opacity:0;transform:translate3d(0,28px,0);
     transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform 1s var(--spring);transition-delay:var(--d,0ms)}
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
+  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
 
   /* typewriter */
   html.motion :is(.sec-head h2,.meta .no,.copy-mail){visibility:hidden}
@@ -430,6 +430,50 @@ body.menu-open{overflow:hidden}
 
 /* hero key phrase: gradient drifts with the pointer (desktop); static elsewhere */
 .hero-v .hero h1 .hl{background-image:linear-gradient(90deg,var(--ray-a),var(--ray-b) 25%,var(--ray-c) 50%,var(--ray-b) 75%,var(--ray-a));background-size:200% 100%;background-position:var(--hl-p,0%) 0}
+
+/* case study visuals: sit beside the meta column, above the five-step flow */
+.case > .meta{grid-row:1 / span 2}
+.cs-media{grid-column:2;min-width:0;display:flex;flex-direction:column;gap:clamp(14px,2vw,22px);margin-bottom:clamp(28px,4vw,56px)}
+.cs-media figure{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cs-media figcaption{font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cs-shot{display:block;width:100%;height:auto;border-radius:14px;background:var(--line)}
+.cs-panel{position:relative;border-radius:16px;overflow:hidden}
+.cs-crop{aspect-ratio:16/9;object-fit:cover}
+
+.cs-fill{display:block;width:100%;height:auto}
+.cs-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,18px)}
+.phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(10px,2.2vw,28px);padding:clamp(28px,4.5vw,56px) clamp(16px,3vw,44px)}
+.phones img{flex:1 1 0;min-width:0;max-width:200px;height:auto;filter:drop-shadow(0 18px 28px rgba(0,0,0,.32))}
+.phones.stagger img:nth-child(even){margin-top:clamp(18px,3.4vw,44px)}
+.p-onepay{background:radial-gradient(120% 95% at 15% 0%,#2a64f2 0%,#0b3fcc 50%,#06298c 100%)}
+.p-one{background:radial-gradient(120% 95% at 15% 0%,#1fd0c2 0%,#04a99c 50%,#027a71 100%)}
+.p-jiffcy{background:#000}
+.p-jiffcy .phones{padding-block:clamp(24px,3.4vw,44px)}
+.p-jiffcy .phones img{max-width:250px;border-radius:10px;filter:none}
+.p-kyash{background:#F6F8FA;border:1px solid var(--line)}
+.p-cookpad{background:#F4ECE1;border:1px solid var(--line)}
+.p-cookpad figcaption{color:#86786A}
+.ck-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(14px,2.4vw,28px);padding:clamp(18px,3vw,36px);align-items:stretch}
+.page-scroll{container-type:size;min-height:320px;overflow:hidden;border-radius:10px;background:#fff;box-shadow:0 14px 34px rgba(80,50,20,.18)}
+.page-scroll img{display:block;width:100%;height:auto;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.page-scroll:hover img,.page-scroll:focus-visible img{transform:translateY(calc(-100% + 100cqh));transition:transform 9s linear}
+@media (hover:none){.page-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch}}
+.ba{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px)}
+.ba .cs-shot{border-radius:8px;box-shadow:0 10px 24px rgba(80,50,20,.14)}
+@media (max-width:860px){
+  .case > .meta{grid-row:auto}
+  .cs-media{grid-column:auto;margin-top:8px}
+}
+@media (max-width:560px){
+  .phones{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:18px;scrollbar-width:none}
+  .phones::-webkit-scrollbar{display:none}
+  .phones img{flex:0 0 46%;max-width:none;scroll-snap-align:center}
+  .p-jiffcy .phones img{flex-basis:58%}
+  .ck-grid{grid-template-columns:1fr}
+  .page-scroll{height:420px}
+  .ba{flex-direction:row}
+}
+@media print{.cs-media{break-inside:avoid}.phones img{filter:none}.page-scroll{height:auto;max-height:120mm}}
 
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
@@ -585,6 +629,7 @@ body.menu-open{overflow:hidden}
 <a href="https://www.behance.net/gallery/75267003/ONE-PAYMENT" rel="noopener" target="_blank">Behance: ONE PAYMENT ↗</a>
 </div>
 </aside>
+<div class="cs-media"><figure><div class="cs-panel p-onepay"><div class="phones stagger"><img src="assets/work/op-splash.webp" width="252" height="517" alt="ONE PAYMENT splash screen" loading="lazy" decoding="async"><img src="assets/work/op-amount.webp" width="252" height="517" alt="Amount entry keypad" loading="lazy" decoding="async"><img src="assets/work/op-scan.webp" width="252" height="517" alt="Card scan with the iPhone camera" loading="lazy" decoding="async"><img src="assets/work/op-done.webp" width="252" height="517" alt="Payment complete" loading="lazy" decoding="async"></div></div><figcaption>App · Amount → card scan → done</figcaption></figure><figure><img src="assets/work/op-sticker.webp" width="1200" height="797" alt="ONE PAYMENT merchant window sticker" loading="lazy" decoding="async" class="cs-shot cs-crop"><figcaption>Merchant kit · Window sticker</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">小さなお店や個人がカード決済を始めるには、専用のカードリーダーを用意する必要がありました。リーダーの費用に加え、複雑な審査と高い手数料が、<strong>「まず売ってみたい」人の入口</strong>をふさいでいました。</p>
@@ -645,6 +690,7 @@ body.menu-open{overflow:hidden}
 <a href="https://www.behance.net/gallery/75379631/ONE" rel="noopener" target="_blank">Behance: ONE ↗</a>
 </div>
 </aside>
+<div class="cs-media"><figure><div class="cs-panel p-one"><div class="phones stagger"><img src="assets/work/one-home.webp" width="268" height="539" alt="ONE home: receipts being bought" loading="lazy" decoding="async"><img src="assets/work/one-camera.webp" width="268" height="539" alt="Receipt capture screen" loading="lazy" decoding="async"><img src="assets/work/one-wallet.webp" width="268" height="539" alt="Wallet balance" loading="lazy" decoding="async"><img src="assets/work/one-invite.webp" width="268" height="539" alt="Friend invite screen" loading="lazy" decoding="async"></div></div><figcaption>App · Snap a receipt, get cash in seconds</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">ONEは「レシートを買い取り、購買データを企業のマーケティングに使う」事業です。お金を払うのは企業、アプリを使うのは一般ユーザー。同じプロダクトで<strong>2種類の相手</strong>を納得させる必要がありました。</p>
@@ -712,6 +758,7 @@ body.menu-open{overflow:hidden}
 <a href="https://note.com/jinho/n/n629ea2fb964d" rel="noopener" target="_blank">note: Kyash Widget ↗</a>
 </div>
 </aside>
+<div class="cs-media"><figure><div class="cs-panel p-kyash"><img src="assets/work/ky-equal.webp" width="1280" height="670" alt="Kyash wallet balance shown as a home screen widget" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Wallet = Widget</figcaption></figure><figure><div class="cs-panel p-kyash"><img src="assets/work/ky-anatomy.webp" width="1200" height="628" alt="Widget anatomy: balance, account, points, last updated" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Widget anatomy</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
@@ -782,6 +829,7 @@ body.menu-open{overflow:hidden}
 <a href="https://www.behance.net/gallery/75050257/Cookpad-" rel="noopener" target="_blank">Behance ↗</a>
 </div>
 </aside>
+<div class="cs-media"><figure><img src="assets/work/ck-result.webp" width="1242" height="828" alt="Key visual: vegetables and a tablet on a kitchen counter" loading="lazy" decoding="async" class="cs-shot cs-crop" style="object-position:50% 62%"><figcaption>Result · Key visual</figcaption></figure><div class="cs-row"><figure><img src="assets/work/ck-cv1.webp" width="602" height="257" alt="Concept visual 01" loading="lazy" decoding="async" class="cs-shot"><figcaption>Concept visual 01</figcaption></figure><figure><img src="assets/work/ck-cv2.webp" width="602" height="257" alt="Concept visual 02" loading="lazy" decoding="async" class="cs-shot"><figcaption>Concept visual 02</figcaption></figure></div><figure><div class="cs-panel p-cookpad"><div class="ck-grid"><div class="page-scroll" tabindex="0" aria-label="Full renewed top page (scrolls on hover)"><img src="assets/work/ck-page.webp" width="760" height="2909" alt="Renewed top page, full length" loading="lazy" decoding="async"></div><div class="ba"><figure><img src="assets/work/ck-before.webp" width="552" height="511" alt="Top page before the renewal" loading="lazy" decoding="async" class="cs-shot"><figcaption>Before</figcaption></figure><figure><img src="assets/work/ck-after.webp" width="552" height="511" alt="Top page after the renewal" loading="lazy" decoding="async" class="cs-shot"><figcaption>After</figcaption></figure></div></div></div><figcaption>Renewal · Hover the page to scroll</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">旬の野菜や産地の食材を届けるEC。ユーザーから「注文までの流れが難しい」という声が続いていました。</p>
@@ -847,7 +895,11 @@ body.menu-open{overflow:hidden}
 <dt>Stage</dt><dd><span class="ja">リリース済み</span><span class="en">Live</span><span class="ko">출시 완료</span></dd>
 <dt>Scope</dt><dd>Messaging &amp; calls, Dots, Onboarding, Brand</dd>
 </dl>
+<div class="links">
+<a href="https://jiffcy.go.link/8Lnnb" rel="noopener" target="_blank"><span class="ja">Jiffcy アプリを見る ↗</span><span class="en">Get Jiffcy ↗</span><span class="ko">Jiffcy 앱 보기 ↗</span></a>
+</div>
 </aside>
+<div class="cs-media"><figure><div class="cs-panel p-jiffcy"><div class="phones stagger"><img src="assets/work/jf-feed.webp" width="524" height="1027" alt="Jiffcy feed with an auto-generated Dots collage" loading="lazy" decoding="async"><img src="assets/work/jf-group.webp" width="524" height="1027" alt="Group screen with Text Call, Message and Dots" loading="lazy" decoding="async"><img src="assets/work/jf-feed2.webp" width="524" height="1027" alt="Another group collage in the feed" loading="lazy" decoding="async"></div></div><figcaption>App · Dots collages, built from friends</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">Jiffcyは開かれたSNSではなく、QRコードで1人ずつ友だちを追加する仕組みです。新規ユーザーは最初、友だちがいない状態から始まるため、<strong>価値を感じる前に離脱</strong>しやすい構造でした。</p>
@@ -1066,7 +1118,7 @@ body.menu-open{overflow:hidden}
 <div class="contact">
 <div>
 <span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
-<button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jeongjinho.img75@gmail.com</button>
+<button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jinho@aftworks.com</button>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:18px;flex-wrap:wrap">
@@ -1129,7 +1181,7 @@ body.menu-open{overflow:hidden}
   var root=document.documentElement;
   if(!root.classList.contains('motion'))return;
   window.__motionReady=true;
-  var RV='.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.tl > li,.side > div,.flowkey';
+  var RV='.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.flowkey';
   var LANGS=['ja','en','ko'];
   function shown(el){return el.getClientRects().length>0}
   function langSiblings(el){
