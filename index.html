@@ -10,7 +10,7 @@
 <meta property="og:description" content="Jeong Jinho（鄭 珍昊）— Product / UI/UX Designer in Tokyo. 画面ではなく、事業の判断をデザインする。">
 <meta property="og:image" content="/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316151D'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-weight='700' font-size='30' text-anchor='middle' fill='%23F3F1F8'%3EJJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -525,6 +525,18 @@ html.motion .in .rw-mark rect{opacity:1}
 @media (max-width:560px){.contact-v.pp-on .contact-inner{opacity:.2}.pp-play{top:96px;padding:10px 13px}.pp-result{top:auto;bottom:clamp(260px,62vw,340px)}.pp-hud{top:84px}}
 @media print{.pp-canvas{display:none!important}}
 
+/* aftworks logo (aktw) */
+.aktw{display:block;height:1.05em;width:auto;aspect-ratio:3406/1004;fill:currentColor;color:inherit;flex:none}
+.bar .mark,.menu-head .mark{display:inline-flex;align-items:center;gap:12px}
+.bar .mark .aktw,.menu-head .mark .aktw{height:20px}
+.mark-name{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:600;font-size:.875rem;letter-spacing:-.01em;color:var(--muted)}
+.mark-name::before{content:"";width:1px;height:14px;background:var(--line)}
+a.mark:hover .mark-name{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.bar .mark .aktw{transition:transform .35s cubic-bezier(.2,.7,.2,1)}a.mark:hover .aktw{transform:skewX(-6deg)}}
+.contact-v footer{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.foot-mark .aktw{height:18px;color:var(--ink)}
+@media print{.bar{display:none}}
+
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
@@ -553,9 +565,10 @@ html.motion .in .rw-mark rect{opacity:1}
 <script>(function(){var r=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){}r.classList.add('motion');setTimeout(function(){if(!window.__motionReady)r.classList.remove('motion')},3000)})()</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="aktw" viewBox="0 0 3406 1004"><g transform="translate(0.000000,1004.000000) scale(0.100000,-0.100000)"><path fill="currentColor" d="M9126 10013 c-3 -16 -269 -1520 -591 -3343 -322 -1823 -591 -3341 -597 -3374 l-11 -58 -106 5 c-124 6 -190 25 -257 76 -94 71 -143 218 -129 391 4 47 205 1196 446 2555 241 1358 439 2476 439 2483 0 10 -239 12 -1187 10 l-1187 -3 -33 -195 c-17 -107 -35 -209 -38 -226 l-5 -31 -113 111 c-378 377 -962 550 -1852 550 -1038 -1 -1808 -295 -2445 -933 -501 -503 -830 -1126 -1005 -1908 -26 -114 -346 -1886 -390 -2158 -83 -512 -83 -1007 1 -1385 215 -963 917 -1466 2164 -1551 211 -14 608 -6 765 15 779 108 1395 498 1830 1159 l39 58 32 -128 c106 -429 320 -701 701 -891 455 -229 1251 -290 1838 -142 61 15 112 26 114 24 3 -3 -39 -253 -92 -557 -54 -303 -97 -555 -97 -560 0 -4 597 -6 1327 -5 l1327 3 472 2696 c259 1482 473 2702 476 2710 11 28 151 -304 248 -586 255 -745 491 -1925 579 -2890 58 -633 64 -1489 14 -1888 l-6 -47 1370 0 1370 0 7 48 c39 299 58 1003 37 1379 -21 368 -57 676 -117 992 -19 102 -37 200 -40 216 -2 17 10 -10 29 -60 391 -1045 1397 -1555 3067 -1555 1674 0 2857 549 3621 1682 l85 127 28 -137 c57 -281 174 -566 314 -761 425 -595 1335 -911 2627 -911 960 0 1716 299 2510 994 30 27 57 47 59 45 1 -2 30 -44 64 -94 442 -649 1303 -968 2547 -942 974 20 1766 273 2482 794 619 449 1008 930 1413 1748 509 1027 757 2088 777 3315 11 744 -42 1276 -178 1768 l-31 112 -1332 0 -1332 0 18 -112 c135 -832 187 -1947 128 -2759 -111 -1540 -530 -2375 -1289 -2567 -100 -25 -119 -27 -326 -26 -258 0 -348 18 -515 100 -286 141 -428 471 -390 906 6 73 164 993 390 2274 209 1183 380 2159 380 2168 0 15 -102 16 -1327 14 l-1328 -3 -87 -485 c-48 -267 -177 -991 -287 -1610 -214 -1196 -250 -1387 -312 -1654 -301 -1302 -668 -1738 -1437 -1713 -435 14 -690 170 -805 492 -55 156 -73 412 -43 630 12 86 747 4261 761 4323 l5 22 -3425 0 c-1935 0 -3425 4 -3425 9 0 10 208 1215 215 1249 l5 22 -1329 0 -1329 0 -6 -32 c-3 -18 -53 -302 -110 -631 -58 -329 -108 -602 -111 -607 -8 -12 -3635 -14 -3635 -2 0 9 217 1225 224 1255 4 16 -64 17 -1324 17 l-1328 0 -6 -27z m-4400 -3311 c217 -47 381 -152 471 -304 l32 -53 -234 -1310 c-129 -720 -240 -1320 -246 -1331 -32 -60 -255 -232 -389 -299 -191 -96 -352 -130 -605 -129 -432 2 -674 102 -853 356 -120 170 -154 341 -122 617 11 100 211 1260 242 1406 128 608 510 977 1093 1054 44 6 94 13 110 15 80 11 413 -3 501 -22z m10080 -169 c-27 -133 -439 -2506 -450 -2598 -40 -314 -44 -617 -11 -884 15 -119 15 -169 0 -99 -52 241 -247 768 -409 1103 -483 999 -1128 1837 -1916 2484 l-25 20 1408 1 1409 0 -6 -27z m6849 5 c-3 -13 -68 -381 -145 -818 -77 -437 -145 -819 -151 -847 l-10 -53 -1010 0 -1009 0 -4 -22 c-111 -526 -252 -851 -498 -1143 -282 -335 -689 -459 -1133 -345 -494 127 -696 608 -566 1348 110 623 333 1880 336 1890 4 9 432 12 2100 12 l2095 0 -5 -22z"/></g></symbol></svg>
 
 <div class="bar noprint"><div class="wrap">
-<a class="mark" href="#top" id="home-link" aria-label="Back to top">Jeong Jinho</a>
+<a class="mark" href="#top" id="home-link" aria-label="aftworks, Jeong Jinho: back to top"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg><span class="mark-name">Jeong Jinho</span></a>
 <nav aria-label="sections">
 <a href="#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
 <a href="#cases"><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></a>
@@ -576,7 +589,7 @@ html.motion .in .rw-mark rect{opacity:1}
 </div></div>
 <div class="menu-modal noprint" id="menu-modal" role="dialog" aria-modal="true" aria-label="Menu" hidden>
 <div class="menu-head">
-<span class="mark">Jeong Jinho</span>
+<span class="mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg><span class="mark-name">Jeong Jinho</span></span>
 <button type="button" class="menu-close" id="menu-close" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
 </div>
 <nav class="menu-nav" aria-label="sections (mobile)">
@@ -1238,7 +1251,7 @@ html.motion .in .rw-mark rect{opacity:1}
 <a href="https://aftworks.com/" rel="noopener" target="_blank">aftworks.com ↗</a>
 </div>
 </div>
-<footer>© 2026 Jeong Jinho · aftworks</footer>
+<footer><span class="foot-mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg></span><span>© 2026 Jeong Jinho · aftworks</span></footer>
 </div>
 </section>
 <script>
