@@ -212,7 +212,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:var(--s-0)}
 /* push the footage down: the rays' vanishing point sits lower; top edge feathered into the hero ground */
 .hero-v{--vid-shift:12%}
 .hero-video,.hero-poster{transform:translateY(var(--vid-shift));-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%);mask-image:linear-gradient(180deg,transparent 0,#000 14%)}
-@media (max-width:860px){.hero-v{--vid-shift:8%}}
+@media (max-width:860px){.hero-v{--vid-shift:18%}}
 .hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(22,21,29,.55) 0%,rgba(22,21,29,.15) 45%,rgba(22,21,29,0) 70%),linear-gradient(90deg,rgba(22,21,29,.55) 0%,rgba(22,21,29,0) 55%)}
 .hero-v .hero{padding-block:clamp(48px,8vw,104px) clamp(150px,19vw,260px);align-items:center}
 .hero-v .hero h1 .hl{background:linear-gradient(90deg,var(--ray-a),var(--ray-b) 55%,var(--ray-c));-webkit-background-clip:text;background-clip:text;color:transparent;padding-inline:0}
@@ -365,9 +365,14 @@ body.menu-open{overflow:hidden}
 
 /* mobile: separate portrait from hero video (no blending/overlap) */
 @media screen and (max-width:860px){
-  .hero-v .photo{mix-blend-mode:normal;overflow:hidden;background:#16151D;border-radius:20px;border:1px solid var(--line);box-shadow:0 24px 48px rgba(0,0,0,.45);width:100%;max-width:100%;margin-top:8px;aspect-ratio:4/5}
-  .hero-v .photo img{-webkit-mask-image:none;mask-image:none;object-position:50% 25%}
-  .hero-v .photo figcaption{bottom:10px;left:14px;color:#C9CCD3}
+  /* same open, borderless look as desktop; a dark halo keeps the portrait off the bright rays */
+  .hero-v .photo{mix-blend-mode:normal;overflow:visible;background:transparent;width:min(68%,300px);max-width:100%;margin:8px auto 0;justify-self:center;aspect-ratio:4/5}
+  .hero-v .photo img{position:relative;object-position:50% 22%;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 46%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 46%,#000 55%,transparent 100%)}
+  html.motion .hero-v .photo,html.motion .hero-v .photo.in{clip-path:none}
+  html.motion .hero-v .photo img{opacity:0;transition:opacity 1.2s ease,transform 2s cubic-bezier(.2,.7,.2,1)}
+  html.motion .hero-v .photo.in img{opacity:.9}
+  .hero-v .photo img{filter:brightness(.92) saturate(.92)}
+  .hero-v .photo figcaption{bottom:9%;left:50%;transform:translateX(-50%);color:var(--muted)}
 }
 
 /* easing tokens */
@@ -566,6 +571,15 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 .gy{will-change:transform}
 .hero .photo img.gy{will-change:translate}
 
+/* mobile: small round avatar above the name instead of the large portrait */
+.hero .avatar{display:none}
+@media screen and (max-width:860px){
+  .hero .avatar{display:block;width:88px;height:88px;border-radius:50%;object-fit:cover;margin-bottom:18px;border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .hero-v .hero > .photo{display:none}
+  html.motion .hero .avatar{opacity:0;transform:translateY(12px) scale(.96);transition:opacity .8s ease .05s,transform .9s cubic-bezier(.2,.7,.2,1) .05s}
+  html.motion .hero .avatar.in{opacity:1;transform:none}
+}
+
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
@@ -651,6 +665,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <div aria-hidden="true" class="hero-shade"></div>
 <div class="wrap hero">
 <div>
+<img class="avatar" src="assets/avatar.webp" width="312" height="312" alt="Jeong Jinho">
 <div class="who">
 <strong>Jeong Jinho <span class="ja">鄭 珍昊</span><span class="ko">정진호</span></strong>
 <span class="label">Product Designer · Tokyo</span>
@@ -669,7 +684,6 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 </div>
 <figure class="photo" style="margin:0">
 <img alt="Jeong Jinho portrait" src="assets/photo.jpg">
-<figcaption>TOKYO · 2026</figcaption>
 </img></figure>
 </div>
 </header>
@@ -1455,7 +1469,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
   if(video){video.addEventListener('playing',vidOn);if(!video.paused&&video.readyState>2)vidOn()}
   setTimeout(vidOn,1400);
   setTimeout(function(){photo&&photo.classList.add('in')},350);
-  setTimeout(function(){reveal(document.querySelector('.hero .who'),0)},150);
+  setTimeout(function(){var av=document.querySelector('.hero .avatar');if(av)av.classList.add('in');reveal(document.querySelector('.hero .who'),0)},150);
   function heroH1(){return Array.prototype.filter.call(document.querySelectorAll('.hero h1'),shown)[0]}
   function afterHero(){
     var ledes=Array.prototype.filter.call(document.querySelectorAll('.hero .lede'),function(p){return p.classList.contains(root.dataset.lang||'ja')});
