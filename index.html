@@ -309,7 +309,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:var(--s-0)}
   position:relative;isolation:isolate;overflow:hidden;background:#15131A;color:var(--ink);color-scheme:dark;
   margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);border-top:0;
   min-height:clamp(560px,62vw,1080px);display:flex;align-items:flex-end;padding-block:0 0}
-.contact-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 45%;z-index:-2}
+.contact-bg{position:absolute;inset:0;z-index:-2;background:#15131A url(assets/contact.jpg) no-repeat 50% 45%/cover;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .contact-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:
   linear-gradient(180deg,var(--bg-page) 0%,color-mix(in srgb,var(--bg-page) 55%,transparent) 9%,transparent 24%),
   linear-gradient(0deg,rgba(12,10,14,.82) 0%,rgba(12,10,14,.45) 26%,transparent 50%),
@@ -327,7 +327,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:var(--s-0)}
   .contact-shade{background:linear-gradient(0deg,rgba(12,10,14,.82) 0%,rgba(12,10,14,.45) 26%,transparent 50%)}
   .contact-inner{padding-block:60px 0}
 }
-@media screen and (max-width:520px){.contact-v .big{font-size:1.3rem;word-break:normal;overflow-wrap:anywhere}.contact-bg{object-position:58% 45%}}
+@media screen and (max-width:520px){.contact-v .big{font-size:1.3rem;word-break:normal;overflow-wrap:anywhere}.contact-bg{background-position:58% 45%}}
 .cta{display:inline-flex;align-items:center;font:600 .75rem/1 var(--f-mono);letter-spacing:.06em;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:999px;padding:8px 14px;border:1px solid var(--ink)}
 .cta:hover{background:transparent;color:var(--ink)}
 html[data-lang="ja"] .cta,html[data-lang="ko"] .cta{font-family:var(--f-body);letter-spacing:0}
@@ -501,7 +501,7 @@ html.motion .in .rw-mark rect{opacity:1}
 /* paper plane mini game (contact scene) */
 .contact-inner{position:relative;z-index:1}
 .pp-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.contact-v.pp-on{touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none}
+.contact-v.pp-on{touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .contact-v.pp-on .contact-inner{pointer-events:none}
 .contact-v.pp-on .contact-inner a,.contact-v.pp-on .contact-inner button{pointer-events:auto}
 .pp-play{position:absolute;z-index:2;top:clamp(110px,13vw,200px);right:var(--gutter);display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(20,16,22,.38);backdrop-filter:blur(8px);color:#F4EFE8;font:600 .8125rem/1 var(--f-body);cursor:pointer;transition:background-color .2s,border-color .2s}
@@ -1274,7 +1274,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 </section>
 </main>
 <section class="contact-v" id="contact">
-<img alt="" aria-hidden="true" class="contact-bg" src="assets/contact.jpg"/>
+<div aria-hidden="true" class="contact-bg"></div>
 <div aria-hidden="true" class="contact-shade"></div>
 <canvas class="pp-canvas" id="pp" hidden></canvas>
 <button type="button" class="pp-play noprint" id="pp-play"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3.5 2.8 10.6l7 2.6 2.6 7 9.1-16.7Z M9.8 13.2l11.7-9.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span class="ja">紙飛行機を飛ばす</span><span class="en">Fly a paper plane</span><span class="ko">종이비행기 날리기</span></button>
@@ -1577,7 +1577,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
   function measure(){
     var r=sec.getBoundingClientRect(),w=r.width,h=r.height;dpr=Math.min(2,window.devicePixelRatio||1);
     if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}
-    var pos=(getComputedStyle(bg).objectPosition||'50% 45%').split(' ');
+    var pos=(getComputedStyle(bg).backgroundPosition||'50% 45%').split(' ');
     var px=parseFloat(pos[0])/100,py=parseFloat(pos[1]||'50')/100,s=Math.max(w/IW,h/IH);
     map={s:s,ox:(w-IW*s)*px,oy:(h-IH*s)*py,w:w,h:h};
   }
@@ -1682,6 +1682,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
   play.addEventListener('click',open);
   closeBtn.addEventListener('click',close);
   again.addEventListener('click',function(e){e.stopPropagation();newRound()});
+  sec.addEventListener('contextmenu',function(e){if(state!=='idle')e.preventDefault()});
   sec.addEventListener('pointerdown',function(e){
     if(state==='idle'||e.button>0)return;
     if(e.target.closest('a,button,.pp-result'))return;
