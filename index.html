@@ -645,6 +645,14 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 #cases .case.open .cmore{margin-top:28px}
 @media (max-width:860px){.case .cbody{grid-column:auto}}
 
+/* ONE on phones: horizontal swipe like the other cases */
+@media (max-width:560px){
+  .screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding:24px 18px 32px}
+  .screens::-webkit-scrollbar{display:none}
+  .screens img,.screens.mock img{flex:0 0 46%;min-width:0;scroll-snap-align:center;margin-top:0!important}
+  .screens.mock img:nth-child(even){margin-top:16px!important}
+}
+
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
