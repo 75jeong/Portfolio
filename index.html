@@ -592,6 +592,43 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 .tools li:hover svg{fill:var(--brand);transform:translateY(-2px)}
 @media print{.tools li{padding:8px 4px}}
 
+/* ONE: real screenshots as rounded screen cards, 3 x 2 */
+.screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.2vw,28px);padding:clamp(24px,4vw,52px) clamp(20px,5vw,72px)}
+.screens img{display:block;width:100%;height:auto;border-radius:clamp(14px,1.8vw,24px);box-shadow:0 18px 36px rgba(0,40,36,.32)}
+.screens img:nth-child(3n+2){transform:translateY(clamp(14px,2.4vw,32px))}
+.screens{padding-bottom:clamp(44px,6vw,84px)}
+@media (max-width:560px){.screens{grid-template-columns:repeat(2,minmax(0,1fr));padding:20px 18px 32px}.screens img:nth-child(3n+2){transform:none}.screens img:nth-child(even){transform:translateY(16px)}}
+
+/* ONE: screens in white iPhone mockups (frame is in the image) */
+.screens.mock img{border-radius:0;box-shadow:none;filter:drop-shadow(0 18px 26px rgba(0,40,36,.35))}
+.screens.mock img:nth-child(3n+2){transform:none;margin-top:clamp(14px,2.4vw,32px)}
+@media (max-width:560px){.screens.mock img:nth-child(3n+2){margin-top:0}.screens.mock img:nth-child(even){transform:none;margin-top:16px}}
+
+/* summary-first: each case shows meta, visuals and the Decision step; the full flow opens on demand */
+.case .cmore{grid-column:2;justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:13px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 .875rem/1 var(--f-body);cursor:pointer}
+.case .cmore:hover{border-color:var(--ink)}
+.case .cmore .cm-close,.case.open .cmore .cm-open{display:none}
+.case.open .cmore .cm-close{display:inline}
+.case:not(.open) .flow .step:not(.decide){display:none}
+.case:not(.open) .flow .step.decide{border-top:0;padding-top:0}
+.case:not(.open) .flow{position:relative}
+.case .cs-media{margin-bottom:clamp(20px,3vw,36px)}
+.case:not(.open) .cs-media > :nth-child(n+2){display:none}
+.case > .meta{grid-row:1 / span 3}
+.case .cmore{grid-row:3;align-self:start}
+@media (max-width:860px){.case .cmore{grid-column:auto;grid-row:auto}.case > .meta{grid-row:auto}}
+@media print{.case .flow .step{display:grid!important}.case .cs-media > *{display:flex!important}}
+
+.step.decide .k-sum{display:none}
+.case:not(.open) .step.decide .k-orig{display:none}
+.case:not(.open) .step.decide .k-sum{display:block;margin-top:0;font-family:var(--f-body);font-size:var(--s-1);letter-spacing:0;color:var(--ink);font-weight:700}
+.case:not(.open) .step.decide .k-sum span{background:none!important;padding:0;margin:0}
+#cases .case:not(.open) .step.decide{grid-template-columns:minmax(0,1fr);gap:16px}
+#cases .case:not(.open) .step.decide .k{padding-top:0}
+#cases .case:not(.open) .step.decide .k-sum{font:500 .75rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang="ko"] #cases .case:not(.open) .step.decide .k-sum{font-family:var(--f-body);font-size:var(--s-2);font-weight:700;letter-spacing:0;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--line)}
+@media print{.step.decide .k-orig{display:inline!important}.step.decide .k-sum{display:none!important}}
+
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
@@ -770,7 +807,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <ul class="en"><li>A three-person team: founder, engineer and me as the only designer.</li><li>It handled card data, so both the merchant and the paying customer had to feel safe.</li><li>Shop owners who aren’t comfortable with tech had to be able to use it on the spot.</li></ul>
 <ul class="ko"><li>창업자, 엔지니어, 디자이너 세 명뿐인 팀. 디자인은 혼자 맡았다.</li><li>카드 정보를 다루는 만큼, 결제를 받는 사람과 내는 사람 모두 안심할 수 있어야 했다.</li><li>IT에 익숙하지 않은 가게 주인도 그 자리에서 바로 쓸 수 있어야 했다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">iPhoneのカメラでカードを撮影し、OCRで読み取る</p>
 <p class="q en">Read the card with the iPhone camera and OCR</p><p class="q ko">iPhone 카메라로 카드를 찍으면 OCR로 읽어 들이게 한다</p>
@@ -796,7 +833,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="ja">その後「1分でできる商品ページ作成機能」を追加し、対面に加えてオンラインでの決済にも広げました。</p>
 <p class="en">Later added a one-minute product page builder, extending payments from in person to online.</p><p class="ko">이후 "1분이면 만드는 상품 페이지" 기능을 더해, 대면 결제에 더해 온라인 결제까지 쓸 수 있게 넓혔습니다.</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 <article class="case" id="one">
 <aside class="meta">
@@ -815,7 +852,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <a href="https://www.behance.net/gallery/75379631/ONE" rel="noopener" target="_blank">Behance: ONE ↗</a>
 </div>
 </aside>
-<div class="cs-media"><figure><div class="cs-panel p-one"><div class="phones stagger"><img src="assets/work/one-home.webp" width="268" height="539" alt="ONE home: receipts being bought" loading="lazy" decoding="async"><img src="assets/work/one-camera.webp" width="268" height="539" alt="Receipt capture screen" loading="lazy" decoding="async"><img src="assets/work/one-wallet.webp" width="268" height="539" alt="Wallet balance" loading="lazy" decoding="async"><img src="assets/work/one-invite.webp" width="268" height="539" alt="Friend invite screen" loading="lazy" decoding="async"></div></div><figcaption>App · Snap a receipt, get cash in seconds</figcaption></figure></div>
+<div class="cs-media"><figure><div class="cs-panel p-one"><div class="screens mock"><img src="assets/work/one3-splash.webp" width="500" height="1037" alt="ONE splash screen" loading="lazy" decoding="async"><img src="assets/work/one3-home.webp" width="500" height="1037" alt="Home: receipts being bought" loading="lazy" decoding="async"><img src="assets/work/one3-camera.webp" width="500" height="1037" alt="Receipt capture" loading="lazy" decoding="async"><img src="assets/work/one3-result.webp" width="500" height="1037" alt="Appraisal result: 10 yen" loading="lazy" decoding="async"><img src="assets/work/one3-wallet.webp" width="500" height="1037" alt="Wallet balance and activity" loading="lazy" decoding="async"><img src="assets/work/one3-withdraw.webp" width="500" height="1037" alt="Bank withdrawal request" loading="lazy" decoding="async"></div></div><figcaption>App · Splash → Home → Receipt → Result → Wallet → Withdraw</figcaption></figure></div>
 <ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">ONEは「レシートを買い取り、購買データを企業のマーケティングに使う」事業です。お金を払うのは企業、アプリを使うのは一般ユーザー。同じプロダクトで<strong>2種類の相手</strong>を納得させる必要がありました。</p>
@@ -845,7 +882,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <li>Sales needed material to explain the product to corporate clients.</li>
 </ul><ul class="ko"><li>창업자, 엔지니어, 디자이너 세 명뿐인 팀. 디자인은 혼자 맡았다.</li><li>돈이 오가는 서비스라, 쉬우면서도 "수상해 보이지 않는" 신뢰감이 필요했다.</li><li>영업팀에는 기업 고객에게 보여줄 설명 자료가 필요했다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">一般ユーザー向けのランディングページを作らず、App Storeに直接送る</p>
 <p class="q en">Skip the consumer landing page and send people straight to the App Store</p><p class="q ko">일반 사용자용 랜딩 페이지 대신 App Store로 곧장 연결한다</p>
@@ -863,7 +900,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="result ja">App Store 総合1位。TechCrunch、Business Insider、THE BRIDGEなどで紹介。</p>
 <p class="result en">#1 overall on the Japanese App Store. Covered by TechCrunch, Business Insider and THE BRIDGE.</p><p class="result ko">일본 App Store 종합 1위를 기록했고, TechCrunch, Business Insider, THE BRIDGE 등에 소개되었습니다.</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 <!-- CASE 2: KYASH -->
 <article class="case" id="kyash">
@@ -911,7 +948,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <li>Widgets have little space and limited interaction, and every size from small to large still had to feel like Kyash.</li>
 </ul><ul class="ko"><li>사업 우선순위가 낮아 공식 로드맵에는 올라 있지 않았다.</li><li>Mobile 팀의 "10% 룰"(업무 시간 일부를 자율적으로 쓸 수 있는 제도) 안에서 진행했다.</li><li>위젯은 보여줄 수 있는 공간도, 조작할 수 있는 방법도 제한적이다. 작은 크기부터 큰 크기까지 어디서든 Kyash다운 느낌을 지켜야 했다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">作る前に「なぜ作るのか」を一文にしてチームと合わせる</p>
 <p class="q en">Agree on "why we're building this" in one sentence before building</p><p class="q ko">만들기 전에 "왜 만드는가"를 한 문장으로 정리해 팀과 공유한다</p>
@@ -935,7 +972,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。</p>
 <p class="result en">Released as a widget that shows the balance without opening the app.</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했습니다.</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 <!-- CASE 3: COOKPAD -->
 <article class="case" id="cookpad">
@@ -984,7 +1021,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <li>People don't buy fresh food without trusting who grew it and where.</li>
 </ul><ul class="ko"><li>Cookpad 안에서 운영되는 하나의 사업으로, 팀 규모가 작았다.</li><li>기존 시스템 환경을 유지하면서도 새로운 화면을 제시해야만 했다.</li><li>신선식품은 "누가, 어디서 키웠는지" 믿을 수 있어야 팔린다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">「サービスが一目で分かる」ビジュアルを最優先にする</p>
 <p class="q en">Put "understand the service at a glance" visuals first</p><p class="q ko">"서비스가 한눈에 이해되는" 비주얼을 가장 먼저 챙긴다</p>
@@ -1004,7 +1041,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="result en">After the renewal, page views went up and the bounce rate went down.</p>
 <p class="en">The service later became a valuable proof of concept for Cookpad's fresh food business, and its lessons carried into the many offline businesses Cookpad runs today.</p><p class="result ko">리뉴얼 후 페이지뷰는 늘고 이탈률은 줄었습니다.</p><p class="ko">이후 이 서비스는 Cookpad가 신선식품 사업에 나서는 데 귀중한 PoC 경험이 되었고 지금의 다양한 오프라인 사업 전개에도 밑거름이 되었습니다.</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 <!-- CASE 4: JIFFCY -->
 <article class="case" id="jiffcy">
@@ -1048,7 +1085,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <li>Adding friends by QR assumes meeting in person, so it can't always be completed during onboarding.</li>
 </ul><ul class="ko"><li>"폐쇄형"이라는 점이 이 서비스의 핵심이라, 공개 피드로 빈 화면을 채울 수는 없다.</li><li>친구 추가는 QR로, 직접 만나서 하는 게 전제다. 가입하는 그 자리에서 꼭 끝낼 수 있는 건 아니다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">一人でも続けて写真を投稿できる機能を加え、オンボーディングで紹介する</p>
 <p class="q en">Add solo continuous photo posting and introduce it in onboarding</p><p class="q ko">혼자서도 사진을 계속 올릴 수 있는 기능을 더하고, 온보딩에서 먼저 보여준다</p>
@@ -1066,7 +1103,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="ja">導入後のオンボーディング完了率や友だち追加率を確認しながらチームと改善点を議論し、改善を続けています（現在進行中）。</p>
 <p class="en">We're tracking onboarding completion and friend-add rates after the change, and keep discussing and shipping improvements with the team (ongoing).</p><p class="ko">도입 후 온보딩 완료율과 친구 추가율을 확인하면서 개선할 점을 팀과 계속 논의하며 다듬어 가고 있습니다. (현재 진행 중)</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 <!-- CASE 6: RLWRLD (BX) -->
 <article class="case" id="rlwrld">
@@ -1103,7 +1140,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <ul class="ja"><li>Webサイト制作と並行して、期間は約2か月。</li><li>BXからWebデザイン、パブリッシングまで一人で担当。</li></ul>
 <ul class="en"><li>About two months, in parallel with building the website.</li><li>I handled everything from BX to web design and front-end build on my own.</li></ul><ul class="ko"><li>웹사이트 제작과 함께 진행해 기간은 약 2개월.</li><li>BX부터 웹 디자인, 퍼블리싱까지 혼자 담당했다.</li></ul>
 </div></li>
-<li class="step decide"><div class="k">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></div><div class="v why">
+<li class="step decide"><div class="k"><span class="k-orig">04<b><span class="ja">決定</span><span class="en">Decision</span><span class="ko">결정</span></b></span><b class="k-sum"><span class="ja">ケーススタディ要約</span><span class="en">Case summary</span><span class="ko">케이스 스터디 요약</span></b></div><div class="v why">
 <div>
 <p class="q ja">ロゴを、ピクセルのグリッドだけで組み立てる</p>
 <p class="q en">Build the logo from nothing but a pixel grid</p><p class="q ko">로고를 픽셀 그리드만으로 쌓아 올린다</p>
@@ -1115,7 +1152,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 <p class="ja">同じピクセルのロゴを、Webサイトと名刺に展開しました。</p>
 <p class="en">I rolled out the same pixel logo across the website and business cards.</p><p class="ko">같은 픽셀 로고를 웹사이트와 명함에 전개했습니다.</p>
 </div></li>
-</ol>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
 </article>
 </section>
 <!-- NOW -->
@@ -1720,6 +1757,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
   /* [selector, depth, rotate?, use the translate property (keeps the element's own transform)] */
   var groups=[
     ['.phones img',1,true,false],
+    ['.screens img',1,true,false],
     ['.hero .photo img',.55,false,true],
     ['.rw-mark',.6,true,false],
     ['.ba .cs-shot',.5,true,false],
@@ -1727,7 +1765,7 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
   ];
   var items=[];
   groups.forEach(function(g){document.querySelectorAll(g[0]).forEach(function(el,i){
-    var d=g[1]*(g[0]==='.phones img'?[.7,1.15,.85,1.3][i%4]:1);
+    var d=g[1]*((g[0]==='.phones img'||g[0]==='.screens img')?[.7,1.15,.85,1.3,.95,1.2][i%6]:1);
     el.classList.add('gy');items.push({el:el,d:d,rot:g[2],tr:g[3],on:false});
   })});
   if(!items.length)return;
@@ -1769,6 +1807,10 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
     addEventListener('touchend',ask,{passive:true});
   }else if(DOE)listen();
 })();
+</script>
+<script>
+document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener('click',function(){var a=b.closest('.case'),o=a.classList.toggle('open');b.setAttribute('aria-expanded',String(o));
+  a.querySelectorAll('.step,.cs-media > *').forEach(function(e){e.classList.add('in')});if(!o)a.scrollIntoView({behavior:'smooth'})})});
 </script>
 </body>
 </html>
