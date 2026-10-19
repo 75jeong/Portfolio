@@ -605,7 +605,8 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 @media (max-width:560px){.screens.mock img:nth-child(3n+2){margin-top:0}.screens.mock img:nth-child(even){transform:none;margin-top:16px}}
 
 /* summary-first: each case shows meta, visuals and the Decision step; the full flow opens on demand */
-.case .cmore{grid-column:2;justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:13px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 .875rem/1 var(--f-body);cursor:pointer}
+.case .cbody{grid-column:2;min-width:0}
+.case .cmore{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:13px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 .875rem/1 var(--f-body);cursor:pointer}
 .case .cmore:hover{border-color:var(--ink)}
 .case .cmore .cm-close,.case.open .cmore .cm-open{display:none}
 .case.open .cmore .cm-close{display:inline}
@@ -614,9 +615,8 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 .case:not(.open) .flow{position:relative}
 .case .cs-media{margin-bottom:clamp(20px,3vw,36px)}
 .case:not(.open) .cs-media > :nth-child(n+2){display:none}
-.case > .meta{grid-row:1 / span 3}
-.case .cmore{grid-row:3;align-self:start}
-@media (max-width:860px){.case .cmore{grid-column:auto;grid-row:auto}.case > .meta{grid-row:auto}}
+.case > .meta{grid-row:1 / span 2}
+@media (max-width:860px){.case > .meta{grid-row:auto}}
 @media print{.case .flow .step{display:grid!important}.case .cs-media > *{display:flex!important}}
 
 .step.decide .k-sum{display:none}
@@ -628,6 +628,20 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 #cases .case:not(.open) .step.decide .k-sum{font:500 .75rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang="ko"] #cases .case:not(.open) .step.decide .k-sum{font-family:var(--f-body);font-size:var(--s-2);font-weight:700;letter-spacing:0;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--line)}
 @media print{.step.decide .k-orig{display:inline!important}.step.decide .k-sum{display:none!important}}
+
+/* tighter summary spacing */
+#cases .case{row-gap:clamp(16px,2vw,24px);padding-block:clamp(48px,6vw,88px)}
+#cases .case .cs-media{margin-bottom:0;gap:clamp(12px,1.4vw,18px)}
+#cases .case.open .step{padding-block:clamp(16px,1.8vw,22px);gap:clamp(16px,2.4vw,28px)}
+#cases .case.open .step:first-child{padding-top:4px}
+#cases .case.open .why{gap:16px}
+#cases .case.open .step .v{gap:10px}
+#cases .case:not(.open) .step.decide{padding-block:0;gap:12px}
+#cases .case:not(.open) .step.decide .k-sum{padding-bottom:10px}
+#cases .case:not(.open) .why{gap:16px}
+#cases .case .cmore{margin-top:20px}
+#cases .case.open .cmore{margin-top:28px}
+@media (max-width:860px){.case .cbody{grid-column:auto}}
 
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
@@ -792,7 +806,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><div class="cs-panel p-onepay"><div class="phones stagger"><img src="assets/work/op-splash.webp" width="252" height="517" alt="ONE PAYMENT splash screen" loading="lazy" decoding="async"><img src="assets/work/op-amount.webp" width="252" height="517" alt="Amount entry keypad" loading="lazy" decoding="async"><img src="assets/work/op-scan.webp" width="252" height="517" alt="Card scan with the iPhone camera" loading="lazy" decoding="async"><img src="assets/work/op-done.webp" width="252" height="517" alt="Payment complete" loading="lazy" decoding="async"></div></div><figcaption>App · Amount → card scan → done</figcaption></figure><figure><img src="assets/work/op-sticker.webp" width="1200" height="797" alt="ONE PAYMENT merchant window sticker" loading="lazy" decoding="async" class="cs-shot cs-crop"><figcaption>Merchant kit · Window sticker</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">小さなお店や個人がカード決済を始めるには、専用のカードリーダーを用意する必要がありました。リーダーの費用に加え、複雑な審査と高い手数料が、<strong>「まず売ってみたい」人の入口</strong>をふさいでいました。</p>
 <p class="en">For small shops and individuals, accepting cards meant buying a dedicated card reader. The reader cost, a complicated approval process and high fees blocked <strong>people who wanted to try selling first</strong>.</p><p class="ko">작은 가게나 개인이 카드 결제를 받으려면 전용 카드 리더기가 있어야 했습니다. 리더기 비용에 까다로운 심사, 높은 수수료까지 겹치면서 <strong>"일단 한번 팔아보고 싶은" 사람들</strong>에게 카드 결제는 문턱이 너무 높았습니다.</p>
@@ -833,7 +847,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="ja">その後「1分でできる商品ページ作成機能」を追加し、対面に加えてオンラインでの決済にも広げました。</p>
 <p class="en">Later added a one-minute product page builder, extending payments from in person to online.</p><p class="ko">이후 "1분이면 만드는 상품 페이지" 기능을 더해, 대면 결제에 더해 온라인 결제까지 쓸 수 있게 넓혔습니다.</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 <article class="case" id="one">
 <aside class="meta">
@@ -853,7 +867,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><div class="cs-panel p-one"><div class="screens mock"><img src="assets/work/one3-splash.webp" width="500" height="1037" alt="ONE splash screen" loading="lazy" decoding="async"><img src="assets/work/one3-home.webp" width="500" height="1037" alt="Home: receipts being bought" loading="lazy" decoding="async"><img src="assets/work/one3-camera.webp" width="500" height="1037" alt="Receipt capture" loading="lazy" decoding="async"><img src="assets/work/one3-result.webp" width="500" height="1037" alt="Appraisal result: 10 yen" loading="lazy" decoding="async"><img src="assets/work/one3-wallet.webp" width="500" height="1037" alt="Wallet balance and activity" loading="lazy" decoding="async"><img src="assets/work/one3-withdraw.webp" width="500" height="1037" alt="Bank withdrawal request" loading="lazy" decoding="async"></div></div><figcaption>App · Splash → Home → Receipt → Result → Wallet → Withdraw</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">ONEは「レシートを買い取り、購買データを企業のマーケティングに使う」事業です。お金を払うのは企業、アプリを使うのは一般ユーザー。同じプロダクトで<strong>2種類の相手</strong>を納得させる必要がありました。</p>
 <p class="en">ONE bought receipts from consumers and turned the purchase data into a marketing tool for companies. Companies paid; consumers used the app. One product had to win over <strong>two different audiences</strong>.</p><p class="ko">ONE은 소비자에게 영수증을 사들이고, 그 구매 데이터를 기업의 마케팅에 활용하는 사업이었습니다. 돈을 내는 쪽은 기업이고 앱을 쓰는 쪽은 일반 사용자. 하나의 프로덕트로 <strong>성격이 전혀 다른 두 고객</strong>을 동시에 설득해야 했습니다.</p>
@@ -900,7 +914,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="result ja">App Store 総合1位。TechCrunch、Business Insider、THE BRIDGEなどで紹介。</p>
 <p class="result en">#1 overall on the Japanese App Store. Covered by TechCrunch, Business Insider and THE BRIDGE.</p><p class="result ko">일본 App Store 종합 1위를 기록했고, TechCrunch, Business Insider, THE BRIDGE 등에 소개되었습니다.</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 <!-- CASE 2: KYASH -->
 <article class="case" id="kyash">
@@ -921,7 +935,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><div class="cs-panel p-kyash"><img src="assets/work/ky-equal.webp" width="1280" height="670" alt="Kyash wallet balance shown as a home screen widget" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Wallet = Widget</figcaption></figure><figure><div class="cs-panel p-kyash"><img src="assets/work/ky-anatomy.webp" width="1200" height="628" alt="Widget anatomy: balance, account, points, last updated" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Widget anatomy</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
 <p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했습니다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제에 실패하는 경우가 많았습니다</strong>.</p>
@@ -972,7 +986,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。</p>
 <p class="result en">Released as a widget that shows the balance without opening the app.</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했습니다.</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 <!-- CASE 3: COOKPAD -->
 <article class="case" id="cookpad">
@@ -992,7 +1006,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><img src="assets/work/ck-result.webp" width="1242" height="828" alt="Key visual: vegetables and a tablet on a kitchen counter" loading="lazy" decoding="async" class="cs-shot cs-crop" style="object-position:50% 62%"><figcaption>Result · Key visual</figcaption></figure><div class="cs-row"><figure><img src="assets/work/ck-cv1.webp" width="602" height="257" alt="Concept visual 01" loading="lazy" decoding="async" class="cs-shot"><figcaption>Concept visual 01</figcaption></figure><figure><img src="assets/work/ck-cv2.webp" width="602" height="257" alt="Concept visual 02" loading="lazy" decoding="async" class="cs-shot"><figcaption>Concept visual 02</figcaption></figure></div><figure><div class="cs-panel p-cookpad"><div class="ck-grid"><div class="page-scroll" tabindex="0" aria-label="Full renewed top page (scrolls on hover)"><img src="assets/work/ck-page.webp" width="760" height="2909" alt="Renewed top page, full length" loading="lazy" decoding="async"></div><div class="ba"><figure><img src="assets/work/ck-before.webp" width="552" height="511" alt="Top page before the renewal" loading="lazy" decoding="async" class="cs-shot"><figcaption>Before</figcaption></figure><figure><img src="assets/work/ck-after.webp" width="552" height="511" alt="Top page after the renewal" loading="lazy" decoding="async" class="cs-shot"><figcaption>After</figcaption></figure></div></div></div><figcaption>Renewal · Hover the page to scroll</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">旬の野菜や産地の食材を届けるEC。ユーザーから「注文までの流れが難しい」という声が続いていました。</p>
 <p class="en">An e-commerce service delivering seasonal produce straight from farms. Users kept saying the path to ordering felt difficult.</p><p class="ko">제철 채소와 산지의 식재료를 집까지 보내주는 EC 서비스. 사용자들 사이에서 "주문하는 과정이 어렵다"는 의견이 꾸준히 나오고 있었습니다.</p>
@@ -1041,7 +1055,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="result en">After the renewal, page views went up and the bounce rate went down.</p>
 <p class="en">The service later became a valuable proof of concept for Cookpad's fresh food business, and its lessons carried into the many offline businesses Cookpad runs today.</p><p class="result ko">리뉴얼 후 페이지뷰는 늘고 이탈률은 줄었습니다.</p><p class="ko">이후 이 서비스는 Cookpad가 신선식품 사업에 나서는 데 귀중한 PoC 경험이 되었고 지금의 다양한 오프라인 사업 전개에도 밑거름이 되었습니다.</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 <!-- CASE 4: JIFFCY -->
 <article class="case" id="jiffcy">
@@ -1062,7 +1076,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><div class="cs-panel p-jiffcy"><div class="phones stagger"><img src="assets/work/jf-feed.webp" width="524" height="1027" alt="Jiffcy feed with an auto-generated Dots collage" loading="lazy" decoding="async"><img src="assets/work/jf-group.webp" width="524" height="1027" alt="Group screen with Text Call, Message and Dots" loading="lazy" decoding="async"><img src="assets/work/jf-feed2.webp" width="524" height="1027" alt="Another group collage in the feed" loading="lazy" decoding="async"></div></div><figcaption>App · Dots collages, built from friends</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">Jiffcyでは、QRコードで1人ずつ友だちを追加します。新規ユーザーは最初、友だちがいない状態から始まるため、<strong>価値を感じる前に離脱</strong>しやすい構造でした。</p>
 <p class="en">On Jiffcy, you add friends one at a time by QR code. New users start with no friends at all, so they tend to <strong>leave before they feel any value</strong>.</p><p class="ko">Jiffcy에서는 QR 코드로 친구를 한 명씩 추가합니다. 새로 가입한 사용자는 친구가 한 명도 없는 상태에서 시작하기 때문에 <strong>앱의 재미를 느끼기도 전에 떠나기 쉬웠습니다</strong>.</p>
@@ -1103,7 +1117,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="ja">導入後のオンボーディング完了率や友だち追加率を確認しながらチームと改善点を議論し、改善を続けています（現在進行中）。</p>
 <p class="en">We're tracking onboarding completion and friend-add rates after the change, and keep discussing and shipping improvements with the team (ongoing).</p><p class="ko">도입 후 온보딩 완료율과 친구 추가율을 확인하면서 개선할 점을 팀과 계속 논의하며 다듬어 가고 있습니다. (현재 진행 중)</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 <!-- CASE 6: RLWRLD (BX) -->
 <article class="case" id="rlwrld">
@@ -1125,7 +1139,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 </div>
 </aside>
 <div class="cs-media"><figure><div class="cs-panel p-rlwrld"><div class="rw-stage"><svg class="rw-mark" viewBox="0 0 28 4" role="img" aria-label="RLWRLD logo"><title>RLWRLD logo</title><rect x="0" y="0" width="1.02" height="1.02" style="--rd:58ms"/><rect x="1" y="0" width="1.02" height="1.02" style="--rd:65ms"/><rect x="2" y="0" width="1.02" height="1.02" style="--rd:193ms"/><rect x="5" y="0" width="1.02" height="1.02" style="--rd:203ms"/><rect x="9" y="0" width="1.02" height="1.02" style="--rd:438ms"/><rect x="11" y="0" width="1.02" height="1.02" style="--rd:483ms"/><rect x="13" y="0" width="1.02" height="1.02" style="--rd:504ms"/><rect x="15" y="0" width="1.02" height="1.02" style="--rd:661ms"/><rect x="16" y="0" width="1.02" height="1.02" style="--rd:614ms"/><rect x="17" y="0" width="1.02" height="1.02" style="--rd:724ms"/><rect x="20" y="0" width="1.02" height="1.02" style="--rd:772ms"/><rect x="24" y="0" width="1.02" height="1.02" style="--rd:928ms"/><rect x="25" y="0" width="1.02" height="1.02" style="--rd:1026ms"/><rect x="26" y="0" width="1.02" height="1.02" style="--rd:1136ms"/><rect x="0" y="1" width="1.02" height="1.02" style="--rd:22ms"/><rect x="3" y="1" width="1.02" height="1.02" style="--rd:154ms"/><rect x="5" y="1" width="1.02" height="1.02" style="--rd:302ms"/><rect x="9" y="1" width="1.02" height="1.02" style="--rd:512ms"/><rect x="11" y="1" width="1.02" height="1.02" style="--rd:521ms"/><rect x="13" y="1" width="1.02" height="1.02" style="--rd:565ms"/><rect x="15" y="1" width="1.02" height="1.02" style="--rd:745ms"/><rect x="18" y="1" width="1.02" height="1.02" style="--rd:692ms"/><rect x="20" y="1" width="1.02" height="1.02" style="--rd:914ms"/><rect x="24" y="1" width="1.02" height="1.02" style="--rd:964ms"/><rect x="27" y="1" width="1.02" height="1.02" style="--rd:1051ms"/><rect x="0" y="2" width="1.02" height="1.02" style="--rd:21ms"/><rect x="1" y="2" width="1.02" height="1.02" style="--rd:93ms"/><rect x="2" y="2" width="1.02" height="1.02" style="--rd:222ms"/><rect x="5" y="2" width="1.02" height="1.02" style="--rd:222ms"/><rect x="9" y="2" width="1.02" height="1.02" style="--rd:446ms"/><rect x="11" y="2" width="1.02" height="1.02" style="--rd:533ms"/><rect x="13" y="2" width="1.02" height="1.02" style="--rd:561ms"/><rect x="15" y="2" width="1.02" height="1.02" style="--rd:668ms"/><rect x="16" y="2" width="1.02" height="1.02" style="--rd:619ms"/><rect x="17" y="2" width="1.02" height="1.02" style="--rd:656ms"/><rect x="20" y="2" width="1.02" height="1.02" style="--rd:797ms"/><rect x="24" y="2" width="1.02" height="1.02" style="--rd:1034ms"/><rect x="27" y="2" width="1.02" height="1.02" style="--rd:1102ms"/><rect x="0" y="3" width="1.02" height="1.02" style="--rd:56ms"/><rect x="3" y="3" width="1.02" height="1.02" style="--rd:219ms"/><rect x="5" y="3" width="1.02" height="1.02" style="--rd:271ms"/><rect x="6" y="3" width="1.02" height="1.02" style="--rd:281ms"/><rect x="7" y="3" width="1.02" height="1.02" style="--rd:408ms"/><rect x="10" y="3" width="1.02" height="1.02" style="--rd:505ms"/><rect x="12" y="3" width="1.02" height="1.02" style="--rd:499ms"/><rect x="15" y="3" width="1.02" height="1.02" style="--rd:673ms"/><rect x="18" y="3" width="1.02" height="1.02" style="--rd:778ms"/><rect x="20" y="3" width="1.02" height="1.02" style="--rd:917ms"/><rect x="21" y="3" width="1.02" height="1.02" style="--rd:929ms"/><rect x="22" y="3" width="1.02" height="1.02" style="--rd:887ms"/><rect x="24" y="3" width="1.02" height="1.02" style="--rd:1088ms"/><rect x="25" y="3" width="1.02" height="1.02" style="--rd:971ms"/><rect x="26" y="3" width="1.02" height="1.02" style="--rd:1063ms"/></svg></div></div><figcaption>Logo · Built only from pixels</figcaption></figure><figure><div class="cs-panel p-spec"><img src="assets/work/rw-grid.webp" width="1080" height="400" alt="Logo construction on a 4-unit grid: letter widths 4, 3, 5, 4, 3, 4" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Construction · 4-unit height, widths 4 / 3 / 5 / 4 / 3 / 4</figcaption></figure><figure><img src="assets/work/rw-hand.webp" width="1400" height="788" alt="Key visual: a human hand and a robot hand with the RLWRLD logo" loading="lazy" decoding="async" class="cs-shot"><figcaption>Key visual</figcaption></figure><div class="cs-row"><figure><img src="assets/work/rw-cards.webp" width="1200" height="900" alt="RLWRLD business cards in brand mint with a halftone pixel pattern" loading="lazy" decoding="async" class="cs-shot cs-43"><figcaption>Business cards</figcaption></figure><figure><img src="assets/work/rw-sign.webp" width="1400" height="788" alt="RLWRLD logo as dimensional office signage" loading="lazy" decoding="async" class="cs-shot cs-43"><figcaption>Office signage</figcaption></figure></div><figure><img src="assets/work/rw-hoodie.webp" width="1400" height="788" alt="Team members wearing black hoodies with the RLWRLD logo" loading="lazy" decoding="async" class="cs-shot cs-crop"><figcaption>Team merch</figcaption></figure></div>
-<ol class="flow">
+<div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">RLWRLDは、独自の4D+モーションキャプチャデータと物理世界のために構築したフロンティア基盤モデルで、ロボットに精密な手の作業を学習させる会社です。依頼の時点で<strong>ロゴはまだ存在しませんでした</strong>。</p>
 <p class="en">RLWRLD trains robots to do precise hand work, using its own 4D+ motion capture data and a frontier foundation model built for the physical world. When I joined, <strong>the company had no logo yet</strong>.</p><p class="ko">RLWRLD는 자체 4D+ 모션 캡처 데이터와 물리 세계를 위해 구축한 프론티어 파운데이션 모델로, 로봇이 정밀한 손 작업을 수행하도록 학습시키는 회사입니다. 의뢰 시점에는 <strong>아직 회사 로고가 없었습니다</strong>.</p>
@@ -1152,7 +1166,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <p class="ja">同じピクセルのロゴを、Webサイトと名刺に展開しました。</p>
 <p class="en">I rolled out the same pixel logo across the website and business cards.</p><p class="ko">같은 픽셀 로고를 웹사이트와 명함에 전개했습니다.</p>
 </div></li>
-</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button>
+</ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
 </section>
 <!-- NOW -->
