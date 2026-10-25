@@ -1,0 +1,23 @@
+# Jeong Jinho Portfolio
+
+> Portfolio of Jeong Jinho (鄭 珍昊 / 정진호), a Product / UI/UX designer based in Tokyo with 20+ years of zero-to-one product work. Each case study is written as a decision record: problem, research, constraints, decision, iteration. The site is available in Japanese, English and Korean.
+
+## Profile
+- Name: Jeong Jinho (鄭 珍昊, 정진호)
+- Role: UI/UX Designer at medimo (medical AI charting, B2B) since April 2026; freelance Product / BX designer as aftworks since August 2024
+- Background: started in 2000 as a founding member of a student venture in Seoul; moved to Tokyo in 2010 to join LINE (then Naver Japan)
+- Languages: Korean (native), Japanese (business)
+- Contact: jinho@aftworks.com · 1:1 booking: https://cal.com/jeong75/30min
+
+## Case studies
+- [ONE PAYMENT](https://www.aftworks.com/#onepay): In-person card payments on a phone with no card reader (2017–2018, Chief Designer / Creative Director)
+- [ONE](https://www.aftworks.com/#one): Receipt-buying app; snap a receipt, get ¥10. #1 overall on the Japanese App Store (2018–2019)
+- [Kyash Widget](https://www.aftworks.com/#kyash): iOS balance widget shipped from a low-priority roadmap item (2022, Product Designer)
+- [Cookpad 産地直送便](https://www.aftworks.com/#cookpad): Renewal of a farm-direct grocery e-commerce flow (2014–2015)
+- [Jiffcy](https://www.aftworks.com/#jiffcy): Closed social app for Gen Z; designing the first minutes with zero friends (2025–, Product Designer)
+- [RLWRLD](https://www.aftworks.com/#rlwrld): Brand identity built from a pixel grid for a robotics foundation-model company (2025, BX and web)
+
+## Elsewhere
+- LinkedIn: https://www.linkedin.com/in/jeong75/
+- YOUTRUST: https://youtrust.jp/users/jeong75
+- Behance: https://www.behance.net/aftworks

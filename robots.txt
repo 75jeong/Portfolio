@@ -1,0 +1,25 @@
+# Jeong Jinho Portfolio — https://www.aftworks.com/
+User-agent: *
+Allow: /
+
+# AI search and assistants: allowed, so the portfolio can be found and cited
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.aftworks.com/sitemap.xml
