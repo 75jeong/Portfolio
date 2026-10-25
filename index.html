@@ -383,10 +383,10 @@ body.menu-open{overflow:hidden}
    Only active when JS adds html.motion (skipped for reduced-motion, print and no-JS). */
 .step.decide .k b span{background:linear-gradient(var(--decide-bg),var(--decide-bg)) no-repeat 0 88%/100% 42%;padding-inline:.1em;margin-inline:-.1em}
 @media screen{
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey){
+  html.motion :is(.hero .who,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey){
     opacity:0;transform:translate3d(0,28px,0);
     transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform 1s var(--spring);transition-delay:var(--d,0ms)}
-  html.motion :is(.hero .who,.hero h1,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
+  html.motion :is(.hero .who,.hero .lede,.facts,.draftnote,.sec-head > p,.pr,.meta > :not(.no),.step,.cs-media > *,.tl > li,.side > div,.contact .label,.contact .book,.contact .links a,.contact-v footer,.flowkey).in{opacity:1;transform:none}
 
   /* typewriter */
   html.motion :is(.sec-head h2,.meta .no,.copy-mail){visibility:hidden}
@@ -653,6 +653,21 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
   .screens.mock img:nth-child(even){margin-top:16px!important}
 }
 
+/* hero title: mask reveal, line by line */
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .ln-in{display:block}
+html.motion .hero h1 .ln-in{transform:translate3d(0,108%,0);transition:transform 1.05s cubic-bezier(.77,0,.18,1);transition-delay:calc(var(--i,0) * 110ms + 200ms)}
+html.motion .hero h1.in .ln-in{transform:none}
+html.motion.loading .hero h1 .ln-in{transition:none}
+
+/* career: scroll text highlight */
+html.motion #career .sec-head p .w{color:var(--muted);transition:color .25s linear}
+html.motion #career .sec-head p .w.on{color:var(--ink)}
+html.motion #career .tl > li{transition:opacity .45s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+html.motion #career .tl > li.in:not(.hot){opacity:.32}
+html.motion #career .tl > li.hot .job-h b{color:var(--ink)}
+html.motion #career .tl > li.hot .y{color:var(--accent)}
+
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
@@ -743,8 +758,8 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <strong>Jeong Jinho <span class="ja">鄭 珍昊</span><span class="ko">정진호</span></strong>
 <span class="label">Product Designer · Tokyo</span>
 </div>
-<h1 class="ja">画面ではなく、<br/><span class="hl">事業の判断</span>を<br/>デザインする。</h1>
-<h1 class="en">Designing <span class="hl">decisions</span>,<br/>not just screens.</h1><h1 class="ko">화면이 아니라<br/><span class="hl">사업의 판단</span>을<br/>디자인합니다.</h1>
+<h1 class="ja"><span class="ln"><span class="ln-in" style="--i:0">画面ではなく、</span></span><span class="ln"><span class="ln-in" style="--i:1"><span class="hl">事業の判断</span>を</span></span><span class="ln"><span class="ln-in" style="--i:2">デザインする。</span></span></h1>
+<h1 class="en"><span class="ln"><span class="ln-in" style="--i:0">Designing <span class="hl">decisions</span>,</span></span><span class="ln"><span class="ln-in" style="--i:1">not just screens.</span></span></h1><h1 class="ko"><span class="ln"><span class="ln-in" style="--i:0">화면이 아니라</span></span><span class="ln"><span class="ln-in" style="--i:1"><span class="hl">사업의 판단</span>을</span></span><span class="ln"><span class="ln-in" style="--i:2">디자인합니다.</span></span></h1>
 <p class="lede ja">ソウルで2000年に学生ベンチャーの創業メンバーとしてキャリアを始め、2010年にLINE（旧Naver Japan）入社を機に来日。大企業からシードのスタートアップまで、0→1のプロダクトづくりを中心に20年以上デザインをしてきました。</p>
 <p class="lede en">I started in 2000 as a founding member of a student venture in Korea and moved to Tokyo in 2010 to join LINE (then Naver Japan). For 20+ years I have designed products from zero to one, for large Japanese companies and seed-stage startups alike.</p><p class="lede ko">2000년 학생 벤처 창업 멤버로 디자인을 시작했고 2010년 LINE(당시 Naver Japan)에 입사하면서 일본으로 건너왔습니다. 일본의 대기업부터 시드 단계 스타트업까지, 주로 0에서 1을 만드는 프로덕트를 20년 넘게 디자인해 왔습니다.</p>
 <p class="lede ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。どのプロジェクトも「問題定義 → リサーチ → 制約 → 決定 → 改善」の順に読めます。</p>
@@ -1550,7 +1565,7 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
     var fx=document.querySelector('.facts');if(fx){reveal(fx,300);fx.querySelectorAll('b').forEach(function(b,i){countUp(b,450+i*150)})}
     var dn=document.querySelector('.draftnote');if(dn)reveal(dn,700);
   }
-  document.querySelectorAll('.hero h1').forEach(function(h){reveal(h,350)});
+  document.querySelectorAll('.hero h1').forEach(function(h){h.classList.add('in')});
   setTimeout(afterHero,1000);
   });
 
@@ -1835,6 +1850,36 @@ html[data-lang="ja"] #cases .case:not(.open) .step.decide .k-sum,html[data-lang=
 <script>
 document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener('click',function(){var a=b.closest('.case'),o=a.classList.toggle('open');b.setAttribute('aria-expanded',String(o));
   a.querySelectorAll('.step,.cs-media > *').forEach(function(e){e.classList.add('in')});if(!o)a.scrollIntoView({behavior:'smooth'})})});
+</script>
+<script>
+/* hero mask replay on language switch + career scroll highlight */
+(function(){
+  var root=document.documentElement;
+  if(!root.classList.contains('motion'))return;
+  new MutationObserver(function(){
+    document.querySelectorAll('.hero h1').forEach(function(h){h.classList.remove('in');void h.offsetWidth;requestAnimationFrame(function(){h.classList.add('in')})});
+  }).observe(root,{attributes:true,attributeFilter:['data-lang']});
+  /* intro paragraph: split into words (ko/en) or short chunks (ja) */
+  var ps=[].slice.call(document.querySelectorAll('#career .sec-head p'));
+  ps.forEach(function(p){
+    var ja=p.classList.contains('ja'),t=p.textContent;
+    var parts=ja?t.match(/[^、。]+[、。]?/g):t.split(/(\s+)/);
+    p.innerHTML=parts.map(function(x){return /^\s+$/.test(x)?x:'<span class="w">'+x+'</span>'}).join('');
+  });
+  var items=[].slice.call(document.querySelectorAll('#career .tl > li')),tick=false;
+  function update(){
+    tick=false;var vh=innerHeight;
+    ps.forEach(function(p){if(!p.offsetParent)return;var r=p.getBoundingClientRect(),k=(vh*.82-r.top)/(r.height+vh*.3),ws=p.querySelectorAll('.w');
+      ws.forEach(function(w,i){w.classList.toggle('on',k*ws.length>i)})});
+    var best=null,bd=1e9,mid=vh*.45;
+    items.forEach(function(li){var r=li.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var d=Math.abs((r.top+Math.min(r.height,vh*.5)/2)-mid);if(d<bd){bd=d;best=li}});
+    items.forEach(function(li){li.classList.toggle('hot',li===best)});
+  }
+  function on(){if(!tick){tick=true;requestAnimationFrame(update)}}
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);
+  new MutationObserver(on).observe(root,{attributes:true,attributeFilter:['data-lang']});
+  update();
+})();
 </script>
 </body>
 </html>
