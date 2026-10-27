@@ -514,7 +514,7 @@ html.motion .in .rw-mark rect{opacity:1}
 .book{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:13px 18px 13px 16px;border-radius:999px;background:#F4EFE8;color:#15131A;text-decoration:none;font:600 .9375rem/1 var(--f-body);box-shadow:0 10px 30px rgba(0,0,0,.25);transition:background-color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
 .book i{font-style:normal;opacity:.6}
 .book:hover{background:#FFD7A8}
-@media (prefers-reduced-motion:no-preference){.book:hover{transform:translateY(-2px)}}
+
 .book:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
 @media print{.book{box-shadow:none;border:1px solid #15131A}}
 
@@ -687,6 +687,22 @@ html.motion #career .tl > li{transition:opacity .45s ease,transform .9s cubic-be
 html.motion #career .tl > li.in:not(.hot){opacity:.32}
 html.motion #career .tl > li.hot .job-h b{color:var(--ink)}
 html.motion #career .tl > li.hot .y{color:var(--accent)}
+
+/* custom cursor for text links (fine pointers only) */
+.cur{position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;
+  display:grid;place-items:center;background:#fff;color:#000;mix-blend-mode:difference;font:600 1.0625rem/1 var(--f-display);
+  opacity:0;transform:translate3d(var(--cx,-100px),var(--cy,-100px),0) scale(.3);transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1) 0s;will-change:transform}
+.cur.on{opacity:1;transform:translate3d(var(--cx),var(--cy),0) scale(1)}
+.cur.down{transform:translate3d(var(--cx),var(--cy),0) scale(.85)}
+.cur span{display:block;transform:rotate(var(--rot,0deg));transition:transform .3s}
+html.has-cur a.tl-link{cursor:none}
+@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce),print{.cur{display:none}}
+
+/* magnetic booking button */
+.book{display:inline-flex;translate:var(--mx,0) var(--my,0);transition:background-color .2s,translate .6s cubic-bezier(.2,.7,.2,1)}
+.book.mag{transition:background-color .2s,translate .18s linear}
+.book .book-in{display:inline-flex;align-items:center;gap:10px;translate:var(--ix,0) var(--iy,0);transition:translate .6s cubic-bezier(.2,.7,.2,1)}
+.book.mag .book-in{transition:translate .18s linear}
 
 /* theme toggle (default: dark) */
 :root[data-theme="light"]{color-scheme:light}
@@ -1399,7 +1415,7 @@ html.motion #career .tl > li.hot .y{color:var(--accent)}
 <div>
 <span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
 <button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jinho@aftworks.com</button>
-<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></a>
+<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></span></a>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:18px;flex-wrap:wrap">
@@ -1899,6 +1915,40 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   addEventListener('scroll',on,{passive:true});addEventListener('resize',on);
   new MutationObserver(on).observe(root,{attributes:true,attributeFilter:['data-lang']});
   update();
+})();
+</script>
+<script>
+/* custom cursor on text links + magnetic booking button */
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var root=document.documentElement;
+  /* text links: plain <a> that are not buttons, pills or the logo */
+  var links=[].slice.call(document.querySelectorAll('a[href]')).filter(function(a){
+    return !a.matches('.cta,.book,.mark,.btn,.menu-nav a,.bar nav a,.pp-real,.skip')&&!a.closest('.menu-modal')});
+  links.forEach(function(a){a.classList.add('tl-link')});
+  root.classList.add('has-cur');
+  var c=document.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');c.innerHTML='<span>↗</span>';document.body.appendChild(c);
+  var arrow=c.firstChild,tx=-100,ty=-100,x=-100,y=-100,raf=0;
+  function loop(){x+=(tx-x)*.22;y+=(ty-y)*.22;c.style.setProperty('--cx',x.toFixed(1)+'px');c.style.setProperty('--cy',y.toFixed(1)+'px');raf=(Math.abs(tx-x)+Math.abs(ty-y)>.2)?requestAnimationFrame(loop):0}
+  addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;tx=e.clientX;ty=e.clientY;if(!c.classList.contains('on')){x=tx;y=ty}if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
+  links.forEach(function(a){
+    a.addEventListener('mouseenter',function(){var ext=a.target==='_blank'||/^https?:/.test(a.getAttribute('href'));arrow.textContent=ext?'↗':'→';
+      arrow.style.setProperty('--rot',a.getAttribute('href').charAt(0)==='#'?'90deg':'0deg');c.classList.add('on')});
+    a.addEventListener('mouseleave',function(){c.classList.remove('on','down')});
+    a.addEventListener('mousedown',function(){c.classList.add('down')});
+    a.addEventListener('mouseup',function(){c.classList.remove('down')});
+  });
+  document.addEventListener('mouseleave',function(){c.classList.remove('on')});
+  /* magnetic button */
+  var b=document.querySelector('.book');if(!b)return;
+  var R=110;
+  function onMove(e){var r=b.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy),lim=R+Math.max(r.width,r.height)/2;
+    if(d<lim){var k=1-d/lim;b.classList.add('mag');var cl=function(v,m){return Math.max(-m,Math.min(m,v)).toFixed(1)+'px'};b.style.setProperty('--mx',cl(dx*.3*(.4+k),22));b.style.setProperty('--my',cl(dy*.4*(.4+k),14));
+      b.style.setProperty('--ix',cl(dx*.08,6));b.style.setProperty('--iy',cl(dy*.12,4))}
+    else if(b.classList.contains('mag'))release()}
+  function release(){b.classList.remove('mag');['--mx','--my','--ix','--iy'].forEach(function(k){b.style.setProperty(k,'0px')})}
+  addEventListener('pointermove',function(e){if(e.pointerType==='mouse')onMove(e)},{passive:true});
+  addEventListener('scroll',function(){if(b.classList.contains('mag'))release()},{passive:true});
 })();
 </script>
 </body>
