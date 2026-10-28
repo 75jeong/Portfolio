@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import Strike from '../components/Strike.astro';
+import { site, cases, values, now, other, career } from '../data/site';
+---
+<Base>
+  <section class="hero wrap" aria-labelledby="hero-h">
+    <h1 class="hero__title display" id="hero-h">
+      <span class="sr-only">Designing decisions.</span>
+      <span aria-hidden="true">
+        <span class="ln"><span data-hero-ln>Designing</span></span>
+        <span class="ln"><span data-hero-ln>decisions,<i class="caret"></i></span></span>
+        <span class="ln"><span data-hero-ln class="hero__neg"><s class="strike" data-strike="intro">not just screens<i class="strike__rule"></i></s>.</span></span>
+      </span>
+    </h1>
+    <div class="hero__foot">
+      <div class="hero__who" data-reveal="fade" data-intro data-delay="0.5">
+        <p class="mono">{site.name}</p>
+        <p class="mono muted">{site.native}</p>
+        <p class="mono muted">Product / UI/UX designer, Tokyo</p>
+      </div>
+      <figure class="hero__pic" data-reveal="clip" data-intro data-delay="0.35" style="margin:0">
+        <img src="/img/photo.jpg" alt="Portrait of Jeong Jinho" width="639" height="900" data-critical fetchpriority="high" />
+      </figure>
+      <p class="hero__intro" data-reveal="up" data-intro data-delay="0.6">{site.intro}</p>
+      <div class="hero__facts" data-reveal="fade" data-intro data-delay="0.8">
+        {site.facts.map(([n, l]) => <p><b>{n}</b><span class="mono muted">{l}</span></p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="work" aria-labelledby="work-h">
+    <div class="sec__head">
+      <h2 class="sec__title display" id="work-h" data-split="lines">The cuts</h2>
+      <p class="sec__lede">{site.why}</p>
+    </div>
+    <div class="grid mono muted" aria-hidden="true" style="padding-block:0.6rem">
+      <span style="grid-column:2 / span 5">Cut</span><span style="grid-column:7 / span 4">Kept</span><span style="grid-column:11 / span 2;text-align:right">Case</span>
+    </div>
+    <ol class="ledger" data-ledger>
+      {cases.map((c) => (
+        <li class="cut">
+          <a class="cut__a" href={`/work/${c.slug}/`} data-cursor="Read" data-peek={c.cover.src}>
+            <span class="cut__no">{c.no}</span>
+            <span class="cut__what"><Strike text={c.cut} mode="scrub" /></span>
+            <span class="cut__kept"><span class="sr-only">Kept: </span><span data-kept>{c.kept}</span></span>
+            <span class="cut__name"><span class="mono">{c.title}{c.sub && ` ${c.sub}`}</span><span class="mono muted">{c.years}</span></span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <div class="peek" aria-hidden="true" data-peek-box>
+      {cases.map((c) => <img src={c.cover.src} alt="" width={c.cover.w} height={c.cover.h} loading="lazy" data-peek-img={c.cover.src} />)}
+    </div>
+  </section>
+
+  <section class="sec wrap" id="about" aria-labelledby="val-h">
+    <div class="sec__head">
+      <h2 class="sec__title display" id="val-h" data-split="lines">What I value</h2>
+      <p class="sec__lede">Project sizes vary, but the questions I return to when deciding stay the same. Every case study traces back to one of these three.</p>
+    </div>
+    <ol class="vals">
+      {values.map((v, i) => (
+        <li class="val" data-reveal="up">
+          <span class="val__no" aria-hidden="true">0{i + 1}</span>
+          <h3 class="val__t">{v.title}</h3>
+          <p class="val__b">{v.body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="now-h" style="padding-top:0">
+    <div class="sec__head">
+      <h2 class="sec__title display" id="now-h" data-split="lines">Now</h2>
+      <p class="sec__lede">UI/UX Designer at medimo since April 2026. In medical AI, I work on the screens and also on building agreement with the business side.</p>
+    </div>
+    <div class="now">
+      {now.map((n, i) => (
+        <article class="now__c" data-reveal="up" data-delay={String(i * 0.08)}>
+          <p class="mono muted">{n.tag}</p>
+          <h3 class="now__t">{n.title}</h3>
+          <p class="now__b">{n.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="oth-h" style="padding-top:0">
+    <div class="sec__head">
+      <h2 class="sec__title display" id="oth-h" data-split="lines">Other work</h2>
+      <p class="sec__lede mono">{other.length} projects, 2011 to 2025</p>
+    </div>
+    <table class="idx">
+      <thead class="mono muted"><tr><th scope="col">Year</th><th scope="col">Project</th><th scope="col">Type</th><th scope="col">The call</th></tr></thead>
+      <tbody>
+        {other.map(([y, p, k, c]) => (
+          <tr><td class="idx__y">{y}</td><td class="idx__p">{p}</td><td class="idx__k">{k}</td><td>{c}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="car-h" style="padding-top:0">
+    <div class="sec__head">
+      <h2 class="sec__title display" id="car-h" data-split="lines">Career</h2>
+      <p class="sec__lede">Started in Seoul, 15+ years in Tokyo. In large companies, early startups and as a freelancer, I've worked close to the people making business decisions.</p>
+    </div>
+    <ol class="car" data-career>
+      {career.map(([a, b, n, r]) => (
+        <li><span class="car__y">{a} / {b}</span><span class="car__n">{n}</span><span class="car__r">{r}</span></li>
+      ))}
+    </ol>
+  </section>
+</Base>

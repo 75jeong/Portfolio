@@ -1,0 +1,5 @@
+---
+// The site's one motion verb. data-strike="scroll" (draw when seen), "scrub" (tied to scroll), "hover", "intro".
+const { text, mode = 'scroll', cls = '', label = true } = Astro.props;
+---
+<s class={`strike ${cls}`} data-strike={mode}>{label && <span class="sr-only">Cut: </span>}{text}<i class="strike__rule" aria-hidden="true"></i></s>
