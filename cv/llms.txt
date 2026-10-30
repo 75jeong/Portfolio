@@ -1,0 +1,16 @@
+# Jeong Jinho: portfolio and CV
+
+> Jeong Jinho (鄭 珍昊 / 정진호) is a product and UI/UX designer in Tokyo. He started in 2000 as a founding member of a student venture in Seoul and moved to Tokyo in 2010 to join LINE (then Naver Japan). UI/UX Designer at medimo since April 2026; freelance product / BX designer as aftworks since August 2024. Each case study is written as a decision record: problem, research, constraints, decision, iteration. Pages are available in English, Japanese and Korean.
+
+## Pages
+- [About](https://www.aftworks.com/cv/about.html): profile, work experience (14 roles), skills
+- [Portfolio](https://www.aftworks.com/cv/portfolio.html): six case studies
+- [Contact](https://www.aftworks.com/cv/contact.html): jinho@aftworks.com, 30-minute 1:1 booking
+
+## Case studies
+- [ONE PAYMENT](https://www.aftworks.com/cv/work-onepay.html): in-person card payments on a phone with no card reader (2017 to 2018)
+- [ONE](https://www.aftworks.com/cv/work-one.html): snap a receipt, get ¥10; #1 overall on the Japanese App Store (2018 to 2019)
+- [Kyash Widget](https://www.aftworks.com/cv/work-kyash.html): iOS balance widget shipped from a low-priority roadmap item (2022)
+- [Cookpad 産地直送便](https://www.aftworks.com/cv/work-cookpad.html): renewal of a farm-direct grocery e-commerce flow (2014 to 2015)
+- [Jiffcy](https://www.aftworks.com/cv/work-jiffcy.html): closed social app for Gen Z; designing the first minutes with zero friends (2025 to now)
+- [RLWRLD](https://www.aftworks.com/cv/work-rlwrld.html): brand identity built from a pixel grid (2025)
