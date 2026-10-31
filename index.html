@@ -784,6 +784,24 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 .cur.on span,.cur.card span{opacity:1}
 @media (hover:none),(pointer:coarse){.cur{display:none}}
 @media print{.cur{display:none!important}}
+
+/* hero: contact + CV buttons under the summary box */
+.hero-cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 .9375rem/1 var(--f-body);text-decoration:none;transition:background-color .2s,border-color .2s,color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.hb-main{background:#F3F1F8;color:#16151D}
+.hb-main:hover{background:#FFD7A8}
+.hb-sub{border:1px solid rgba(255,255,255,.32);color:#F3F1F8;background:rgba(22,21,29,.32);backdrop-filter:blur(8px)}
+.hb-sub:hover{border-color:#F3F1F8}
+.hero-btn:active{transform:scale(.97)}
+.hero-btn:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
+@media (max-width:640px){.hero-cta{margin-top:16px}.hero-btn{flex:1 1 auto;justify-content:center}}
+@media print{.hero-cta{display:none}}
+
+.ft-cv{display:inline-flex;align-items:center;gap:8px;margin:24px 0 0 8px;padding:16px;border-radius:999px;border:1px solid rgba(255,255,255,.32);background:rgba(20,16,22,.38);backdrop-filter:blur(8px);color:#F4EFE8;font:600 .9375rem/1 var(--f-body);text-decoration:none;vertical-align:top;transition:border-color .2s}
+.ft-cv:hover{border-color:#FFD7A8;color:#FFD7A8}
+.ft-cv:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
+@media (max-width:640px){.ft-cv{margin-left:0;margin-top:8px}}
+@media print{.ft-cv{display:none}}
 /* 8pt grid: every margin, padding, gap and radius is a multiple of 8px; fluid values step at 768 / 1200px. Press G to show the grid. */
 :root{--g1:16px;--g2:24px;--g3:40px;--g4:16px;--g5:48px;--g6:152px;--g7:32px;--g8:72px;--g9:176px;--g10:80px;--g11:32px;--g12:32px;--g13:64px;--g14:40px;--g15:96px;--g16:120px;--g17:16px;--g18:32px;--g19:16px;--g20:8px;--g21:16px;--g22:24px;--g23:16px;--g24:48px;--g25:48px;}
 @media (min-width:768px){:root{--g1:48px;--g2:48px;--g3:64px;--g4:32px;--g5:80px;--g6:208px;--g7:80px;--g8:112px;--g9:248px;--g10:120px;--g11:64px;--g12:48px;--g13:96px;--g14:80px;--g15:136px;--g16:176px;--g17:16px;--g18:48px;--g19:16px;--g20:16px;--g21:32px;--g22:32px;--g23:24px;--g24:64px;--g25:64px;}}
@@ -792,7 +810,7 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 .rw-stage{padding:24px 48px}@media (min-width:768px){.rw-stage{padding:32px 80px}}@media (min-width:1200px){.rw-stage{padding:56px 128px}}
 body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events:none;background-image:linear-gradient(to bottom,rgba(255,0,80,.14) 1px,transparent 1px),linear-gradient(to right,rgba(255,0,80,.14) 1px,transparent 1px);background-size:8px 8px}
 </style>
-<script>(function(){var t;try{t=localStorage.getItem('pf-theme')}catch(e){}document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'})()</script>
+<script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
 (function(){var r=document.documentElement,l,h=location.hash.slice(1);
   if(/^(ja|en|ko)$/.test(h))l=h;
@@ -828,7 +846,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <button aria-pressed="false" data-lang="ko" id="lang-ko" type="button">KO</button>
 </div>
 <a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
-<button type="button" class="theme-btn" id="theme-btn" aria-label="Switch to light mode"><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+
 <button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
 </div>
 </div></div>
@@ -875,6 +893,10 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div><b>20+</b><span class="ja">年のデザイン経験</span><span class="en">years designing</span><span class="ko">년 디자인 경력</span></div>
 <div><b>2010</b><span class="ja">来日・LINE入社</span><span class="en">moved to Tokyo, LINE</span><span class="ko">일본으로 · LINE 입사</span></div>
 <div><b>30+</b><span class="ja">社のクライアント</span><span class="en">client companies</span><span class="ko">곳의 클라이언트</span></div>
+</div>
+<div class="hero-cta">
+<a class="btn hero-btn hb-main" href="#contact"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">문의하기</span></a>
+<a class="btn hero-btn hb-sub" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
 </div>
 </div>
 <figure class="photo" style="margin:0">
@@ -1534,7 +1556,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div>
 <span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
 <button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jinho@aftworks.com</button>
-<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></span></a>
+<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></span></a><a class="btn ft-cv" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:16px;flex-wrap:wrap">
@@ -1560,16 +1582,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
   document.getElementById('lang-en').addEventListener('click',function(){setLang('en')});
   document.getElementById('lang-ko').addEventListener('click',function(){setLang('ko')});
 
-  var themeBtn=document.getElementById('theme-btn'),labels={ja:['ライトモードに切り替え','ダークモードに切り替え'],en:['Switch to light mode','Switch to dark mode'],ko:['라이트 모드로 전환','다크 모드로 전환']};
-  function themeLabel(){var l=labels[root.dataset.lang]||labels.en;themeBtn.setAttribute('aria-label',root.dataset.theme==='dark'?l[0]:l[1])}
-  function applyTheme(t){root.dataset.theme=t;try{localStorage.setItem('pf-theme',t)}catch(e){}themeLabel()}
-  themeBtn.addEventListener('click',function(){
-    var next=root.dataset.theme==='dark'?'light':'dark';
-    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(document.startViewTransition&&!reduce)document.startViewTransition(function(){applyTheme(next)});else applyTheme(next);
-  });
-  themeLabel();
-  new MutationObserver(themeLabel).observe(root,{attributes:true,attributeFilter:['data-lang']});
+  /* light mode removed: the site is dark only */
   var mail=document.getElementById('copy-mail'),toast=document.getElementById('toast'),tt;
   function showToast(){try{window.getSelection().removeAllRanges()}catch(e){}toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},1800)}
   function selectMail(){var r=document.createRange();r.selectNodeContents(mail);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r)}
