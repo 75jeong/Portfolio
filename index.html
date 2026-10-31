@@ -504,11 +504,12 @@ body.menu-open{overflow:hidden}
 .p-rlwrld{background:#50EACE}
 .rw-stage{display:grid;place-items:center;aspect-ratio:16/6;padding:6% 14%}
 .rw-mark{width:100%;height:auto;fill:#0A0A0A;shape-rendering:crispEdges}
-html.motion .rw-mark rect{opacity:0;transition:opacity .01s linear calc(var(--rd,0ms) + 300ms)}
-html.motion .in .rw-mark rect{opacity:1}
+html.motion .rw-mark rect{opacity:0}
+html.motion .rw-mark.rw-done rect:not(.rw-ghost){opacity:1}
+.rw-ghost{opacity:0}
 .p-spec{background:#FFFFFF;border:1px solid var(--line)}
 .cs-43{aspect-ratio:4/3;object-fit:cover}
-@media print{html.motion .rw-mark rect{opacity:1}}
+@media print{html.motion .rw-mark rect:not(.rw-ghost){opacity:1!important}.rw-ghost{display:none}}
 
 /* 1:1 booking button in the contact scene */
 .book{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:16px 16px 16px 16px;border-radius:999px;background:#F4EFE8;color:#15131A;text-decoration:none;font:600 .9375rem/1 var(--f-body);box-shadow:0 10px 30px rgba(0,0,0,.25);transition:background-color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
@@ -2123,6 +2124,44 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
 </script>
 <script>document.addEventListener('keydown',function(e){if((e.key==='g'||e.key==='G')&&!/input|textarea/i.test(e.target.tagName||'')&&!e.metaKey&&!e.ctrlKey)document.body.classList.toggle('grid8')});</script>
 <script>
+/* RLWRLD: pixels blink in and out, sweeping left to right, until the logo is built */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,NS='http://www.w3.org/2000/svg';
+  function ghosts(svg){
+    if(svg._g)return svg._g;var on={},out=[];
+    [].forEach.call(svg.querySelectorAll('rect'),function(r){on[r.getAttribute('x')+','+r.getAttribute('y')]=1});
+    for(var y=0;y<4;y++)for(var x=0;x<28;x++){if(on[x+','+y])continue;
+      var g=document.createElementNS(NS,'rect');g.setAttribute('x',x);g.setAttribute('y',y);g.setAttribute('width','1.02');g.setAttribute('height','1.02');g.setAttribute('class','rw-ghost');g.setAttribute('aria-hidden','true');svg.appendChild(g);out.push(g)}
+    return svg._g=out;
+  }
+  function seq(t0,n){var s=[],t=t0;for(var i=0;i<n;i++){s.push([t,1]);t+=40+Math.random()*70;s.push([t,0]);t+=30+Math.random()*80}return {s:s,t:t}}
+  function play(svg){
+    if(svg._raf)cancelAnimationFrame(svg._raf);
+    svg.classList.remove('rw-done');
+    var items=[],end=0,real=[].slice.call(svg.querySelectorAll('rect:not(.rw-ghost)'));
+    real.forEach(function(r){var x=+r.getAttribute('x'),q=seq(x*26+Math.random()*220,1+(Math.random()*3|0));q.s.push([q.t,1]);items.push({el:r,s:q.s});end=Math.max(end,q.t)});
+    ghosts(svg).forEach(function(g){if(Math.random()<.45)return;var x=+g.getAttribute('x'),q=seq(Math.max(0,x*26-80+Math.random()*260),1+(Math.random()*2|0));items.push({el:g,s:q.s});end=Math.max(end,q.t)});
+    var start=performance.now();
+    (function tick(now){var t=now-start;
+      items.forEach(function(it){var v=0;for(var i=0;i<it.s.length&&it.s[i][0]<=t;i++)v=it.s[i][1];it.el.style.opacity=v});
+      if(t<end+40){svg._raf=requestAnimationFrame(tick);return}
+      svg._raf=0;items.forEach(function(it){it.el.style.opacity=''});svg.classList.add('rw-done');
+    })(start);
+  }
+  window.rwPixel=function(a){
+    var svg=a&&a.querySelector('.rw-mark');if(!svg)return;
+    if(reduce||!document.documentElement.classList.contains('motion')){svg.classList.add('rw-done');return}
+    if(svg._raf){cancelAnimationFrame(svg._raf);svg._raf=0}
+    [].forEach.call(svg.querySelectorAll('rect'),function(r){r.style.opacity=''});
+    svg.classList.remove('rw-done');
+    if(svg._io)svg._io.disconnect();
+    /* wait for the sheet to slide up, then play once the logo is in view */
+    var io=svg._io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();svg._io=0;setTimeout(function(){play(svg)},260)},{threshold:.5});
+    setTimeout(function(){if(svg._io===io)io.observe(svg)},200);
+  };
+})();
+</script>
+<script>
 /* case studies: bento cards open a bottom sheet with the full case */
 (function(){
   var sheet=document.getElementById('case-sheet');if(!sheet)return;
@@ -2136,7 +2175,7 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
     a.classList.add('open','in');a.querySelectorAll('.step,.cs-media > *,.meta > *').forEach(function(e){e.classList.add('in')});
     var b=a.querySelector('.cmore');if(b)b.setAttribute('aria-expanded','true');
     bodyEl.appendChild(a);bodyEl.scrollTop=0;cur=id;
-    var t=a.querySelector('h3');titleEl.innerHTML=t?t.innerHTML.replace(/<br\s*\/?>/g,' '):'';
+    var t=a.querySelector('h3');titleEl.innerHTML=t?t.innerHTML.replace(/<br\s*\/?>/g,' '):'';    if(window.rwPixel)window.rwPixel(a);
   }
   function open(id,push){
     if(ids.indexOf(id)<0)return;clearTimeout(closing);
