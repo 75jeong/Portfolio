@@ -70,7 +70,7 @@
     addEventListener('resize',paint);onLang.push(paint);paint()}
 
   /* reveals + count-up */
-  $$('.tl > li,.work li,.skills > div,.pf > a,.ct-l,.form,.cs-media > *,.step,.pn,.ow tbody tr,.ff-art').forEach(function(el){el.classList.add('rv')});
+  $$('.tl > li,.work li,.skills > div,.pf > a,.ct-l,.form,.cs-media > *,.step,.pn,.ow tbody tr').forEach(function(el){el.classList.add('rv')});
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');
     $$('[data-count]',e.target).forEach(function(b){var m=b.textContent.match(/^(\d+)(.*)$/),t0=performance.now();if(!m)return;
       (function f(t){var k=Math.min(1,(t-t0)/1100),e2=1-Math.pow(1-k,3);b.textContent=Math.round(+m[1]*e2)+m[2];if(k<1)requestAnimationFrame(f)})(t0)});

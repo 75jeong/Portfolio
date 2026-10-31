@@ -1,7 +1,7 @@
 /* 8pt grid: every margin, padding, gap and radius is a multiple of 8px. Fluid values step at 768 / 1200px instead of scaling, so they stay on the grid at every width. Press G to show the grid. */
-:root{--g1:16px;--g2:80px;--g3:32px;--g4:88px;--g5:16px;--g6:64px;--g7:40px;--g8:64px;--g9:24px;--g10:8px;--g11:24px;--g12:16px;--g13:16px;--g14:64px;--g15:32px;--g16:144px;--g17:32px;--g18:64px;--g19:56px;}
-@media (min-width:768px){:root{--g1:16px;--g2:120px;--g3:56px;--g4:128px;--g5:24px;--g6:104px;--g7:56px;--g8:112px;--g9:32px;--g10:16px;--g11:48px;--g12:32px;--g13:16px;--g14:96px;--g15:40px;--g16:200px;--g17:32px;--g18:80px;--g19:80px;}}
-@media (min-width:1200px){:root{--g1:24px;--g2:160px;--g3:80px;--g4:160px;--g5:32px;--g6:144px;--g7:72px;--g8:160px;--g9:32px;--g10:32px;--g11:64px;--g12:48px;--g13:16px;--g14:120px;--g15:48px;--g16:256px;--g17:40px;--g18:96px;--g19:96px;}}
+:root{--g1:16px;--g2:80px;--g3:32px;--g4:88px;--g5:16px;--g6:64px;--g7:40px;--g8:64px;--g9:24px;--g10:8px;--g11:24px;--g12:16px;--g13:16px;--g14:64px;--g15:32px;--g16:144px;--g17:32px;}
+@media (min-width:768px){:root{--g1:16px;--g2:120px;--g3:56px;--g4:128px;--g5:24px;--g6:104px;--g7:56px;--g8:112px;--g9:32px;--g10:16px;--g11:48px;--g12:32px;--g13:16px;--g14:96px;--g15:40px;--g16:200px;--g17:32px;}}
+@media (min-width:1200px){:root{--g1:24px;--g2:160px;--g3:80px;--g4:160px;--g5:32px;--g6:144px;--g7:72px;--g8:160px;--g9:32px;--g10:32px;--g11:64px;--g12:48px;--g13:16px;--g14:120px;--g15:48px;--g16:256px;--g17:40px;}}
 
 @font-face{font-family:"Open Sauce Sans";font-weight:400;font-display:swap;src:url(fonts/open-sauce-sans-400.woff2) format("woff2")}
 @font-face{font-family:"Open Sauce Sans";font-weight:500;font-display:swap;src:url(fonts/open-sauce-sans-500.woff2) format("woff2")}
@@ -380,40 +380,6 @@ html.motion .ow tbody tr.rv{transform:none}
   .ow-c{margin-top:8px}
 }
 @media print{.ow-sec{margin-top:24pt}.ow td{padding-block:5pt}.ow tr{break-inside:avoid}}
-
-/* ---------- footer (illustrated) ---------- */
-.ff{--ff-bg:#111b24;--ff-fg:#eef1f4;--ff-mute:rgba(238,241,244,.62);--ff-line:rgba(238,241,244,.18);position:relative;background:var(--ff-bg);color:var(--ff-fg);overflow:hidden;isolation:isolate}
-.ff ::selection{background:var(--ff-fg);color:var(--ff-bg)}
-.ff-in{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:var(--g18) max(24px,env(safe-area-inset-right,0)) 32px max(24px,env(safe-area-inset-left,0))}
-@media (min-width:768px){.ff-in{padding-left:64px;padding-right:64px}}
-.ff-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px 64px}
-.ff-brand{display:flex;flex-direction:column;gap:24px;max-width:456px}
-.ff-logo{display:inline-flex;align-items:center;gap:16px;width:max-content}
-.ff-logo .f-mark{width:64px;height:auto;color:var(--ff-fg)}
-.ff-logo span{font-size:24px;font-weight:500;letter-spacing:-.02em}
-.ff-desc{color:var(--ff-mute);font-size:16px;line-height:1.5}
-.ff-mailrow{display:flex;align-items:center;gap:8px}
-.ff-mail{font-size:20px;font-weight:500;letter-spacing:-.01em;color:var(--ff-fg);border-bottom:1px solid var(--ff-line);padding-bottom:0}
-.ff-mail:hover{border-color:var(--ff-fg)}
-.ff .copy-note{color:#9fc0ff}
-.ff-soc{display:flex;gap:16px;margin-top:8px}
-.ff-soc a{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;color:var(--ff-fg);transition:background-color .3s,transform .4s var(--ease)}
-.ff-soc a:hover{background:rgba(238,241,244,.12);transform:translateY(-2px)}
-.ff-soc svg{width:24px;height:24px}
-.ff-cols{display:grid;grid-template-columns:repeat(3,max-content);gap:32px 64px}
-.f-col{display:flex;flex-direction:column;gap:16px;font-size:16px}
-.f-col .f-h{font-weight:500;color:var(--ff-fg);margin-bottom:8px}
-.f-col a{color:var(--ff-mute);width:max-content;transition:color .2s}
-.f-col a:hover{color:var(--ff-fg)}
-.f-col a[aria-current="page"]{color:var(--ff-fg)}
-.ff-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;margin-top:var(--g19);padding-top:24px;border-top:1px solid var(--ff-line);font-size:15px}
-.ff-art{position:relative;z-index:1;margin-top:-80px;height:clamp(320px,44vw,640px)}
-.ff-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 32%);mask-image:linear-gradient(to bottom,transparent 0,#000 32%)}
-html.motion .ff-art img{transform:scale(1.06);transition:transform 2.4s var(--ease)}
-html.motion .ff-art.in img{transform:none}
-@media screen and (max-width:1023px){.ff-top{grid-template-columns:1fr}.ff-cols{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}}
-@media screen and (max-width:640px){.ff-cols{grid-template-columns:1fr 1fr}.ff-cols .f-col:nth-child(2){grid-row:span 2}.ff-bottom{flex-direction:column}}
-@media print{.ff-art,.ff-soc{display:none}.ff{background:#fff;color:#111}.ff *{color:#111!important}}
 
 /* 8pt grid overlay (press G) */
 body.grid8::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:linear-gradient(to bottom,rgba(255,0,80,.12) 1px,transparent 1px),linear-gradient(to right,rgba(255,0,80,.12) 1px,transparent 1px);background-size:8px 8px}
