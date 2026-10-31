@@ -802,6 +802,27 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 .ft-cv:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
 @media (max-width:640px){.ft-cv{margin-left:0;margin-top:8px}}
 @media print{.ft-cv{display:none}}
+
+/* hero buttons: arrive after the summary box, lean toward the pointer, small icon cues on hover */
+@media screen{
+  html.motion .hero-cta .hero-btn{opacity:0;transform:translate3d(0,24px,0)}
+  html.motion .facts.in ~ .hero-cta .hero-btn{opacity:1;transform:none}
+  html.motion .facts.in ~ .hero-cta .hb-main:not(.mag){transition-delay:0s,0s,0s,0s,.24s,.24s}
+  html.motion .facts.in ~ .hero-cta .hb-sub:not(.mag){transition-delay:0s,0s,0s,0s,.36s,.36s}
+}
+.hero-btn{position:relative;overflow:hidden;isolation:isolate;translate:var(--mx,0) var(--my,0)}
+.hero-btn.mag{transition:translate .18s linear,background-color .2s,border-color .2s,color .2s}
+.hero-btn:not(.mag){transition:translate .6s cubic-bezier(.2,.7,.2,1),background-color .2s,border-color .2s,color .2s,opacity .6s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.hero-btn > *{translate:var(--ix,0) var(--iy,0);transition:translate .6s cubic-bezier(.2,.7,.2,1)}
+.hero-btn.mag > *{transition:translate .18s linear}
+.hb-main::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);transform:translateX(-120%)}
+.hb-main:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.hb-main svg{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.hb-main:hover svg{transform:rotate(-8deg) scale(1.08)}
+.hb-sub svg path{transform-box:fill-box}
+.hb-sub:hover svg{animation:cv-drop .9s cubic-bezier(.2,.7,.2,1)}
+@keyframes cv-drop{0%{transform:none}35%{transform:translateY(3px)}60%{transform:translateY(-1px)}100%{transform:none}}
+@media (prefers-reduced-motion:reduce){.hb-main::after{display:none}.hb-sub:hover svg,.hb-main:hover svg{animation:none;transform:none}}
 /* 8pt grid: every margin, padding, gap and radius is a multiple of 8px; fluid values step at 768 / 1200px. Press G to show the grid. */
 :root{--g1:16px;--g2:24px;--g3:40px;--g4:16px;--g5:48px;--g6:152px;--g7:32px;--g8:72px;--g9:176px;--g10:80px;--g11:32px;--g12:32px;--g13:64px;--g14:40px;--g15:96px;--g16:120px;--g17:16px;--g18:32px;--g19:16px;--g20:8px;--g21:16px;--g22:24px;--g23:16px;--g24:48px;--g25:48px;}
 @media (min-width:768px){:root{--g1:48px;--g2:48px;--g3:64px;--g4:32px;--g5:80px;--g6:208px;--g7:80px;--g8:112px;--g9:248px;--g10:120px;--g11:64px;--g12:48px;--g13:96px;--g14:80px;--g15:136px;--g16:176px;--g17:16px;--g18:48px;--g19:16px;--g20:16px;--g21:32px;--g22:32px;--g23:24px;--g24:64px;--g25:64px;}}
@@ -2066,6 +2087,13 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   document.documentElement.addEventListener('mouseenter',function(){c.classList.add('vis')});
   /* the sheet opens or closes under a still pointer: re-read what is under it */
   new MutationObserver(function(){setTimeout(function(){pick(document.elementFromPoint(tx,ty))},60)}).observe(root,{attributes:true,attributeFilter:['class','data-lang']});
+  /* hero buttons lean toward the pointer, like the booking button */
+  [].forEach.call(document.querySelectorAll('.hero-btn'),function(hb){
+    function cl(v,m){return Math.max(-m,Math.min(m,v)).toFixed(1)+'px'}
+    hb.addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;var r=hb.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);hb.classList.add('mag');
+      hb.style.setProperty('--mx',cl(dx*.25,12));hb.style.setProperty('--my',cl(dy*.35,8));hb.style.setProperty('--ix',cl(dx*.08,4));hb.style.setProperty('--iy',cl(dy*.12,3))});
+    hb.addEventListener('pointerleave',function(){hb.classList.remove('mag');['--mx','--my','--ix','--iy'].forEach(function(k){hb.style.setProperty(k,'0px')})});
+  });
   /* magnetic button */
   var b=document.querySelector('.book');if(!b)return;
   var R=110;
