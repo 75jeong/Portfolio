@@ -787,7 +787,7 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 @media print{.cur{display:none!important}}
 
 /* hero: contact + CV buttons under the summary box */
-.hero-cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
 .hero-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 .9375rem/1 var(--f-body);text-decoration:none;transition:background-color .2s,border-color .2s,color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
 .hb-main{background:#F3F1F8;color:#16151D}
 .hb-main:hover{background:#FFD7A8}
@@ -795,7 +795,7 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 .hb-sub:hover{border-color:#F3F1F8}
 .hero-btn:active{transform:scale(.97)}
 .hero-btn:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
-@media (max-width:640px){.hero-cta{margin-top:16px}.hero-btn{flex:1 1 auto;justify-content:center}}
+@media (max-width:640px){.hero-cta{margin-top:24px}.hero-btn{flex:1 1 auto;justify-content:center}}
 @media print{.hero-cta{display:none}}
 
 .ft-cv{display:inline-flex;align-items:center;gap:8px;margin:24px 0 0 8px;padding:16px;border-radius:999px;border:1px solid rgba(255,255,255,.32);background:rgba(20,16,22,.38);backdrop-filter:blur(8px);color:#F4EFE8;font:600 .9375rem/1 var(--f-body);text-decoration:none;vertical-align:top;transition:border-color .2s}
@@ -821,9 +821,9 @@ html[data-lang="ko"] :is(.book,.ft-cv,.hero-btn,.cta,.btn) .ko{position:relative
 /* hero buttons: arrive after the summary box, lean toward the pointer, small icon cues on hover */
 @media screen{
   html.motion .hero-cta .hero-btn{opacity:0;transform:translate3d(0,24px,0)}
-  html.motion .facts.in ~ .hero-cta .hero-btn{opacity:1;transform:none}
-  html.motion .facts.in ~ .hero-cta .hb-main:not(.mag){transition-delay:0s,0s,0s,0s,.24s,.24s}
-  html.motion .facts.in ~ .hero-cta .hb-sub:not(.mag){transition-delay:0s,0s,0s,0s,.36s,.36s}
+  html.motion .hero-cta.in .hero-btn{opacity:1;transform:none}
+  html.motion .hero-cta.in .hb-main:not(.mag){transition-delay:0s,0s,0s,0s,.24s,.24s}
+  html.motion .hero-cta.in .hb-sub:not(.mag){transition-delay:0s,0s,0s,0s,.36s,.36s}
 }
 .hero-btn{position:relative;overflow:hidden;isolation:isolate;translate:var(--mx,0) var(--my,0)}
 .hero-btn.mag{transition:translate .18s linear,background-color .2s,border-color .2s,color .2s}
@@ -925,11 +925,6 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <p class="lede en">I started in 2000 as a founding member of a student venture in Korea and moved to Tokyo in 2010 to join LINE (then Naver Japan). For 20+ years I have designed products from zero to one, for large Japanese companies and seed-stage startups alike.</p><p class="lede ko">2000년 학생 벤처 창업 멤버로 디자인을 시작했고 2010년 LINE(당시 Naver Japan)에 입사하면서 일본으로 건너왔습니다. 일본의 대기업부터 시드 단계 스타트업까지, 주로 0에서 1을 만드는 프로덕트를 20년 넘게 디자인해 왔습니다.</p>
 <p class="lede ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。どのプロジェクトも「問題定義 → リサーチ → 制約 → 決定 → 改善」の順に読めます。</p>
 <p class="lede en">This portfolio focuses less on the size of outcomes and more on why I made each call. Every project reads in the same order: problem, research, constraints, decision, iteration.</p><p class="lede ko">이 포트폴리오는 성과가 얼마나 컸는지보다 "왜 그렇게 결정했는지"에 초점을 맞췄습니다. 모든 프로젝트를 문제정의 → 리서치 → 제약조건 → 결정 → 개선 순서로 정리했습니다.</p>
-<div class="facts">
-<div><b>20+</b><span class="ja">年のデザイン経験</span><span class="en">years designing</span><span class="ko">년 디자인 경력</span></div>
-<div><b>2010</b><span class="ja">来日・LINE入社</span><span class="en">moved to Tokyo, LINE</span><span class="ko">일본으로 · LINE 입사</span></div>
-<div><b>30+</b><span class="ja">社のクライアント</span><span class="en">client companies</span><span class="ko">곳의 클라이언트</span></div>
-</div>
 <div class="hero-cta">
 <a class="btn hero-btn hb-main" href="#contact"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">문의하기</span></a>
 <a class="btn hero-btn hb-sub" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
@@ -1766,7 +1761,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
   function afterHero(){
     var ledes=Array.prototype.filter.call(document.querySelectorAll('.hero .lede'),function(p){return p.classList.contains(root.dataset.lang||'ja')});
     ledes.forEach(function(p,i){reveal(p,i*140)});
-    var fx=document.querySelector('.facts');if(fx){reveal(fx,300);fx.querySelectorAll('b').forEach(function(b,i){countUp(b,450+i*150)})}
+    var hc=document.querySelector('.hero-cta');if(hc)setTimeout(function(){hc.classList.add('in')},300);
     var dn=document.querySelector('.draftnote');if(dn)reveal(dn,700);
   }
   document.querySelectorAll('.hero h1').forEach(function(h){h.classList.add('in')});
