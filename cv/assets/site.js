@@ -17,6 +17,9 @@
     e.preventDefault();document.body.classList.add('leaving');setTimeout(function(){location.href=h},300)});
   addEventListener('pageshow',function(e){if(e.persisted)document.body.classList.remove('leaving')});
 
+  /* G: toggle the 8px grid overlay */
+  document.addEventListener('keydown',function(e){if((e.key==='g'||e.key==='G')&&!/input|textarea/i.test((e.target.tagName||''))&&!e.metaKey&&!e.ctrlKey)document.body.classList.toggle('grid8')});
+
   /* Tokyo clock */
   var clock=$('#clock');
   if(clock){var fmt=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',hour:'numeric',minute:'2-digit'});
