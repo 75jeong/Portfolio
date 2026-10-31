@@ -801,7 +801,21 @@ html.has-cur :is(input,textarea,[contenteditable="true"]){cursor:text!important}
 .ft-cv:hover{border-color:#FFD7A8;color:#FFD7A8}
 .ft-cv:focus-visible{outline:2px solid #FFD7A8;outline-offset:3px}
 @media (max-width:640px){.ft-cv{margin-left:0;margin-top:8px}}
+@media screen{
+  html.motion .contact .ft-cv{opacity:0;transform:translate3d(0,28px,0)}
+  html.motion .contact .ft-cv.in{opacity:1;transform:none}
+}
+.contact .ft-cv{position:relative;isolation:isolate;translate:var(--mx,0) var(--my,0);transition:translate .6s cubic-bezier(.2,.7,.2,1),border-color .2s,color .2s,opacity .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.contact .ft-cv.mag{transition:translate .18s linear,border-color .2s,color .2s,opacity .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.ft-cv > *{translate:var(--ix,0) var(--iy,0);transition:translate .6s cubic-bezier(.2,.7,.2,1)}
+.ft-cv.mag > *{transition:translate .18s linear}
+.ft-cv:hover svg{animation:cv-drop .9s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.ft-cv:hover svg{animation:none}}
+
 @media print{.ft-cv{display:none}}
+.ft-cv{height:48px;padding:0 16px}
+/* Hangul sits optically low in Noto Sans KR at line-height 1: lift the label so it centers with the icon */
+html[data-lang="ko"] :is(.book,.ft-cv,.hero-btn,.cta,.btn) .ko{position:relative;top:-.1em}
 
 /* hero buttons: arrive after the summary box, lean toward the pointer, small icon cues on hover */
 @media screen{
@@ -1794,6 +1808,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
     contact.querySelectorAll('.contact .label').forEach(function(l){reveal(l,250)});
     if(mailEl)type(mailEl,{delay:550,total:1100,max:45,min:22,hold:2200});
     var bk=contact.querySelector('.book');if(bk)reveal(bk,800);
+    var fc=contact.querySelector('.ft-cv');if(fc)reveal(fc,920);
     contact.querySelectorAll('.contact .links a').forEach(function(a,i){reveal(a,1000+i*90)});
     var f=contact.querySelector('footer');if(f)reveal(f,1300);
   },{threshold:0.3});cio.observe(contact)}
@@ -2088,7 +2103,7 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   /* the sheet opens or closes under a still pointer: re-read what is under it */
   new MutationObserver(function(){setTimeout(function(){pick(document.elementFromPoint(tx,ty))},60)}).observe(root,{attributes:true,attributeFilter:['class','data-lang']});
   /* hero buttons lean toward the pointer, like the booking button */
-  [].forEach.call(document.querySelectorAll('.hero-btn'),function(hb){
+  [].forEach.call(document.querySelectorAll('.hero-btn,.ft-cv'),function(hb){
     function cl(v,m){return Math.max(-m,Math.min(m,v)).toFixed(1)+'px'}
     hb.addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;var r=hb.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);hb.classList.add('mag');
       hb.style.setProperty('--mx',cl(dx*.25,12));hb.style.setProperty('--my',cl(dy*.35,8));hb.style.setProperty('--ix',cl(dx*.08,4));hb.style.setProperty('--iy',cl(dy*.12,3))});
