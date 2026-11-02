@@ -752,6 +752,17 @@ html.has-cur a.tl-link{cursor:none}
 .sheet-body{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:32px 24px 64px}
 @media (min-width:768px){.sheet-body{padding:48px 64px 96px}.sheet-bar{padding-inline:32px}}
 html.sheet-open{overflow:hidden}
+/* booking sheet: cal.com in the same bottom sheet as the cases */
+.book-body{position:relative;padding:0!important;overflow:hidden;display:flex}
+.book-frame{position:relative;z-index:1;flex:1;width:100%;height:100%;border:0;background:transparent;opacity:0;transition:opacity .3s}
+.book-frame.ok{opacity:1}
+.book-wait{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-size:var(--s-0)}
+.sheet-ext{flex:none;width:136px;font-size:var(--s-0);color:var(--muted);text-decoration:none;white-space:nowrap}
+.sheet-ext:hover{color:var(--ink)}
+.book-sheet .sheet-x{margin-left:auto}
+.book-sheet .sheet-t{position:absolute;left:50%;transform:translateX(-50%);max-width:calc(100% - 336px)}
+@media (max-width:640px){.sheet-ext{width:auto;order:2}.book-sheet .sheet-t{position:static;transform:none;max-width:none;text-align:left;order:1}.book-sheet .sheet-x{order:3;margin-left:8px}}
+
 @media (max-width:640px){.sheet-panel{inset:calc(8px + env(safe-area-inset-top,0px)) 0 0 0;border-radius:16px 16px 0 0}}
 #cases .sheet-body .case{border-top:0;padding-block:0}
 .sheet-body .case .cmore{display:none!important}
@@ -1412,6 +1423,18 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <button type="button" class="sheet-btn sheet-x" data-sheet-close aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
 </div>
 <div class="sheet-body"></div>
+</div>
+</div>
+<div class="sheet book-sheet" id="book-sheet" hidden>
+<div class="sheet-backdrop" data-book-close></div>
+<div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="book-title" tabindex="-1">
+<div class="sheet-bar">
+<span class="sheet-handle" aria-hidden="true"></span>
+<a class="sheet-ext" href="https://cal.com/jeong75/30min" target="_blank" rel="noopener" data-book-ext><span class="ja">新しいタブで開く</span><span class="en">Open in new tab</span><span class="ko">새 탭에서 열기</span> ↗</a>
+<p class="sheet-t" id="book-title"><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span></p>
+<button type="button" class="sheet-btn sheet-x" data-book-close aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+</div>
+<div class="sheet-body book-body"><p class="book-wait"><span class="ja">カレンダーを読み込んでいます…</span><span class="en">Loading the calendar…</span><span class="ko">캘린더를 불러오는 중…</span></p></div>
 </div>
 </div>
 </section>
@@ -2220,6 +2243,45 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   /* deep link: aftworks.com/#onepay opens that case */
   var hid=location.hash.slice(1);
   if(ids.indexOf(hid)>=0){var go=function(){try{history.replaceState({sheet:hid},'','#'+hid)}catch(e){}open(hid,false)};if(root.classList.contains('loading'))addEventListener('pf:open',go,{once:true});else setTimeout(go,300)}
+})();
+</script>
+<script>
+/* booking: open cal.com inside a bottom sheet instead of a new tab */
+(function(){
+  var sheet=document.getElementById('book-sheet');if(!sheet)return;
+  var root=document.documentElement,panel=sheet.querySelector('.sheet-panel'),body=sheet.querySelector('.book-body'),frame=null,last=null,closing=0,
+      reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,URL='https://cal.com/jeong75/30min';
+  function open(push){
+    clearTimeout(closing);
+    if(!frame){frame=document.createElement('iframe');frame.className='book-frame';frame.title='Cal.com';frame.setAttribute('allow','payment');
+      frame.addEventListener('load',function(){frame.classList.add('ok')});frame.src=URL+'?embed=true&theme=dark&layout=month_view';body.appendChild(frame)}
+    if(sheet.hidden){last=document.activeElement;sheet.hidden=false;root.classList.add('sheet-open');requestAnimationFrame(function(){requestAnimationFrame(function(){sheet.classList.add('on')})})}
+    panel.focus({preventScroll:true});
+    if(push!==false){try{history.pushState({book:1},'','#book')}catch(e){}}
+  }
+  function close(fromPop){
+    if(sheet.hidden)return;sheet.classList.remove('on');panel.style.transform='';
+    closing=setTimeout(function(){sheet.hidden=true;if(document.getElementById('case-sheet').hidden)root.classList.remove('sheet-open');if(last&&last.focus)last.focus({preventScroll:true})},reduce?0:420);
+    if(!fromPop&&history.state&&history.state.book){try{history.back()}catch(e){}}
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-book-close]')){close();return}
+    var a=e.target.closest&&e.target.closest('a[href^="'+URL+'"]');
+    if(!a||a.hasAttribute('data-book-ext')||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    e.preventDefault();open();
+  });
+  document.addEventListener('keydown',function(e){if(!sheet.hidden&&e.key==='Escape'){e.preventDefault();close()}});
+  addEventListener('popstate',function(e){if(e.state&&e.state.book)open(false);else close(true)});
+  addEventListener('hashchange',function(){if(location.hash==='#book')open(false)});
+  /* the custom cursor can't follow into the iframe: hide it there */
+  body.addEventListener('mouseover',function(e){if(e.target===frame){var c=document.querySelector('.cur');if(c)c.classList.remove('vis')}});
+  /* drag the bar down to close */
+  var bar=sheet.querySelector('.sheet-bar'),y0=null,dy=0;
+  bar.addEventListener('pointerdown',function(e){if(e.target.closest('button,a'))return;y0=e.clientY;dy=0;panel.style.transition='none';bar.setPointerCapture(e.pointerId)});
+  bar.addEventListener('pointermove',function(e){if(y0===null)return;dy=Math.max(0,e.clientY-y0);panel.style.transform='translateY('+dy+'px)'});
+  function end(){if(y0===null)return;panel.style.transition='';y0=null;if(dy>120)close();else panel.style.transform=''}
+  bar.addEventListener('pointerup',end);bar.addEventListener('pointercancel',end);
+  if(location.hash==='#book'){var go=function(){try{history.replaceState({book:1},'','#book')}catch(e){}open(false)};if(root.classList.contains('loading'))addEventListener('pf:open',go,{once:true});else setTimeout(go,300)}
 })();
 </script>
 </body>
