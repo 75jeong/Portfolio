@@ -56,12 +56,12 @@
   <header class="case-h">
     <p class="case-no">CASE 03 · 2022</p>
     <h1 class="case-t">Kyash Widget</h1>
-    <div class="case-k"><p class="ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</p><p class="en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</p><p class="ko">사업 우선순위에서는 밀려 있었습니다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔습니다.</p></div>
+    <div class="case-k"><p class="ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</p><p class="en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</p><p class="ko">사업 우선순위에서는 밀려 있었다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔다.</p></div>
     <div class="case-meta"><dl>
 <dt>Client</dt><dd>Kyash Inc.</dd>
 <dt>Role</dt><dd>Product Designer</dd>
 <dt>Stage</dt><dd>Growth</dd>
-<dt>Scope</dt><dd>iOS Widget</dd>
+<dt>Scope</dt><dd>iOS / Android Widget</dd>
 <dt>Team</dt><dd><span class="ja">Mobileチーム（10%ルール）</span><span class="en">Mobile team (10% rule)</span><span class="ko">Mobile 팀 (10% 룰)</span></dd>
 </dl><div class="case-links">
 <a href="https://note.com/jinho/n/n629ea2fb964d" rel="noopener" target="_blank">note: Kyash Widget ↗</a>
@@ -71,17 +71,19 @@
   <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
-<p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했습니다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제에 실패하는 경우가 많았습니다</strong>.</p>
+<p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제에 실패하는 경우가 많았다</strong>.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja">
-<li>自分自身がKyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
-<li>ウィジェットが効くのは「頻繁に使い、一瞬の確認で満足が得られる機能」。複数の候補を比べ、残高表示が最も価値が高いと判断。</li>
+<li>「自分が毎日使って満足できるか」を判断の軸にしている。Kyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
+<li>ウィジェットに載せる候補として、残高、最近の利用履歴、カード番号の表示などを並べ、「今ユーザーがいちばん欲しいものは何か」をチームで話し合って優先順位を決めた。</li>
+<li>方向を決めたあと、社内インタビューで使い方を確かめ、最終的なUXを決めた。</li>
 </ul>
 <ul class="en">
-<li>As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
-<li>Widgets work best for features used often, where a glance is enough. I compared several candidates and chose the balance as the most valuable.</li>
-</ul><ul class="ko"><li>저 역시 Kyash 사용자로서, 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯은 "자주 쓰고, 잠깐 확인하는 것만으로 충분한 기능"에서 빛을 발한다. 여러 후보를 견줘 본 끝에 잔액 표시가 가장 쓸모 있다고 판단했다.</li></ul>
+<li>My test is whether I'd be happy using it every day. As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
+<li>We listed what the widget could show, including the balance, recent transactions and the card number, and agreed as a team on what users wanted most right now.</li>
+<li>Once the direction was set, internal interviews confirmed how people would use it and settled the final UX.</li>
+</ul><ul class="ko"><li>"내가 매일 쓰면서 만족할 수 있는가"를 판단의 기준으로 삼는다. Kyash 사용자로서 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯에 넣을 후보로 잔액, 최근 이용 내역, 카드 번호 표시 등을 나열하고, "지금 사용자가 가장 원하는 것은 무엇인가"를 팀에서 논의해 우선순위를 정했다.</li><li>방향을 정한 뒤 사내 인터뷰로 사용 방식을 확인하고 최종 UX를 결정했다.</li></ul>
 </div></li>
 <li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
 <ul class="ja">
@@ -100,24 +102,42 @@
 <p class="q ja">作る前に「なぜ作るのか」を一文にしてチームと合わせる</p>
 <p class="q en">Agree on "why we're building this" in one sentence before building</p><p class="q ko">만들기 전에 "왜 만드는가"를 한 문장으로 정리해 팀과 공유한다</p>
 <p class="a ja">10%ルールの時間は限られていて、機能を詰め込むと完成しません。「支払い前の迷いをなくし、決済失敗を減らす」という目的が、何を入れないかの判断基準になりました。</p>
-<p class="a en">10% time is limited, and a feature-stuffed widget would never ship. We used one purpose to decide what to leave out: "remove the hesitation before paying and reduce failed payments."</p><p class="a ko">10% 룰로 쓸 수 있는 시간은 한정적이라, 이것저것 넣다 보면 끝내 완성하지 못합니다. "결제 직전의 망설임을 없애고, 결제가 막히는 일을 줄인다"는 목적이 무엇을 빼야 할지 정하는 기준이 되었습니다.</p>
+<p class="a en">10% time is limited, and a feature-stuffed widget would never ship. We used one purpose to decide what to leave out: "remove the hesitation before paying and reduce failed payments."</p><p class="a ko">10% 룰로 쓸 수 있는 시간은 한정적이라, 이것저것 넣다 보면 끝내 완성하지 못한다. "결제 직전의 망설임을 없애고, 결제가 막히는 일을 줄인다"는 목적이 무엇을 빼야 할지 정하는 기준이 되었다.</p>
 </div>
 <div>
-<p class="q ja">表示は残高だけ。支払い元の切り替えは長押しに</p>
-<p class="q en">Show only the balance; switch funding source with a long press</p><p class="q ko">화면엔 잔액만 보여주고, 결제 수단 변경은 길게 눌러서</p>
-<p class="a ja">一目で読めることを最優先にしました。切り替えは毎回必要な操作ではないので、画面には出さず長押しに回しました。</p>
-<p class="a en">Glanceability came first. Switching isn't needed every time, so I kept it off the surface and put it behind a long press.</p><p class="a ko">한눈에 읽히는 게 가장 중요했습니다. 결제 수단 변경은 매번 하는 동작이 아니어서, 화면에 꺼내 두지 않고 길게 누르면 나오도록 했습니다.</p>
+<p class="q ja">表示は残高だけ。利用履歴やカード番号は載せない</p>
+<p class="q en">Show only the balance, not recent transactions or the card number</p><p class="q ko">화면엔 잔액만. 이용 내역과 카드 번호는 넣지 않는다</p>
+<p class="a ja">利用履歴やカード番号も候補にありましたが、レジ前で知りたいのは「今いくら使えるか」だけです。一目で読めることを最優先にし、毎回は必要ない支払い元の切り替えは長押しに回しました。</p>
+<p class="a en">Recent transactions and the card number were on the list, but at the register the only question is "how much can I spend right now?" Glanceability came first, and switching the funding source, which isn't needed every time, went behind a long press.</p><p class="a ko">최근 이용 내역이나 카드 번호도 후보였지만, 계산대 앞에서 알고 싶은 건 "지금 얼마를 쓸 수 있는가"뿐이다. 한눈에 읽히는 걸 가장 우선하고, 매번 하지 않는 결제 수단 변경은 길게 누르면 나오도록 했다.</p>
+</div>
+<div>
+<p class="q ja">個人の口座に加えて、共有口座の残高も表示できるようにする</p>
+<p class="q en">Show shared-account balances alongside the personal one</p><p class="q ko">개인 계좌와 함께 공유 계좌 잔액도 보이게 한다</p>
+<p class="a ja">Kyashには家族やカップルで使う共有口座があります。自分の残高だけでは「今いくら使えるか」に答えきれないので、共有口座も同じウィジェットで確認できるようにしました。</p>
+<p class="a en">Kyash has shared accounts for families and couples. The personal balance alone can't answer "how much can I spend right now?", so shared accounts show in the same widget.</p><p class="a ko">Kyash에는 가족이나 커플이 함께 쓰는 공유 계좌가 있다. 내 잔액만으로는 "지금 얼마를 쓸 수 있는가"에 다 답할 수 없어서, 공유 계좌도 같은 위젯에서 확인할 수 있게 했다.</p>
 </div>
 <div>
 <p class="q ja">決済の失敗を減らす施策としてKPIに結びつけて説明する</p>
 <p class="q en">Frame it as a payment-failure fix tied to KPIs</p><p class="q ko">"결제가 막히는 일을 줄이는 기능"으로, KPI와 엮어서 설명한다</p>
 <p class="a ja">「便利な機能」だと優先度は上がりません。決済失敗の減少は取扱高に直結するので、事業側と同じ言葉で話せます。</p>
-<p class="a en">"Convenient" doesn't raise a priority. Fewer failed payments means more transaction volume, so I could talk to the business side in their terms.</p><p class="a ko">"있으면 편한 기능"이라는 말로는 우선순위가 올라가지 않습니다. 결제가 막히는 일이 줄면 거래액이 곧바로 늘어나니, 사업 쪽과 같은 언어로 대화할 수 있었습니다.</p>
+<p class="a en">"Convenient" doesn't raise a priority. Fewer failed payments means more transaction volume, so I could talk to the business side in their terms.</p><p class="a ko">"있으면 편한 기능"이라는 말로는 우선순위가 올라가지 않는다. 결제가 막히는 일이 줄면 거래액이 곧바로 늘어나니, 사업 쪽과 같은 언어로 대화할 수 있었다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
-<p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。</p>
-<p class="result en">Released as a widget that shows the balance without opening the app.</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했습니다.</p>
+<p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。リリース後、App StoreやXには次のような声が届きました。</p>
+<p class="result en">Released as a widget that shows the balance without opening the app. After launch, App Store reviews and posts on X said things like:</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했다. 출시 후 App Store와 X에는 이런 반응이 이어졌다.</p>
+<ul class="ja">
+<li>家計簿アプリの代わりになる。アプリを開かなくても、個人と共有口座の残高がホーム画面で分かり、支出の管理が直感的になった。</li>
+<li>共有口座を使うカップルや家族から、相手がお金を使ったときに残高の変化をすぐ確認できて便利という声が多かった。</li>
+<li>すっきりしたデザインとグラフ表示が、ホーム画面をカスタマイズするユーザーにも受け入れられた。</li>
+</ul>
+<ul class="en">
+<li>It can replace a budgeting app: personal and shared balances on the home screen, without opening the app, made spending easy to keep track of.</li>
+<li>Couples and families using shared accounts liked seeing the balance change as soon as the other person spent.</li>
+<li>The clean design and the graph view met the standards of people who customize their home screens.</li>
+</ul><ul class="ko"><li>가계부 앱을 대신할 수 있다. 앱을 열지 않아도 개인 계좌와 공유 계좌 잔액을 홈 화면에서 바로 볼 수 있어 지출 관리가 직관적이 됐다.</li><li>공유 계좌를 쓰는 커플과 가족에게서, 상대가 돈을 쓰면 잔액 변화를 바로 확인할 수 있어 편하다는 반응이 많았다.</li><li>깔끔한 디자인과 그래프 표시가 홈 화면을 꾸미는 사용자들의 눈높이도 만족시켰다.</li></ul>
+<p class="result ja">リリース後の数値は追えていません。次に作るなら、決済失敗率をリリース前後で比べられるよう、最初から計測を組み込みます。</p>
+<p class="result en">I couldn't track numbers after launch. Next time, I'd build in measurement from the start so the payment-failure rate can be compared before and after.</p><p class="result ko">출시 후 수치는 추적하지 못했다. 다음에 만든다면 결제 실패율을 출시 전후로 비교할 수 있도록 처음부터 측정을 설계해 두겠다.</p>
 </div></li>
 </ol></div>
   <nav class="pn-wrap" aria-label="Other projects">

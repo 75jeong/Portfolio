@@ -42,21 +42,17 @@
 @font-face{font-family:"Pretendard JP";font-weight:800;font-style:normal;font-display:swap;src:url(assets/fonts/PretendardJP-ExtraBold.subset.woff2) format("woff2")}
 /* Layout: a "decision record" — each case is a document; meta column on the left, the five-stage flow on the right, with the 決定 stage highlighted like a marker pen on a spec. */
 :root{
-  --bg:#F1F2F4; --surface:#FFFFFF; --ink:#15171C; --muted:#5A606C; --line:#D8DBE1;
-  --accent:#2340C8; --decide-bg:#FFF1A8; --decide-edge:#E5C400; --decide-ink:#15171C;
-  --photo-bg:#0B0B0C;
+  --bg:#0E1013; --surface:#16191E; --ink:#ECEEF2; --muted:#9BA2AE; --line:#2A2F37;
+  --accent:#93A5FF; --decide-bg:#3A3413; --decide-edge:#E5C400; --decide-ink:#FFF3B0;
+  --photo-bg:#0B0B0C; color-scheme:dark;
   --f-display:"Bricolage Grotesque","Pretendard JP",system-ui,sans-serif;
   --f-body:"Pretendard JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --s-0:.8125rem; --s-1:.9375rem; --s-2:1.0625rem; --s-3:1.375rem; --s-4:1.875rem; --s-5:clamp(2.4rem,6vw,4.25rem);
   --wrap:84rem;--bg-page:var(--bg);--gutter:var(--g1);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0E1013; --surface:#16191E; --ink:#ECEEF2; --muted:#9BA2AE; --line:#2A2F37;
-  --accent:#93A5FF; --decide-bg:#3A3413; --decide-edge:#E5C400; --decide-ink:#FFF3B0; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1013; --surface:#16191E; --ink:#ECEEF2; --muted:#9BA2AE; --line:#2A2F37;
-  --accent:#93A5FF; --decide-bg:#3A3413; --decide-edge:#E5C400; --decide-ink:#FFF3B0; color-scheme:dark}
+/* dark only: no light theme, whatever the OS or host sets */
+html{background:var(--bg)}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--s-1);line-height:1.8;margin:0;padding-inline:var(--gutter);-webkit-font-smoothing:antialiased}
@@ -287,6 +283,7 @@ footer{padding-block:32px 48px;color:var(--muted);font-size:var(--s-0)}
 @media screen{
   body{font-size:1rem;line-height:1.9}
   .hero-v .hero h1{font-size:clamp(2.6rem,6.2vw,6rem)}
+  @media (max-width:340px){.hero-v .hero h1{font-size:2.1rem}}
   .hero .lede{max-width:40em}
   .hero-v .hero{gap:var(--g7);padding-block:var(--g8) var(--g9)}
   .hero .lede{margin-top:32px}
@@ -447,7 +444,6 @@ body.menu-open{overflow:hidden}
   background:radial-gradient(var(--glow-r,560px) circle at var(--gx,50%) var(--gy,50%),var(--glow-c),transparent 70%) fixed}
 .glow.on{opacity:1}
 .glow-page{--glow-c:rgba(255,255,255,.055)}
-:root[data-theme="light"] .glow-page{--glow-c:rgba(255,255,255,.95)}
 .glow-local{position:absolute}
 .hero-v .glow-local{--glow-c:rgba(206,190,255,.13);--glow-r:640px}
 .contact-v .glow-local{--glow-c:rgba(255,224,190,.10);--glow-r:600px}
@@ -706,13 +702,10 @@ html.has-cur a.tl-link{cursor:none}
 .book.mag .book-in{transition:translate .18s linear}
 
 /* theme toggle (default: dark) */
-:root[data-theme="light"]{color-scheme:light}
 .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,background-color .2s}
 .theme-btn:hover{border-color:var(--muted)}
 .theme-btn svg{transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .3s}
 .theme-btn .i-moon{display:none}
-:root[data-theme="light"] .theme-btn .i-sun{display:none}
-:root[data-theme="light"] .theme-btn .i-moon{display:block}
 @media (prefers-reduced-motion:no-preference){.theme-btn:active svg{transform:rotate(-40deg) scale(.85)}}
 @media (max-width:760px){.theme-btn{width:40px;height:40px}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
@@ -972,6 +965,117 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="sec-head">
 <h2><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></h2>
 </div>
+</div>
+<div class="ld-meta"><span>Jeong Jinho · Portfolio</span><span id="ld-pct">0</span></div>
+</div>
+</div>
+
+<div class="bar noprint"><div class="wrap">
+<a class="mark" href="#top" id="home-link" aria-label="aftworks, Jeong Jinho: back to top"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg><span class="mark-name">Jeong Jinho</span></a>
+<nav aria-label="sections">
+<a href="#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="#cases"><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></a>
+<a href="#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="toggles">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="true" data-lang="ja" id="lang-ja" type="button">JA</button>
+<button aria-pressed="false" data-lang="en" id="lang-en" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" id="lang-ko" type="button">KO</button>
+</div>
+<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+
+<button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+</div>
+</div></div>
+<div class="menu-modal noprint" id="menu-modal" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="menu-head">
+<span class="mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg><span class="mark-name">Jeong Jinho</span></span>
+<button type="button" class="menu-close" id="menu-close" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+</div>
+<nav class="menu-nav" aria-label="sections (mobile)">
+<a href="#top" data-top="1"><span class="ja">トップ</span><span class="en">Top</span><span class="ko">처음으로</span></a>
+<a href="#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="#cases"><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></a>
+<a href="#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="menu-foot">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="true" data-lang="ja" class="menu-lang" type="button">JA</button>
+<button aria-pressed="false" data-lang="en" class="menu-lang" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" class="menu-lang" type="button">KO</button>
+</div>
+<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+</div>
+</div>
+<header class="hero-v" id="top">
+<video aria-hidden="true" autoplay="" class="hero-video" loop="" muted="" playsinline="" poster="assets/poster.jpg" preload="auto"><source src="assets/hero.mp4" type="video/mp4"/></video>
+<img alt="" aria-hidden="true" class="hero-poster" src="assets/poster.jpg"/>
+<div aria-hidden="true" class="hero-shade"></div>
+<div class="wrap hero">
+<div>
+<img class="avatar" src="assets/avatar.webp" width="312" height="312" alt="Jeong Jinho">
+<div class="who">
+<strong>Jeong Jinho <span class="ja">鄭 珍昊</span><span class="ko">정진호</span></strong>
+<span class="label">Product Designer · Tokyo</span>
+</div>
+<h1 class="ja"><span class="ln"><span class="ln-in" style="--i:0">画面ではなく、</span></span><span class="ln"><span class="ln-in" style="--i:1"><span class="hl">事業の判断</span>を</span></span><span class="ln"><span class="ln-in" style="--i:2">デザインする。</span></span></h1>
+<h1 class="en"><span class="ln"><span class="ln-in" style="--i:0">Designing <span class="hl">decisions</span>,</span></span><span class="ln"><span class="ln-in" style="--i:1">not just screens.</span></span></h1><h1 class="ko"><span class="ln"><span class="ln-in" style="--i:0">화면이 아니라</span></span><span class="ln"><span class="ln-in" style="--i:1"><span class="hl">사업의 판단</span>을</span></span><span class="ln"><span class="ln-in" style="--i:2">디자인합니다.</span></span></h1>
+<p class="lede ja">ソウルで2000年に学生ベンチャーの創業メンバーとしてキャリアを始め、2010年にLINE（旧Naver Japan）入社を機に来日。大企業からシードのスタートアップまで、0→1のプロダクトづくりを中心に20年以上デザインをしてきました。</p>
+<p class="lede en">I started in 2000 as a founding member of a student venture in Korea and moved to Tokyo in 2010 to join LINE (then Naver Japan). For 20+ years I have designed products from zero to one, for large Japanese companies and seed-stage startups alike.</p><p class="lede ko">2000년 학생 벤처 창업 멤버로 디자인을 시작했고 2010년 LINE(당시 Naver Japan)에 입사하면서 일본으로 건너왔습니다. 일본의 대기업부터 시드 단계 스타트업까지, 주로 0에서 1을 만드는 프로덕트를 20년 넘게 디자인해 왔습니다.</p>
+<p class="lede ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。どのプロジェクトも「問題定義 → リサーチ → 制約 → 決定 → 改善」の順に読めます。</p>
+<p class="lede en">This portfolio focuses less on the size of outcomes and more on why I made each call. Every project reads in the same order: problem, research, constraints, decision, iteration.</p><p class="lede ko">이 포트폴리오는 성과가 얼마나 컸는지보다 "왜 그렇게 결정했는지"에 초점을 맞췄습니다. 모든 프로젝트를 문제정의 → 리서치 → 제약조건 → 결정 → 개선 순서로 정리했습니다.</p>
+<div class="hero-cta">
+<a class="btn hero-btn hb-main" href="#contact"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">문의하기</span></a>
+<a class="btn hero-btn hb-sub" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
+</div>
+</div>
+<figure class="photo" style="margin:0">
+<img alt="Jeong Jinho portrait" src="assets/photo.jpg">
+</img></figure>
+</div>
+</header>
+<main class="wrap">
+<!-- HOW I DECIDE -->
+<section id="how">
+<div class="sec-head">
+<h2><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></h2>
+<p class="ja">プロジェクトの規模が違っても、決めるときに立ち返る問いは同じです。下のケーススタディはすべて、この3つのどれかで説明できます。</p>
+<p class="en">Project sizes vary, but the questions I return to when deciding stay the same. Every case study below traces back to one of these three.</p><p class="ko">프로젝트 규모는 제각각이어도 결정을 내릴 때 스스로에게 던지는 질문은 늘 같습니다. 아래 케이스 스터디도 모두 이 세 가지 중 하나에서 출발했습니다.</p>
+</div>
+<div class="principles">
+<div class="pr">
+<span class="label">01</span>
+<h3 class="ja">「なぜ作るのか」を先に言葉にする</h3>
+<h3 class="en">Put "why build this" into words first</h3><h3 class="ko">"왜 만드는가"부터 말로 정리한다</h3>
+<p class="ja">優先度が低い案件ほど、目的を一文で言えるかが通るかどうかを決めます。機能より先に、ユーザーの迷いとKPIのつながりを示します。</p>
+<p class="en">The lower a project's priority, the more its survival depends on stating its purpose in one sentence. I link the user's hesitation to a KPI before talking about features.</p><p class="ko">우선순위가 낮은 프로젝트일수록, 목적을 한 문장으로 설명할 수 있는지가 성패를 가릅니다. 기능 이야기보다 먼저 사용자가 어디서 망설이고 그 망설임이 어떤 지표를 움직이는지 보여줍니다.</p>
+</div>
+<div class="pr">
+<span class="label">02</span>
+<h3 class="ja">速さは、足すより削ることで作る</h3>
+<h3 class="en">Speed comes from removing things</h3><h3 class="ko">속도는 덜어낼 때 생긴다</h3>
+<p class="ja">体験の価値が「すぐに届くこと」なら、その間にあるものはすべて疑います。ランディングページのような「あって当然」のものも例外にしません。</p>
+<p class="en">When the value of an experience is how fast it arrives, I question each step in between, including the ones teams assume they need, like a landing page.</p><p class="ko">빨리 닿는 것 자체가 가치인 경험이라면, 그 사이에 놓인 것을 하나하나 다시 봅니다. 랜딩 페이지처럼 "당연히 있어야 한다"고 여기는 것도 예외는 아닙니다.</p>
+</div>
+<div class="pr">
+<span class="label">03</span>
+<h3 class="ja">自分が抜けても、組織に残る形にする</h3>
+<h3 class="en">Build what stays with the team after I leave</h3><h3 class="ko">사람이 떠나도 조직에 남게 만든다</h3>
+<p class="ja">ツールの導入、デザインシステム、KPIの定義。自分がいなくても判断が再現される仕組みまでをデザインの範囲と考えています。</p>
+<p class="en">Tooling, design systems, KPI definitions. I count the structures that let a team repeat good decisions without me as part of the design work.</p><p class="ko">툴 도입, 디자인 시스템, KPI 정의까지. 제가 없어도 팀이 좋은 판단을 이어갈 수 있는 구조를 만드는 것도 디자인의 일이라고 생각합니다.</p>
+</div>
+</div>
+</section>
+<!-- CASES -->
+<section id="cases">
+<div class="sec-head">
+<h2><span class="ja">ケーススタディ</span><span class="en">Case studies</span><span class="ko">케이스 스터디</span></h2>
+</div>
 <div class="bento-cases">
 <a class="bc bc-onepay" href="#onepay" data-case="onepay" aria-haspopup="dialog">
 <span class="bc-media " style="background:#0b3fcc"><img src="assets/work/op-hero.webp" alt="" loading="lazy" decoding="async"></span>
@@ -1011,7 +1115,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <span class="no">CASE 01 · 2017–2018</span>
 <h3>ONE PAYMENT</h3>
 <p class="kicker ja">スマホがそのままレジになる。カードリーダーなしで、対面でカード決済を受けられるアプリ。</p>
-<p class="kicker en">Your phone becomes the register. An app for taking card payments in person, with no card reader.</p><p class="kicker ko">스마트폰이 곧 계산대가 됩니다. 카드 리더기 없이 얼굴을 마주하고 카드 결제를 받을 수 있는 앱.</p>
+<p class="kicker en">Your phone becomes the register. An app for taking card payments in person, with no card reader.</p><p class="kicker ko">스마트폰이 곧 계산대가 된다. 카드 리더기 없이 얼굴을 마주하고 카드 결제를 받을 수 있는 앱.</p>
 <dl>
 <dt>Client</dt><dd>ONE Financial</dd>
 <dt>Role</dt><dd>Chief Designer / Creative Director</dd>
@@ -1027,7 +1131,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">小さなお店や個人がカード決済を始めるには、専用のカードリーダーを用意する必要がありました。リーダーの費用に加え、複雑な審査と高い手数料が、<strong>「まず売ってみたい」人の入口</strong>をふさいでいました。</p>
-<p class="en">For small shops and individuals, accepting cards meant buying a dedicated card reader. The reader cost, a complicated approval process and high fees blocked <strong>people who wanted to try selling first</strong>.</p><p class="ko">작은 가게나 개인이 카드 결제를 받으려면 전용 카드 리더기가 있어야 했습니다. 리더기 비용에 까다로운 심사, 높은 수수료까지 겹치면서 <strong>"일단 한번 팔아보고 싶은" 사람들</strong>에게 카드 결제는 문턱이 너무 높았습니다.</p>
+<p class="en">For small shops and individuals, accepting cards meant buying a dedicated card reader. The reader cost, a complicated approval process and high fees blocked <strong>people who wanted to try selling first</strong>.</p><p class="ko">작은 가게나 개인이 카드 결제를 받으려면 전용 카드 리더기가 있어야 했다. 리더기 비용에 까다로운 심사, 높은 수수료까지 겹치면서 <strong>"일단 한번 팔아보고 싶은" 사람들</strong>에게 카드 결제는 문턱이 너무 높았다.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja"><li>Squareなど先行するスマホ決済は、磁気ストライプを読むためのリーダーが前提だった。</li><li>対象は、現金決済しかできない小規模事業者と個人。カード決済は導入までの審査が複雑で手数料も高く、導入をためらっていた。</li><li>お客さん側は、その店でカードが使えるかを店頭で判断している。</li></ul>
@@ -1043,27 +1147,27 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div>
 <p class="q ja">iPhoneのカメラでカードを撮影し、OCRで読み取る</p>
 <p class="q en">Read the card with the iPhone camera and OCR</p><p class="q ko">iPhone 카메라로 카드를 찍으면 OCR로 읽어 들이게 한다</p>
-<p class="a ja">リーダーこそが入口をふさいでいた原因でした。手元のスマホだけで完結させることが、最大の差別化であり、最大のハードルの解消でした。</p>
-<p class="a en">The reader was what kept people out. Letting them finish everything on the phone in hand set us apart and removed the biggest hurdle.</p><p class="a ko">문턱을 만든 주범이 바로 리더기였습니다. 손에 든 스마트폰 하나로 끝나게 만드는 것이 가장 큰 차별점이자 가장 높은 장벽을 허무는 방법이었습니다.</p>
+<p class="a ja">リーダーこそが入口をふさいでいた原因でした。スマホはすでに広く普及しています。リーダーの同梱やNFC端末のように別の機器を配る案は、最初から選びませんでした。申し込んでから端末が届くまでの間、サービスを始められないからです。アプリを入れたその場で使えること、そして「あなたのスマホがレジになる」というメッセージを崩さないことを優先しました。</p>
+<p class="a en">The reader was what kept people out, and almost everyone already had a smartphone. I ruled out shipping a reader or an NFC terminal from the start: people would have to wait for the device before they could sell anything. Being usable the moment the app was installed, and keeping the promise of "your phone becomes the register," came first.</p><p class="a ko">문턱을 만든 주범이 바로 리더기였다. 스마트폰은 이미 널리 보급되어 있었다. 리더기를 동봉하거나 NFC 단말을 보내는 식으로 별도 기기를 나눠주는 안은 처음부터 택하지 않았다. 신청하고 단말기가 도착할 때까지 서비스를 시작할 수 없기 때문이다. 앱을 받은 그 자리에서 바로 쓸 수 있다는 점, 그리고 "당신의 스마트폰이 레지가 된다"는 메시지를 지키는 것을 우선했다.</p>
 </div>
 <div>
 <p class="q ja">ロゴは「リング」一つに絞る</p>
 <p class="q en">Reduce the logo to a single ring</p><p class="q ko">로고는 "링" 하나로 단순하게</p>
 <p class="a ja">リングは無限の拡張と機会の象徴です。ロゴを単純にすることで、サービスの単純さも伝わるようにしました。</p>
-<p class="a en">The ring stands for endless expansion and opportunity. I kept the logo simple so the service would read as simple too.</p><p class="a ko">링에는 끝없이 넓어지는 가능성과 기회라는 의미를 담았습니다. 서비스가 단순하다는 것을 로고에서부터 보여주고 싶었습니다.</p>
+<p class="a en">The ring stands for endless expansion and opportunity. I kept the logo simple so the service would read as simple too.</p><p class="a ko">링에는 끝없이 넓어지는 가능성과 기회라는 의미를 담았다. 서비스가 단순하다는 것을 로고에서부터 보여주고 싶었다.</p>
 </div>
 <div>
 <p class="q ja">加盟店向けのステッカーキットを作る</p>
 <p class="q en">Make a sticker starter kit for merchants</p><p class="q ko">가맹점용 스티커 키트를 만든다</p>
 <p class="a ja">対面決済では、お客さんが店頭で「カードが使える」と分からなければ使われません。学園祭の模擬店のような小さな売り手でも、貼るだけで始められるようにしました。</p>
-<p class="a en">In person, customers pay by card only when they can see at the storefront that cards are accepted. A school festival stall could start by putting up a sticker.</p><p class="a ko">대면 결제는 손님이 가게 앞에서 "여기 카드 되네"라고 알아봐야 비로소 쓰입니다. 학교 축제 부스 같은 작은 판매자도 스티커만 붙이면 바로 시작할 수 있게 했습니다.</p>
+<p class="a en">In person, customers pay by card only when they can see at the storefront that cards are accepted. A school festival stall could start by putting up a sticker.</p><p class="a ko">대면 결제는 손님이 가게 앞에서 "여기 카드 되네"라고 알아봐야 비로소 쓰인다. 학교 축제 부스 같은 작은 판매자도 스티커만 붙이면 바로 시작할 수 있게 했다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
 <p class="result ja">Incubate FundからプレシリーズAで1億円を調達。THE BRIDGE、GIZMODO、PR TIMESなどで紹介されました。</p>
-<p class="result en">Raised ¥100M in a pre-Series A from Incubate Fund. Covered by THE BRIDGE, GIZMODO and PR TIMES.</p><p class="result ko">Incubate Fund에서 프리시리즈 A로 1억 엔을 투자받았고, THE BRIDGE, GIZMODO, PR TIMES 등에 소개되었습니다.</p>
+<p class="result en">Raised ¥100M in a pre-Series A from Incubate Fund. Covered by THE BRIDGE, GIZMODO and PR TIMES.</p><p class="result ko">Incubate Fund에서 프리시리즈 A로 1억 엔을 투자받았고, THE BRIDGE, GIZMODO, PR TIMES 등에 소개되었다.</p>
 <p class="ja">その後「1分でできる商品ページ作成機能」を追加し、対面に加えてオンラインでの決済にも広げました。</p>
-<p class="en">Later added a one-minute product page builder, extending payments from in person to online.</p><p class="ko">이후 "1분이면 만드는 상품 페이지" 기능을 더해, 대면 결제에 더해 온라인 결제까지 쓸 수 있게 넓혔습니다.</p>
+<p class="en">Later added a one-minute product page builder, extending payments from in person to online.</p><p class="ko">이후 "1분이면 만드는 상품 페이지" 기능을 더해, 대면 결제에 더해 온라인 결제까지 쓸 수 있게 넓혔다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
@@ -1088,9 +1192,9 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">ONEは「レシートを買い取り、購買データを企業のマーケティングに使う」事業です。お金を払うのは企業、アプリを使うのは一般ユーザー。同じプロダクトで<strong>2種類の相手</strong>を納得させる必要がありました。</p>
-<p class="en">ONE bought receipts from consumers and turned the purchase data into a marketing tool for companies. Companies paid; consumers used the app. One product had to win over <strong>two different audiences</strong>.</p><p class="ko">ONE은 소비자에게 영수증을 사들이고, 그 구매 데이터를 기업의 마케팅에 활용하는 사업이었습니다. 돈을 내는 쪽은 기업이고 앱을 쓰는 쪽은 일반 사용자. 하나의 프로덕트로 <strong>성격이 전혀 다른 두 고객</strong>을 동시에 설득해야 했습니다.</p>
+<p class="en">ONE bought receipts from consumers and turned the purchase data into a marketing tool for companies. Companies paid; consumers used the app. One product had to win over <strong>two different audiences</strong>.</p><p class="ko">ONE은 소비자에게 영수증을 사들이고, 그 구매 데이터를 기업의 마케팅에 활용하는 사업이었다. 돈을 내는 쪽은 기업이고 앱을 쓰는 쪽은 일반 사용자. 하나의 프로덕트로 <strong>성격이 전혀 다른 두 고객</strong>을 동시에 설득해야 했다.</p>
 <p class="ja">ユーザー側の問いは「本当にすぐお金がもらえるのか」、企業側の問いは「このデータで何ができるのか」でした。</p>
-<p class="en">The consumer's question was "do I really get paid right away?" The company's question was "what can I do with this data?"</p><p class="ko">사용자는 "정말 바로 돈을 주는 걸까?"를, 기업은 "이 데이터로 뭘 할 수 있을까?"를 궁금해했습니다.</p>
+<p class="en">The consumer's question was "do I really get paid right away?" The company's question was "what can I do with this data?"</p><p class="ko">사용자는 "정말 바로 돈을 주는 걸까?"를, 기업은 "이 데이터로 뭘 할 수 있을까?"를 궁금해했다.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja">
@@ -1119,18 +1223,18 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <p class="q ja">一般ユーザー向けのランディングページを作らず、App Storeに直接送る</p>
 <p class="q en">Skip the consumer landing page and send people straight to the App Store</p><p class="q ko">일반 사용자용 랜딩 페이지 대신 App Store로 곧장 연결한다</p>
 <p class="a ja">ユーザーが最終判断するのはストアの画面です。LPを挟むとタップが1回増え、「お金がすぐ届く」という約束から一歩遠ざかります。代わりに、LPは企業クライアント向けに作り直し、営業ツールとして使えるようにしました。</p>
-<p class="a en">People make the final call on the store page. A landing page added one more tap between the user and the promise of instant money. I rebuilt the landing page for corporate clients instead, as a sales tool.</p><p class="a ko">사용자가 최종적으로 설치를 결정하는 곳은 스토어 화면입니다. 랜딩 페이지를 한 번 더 거치면 그만큼 탭이 늘고 "바로 돈이 들어온다"는 약속 앞에 걸림돌이 생깁니다. 대신 랜딩 페이지는 기업 고객용으로 새로 만들어 영업 도구로 쓰도록 했습니다.</p>
+<p class="a en">People make the final call on the store page. A landing page added one more tap between the user and the promise of instant money. I rebuilt the landing page for corporate clients instead, as a sales tool.</p><p class="a ko">사용자가 최종적으로 설치를 결정하는 곳은 스토어 화면이다. 랜딩 페이지를 한 번 더 거치면 그만큼 탭이 늘고 "바로 돈이 들어온다"는 약속 앞에 걸림돌이 생긴다. 대신 랜딩 페이지는 기업 고객용으로 새로 만들어 영업 도구로 쓰도록 했다.</p>
 </div>
 <div>
 <p class="q ja">撮影から入金までの画面を、細部まで最短にする</p>
 <p class="q en">Make the path from photo to payout as short as possible, down to the details</p><p class="q ko">촬영부터 입금까지 걸리는 단계를 끝까지 줄인다</p>
 <p class="a ja">このアプリの価値は「瞬時にお金が届く」体験そのものです。機能説明を増やすより、体験の速さを説明の代わりにしました。</p>
-<p class="a en">The product's value was the instant payout itself. Instead of explaining features, I let the fast payout explain the product.</p><p class="a ko">이 앱의 가치는 "찍자마자 돈이 들어오는" 경험 그 자체였습니다. 기능을 길게 설명하기보다, 빠른 경험이 곧 설명이 되도록 했습니다.</p>
+<p class="a en">The product's value was the instant payout itself. Instead of explaining features, I let the fast payout explain the product.</p><p class="a ko">이 앱의 가치는 "찍자마자 돈이 들어오는" 경험 그 자체였다. 기능을 길게 설명하기보다, 빠른 경험이 곧 설명이 되도록 했다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
 <p class="result ja">App Store 総合1位。TechCrunch、Business Insider、THE BRIDGEなどで紹介。</p>
-<p class="result en">#1 overall on the Japanese App Store. Covered by TechCrunch, Business Insider and THE BRIDGE.</p><p class="result ko">일본 App Store 종합 1위를 기록했고, TechCrunch, Business Insider, THE BRIDGE 등에 소개되었습니다.</p>
+<p class="result en">#1 overall on the Japanese App Store. Covered by TechCrunch, Business Insider and THE BRIDGE.</p><p class="result ko">일본 App Store 종합 1위를 기록했고, TechCrunch, Business Insider, THE BRIDGE 등에 소개되었다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
@@ -1140,12 +1244,12 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <span class="no">CASE 03 · 2022</span>
 <h3>Kyash Widget</h3>
 <p class="kicker ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</p>
-<p class="kicker en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</p><p class="kicker ko">사업 우선순위에서는 밀려 있었습니다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔습니다.</p>
+<p class="kicker en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</p><p class="kicker ko">사업 우선순위에서는 밀려 있었다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔다.</p>
 <dl>
 <dt>Client</dt><dd>Kyash Inc.</dd>
 <dt>Role</dt><dd>Product Designer</dd>
 <dt>Stage</dt><dd>Growth</dd>
-<dt>Scope</dt><dd>iOS Widget</dd>
+<dt>Scope</dt><dd>iOS / Android Widget</dd>
 <dt>Team</dt><dd><span class="ja">Mobileチーム（10%ルール）</span><span class="en">Mobile team (10% rule)</span><span class="ko">Mobile 팀 (10% 룰)</span></dd>
 </dl>
 <div class="links">
@@ -1156,17 +1260,19 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
-<p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했습니다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제에 실패하는 경우가 많았습니다</strong>.</p>
+<p class="en">To check the balance and funding source before paying, users had to open the app every time. Skipping the check led to <strong>failed payments</strong> from low balance or a forgotten account switch.</p><p class="ko">결제하기 전에 잔액이나 결제 수단을 확인하려면 매번 앱을 열어야 했다. 그 과정을 건너뛰면 잔액이 모자라거나 결제 수단을 바꾸는 걸 깜빡해서 <strong>결제에 실패하는 경우가 많았다</strong>.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja">
-<li>自分自身がKyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
-<li>ウィジェットが効くのは「頻繁に使い、一瞬の確認で満足が得られる機能」。複数の候補を比べ、残高表示が最も価値が高いと判断。</li>
+<li>「自分が毎日使って満足できるか」を判断の軸にしている。Kyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
+<li>ウィジェットに載せる候補として、残高、最近の利用履歴、カード番号の表示などを並べ、「今ユーザーがいちばん欲しいものは何か」をチームで話し合って優先順位を決めた。</li>
+<li>方向を決めたあと、社内インタビューで使い方を確かめ、最終的なUXを決めた。</li>
 </ul>
 <ul class="en">
-<li>As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
-<li>Widgets work best for features used often, where a glance is enough. I compared several candidates and chose the balance as the most valuable.</li>
-</ul><ul class="ko"><li>저 역시 Kyash 사용자로서, 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯은 "자주 쓰고, 잠깐 확인하는 것만으로 충분한 기능"에서 빛을 발한다. 여러 후보를 견줘 본 끝에 잔액 표시가 가장 쓸모 있다고 판단했다.</li></ul>
+<li>My test is whether I'd be happy using it every day. As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
+<li>We listed what the widget could show, including the balance, recent transactions and the card number, and agreed as a team on what users wanted most right now.</li>
+<li>Once the direction was set, internal interviews confirmed how people would use it and settled the final UX.</li>
+</ul><ul class="ko"><li>"내가 매일 쓰면서 만족할 수 있는가"를 판단의 기준으로 삼는다. Kyash 사용자로서 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯에 넣을 후보로 잔액, 최근 이용 내역, 카드 번호 표시 등을 나열하고, "지금 사용자가 가장 원하는 것은 무엇인가"를 팀에서 논의해 우선순위를 정했다.</li><li>방향을 정한 뒤 사내 인터뷰로 사용 방식을 확인하고 최종 UX를 결정했다.</li></ul>
 </div></li>
 <li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
 <ul class="ja">
@@ -1185,24 +1291,42 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <p class="q ja">作る前に「なぜ作るのか」を一文にしてチームと合わせる</p>
 <p class="q en">Agree on "why we're building this" in one sentence before building</p><p class="q ko">만들기 전에 "왜 만드는가"를 한 문장으로 정리해 팀과 공유한다</p>
 <p class="a ja">10%ルールの時間は限られていて、機能を詰め込むと完成しません。「支払い前の迷いをなくし、決済失敗を減らす」という目的が、何を入れないかの判断基準になりました。</p>
-<p class="a en">10% time is limited, and a feature-stuffed widget would never ship. We used one purpose to decide what to leave out: "remove the hesitation before paying and reduce failed payments."</p><p class="a ko">10% 룰로 쓸 수 있는 시간은 한정적이라, 이것저것 넣다 보면 끝내 완성하지 못합니다. "결제 직전의 망설임을 없애고, 결제가 막히는 일을 줄인다"는 목적이 무엇을 빼야 할지 정하는 기준이 되었습니다.</p>
+<p class="a en">10% time is limited, and a feature-stuffed widget would never ship. We used one purpose to decide what to leave out: "remove the hesitation before paying and reduce failed payments."</p><p class="a ko">10% 룰로 쓸 수 있는 시간은 한정적이라, 이것저것 넣다 보면 끝내 완성하지 못한다. "결제 직전의 망설임을 없애고, 결제가 막히는 일을 줄인다"는 목적이 무엇을 빼야 할지 정하는 기준이 되었다.</p>
 </div>
 <div>
-<p class="q ja">表示は残高だけ。支払い元の切り替えは長押しに</p>
-<p class="q en">Show only the balance; switch funding source with a long press</p><p class="q ko">화면엔 잔액만 보여주고, 결제 수단 변경은 길게 눌러서</p>
-<p class="a ja">一目で読めることを最優先にしました。切り替えは毎回必要な操作ではないので、画面には出さず長押しに回しました。</p>
-<p class="a en">Glanceability came first. Switching isn't needed every time, so I kept it off the surface and put it behind a long press.</p><p class="a ko">한눈에 읽히는 게 가장 중요했습니다. 결제 수단 변경은 매번 하는 동작이 아니어서, 화면에 꺼내 두지 않고 길게 누르면 나오도록 했습니다.</p>
+<p class="q ja">表示は残高だけ。利用履歴やカード番号は載せない</p>
+<p class="q en">Show only the balance, not recent transactions or the card number</p><p class="q ko">화면엔 잔액만. 이용 내역과 카드 번호는 넣지 않는다</p>
+<p class="a ja">利用履歴やカード番号も候補にありましたが、レジ前で知りたいのは「今いくら使えるか」だけです。一目で読めることを最優先にし、毎回は必要ない支払い元の切り替えは長押しに回しました。</p>
+<p class="a en">Recent transactions and the card number were on the list, but at the register the only question is "how much can I spend right now?" Glanceability came first, and switching the funding source, which isn't needed every time, went behind a long press.</p><p class="a ko">최근 이용 내역이나 카드 번호도 후보였지만, 계산대 앞에서 알고 싶은 건 "지금 얼마를 쓸 수 있는가"뿐이다. 한눈에 읽히는 걸 가장 우선하고, 매번 하지 않는 결제 수단 변경은 길게 누르면 나오도록 했다.</p>
+</div>
+<div>
+<p class="q ja">個人の口座に加えて、共有口座の残高も表示できるようにする</p>
+<p class="q en">Show shared-account balances alongside the personal one</p><p class="q ko">개인 계좌와 함께 공유 계좌 잔액도 보이게 한다</p>
+<p class="a ja">Kyashには家族やカップルで使う共有口座があります。自分の残高だけでは「今いくら使えるか」に答えきれないので、共有口座も同じウィジェットで確認できるようにしました。</p>
+<p class="a en">Kyash has shared accounts for families and couples. The personal balance alone can't answer "how much can I spend right now?", so shared accounts show in the same widget.</p><p class="a ko">Kyash에는 가족이나 커플이 함께 쓰는 공유 계좌가 있다. 내 잔액만으로는 "지금 얼마를 쓸 수 있는가"에 다 답할 수 없어서, 공유 계좌도 같은 위젯에서 확인할 수 있게 했다.</p>
 </div>
 <div>
 <p class="q ja">決済の失敗を減らす施策としてKPIに結びつけて説明する</p>
 <p class="q en">Frame it as a payment-failure fix tied to KPIs</p><p class="q ko">"결제가 막히는 일을 줄이는 기능"으로, KPI와 엮어서 설명한다</p>
 <p class="a ja">「便利な機能」だと優先度は上がりません。決済失敗の減少は取扱高に直結するので、事業側と同じ言葉で話せます。</p>
-<p class="a en">"Convenient" doesn't raise a priority. Fewer failed payments means more transaction volume, so I could talk to the business side in their terms.</p><p class="a ko">"있으면 편한 기능"이라는 말로는 우선순위가 올라가지 않습니다. 결제가 막히는 일이 줄면 거래액이 곧바로 늘어나니, 사업 쪽과 같은 언어로 대화할 수 있었습니다.</p>
+<p class="a en">"Convenient" doesn't raise a priority. Fewer failed payments means more transaction volume, so I could talk to the business side in their terms.</p><p class="a ko">"있으면 편한 기능"이라는 말로는 우선순위가 올라가지 않는다. 결제가 막히는 일이 줄면 거래액이 곧바로 늘어나니, 사업 쪽과 같은 언어로 대화할 수 있었다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
-<p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。</p>
-<p class="result en">Released as a widget that shows the balance without opening the app.</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했습니다.</p>
+<p class="result ja">アプリを開かずに残高を確認できるウィジェットとしてリリース。リリース後、App StoreやXには次のような声が届きました。</p>
+<p class="result en">Released as a widget that shows the balance without opening the app. After launch, App Store reviews and posts on X said things like:</p><p class="result ko">앱을 열지 않아도 잔액을 바로 볼 수 있는 위젯으로 출시했다. 출시 후 App Store와 X에는 이런 반응이 이어졌다.</p>
+<ul class="ja">
+<li>家計簿アプリの代わりになる。アプリを開かなくても、個人と共有口座の残高がホーム画面で分かり、支出の管理が直感的になった。</li>
+<li>共有口座を使うカップルや家族から、相手がお金を使ったときに残高の変化をすぐ確認できて便利という声が多かった。</li>
+<li>すっきりしたデザインとグラフ表示が、ホーム画面をカスタマイズするユーザーにも受け入れられた。</li>
+</ul>
+<ul class="en">
+<li>It can replace a budgeting app: personal and shared balances on the home screen, without opening the app, made spending easy to keep track of.</li>
+<li>Couples and families using shared accounts liked seeing the balance change as soon as the other person spent.</li>
+<li>The clean design and the graph view met the standards of people who customize their home screens.</li>
+</ul><ul class="ko"><li>가계부 앱을 대신할 수 있다. 앱을 열지 않아도 개인 계좌와 공유 계좌 잔액을 홈 화면에서 바로 볼 수 있어 지출 관리가 직관적이 됐다.</li><li>공유 계좌를 쓰는 커플과 가족에게서, 상대가 돈을 쓰면 잔액 변화를 바로 확인할 수 있어 편하다는 반응이 많았다.</li><li>깔끔한 디자인과 그래프 표시가 홈 화면을 꾸미는 사용자들의 눈높이도 만족시켰다.</li></ul>
+<p class="result ja">リリース後の数値は追えていません。次に作るなら、決済失敗率をリリース前後で比べられるよう、最初から計測を組み込みます。</p>
+<p class="result en">I couldn't track numbers after launch. Next time, I'd build in measurement from the start so the payment-failure rate can be compared before and after.</p><p class="result ko">출시 후 수치는 추적하지 못했다. 다음에 만든다면 결제 실패율을 출시 전후로 비교할 수 있도록 처음부터 측정을 설계해 두겠다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
@@ -1212,7 +1336,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <span class="no">CASE 04 · 2014–2015</span>
 <h3>Cookpad<br/>産地直送便</h3>
 <p class="kicker ja">「注文までが分かりにくい」という声に、画面の数ではなく「一目で分かる」ビジュアルで応えた。</p>
-<p class="kicker en">Users said ordering was confusing. I answered with visuals that explain the service at a glance instead of adding screens.</p><p class="kicker ko">"주문하기가 어렵다"는 목소리에, 화면을 늘리는 대신 "한눈에 이해되는" 비주얼로 답했습니다.</p>
+<p class="kicker en">Users said ordering was confusing. I answered with visuals that explain the service at a glance instead of adding screens.</p><p class="kicker ko">"주문하기가 어렵다"는 목소리에, 화면을 늘리는 대신 "한눈에 이해되는" 비주얼로 답했다.</p>
 <dl>
 <dt>Client</dt><dd>Cookpad Inc.</dd>
 <dt>Role</dt><dd>Creative Director &amp; Growth Hacker (User First Team)</dd>
@@ -1227,7 +1351,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">旬の野菜や産地の食材を届けるEC。ユーザーから「注文までの流れが難しい」という声が続いていました。</p>
-<p class="en">An e-commerce service delivering seasonal produce straight from farms. Users kept saying the path to ordering felt difficult.</p><p class="ko">제철 채소와 산지의 식재료를 집까지 보내주는 EC 서비스. 사용자들 사이에서 "주문하는 과정이 어렵다"는 의견이 꾸준히 나오고 있었습니다.</p>
+<p class="en">An e-commerce service delivering seasonal produce straight from farms. Users kept saying the path to ordering felt difficult.</p><p class="ko">제철 채소와 산지의 식재료를 집까지 보내주는 EC 서비스. 사용자들 사이에서 "주문하는 과정이 어렵다"는 의견이 꾸준히 나오고 있었다.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja">
@@ -1258,20 +1382,20 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <p class="q ja">「サービスが一目で分かる」ビジュアルを最優先にする</p>
 <p class="q en">Put "understand the service at a glance" visuals first</p><p class="q ko">"서비스가 한눈에 이해되는" 비주얼을 가장 먼저 챙긴다</p>
 <p class="a ja">注文が難しく感じる原因は、手順の多さだけでなく「何を買っているのか分からない」ことにもありました。産地や旬の意味、信頼性が伝わって初めて、手順が短く感じられます。</p>
-<p class="a en">Ordering felt hard because of the steps and because people weren't sure what they were buying. Once the origin, the season and the trust came through, the same steps felt shorter.</p><p class="a ko">단계가 많은 것 말고도, "내가 뭘 사는 건지 잘 모르겠다"는 점이 주문을 어렵게 느끼게 했습니다. 산지와 제철이 주는 의미, 그리고 믿음이 먼저 전해지면 같은 단계도 훨씬 짧게 느껴집니다.</p>
+<p class="a en">Ordering felt hard because of the steps and because people weren't sure what they were buying. Once the origin, the season and the trust came through, the same steps felt shorter.</p><p class="a ko">단계가 많은 것 말고도, "내가 뭘 사는 건지 잘 모르겠다"는 점이 주문을 어렵게 느끼게 했다. 산지와 제철이 주는 의미, 그리고 믿음이 먼저 전해지면 같은 단계도 훨씬 짧게 느껴진다.</p>
 </div>
 <div>
 <p class="q ja">全体の流れを整理し、サイト全体のスタイルを統一する</p>
 <p class="q en">Reorganize the whole flow and unify the site's styling</p><p class="q ko">주문 흐름 전체를 다시 짜고, 사이트 전체의 스타일을 하나로 맞춘다</p>
-<p class="a ja">部分的な修正を重ねるより、流れ全体を見直したほうが「分かりにくさ」の原因を一度に取り除けると考えました。</p>
-<p class="a en">I judged that reviewing the whole flow, rather than patching pages one by one, would remove the confusion at its source.</p><p class="a ko">한 곳씩 고쳐 나가기보다 흐름 전체를 다시 봐야 "어렵다"는 느낌의 원인을 한 번에 걷어낼 수 있다고 판단했습니다.</p>
+<p class="a ja">UIを部分的に直しながら数値を見ていく案もありました。ただ、さまざまな情報が画面のあちこちに散らばっていて、一度まとめて整理する必要がありました。ブランドを強める意味でも、チームで話し合って全体のリニューアルを選びました。</p>
+<p class="a en">We could have fixed the UI piece by piece and watched the numbers. But information was scattered all over the screens and needed to be sorted out in one pass. To strengthen the brand as well, the team chose a full renewal.</p><p class="a ko">UI를 부분적으로 고치면서 수치를 지켜보는 방법도 있었다. 하지만 여러 정보가 화면 곳곳에 흩어져 있어서 한 번은 크게 정리할 필요가 있었다. 브랜드를 강화한다는 의미에서도, 팀에서 논의해 전체 리뉴얼을 택했다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
 <p class="result ja">リニューアル後、PVが増え、離脱率が下がりました。</p>
 <p class="ja">その後このサービスは、Cookpadが生鮮食品事業に乗り出すうえで貴重なPoCとなり、現在のさまざまなオフライン事業の展開にも活かされています。</p>
 <p class="result en">After the renewal, page views went up and the bounce rate went down.</p>
-<p class="en">The service later became a valuable proof of concept for Cookpad's fresh food business, and its lessons carried into the many offline businesses Cookpad runs today.</p><p class="result ko">리뉴얼 후 페이지뷰는 늘고 이탈률은 줄었습니다.</p><p class="ko">이후 이 서비스는 Cookpad가 신선식품 사업에 나서는 데 귀중한 PoC 경험이 되었고 지금의 다양한 오프라인 사업 전개에도 밑거름이 되었습니다.</p>
+<p class="en">The service later became a valuable proof of concept for Cookpad's fresh food business, and its lessons carried into the many offline businesses Cookpad runs today.</p><p class="result ko">리뉴얼 후 페이지뷰는 늘고 이탈률은 줄었다.</p><p class="ko">이후 이 서비스는 Cookpad가 신선식품 사업에 나서는 데 귀중한 PoC 경험이 되었고 지금의 다양한 오프라인 사업 전개에도 밑거름이 되었다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
@@ -1297,7 +1421,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">Jiffcyでは、QRコードで1人ずつ友だちを追加します。新規ユーザーは最初、友だちがいない状態から始まるため、<strong>価値を感じる前に離脱</strong>しやすい構造でした。</p>
-<p class="en">On Jiffcy, you add friends one at a time by QR code. New users start with no friends at all, so they tend to <strong>leave before they feel any value</strong>.</p><p class="ko">Jiffcy에서는 QR 코드로 친구를 한 명씩 추가합니다. 새로 가입한 사용자는 친구가 한 명도 없는 상태에서 시작하기 때문에 <strong>앱의 재미를 느끼기도 전에 떠나기 쉬웠습니다</strong>.</p>
+<p class="en">On Jiffcy, you add friends one at a time by QR code. New users start with no friends at all, so they tend to <strong>leave before they feel any value</strong>.</p><p class="ko">Jiffcy에서는 QR 코드로 친구를 한 명씩 추가한다. 새로 가입한 사용자는 친구가 한 명도 없는 상태에서 시작하기 때문에 <strong>앱의 재미를 느끼기도 전에 떠나기 쉬웠다</strong>.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
 <ul class="ja">
@@ -1332,8 +1456,8 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">改善</span><span class="en">Iteration</span><span class="ko">개선</span></b></div><div class="v">
-<p class="ja">導入後のオンボーディング完了率や友だち追加率を確認しながらチームと改善点を議論し、改善を続けています（現在進行中）。</p>
-<p class="en">We're tracking onboarding completion and friend-add rates after the change, and keep discussing and shipping improvements with the team (ongoing).</p><p class="ko">도입 후 온보딩 완료율과 친구 추가율을 확인하면서 개선할 점을 팀과 계속 논의하며 다듬어 가고 있습니다. (현재 진행 중)</p>
+<p class="ja">導入後のオンボーディング完了率や友だち追加率を確認しながらチームと改善点を議論し、改善を続けています（現在進行中）。友だちがいない最初の画面をさらに埋めるための次の施策も開発中で、近くリリース予定です。</p>
+<p class="en">We're tracking onboarding completion and friend-add rates after the change, and keep discussing and shipping improvements with the team (ongoing). The next step for the empty first screen is in development and due to ship soon.</p><p class="ko">도입 후 온보딩 완료율과 친구 추가율을 확인하면서 개선할 점을 팀과 계속 논의하며 다듬어 가고 있다. (현재 진행 중) 친구가 없는 첫 화면을 더 채우기 위한 다음 기능도 개발 중이며, 곧 출시될 예정이다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
@@ -1360,13 +1484,13 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">RLWRLDは、独自の4D+モーションキャプチャデータと物理世界のために構築したフロンティア基盤モデルで、ロボットに精密な手の作業を学習させる会社です。依頼の時点で<strong>ロゴはまだ存在しませんでした</strong>。</p>
-<p class="en">RLWRLD trains robots to do precise hand work, using its own 4D+ motion capture data and a frontier foundation model built for the physical world. When I joined, <strong>the company had no logo yet</strong>.</p><p class="ko">RLWRLD는 자체 4D+ 모션 캡처 데이터와 물리 세계를 위해 구축한 프론티어 파운데이션 모델로, 로봇이 정밀한 손 작업을 수행하도록 학습시키는 회사입니다. 의뢰 시점에는 <strong>아직 회사 로고가 없었습니다</strong>.</p>
+<p class="en">RLWRLD trains robots to do precise hand work, using its own 4D+ motion capture data and a frontier foundation model built for the physical world. When I joined, <strong>the company had no logo yet</strong>.</p><p class="ko">RLWRLD는 자체 4D+ 모션 캡처 데이터와 물리 세계를 위해 구축한 프론티어 파운데이션 모델로, 로봇이 정밀한 손 작업을 수행하도록 학습시키는 회사다. 의뢰 시점에는 <strong>아직 회사 로고가 없었다</strong>.</p>
 <p class="ja">精密な手の動きのために、基盤モデルを一から自分たちで作る。その<strong>職人のような姿勢</strong>を、ブランドに込めることが課題でした。</p>
-<p class="en">They build their foundation model from scratch for precise hand motion. The task was to carry that <strong>craftsman-like attitude</strong> into the brand.</p><p class="ko">정밀한 손 동작을 위해 파운데이션 모델을 처음부터 직접 만든다. 이런 <strong>장인 같은 태도</strong>를 브랜드에 녹여내야 했습니다.</p>
+<p class="en">They build their foundation model from scratch for precise hand motion. The task was to carry that <strong>craftsman-like attitude</strong> into the brand.</p><p class="ko">정밀한 손 동작을 위해 파운데이션 모델을 처음부터 직접 만든다. 이런 <strong>장인 같은 태도</strong>를 브랜드에 녹여내야 했다.</p>
 </div></li>
 <li class="step"><div class="k">02<b><span class="ja">リサーチ</span><span class="en">Research</span><span class="ko">리서치</span></b></div><div class="v">
-<ul class="ja"><li>デジタルのピクセルを使ったWebサイトや作品を幅広く参照した。</li></ul>
-<ul class="en"><li>Looked widely at websites and work built with digital pixels.</li></ul><ul class="ko"><li>디지털 픽셀을 활용한 웹사이트와 작업물을 폭넓게 참고했다.</li></ul>
+<ul class="ja"><li>クライアントは、ドットを使ったギークな表現を強く望んでいた。デジタルが生まれたころの「0か1か」の世界のように、AIの脳という根本をつくる会社であることを表したい、という意図だった。</li><li>デジタルのピクセルを使ったWebサイトや作品を幅広く参照した。</li></ul>
+<ul class="en"><li>The client strongly wanted a geeky, dot-based look. Like the world of 0s and 1s at the dawn of digital, it would say they build the fundamentals: the brain of the AI.</li><li>Looked widely at websites and work built with digital pixels.</li></ul><ul class="ko"><li>클라이언트는 도트를 이용한 긱(Geek)한 표현을 강하게 원했다. 디지털이 처음 태동하던 "0 아니면 1"의 세계처럼, AI의 뇌라는 근본을 만드는 회사임을 드러내고 싶다는 의도였다.</li><li>디지털 픽셀을 활용한 웹사이트와 작업물을 폭넓게 참고했다.</li></ul>
 </div></li>
 <li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
 <ul class="ja"><li>Webサイト制作と並行して、期間は約2か月。</li><li>BXからWebデザイン、パブリッシングまで一人で担当。</li></ul>
@@ -1376,13 +1500,13 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div>
 <p class="q ja">ロゴを、ピクセルのグリッドだけで組み立てる</p>
 <p class="q en">Build the logo from nothing but a pixel grid</p><p class="q ko">로고를 픽셀 그리드만으로 쌓아 올린다</p>
-<p class="a ja">「根本をつくる」感覚を伝えたかった。デジタルの最小単位であるピクセルを一つずつ積み上げることで、基盤から自分たちで作る姿勢を表現した。</p>
-<p class="a en">I wanted it to feel like building the fundamentals. I stacked pixels, the smallest unit of anything digital, one by one to show a team that builds from the foundation up.</p><p class="a ko">"근본을 만든다"는 느낌을 주고 싶었다. 디지털의 가장 작은 단위인 픽셀을 하나씩 쌓아 올려 기반부터 직접 만드는 태도를 표현했다.</p>
+<p class="a ja">「根本をつくる」感覚を伝えたかった。デジタルの最小単位であるピクセルを一つずつ積み上げることで、基盤から自分たちで作る姿勢を表現した。ドットの組み方を変えた案を数十案つくり、その中から今の形が最終案に選ばれた。</p>
+<p class="a en">I wanted it to feel like building the fundamentals. I stacked pixels, the smallest unit of anything digital, one by one to show a team that builds from the foundation up. I made dozens of dot variations, and the current one was chosen as the final mark.</p><p class="a ko">"근본을 만든다"는 느낌을 주고 싶었다. 디지털의 가장 작은 단위인 픽셀을 하나씩 쌓아 올려 기반부터 직접 만드는 태도를 표현했다. 도트 구성을 달리한 안을 수십 개 만들었고, 그중 지금의 형태가 최종안으로 선택됐다.</p>
 </div>
 </div></li>
 <li class="step"><div class="k">05<b><span class="ja">展開</span><span class="en">Rollout</span><span class="ko">전개</span></b></div><div class="v">
 <p class="ja">同じピクセルのロゴを、Webサイトと名刺に展開しました。</p>
-<p class="en">I rolled out the same pixel logo across the website and business cards.</p><p class="ko">같은 픽셀 로고를 웹사이트와 명함에 전개했습니다.</p>
+<p class="en">I rolled out the same pixel logo across the website and business cards.</p><p class="ko">같은 픽셀 로고를 웹사이트와 명함에 전개했다.</p>
 </div></li>
 </ol><button type="button" class="cmore noprint" aria-expanded="false"><span class="cm-open"><span class="ja">全ステップを読む</span><span class="en">Read the full case</span><span class="ko">전체 과정 보기</span></span><span class="cm-close"><span class="ja">閉じる</span><span class="en">Close</span><span class="ko">접기</span></span></button></div>
 </article>
