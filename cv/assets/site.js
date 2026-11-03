@@ -78,3 +78,62 @@
   $$('.rv').forEach(function(el){io.observe(el)});
   addEventListener('beforeprint',function(){$$('.rv').forEach(function(el){el.classList.add('in')});$$('.w').forEach(function(w){w.classList.add('on')})});
 })();
+
+/* booking: open cal.com in a bottom sheet instead of a new tab (desktop and mobile) */
+(function(){
+  var URL='https://cal.com/jeong75/30min',root=document.documentElement;
+  if(!document.querySelector('a[href^="'+URL+'"]'))return;
+  var st=document.createElement('style');st.textContent=
+   '.bk-sheet{position:fixed;inset:0;z-index:1000}.bk-sheet[hidden]{display:none}'+
+   '.bk-back{position:absolute;inset:0;background:rgba(10,10,12,.48);backdrop-filter:blur(8px);opacity:0;transition:opacity .4s ease}.bk-sheet.on .bk-back{opacity:1}'+
+   '.bk-panel{position:absolute;inset:calc(20px + env(safe-area-inset-top,0px)) 20px 0 20px;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);border-radius:24px 24px 0 0;box-shadow:0 -24px 64px rgba(0,0,0,.25);transform:translateY(100%);transition:transform .5s cubic-bezier(.2,.8,.2,1);outline:none}'+
+   '.bk-sheet.on .bk-panel{transform:none}'+
+   '.bk-bar{position:relative;flex:none;display:flex;align-items:center;gap:8px;padding:24px 24px 16px;border-bottom:1px solid var(--line);touch-action:none;user-select:none;cursor:grab}'+
+   '.bk-handle{position:absolute;left:50%;top:8px;width:40px;height:4px;transform:translateX(-50%);border-radius:999px;background:var(--line)}'+
+   '.bk-t{position:absolute;left:50%;transform:translateX(-50%);margin:0;font-weight:600;font-size:15px;white-space:nowrap;max-width:calc(100% - 336px);overflow:hidden;text-overflow:ellipsis}'+
+   '.bk-ext{font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}.bk-ext:hover{color:var(--ink)}'+
+   '.bk-x{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;padding:0;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}'+
+   '.bk-body{position:relative;flex:1;display:flex;overflow:hidden}.bk-body iframe{position:relative;z-index:1;flex:1;width:100%;height:100%;border:0;opacity:0;transition:opacity .3s}.bk-body iframe.ok{opacity:1}'+
+   '.bk-wait{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-size:13px}'+
+   'html.bk-open{overflow:hidden}'+
+   '@media (max-width:640px){.bk-panel{inset:calc(8px + env(safe-area-inset-top,0px)) 0 0 0;border-radius:16px 16px 0 0}.bk-t{position:static;transform:none;max-width:none;order:1}.bk-ext{order:2}.bk-x{order:3;margin-left:auto}.bk-bar{padding-inline:16px}}'+
+   '@media (prefers-reduced-motion:reduce){.bk-panel,.bk-back{transition:none}}';
+  document.head.appendChild(st);
+  var s=document.createElement('div');s.className='bk-sheet';s.hidden=true;s.innerHTML=
+   '<div class="bk-back" data-bk-close></div><div class="bk-panel" role="dialog" aria-modal="true" aria-labelledby="bk-title" tabindex="-1">'+
+   '<div class="bk-bar"><span class="bk-handle" aria-hidden="true"></span>'+
+   '<a class="bk-ext" href="'+URL+'" target="_blank" rel="noopener" data-bk-ext><span class="ja">新しいタブで開く</span><span class="en">Open in new tab</span><span class="ko">새 탭에서 열기</span> ↗</a>'+
+   '<p class="bk-t" id="bk-title"><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></p>'+
+   '<button type="button" class="bk-x" data-bk-close aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>'+
+   '<div class="bk-body"><p class="bk-wait"><span class="ja">カレンダーを読み込んでいます…</span><span class="en">Loading the calendar…</span><span class="ko">캘린더를 불러오는 중…</span></p></div></div>';
+  document.body.appendChild(s);
+  var panel=s.querySelector('.bk-panel'),body=s.querySelector('.bk-body'),frame=null,last=null,closing=0,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function open(push){
+    clearTimeout(closing);
+    if(!frame){frame=document.createElement('iframe');frame.title='Cal.com';frame.setAttribute('allow','payment');frame.addEventListener('load',function(){frame.classList.add('ok');var w=body.querySelector('.bk-wait');if(w)w.remove()});
+      frame.src=URL+'?embed=true&layout=month_view&theme='+(root.dataset.theme==='dark'?'dark':'light');body.appendChild(frame)}
+    if(s.hidden){last=document.activeElement;s.hidden=false;root.classList.add('bk-open');requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('on')})})}
+    panel.focus({preventScroll:true});
+    if(push!==false){try{history.pushState({book:1},'','#book')}catch(e){}}
+  }
+  function close(fromPop){
+    if(s.hidden)return;s.classList.remove('on');panel.style.transform='';
+    closing=setTimeout(function(){s.hidden=true;root.classList.remove('bk-open');if(last&&last.focus)last.focus({preventScroll:true})},reduce?0:420);
+    if(!fromPop&&history.state&&history.state.book){try{history.back()}catch(e){}}
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-bk-close]')){close();return}
+    var a=e.target.closest&&e.target.closest('a[href^="'+URL+'"]');
+    if(!a||a.hasAttribute('data-bk-ext')||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    e.preventDefault();open();
+  });
+  document.addEventListener('keydown',function(e){if(!s.hidden&&e.key==='Escape'){e.preventDefault();close()}});
+  addEventListener('popstate',function(e){if(e.state&&e.state.book)open(false);else close(true)});
+  addEventListener('hashchange',function(){if(location.hash==='#book')open(false)});
+  var bar=s.querySelector('.bk-bar'),y0=null,dy=0;
+  bar.addEventListener('pointerdown',function(e){if(e.target.closest('button,a'))return;y0=e.clientY;dy=0;panel.style.transition='none';bar.setPointerCapture(e.pointerId)});
+  bar.addEventListener('pointermove',function(e){if(y0===null)return;dy=Math.max(0,e.clientY-y0);panel.style.transform='translateY('+dy+'px)'});
+  function end(){if(y0===null)return;panel.style.transition='';y0=null;if(dy>120)close();else panel.style.transform=''}
+  bar.addEventListener('pointerup',end);bar.addEventListener('pointercancel',end);
+  if(location.hash==='#book')setTimeout(function(){try{history.replaceState({book:1},'','#book')}catch(e){}open(false)},300);
+})();
