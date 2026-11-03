@@ -587,6 +587,11 @@ html.loading .loader,.loader.leaving{display:grid;place-items:center;position:fi
 .phones{perspective:900px}
 .gy{will-change:transform}
 .hero .photo img.gy{will-change:translate}
+/* hero photo: sand particles on hover */
+.photo .sand{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;display:none}
+.photo.sanding .sand{display:block}
+.photo.sanding img{visibility:hidden}
+
 
 /* mobile: small round avatar above the name instead of the large portrait */
 .hero .avatar{display:none}
@@ -761,7 +766,7 @@ html.sheet-open{overflow:hidden}
 .sheet-ext:hover{color:var(--ink)}
 .book-sheet .sheet-x{margin-left:auto}
 .book-sheet .sheet-t{position:absolute;left:50%;transform:translateX(-50%);max-width:calc(100% - 336px)}
-@media (max-width:640px){.sheet-ext{width:auto;order:2}.book-sheet .sheet-t{position:static;transform:none;max-width:none;text-align:left;order:1}.book-sheet .sheet-x{order:3;margin-left:8px}}
+@media (max-width:640px){.sheet-ext{width:auto;order:2}.book-sheet .sheet-t{position:static;transform:none;max-width:none;text-align:left;order:1}.book-sheet .sheet-x{order:3;margin-left:auto}}
 
 @media (max-width:640px){.sheet-panel{inset:calc(8px + env(safe-area-inset-top,0px)) 0 0 0;border-radius:16px 16px 0 0}}
 #cases .sheet-body .case{border-top:0;padding-block:0}
@@ -885,7 +890,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <button aria-pressed="false" data-lang="en" id="lang-en" type="button">EN</button>
 <button aria-pressed="false" data-lang="ko" id="lang-ko" type="button">KO</button>
 </div>
-<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+<a class="cta" href="https://cal.com/jeong75/30min"><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></a>
 
 <button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
 </div>
@@ -909,7 +914,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <button aria-pressed="false" data-lang="en" class="menu-lang" type="button">EN</button>
 <button aria-pressed="false" data-lang="ko" class="menu-lang" type="button">KO</button>
 </div>
-<a class="cta" href="#contact"><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+<a class="cta" href="https://cal.com/jeong75/30min"><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></a>
 </div>
 </div>
 <header class="hero-v" id="top">
@@ -928,9 +933,9 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <p class="lede ja">ソウルで2000年に学生ベンチャーの創業メンバーとしてキャリアを始め、2010年にLINE（旧Naver Japan）入社を機に来日。大企業からシードのスタートアップまで、0→1のプロダクトづくりを中心に20年以上デザインをしてきました。</p>
 <p class="lede en">I started in 2000 as a founding member of a student venture in Korea and moved to Tokyo in 2010 to join LINE (then Naver Japan). For 20+ years I have designed products from zero to one, for large Japanese companies and seed-stage startups alike.</p><p class="lede ko">2000년 학생 벤처 창업 멤버로 디자인을 시작했고 2010년 LINE(당시 Naver Japan)에 입사하면서 일본으로 건너왔습니다. 일본의 대기업부터 시드 단계 스타트업까지, 주로 0에서 1을 만드는 프로덕트를 20년 넘게 디자인해 왔습니다.</p>
 <p class="lede ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。どのプロジェクトも「問題定義 → リサーチ → 制約 → 決定 → 改善」の順に読めます。</p>
-<p class="lede en">This portfolio focuses less on the size of outcomes and more on why I made each call. Every project reads in the same order: problem, research, constraints, decision, iteration.</p><p class="lede ko">이 포트폴리오는 성과가 얼마나 컸는지보다 "왜 그렇게 결정했는지"에 초점을 맞췄습니다. 모든 프로젝트를 문제정의 → 리서치 → 제약조건 → 결정 → 개선 순서로 정리했다.</p>
+<p class="lede en">This portfolio focuses less on the size of outcomes and more on why I made each call. Every project reads in the same order: problem, research, constraints, decision, iteration.</p><p class="lede ko">이 포트폴리오는 성과가 얼마나 컸는지보다 "왜 그렇게 결정했는지"에 초점을 맞췄습니다. 모든 프로젝트를 문제정의 → 리서치 → 제약조건 → 결정 → 개선 순서로 정리했습니다.</p>
 <div class="hero-cta">
-<a class="btn hero-btn hb-main" href="#contact"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="ja">お問い合わせ</span><span class="en">Get in touch</span><span class="ko">문의하기</span></a>
+<a class="btn hero-btn hb-main" href="https://cal.com/jeong75/30min"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></a>
 <a class="btn hero-btn hb-sub" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
 </div>
 </div>
@@ -945,7 +950,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="sec-head">
 <h2><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></h2>
 <p class="ja">プロジェクトの規模が違っても、決めるときに立ち返る問いは同じです。下のケーススタディはすべて、この3つのどれかで説明できます。</p>
-<p class="en">Project sizes vary, but the questions I return to when deciding stay the same. Every case study below traces back to one of these three.</p><p class="ko">프로젝트 규모는 제각각이어도 결정을 내릴 때 스스로에게 던지는 질문은 늘 같습니다. 아래 케이스 스터디도 모두 이 세 가지 중 하나에서 출발했다.</p>
+<p class="en">Project sizes vary, but the questions I return to when deciding stay the same. Every case study below traces back to one of these three.</p><p class="ko">프로젝트 규모는 제각각이어도 결정을 내릴 때 스스로에게 던지는 질문은 늘 같습니다. 아래 케이스 스터디도 모두 이 세 가지 중 하나에서 출발했습니다.</p>
 </div>
 <div class="principles">
 <div class="pr">
@@ -1431,7 +1436,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="sheet-bar">
 <span class="sheet-handle" aria-hidden="true"></span>
 <a class="sheet-ext" href="https://cal.com/jeong75/30min" target="_blank" rel="noopener" data-book-ext><span class="ja">新しいタブで開く</span><span class="en">Open in new tab</span><span class="ko">새 탭에서 열기</span> ↗</a>
-<p class="sheet-t" id="book-title"><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span></p>
+<p class="sheet-t" id="book-title"><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></p>
 <button type="button" class="sheet-btn sheet-x" data-book-close aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
 </div>
 <div class="sheet-body book-body"><p class="book-wait"><span class="ja">カレンダーを読み込んでいます…</span><span class="en">Loading the calendar…</span><span class="ko">캘린더를 불러오는 중…</span></p></div>
@@ -1443,7 +1448,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div class="sec-head">
 <h2><span class="ja">いま取り組んでいること</span><span class="en">Now</span><span class="ko">지금 하고 있는 일</span></h2>
 <p class="ja">2026年4月から株式会社medimoのUI/UXデザイナー。医療×AIの領域で、画面だけでなく事業側との合意づくりまでを担当しています。</p>
-<p class="en">UI/UX Designer at medimo since April 2026. In medical AI, I work on the screens and also on building agreement with the business side.</p><p class="ko">2026년 4월부터 medimo에서 UI/UX 디자이너로 일하고 있다. 의료 AI 분야에서 화면 설계는 물론, 사업 쪽과 방향을 맞추는 일까지 함께 맡고 있다.</p>
+<p class="en">UI/UX Designer at medimo since April 2026. In medical AI, I work on the screens and also on building agreement with the business side.</p><p class="ko">2026년 4월부터 medimo에서 UI/UX 디자이너로 일하고 있습니다. 의료 AI 분야에서 화면 설계는 물론, 사업 쪽과 방향을 맞추는 일까지 함께 맡고 있습니다.</p>
 </div>
 <div class="principles">
 <div class="pr">
@@ -1451,14 +1456,14 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <h3 class="ja">BPMNで業務フローを描き、KPIで「なぜ必要か」を合意する</h3>
 <h3 class="en">Map the workflow in BPMN, agree on "why it matters" with KPIs</h3><h3 class="ko">BPMN으로 업무 흐름을 그리고, KPI로 "왜 필요한지" 합의한다</h3>
 <p class="ja">事業上の優先度が高い機能のBPMNを自ら作成し、PdMとともにKPIと成果指標を整理しました。この機能がなぜ必要で、何を変えるのかを事業側に説明する資料として活用しています。</p>
-<p class="en">I drew the BPMN for high-priority features myself and worked with the PdM to define KPIs and outcome metrics. We use them to show the business side why each feature is needed and what it changes.</p><p class="ko">사업 우선순위가 높은 기능의 BPMN을 직접 그리고, PdM과 함께 KPI와 성과 지표를 정리했다. 이 기능이 왜 필요하고 무엇을 바꾸는지 사업 쪽에 설명하는 자료로 쓰고 있다.</p>
+<p class="en">I drew the BPMN for high-priority features myself and worked with the PdM to define KPIs and outcome metrics. We use them to show the business side why each feature is needed and what it changes.</p><p class="ko">사업 우선순위가 높은 기능의 BPMN을 직접 그리고, PdM과 함께 KPI와 성과 지표를 정리했습니다. 이 기능이 왜 필요하고 무엇을 바꾸는지 사업 쪽에 설명하는 자료로 쓰고 있습니다.</p>
 </div>
 <div class="pr">
 <span class="label">medimo · Success</span>
 <h3 class="ja">顧客のニーズから、いまのプロダクトを磨き込む</h3>
 <h3 class="en">Refining the product from what customers need</h3><h3 class="ko">고객의 니즈에서 출발해 지금의 제품을 다듬는다</h3>
 <p class="ja">Successチームに所属し、顧客のニーズを把握しながら、現在のプロダクトのUI/UXをさらに高度化しています。</p>
-<p class="en">As part of the Success team, I learn what customers need and use it to keep raising the UI/UX of the current product.</p><p class="ko">Success팀에서 고객의 니즈를 파악하고 현재 제품의 UI/UX를 고도화하고 있다.</p>
+<p class="en">As part of the Success team, I learn what customers need and use it to keep raising the UI/UX of the current product.</p><p class="ko">Success팀에서 고객의 니즈를 파악하고 현재 제품의 UI/UX를 고도화하고 있습니다.</p>
 </div>
 <div class="pr">
 <span class="label">AI × UX</span>
@@ -1502,7 +1507,7 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <section class="newpage" id="career">
 <div class="sec-head">
 <h2><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></h2>
-<p class="ja">ソウルで始まり、東京で15年以上。大手企業、初期スタートアップ、フリーランスとして、事業の意思決定の現場にいました。</p><p class="en">Started in Seoul, 15+ years in Tokyo. In large companies, early startups and as a freelancer, I've worked close to the people making business decisions.</p><p class="ko">서울에서 시작해 도쿄에서 15년 넘게 일했다. 대기업, 초기 스타트업, 프리랜서로 일하며 늘 사업의 의사결정 가까이에 있었다.</p>
+<p class="ja">ソウルで始まり、東京で15年以上。大手企業、初期スタートアップ、フリーランスとして、事業の意思決定の現場にいました。</p><p class="en">Started in Seoul, 15+ years in Tokyo. In large companies, early startups and as a freelancer, I've worked close to the people making business decisions.</p><p class="ko">서울에서 시작해 도쿄에서 15년 넘게 일했습니다. 대기업, 초기 스타트업, 프리랜서로 일하며 늘 사업의 의사결정 가까이에 있었습니다.</p>
 </div>
 <div class="two">
 <ol class="tl">
@@ -1623,8 +1628,8 @@ body.grid8::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events
 <div>
 <span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
 <button type="button" class="big copy-mail" id="copy-mail" aria-label="Copy email address">jinho@aftworks.com</button>
-<a class="book" href="https://cal.com/jeong75/30min" rel="noopener" target="_blank"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">30分の1on1を予約する</span><span class="en">Book a 30-min 1:1</span><span class="ko">30분 1:1 면담 예약하기</span><i aria-hidden="true">↗</i></span></a><a class="btn ft-cv" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
-<div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었다.</span></div>
+<a class="book" href="https://cal.com/jeong75/30min" rel="noopener"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></span></a><a class="btn ft-cv" href="jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:16px;flex-wrap:wrap">
 <a href="https://www.linkedin.com/in/jeong75/" rel="noopener" target="_blank">LinkedIn ↗</a>
@@ -2254,7 +2259,7 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   function open(push){
     clearTimeout(closing);
     if(!frame){frame=document.createElement('iframe');frame.className='book-frame';frame.title='Cal.com';frame.setAttribute('allow','payment');
-      frame.addEventListener('load',function(){frame.classList.add('ok')});frame.src=URL+'?embed=true&theme=dark&layout=month_view';body.appendChild(frame)}
+      frame.addEventListener('load',function(){frame.classList.add('ok');var w=body.querySelector('.book-wait');if(w)w.remove()});frame.src=URL+'?embed=true&theme=dark&layout=month_view';body.appendChild(frame)}
     if(sheet.hidden){last=document.activeElement;sheet.hidden=false;root.classList.add('sheet-open');requestAnimationFrame(function(){requestAnimationFrame(function(){sheet.classList.add('on')})})}
     panel.focus({preventScroll:true});
     if(push!==false){try{history.pushState({book:1},'','#book')}catch(e){}}
@@ -2282,6 +2287,73 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
   function end(){if(y0===null)return;panel.style.transition='';y0=null;if(dy>120)close();else panel.style.transform=''}
   bar.addEventListener('pointerup',end);bar.addEventListener('pointercancel',end);
   if(location.hash==='#book'){var go=function(){try{history.replaceState({book:1},'','#book')}catch(e){}open(false)};if(root.classList.contains('loading'))addEventListener('pf:open',go,{once:true});else setTimeout(go,300)}
+})();
+</script>
+<script>
+/* hero photo turns into sand around the pointer, then drifts back.
+   base: the photo at full resolution with holes where grains have left;
+   dust: the moving grains. Grains snap back into the base once home. */
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var fig=document.querySelector('.hero .photo'),img=fig&&fig.querySelector('img');if(!fig||!img)return;
+  function mk(){var c=document.createElement('canvas');c.className='sand';c.setAttribute('aria-hidden','true');fig.appendChild(c);return c}
+  var base=mk(),dust=mk(),bx=base.getContext('2d'),dx2=dust.getContext('2d');
+  var W=0,H=0,N=0,DPR=1,hi,hx,hy,x,y,vx,vy,col,kk,away,buf,u32,ready=false,active=false,raf=0,still=0,nAway=0;
+  var mx=-1e4,my=-1e4,pmx=0,pmy=0,pvx=0,pvy=0,R=70,S=2;
+  function build(){
+    var r=img.getBoundingClientRect();W=Math.round(r.width);H=Math.round(r.height);if(!W||!H||!img.naturalWidth)return false;
+    DPR=Math.min(devicePixelRatio||1,2);
+    var cs=getComputedStyle(img),pos=cs.objectPosition.split(' ').map(parseFloat),iw=img.naturalWidth,ih=img.naturalHeight,sc=Math.max(W/iw,H/ih),dw=iw*sc,dh=ih*sc;
+    var ox=(W-dw)*(pos[0]/100),oy=(H-dh)*((isNaN(pos[1])?50:pos[1])/100),flt=cs.filter!=='none'?cs.filter:'none';
+    hi=document.createElement('canvas');hi.width=Math.round(W*DPR);hi.height=Math.round(H*DPR);var h=hi.getContext('2d');h.filter=flt;h.drawImage(img,ox*DPR,oy*DPR,dw*DPR,dh*DPR);
+    var lo=document.createElement('canvas');lo.width=W;lo.height=H;var o=lo.getContext('2d');o.filter=flt;o.drawImage(img,ox,oy,dw,dh);
+    var d=o.getImageData(0,0,W,H).data,list=[];
+    for(var yy=0;yy<H;yy+=S)for(var xx=0;xx<W;xx+=S){var i=(yy*W+xx)*4;if(d[i+3]<8)continue;list.push(xx,yy,(255<<24)|(d[i+2]<<16)|(d[i+1]<<8)|d[i])}
+    N=list.length/3;hx=new Float32Array(N);hy=new Float32Array(N);x=new Float32Array(N);y=new Float32Array(N);vx=new Float32Array(N);vy=new Float32Array(N);col=new Uint32Array(N);kk=new Float32Array(N);away=new Uint8Array(N);
+    for(var n=0;n<N;n++){hx[n]=x[n]=list[n*3];hy[n]=y[n]=list[n*3+1];col[n]=list[n*3+2]>>>0;kk[n]=.006+Math.random()*.014}
+    base.width=hi.width;base.height=hi.height;dust.width=W;dust.height=H;
+    buf=dx2.createImageData(W,H);u32=new Uint32Array(buf.data.buffer);
+    [base,dust].forEach(function(c){c.style.webkitMaskImage=cs.webkitMaskImage;c.style.maskImage=cs.maskImage;c.style.opacity=cs.opacity});
+    return true;
+  }
+  function frame(){
+    raf=0;var tr=getComputedStyle(img).translate;base.style.translate=dust.style.translate=tr;
+    var R2=R*R,P=S*DPR;u32.fill(0);
+    for(var n=0;n<N;n++){
+      var ex=x[n]-mx,ey=y[n]-my,d2=ex*ex+ey*ey;
+      if(d2<R2){var d=Math.sqrt(d2)||1,f=1-d/R;f*=f;
+        vx[n]+=ex/d*f*3.2+(Math.random()-.5)*f*4+pvx*f*.35;
+        vy[n]+=ey/d*f*3.2+(Math.random()-.5)*f*4+pvy*f*.35-f*.6}
+      if(!away[n]&&vx[n]===0&&vy[n]===0)continue;
+      vx[n]=(vx[n]+(hx[n]-x[n])*kk[n])*.93;vy[n]=(vy[n]+(hy[n]-y[n])*kk[n])*.93;x[n]+=vx[n];y[n]+=vy[n];
+      var e=Math.abs(x[n]-hx[n])+Math.abs(y[n]-hy[n]);
+      if(e>.8){if(!away[n]){away[n]=1;nAway++;bx.clearRect(hx[n]*DPR,hy[n]*DPR,P,P)}}
+      else if(e<.4&&Math.abs(vx[n])+Math.abs(vy[n])<.08){x[n]=hx[n];y[n]=hy[n];vx[n]=vy[n]=0;
+        if(away[n]){away[n]=0;nAway--;bx.drawImage(hi,hx[n]*DPR,hy[n]*DPR,P,P,hx[n]*DPR,hy[n]*DPR,P,P)}}
+      if(!away[n])continue;
+      var px=x[n]|0,py=y[n]|0;if(px<0||py<0||px>=W-1||py>=H-1)continue;
+      var i=py*W+px,c=col[n];u32[i]=c;u32[i+1]=c;u32[i+W]=c;u32[i+W+1]=c;
+    }
+    dx2.putImageData(buf,0,0);pvx*=.8;pvy*=.8;
+    var near=mx>-R&&my>-R&&mx<W+R&&my<H+R;
+    if(!nAway&&!near){if(++still>10){active=false;fig.classList.remove('sanding');for(var k=0;k<N;k++){vx[k]=vy[k]=0;x[k]=hx[k];y[k]=hy[k]}return}}else still=0;
+    raf=requestAnimationFrame(frame);
+  }
+  function start(){
+    if(!ready){ready=build();if(!ready)return}
+    if(!active){active=true;still=0;bx.clearRect(0,0,base.width,base.height);bx.drawImage(hi,0,0);fig.classList.add('sanding')}
+    if(!raf)raf=requestAnimationFrame(frame);
+  }
+  addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse'||!fig.classList.contains('in'))return;
+    var r=img.getBoundingClientRect();if(!r.width)return;
+    var nx=e.clientX-r.left,ny=e.clientY-r.top;pvx=nx-pmx;pvy=ny-pmy;pmx=nx;pmy=ny;
+    if(ready&&!active&&(Math.abs(r.width-W)>2||Math.abs(r.height-H)>2))ready=false;
+    mx=nx;my=ny;
+    if(nx>-R&&ny>-R&&nx<r.width+R&&ny<r.height+R)start();
+  },{passive:true});
+  document.documentElement.addEventListener('mouseleave',function(){mx=my=-1e4});
+  addEventListener('resize',function(){if(!active)ready=false},{passive:true});
 })();
 </script>
 </body>
