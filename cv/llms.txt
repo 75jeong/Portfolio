@@ -27,4 +27,5 @@
 - [ONE](https://www.aftworks.com/cv/work-one): snap a receipt, get ¥10; #1 overall on the Japanese App Store (2018 to 2019)
 - [ONE PAYMENT](https://www.aftworks.com/cv/work-onepay): in-person card payments on a phone with no card reader (2017 to 2018)
 - [AEON.com](https://www.aftworks.com/cv/work-aeon): corporate site on desktop and smartphone (2016)
+- [Cookpad 料理動画](https://www.aftworks.com/cv/work-cookpadvideo): Cooking video service of Cookpad: lead design of the PC and smartphone layouts and the design guide (2014)
 - [Cookpad 産地直送便](https://www.aftworks.com/cv/work-cookpad): renewal of a farm-direct grocery e-commerce flow (2014 to 2015)
