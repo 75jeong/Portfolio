@@ -39,7 +39,7 @@
   try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}
 })();
 </script>
-<link rel="stylesheet" href="/cv/assets/base.css?v=4f1dea65">
+<link rel="stylesheet" href="/cv/assets/base.css?v=b5d574c4">
 </head>
 <body>
 <a class="skip" href="#main"><span class="ja">本文へ</span><span class="en">Skip to content</span><span class="ko">본문으로</span></a>
@@ -54,7 +54,7 @@
 </nav>
 <main id="main" class="sec top-sec case">
   <header class="case-h">
-    <p class="case-no">CASE 03 · 2022</p>
+    <p class="case-no">CASE 08 · 2022</p>
     <h1 class="case-t">Kyash Widget</h1>
     <div class="case-k"><p class="ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</p><p class="en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</p><p class="ko">사업 우선순위에서는 밀려 있었다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔다.</p></div>
     <div class="case-meta"><dl>
@@ -67,7 +67,7 @@
 <a href="https://note.com/jinho/n/n629ea2fb964d" rel="noopener" target="_blank">note: Kyash Widget ↗</a>
 </div></div>
   </header>
-  <div class="cs-media"><figure><div class="cs-panel p-kyash"><img src="/cv/assets/work/ky-equal.webp" width="1280" height="670" alt="Kyash wallet balance shown as a home screen widget" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Wallet = Widget</figcaption></figure><figure><div class="cs-panel p-kyash"><img src="/cv/assets/work/ky-anatomy.webp" width="1200" height="628" alt="Widget anatomy: balance, account, points, last updated" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Widget anatomy</figcaption></figure></div>
+  <div class="cs-media"><figure><div class="cs-panel p-kyash"><img src="/cv/assets/work/ky-equal.webp" width="1280" height="670" alt="Kyash wallet balance shown as a home screen widget" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Wallet = Widget</figcaption></figure><figure><div class="cs-panel p-kyash ky-sk"><img src="/cv/assets/work/ky-sketch.webp" width="1615" height="895" alt="Hand-drawn widget layout sketches" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Early sketches · Card image, balance with top-up and withdraw, recent history</figcaption></figure><figure><div class="cs-panel p-kyash ky-ph"><p class="ky-ph-h"><span class="ja">よく<em>使う</em>、確認できて<em>嬉しい機能</em>をウィジェットにする</span><span class="en">Turn what people <em>use</em> often and are <em>glad to check</em> into the widget</span><span class="ko">자주 <em>쓰고</em>, 확인하면 <em>반가운 기능</em>을 위젯으로</span></p><div class="ky-ph-cols"><div class="ky-ph-c on"><b>Phase 1</b><ul><li><span class="ja">残高表示</span><span class="en">Balance</span><span class="ko">잔액 표시</span></li><li><span class="ja">支払口座表示</span><span class="en">Payment account</span><span class="ko">결제 계좌 표시</span></li></ul></div><div class="ky-ph-c"><b>Phase 2〜</b><ul><li><span class="ja">履歴表示</span><span class="en">Recent history</span><span class="ko">이용 내역 표시</span></li><li><span class="ja">fund source表示</span><span class="en">Fund source</span><span class="ko">fund source 표시</span></li><li><span class="ja">今月のカテゴリ表示</span><span class="en">This month by category</span><span class="ko">이번 달 카테고리 표시</span></li><li><span class="ja">支払口座切り替え</span><span class="en">Switch payment account</span><span class="ko">결제 계좌 전환</span></li><li><span class="ja">カードロック</span><span class="en">Card lock</span><span class="ko">카드 잠금</span></li></ul></div></div></div><figcaption>Scope · What goes in first</figcaption></figure><figure><div class="cs-panel p-kyash"><img src="/cv/assets/work/ky-anatomy.webp" width="1200" height="628" alt="Widget anatomy: balance, account, points, last updated" loading="lazy" decoding="async" class="cs-fill"></div><figcaption>Widget anatomy</figcaption></figure></div>
   <div class="cbody"><ol class="flow">
 <li class="step"><div class="k">01<b><span class="ja">問題定義</span><span class="en">Problem</span><span class="ko">문제정의</span></b></div><div class="v">
 <p class="ja">支払いの前に残高と支払い元を確認するには、毎回アプリを開く必要がありました。確認を省くと、残高不足や支払い元の切り替え忘れで<strong>決済が失敗</strong>します。</p>
@@ -78,12 +78,12 @@
 <li>「自分が毎日使って満足できるか」を判断の軸にしている。Kyashのユーザーとして、レジ前で同じ迷いを繰り返していた。</li>
 <li>ウィジェットに載せる候補として、残高、最近の利用履歴、カード番号の表示などを並べ、「今ユーザーがいちばん欲しいものは何か」をチームで話し合って優先順位を決めた。</li>
 <li>方向を決めたあと、社内インタビューで使い方を確かめ、最終的なUXを決めた。</li>
-</ul>
+<li>ペンでラフを描き、カード画像と残高、残高と入金・出金ボタン、最近の利用履歴など、いくつものレイアウトを並べて比べた。</li></ul>
 <ul class="en">
 <li>My test is whether I'd be happy using it every day. As a Kyash user myself, I kept hitting the same hesitation at the register.</li>
 <li>We listed what the widget could show, including the balance, recent transactions and the card number, and agreed as a team on what users wanted most right now.</li>
 <li>Once the direction was set, internal interviews confirmed how people would use it and settled the final UX.</li>
-</ul><ul class="ko"><li>"내가 매일 쓰면서 만족할 수 있는가"를 판단의 기준으로 삼는다. Kyash 사용자로서 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯에 넣을 후보로 잔액, 최근 이용 내역, 카드 번호 표시 등을 나열하고, "지금 사용자가 가장 원하는 것은 무엇인가"를 팀에서 논의해 우선순위를 정했다.</li><li>방향을 정한 뒤 사내 인터뷰로 사용 방식을 확인하고 최종 UX를 결정했다.</li></ul>
+<li>I sketched by hand and compared several layouts side by side: a card image with the balance, the balance with top-up and withdraw buttons, a list of recent history and more.</li></ul><ul class="ko"><li>"내가 매일 쓰면서 만족할 수 있는가"를 판단의 기준으로 삼는다. Kyash 사용자로서 계산대 앞에서 같은 망설임을 몇 번이고 겪었다.</li><li>위젯에 넣을 후보로 잔액, 최근 이용 내역, 카드 번호 표시 등을 나열하고, "지금 사용자가 가장 원하는 것은 무엇인가"를 팀에서 논의해 우선순위를 정했다.</li><li>방향을 정한 뒤 사내 인터뷰로 사용 방식을 확인하고 최종 UX를 결정했다.</li><li>손으로 러프를 그려 카드 이미지와 잔액, 잔액과 입금·출금 버튼, 최근 이용 내역 등 여러 레이아웃을 나란히 놓고 비교했다.</li></ul>
 </div></li>
 <li class="step"><div class="k">03<b><span class="ja">制約</span><span class="en">Constraints</span><span class="ko">제약조건</span></b></div><div class="v">
 <ul class="ja">
@@ -109,6 +109,10 @@
 <p class="q en">Show only the balance, not recent transactions or the card number</p><p class="q ko">화면엔 잔액만. 이용 내역과 카드 번호는 넣지 않는다</p>
 <p class="a ja">利用履歴やカード番号も候補にありましたが、レジ前で知りたいのは「今いくら使えるか」だけです。一目で読めることを最優先にし、毎回は必要ない支払い元の切り替えは長押しに回しました。</p>
 <p class="a en">Recent transactions and the card number were on the list, but at the register the only question is "how much can I spend right now?" Glanceability came first, and switching the funding source, which isn't needed every time, went behind a long press.</p><p class="a ko">최근 이용 내역이나 카드 번호도 후보였지만, 계산대 앞에서 알고 싶은 건 "지금 얼마를 쓸 수 있는가"뿐이다. 한눈에 읽히는 걸 가장 우선하고, 매번 하지 않는 결제 수단 변경은 길게 누르면 나오도록 했다.</p>
+</div>
+<div>
+<p class="q ja">最初のフェーズは残高と支払口座の表示に絞る</p><p class="q en">Keep the first phase to the balance and the payment account</p><p class="q ko">첫 페이즈는 잔액과 결제 계좌 표시로 좁힌다</p>
+<p class="a ja">方針は「よく使う、確認できて嬉しい機能をウィジェットにする」。履歴、fund source、今月のカテゴリ、支払口座の切り替え、カードロックも候補でしたが、次のフェーズ以降に並べ、最初のリリースで何を約束するかをはっきりさせました。</p><p class="a en">The rule was to turn what people use often and are glad to check into the widget. History, fund source, this month by category, switching the payment account and card lock were all candidates, but I lined them up for later phases so the first release made one clear promise.</p><p class="a ko">원칙은 "자주 쓰고, 확인하면 반가운 기능을 위젯으로". 이용 내역, fund source, 이번 달 카테고리, 결제 계좌 전환, 카드 잠금도 후보였지만 다음 페이즈 이후로 배치해, 첫 릴리스에서 무엇을 약속할지 분명히 했다.</p>
 </div>
 <div>
 <p class="q ja">個人の口座に加えて、共有口座の残高も表示できるようにする</p>
@@ -141,10 +145,10 @@
 </div></li>
 </ol></div>
   <nav class="pn-wrap" aria-label="Other projects">
-    <a class="pn prev" href="/cv/work-one"><span class="pn-l"><span class="ja">前のプロジェクト</span><span class="en">Previous</span><span class="ko">이전 프로젝트</span></span><b>ONE</b><span class="pn-img" style="--tint:#E6E1D8"><img class="phone" src="/cv/assets/img/one3-home.webp" alt="" loading="lazy"></span></a>
-    <a class="pn next" href="/cv/work-cookpad"><span class="pn-l"><span class="ja">次のプロジェクト</span><span class="en">Next</span><span class="ko">다음 프로젝트</span></span><b>Cookpad 産地直送便</b><span class="pn-img" style="--tint:#E5E0D4"><img class="" src="/cv/assets/img/ck-result.webp" alt="" loading="lazy"></span></a>
+    <a class="pn prev" href="/cv/work-pokke"><span class="pn-l"><span class="ja">前のプロジェクト</span><span class="en">Previous</span><span class="ko">이전 프로젝트</span></span><b>Pokke</b><span class="pn-img" style="--tint:#F85B08"><img class="" src="/cv/assets/img/pk-cover.webp" alt="" loading="lazy"></span></a>
+    <a class="pn next" href="/cv/work-croc"><span class="pn-l"><span class="ja">次のプロジェクト</span><span class="en">Next</span><span class="ko">다음 프로젝트</span></span><b>Croc</b><span class="pn-img" style="--tint:#E2401A"><img class="phone" src="/cv/assets/img/cr-cover.webp" alt="" loading="lazy"></span></a>
   </nav>
-  <nav class="allp" aria-label="All projects"><span><span class="ja">すべてのプロジェクト</span><span class="en">All projects</span><span class="ko">전체 프로젝트</span></span><a href="/cv/work-onepay">ONE PAYMENT</a><a href="/cv/work-one">ONE</a><a href="/cv/work-kyash" aria-current="page">Kyash Widget</a><a href="/cv/work-cookpad">Cookpad 産地直送便</a><a href="/cv/work-jiffcy">Jiffcy</a><a href="/cv/work-rlwrld">RLWRLD</a></nav>
+  <nav class="allp" aria-label="All projects"><span><span class="ja">すべてのプロジェクト</span><span class="en">All projects</span><span class="ko">전체 프로젝트</span></span><a href="/cv/work-jiffcy">Jiffcy</a><a href="/cv/work-rlwrld">RLWRLD</a><a href="/cv/work-yoki">YOKI</a><a href="/cv/work-shuttlepay">ShuttlePay</a><a href="/cv/work-wealthpark">WealthPark</a><a href="/cv/work-wplab">WealthPark Lab</a><a href="/cv/work-pokke">Pokke</a><a href="/cv/work-kyash" aria-current="page">Kyash Widget</a><a href="/cv/work-croc">Croc</a><a href="/cv/work-metajob">METAJOB</a><a href="/cv/work-one">ONE</a><a href="/cv/work-onepay">ONE PAYMENT</a><a href="/cv/work-aeon">AEON.com</a><a href="/cv/work-cookpad">Cookpad 産地直送便</a></nav>
 </main>
 <div class="band" aria-hidden="true"><div><span>UI/UX/BX DESIGN · START UP · 0&gt;1 DESIGNER ·</span><span>UI/UX/BX DESIGN · START UP · 0&gt;1 DESIGNER ·</span></div></div>
 <footer class="foot">
@@ -162,6 +166,6 @@
     <a href="https://www.aftworks.com/" target="_blank" rel="noopener">aftworks.com</a></nav>
   <p class="legal">© 2026 Jeong Jinho · aftworks</p>
 </footer>
-<script src="/cv/assets/site.js?v=30030084"></script>
+<script src="/cv/assets/site.js?v=0a819497"></script>
 </body>
 </html>

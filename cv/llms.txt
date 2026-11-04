@@ -8,9 +8,17 @@
 - [Contact](https://www.aftworks.com/cv/contact): jinho@aftworks.com, 30-minute 1:1 booking
 
 ## Case studies
-- [ONE PAYMENT](https://www.aftworks.com/cv/work-onepay): in-person card payments on a phone with no card reader (2017 to 2018)
-- [ONE](https://www.aftworks.com/cv/work-one): snap a receipt, get ¥10; #1 overall on the Japanese App Store (2018 to 2019)
-- [Kyash Widget](https://www.aftworks.com/cv/work-kyash): iOS balance widget shipped from a low-priority roadmap item (2022)
-- [Cookpad 産地直送便](https://www.aftworks.com/cv/work-cookpad): renewal of a farm-direct grocery e-commerce flow (2014 to 2015)
 - [Jiffcy](https://www.aftworks.com/cv/work-jiffcy): closed social app for Gen Z; designing the first minutes with zero friends (2025 to now)
 - [RLWRLD](https://www.aftworks.com/cv/work-rlwrld): brand identity built from a pixel grid (2025)
+- [YOKI](https://www.aftworks.com/cv/work-yoki): experience service for active seniors: brand, mobile web and admin (2025)
+- [ShuttlePay](https://www.aftworks.com/cv/work-shuttlepay): savings redesign proposal for a cashless service for children, a hiring work sample (2024)
+- [WealthPark](https://www.aftworks.com/cv/work-wealthpark): product detail redesign for a real-estate investment service, internal proposal (2023)
+- [WealthPark Lab](https://www.aftworks.com/cv/work-wplab): magazine-style media site (blog) for WealthPark, internal proposal (2023)
+- [Pokke](https://www.aftworks.com/cv/work-pokke): deals chatbot browser extension: brand, landing page, extension and store assets (2023)
+- [Kyash Widget](https://www.aftworks.com/cv/work-kyash): iOS balance widget shipped from a low-priority roadmap item (2022)
+- [Croc](https://www.aftworks.com/cv/work-croc): cross-border marketplace: logo, buyer screens and shop admin (2022)
+- [METAJOB](https://www.aftworks.com/cv/work-metajob): brand identity and landing page for a new recruiting SaaS (2021)
+- [ONE](https://www.aftworks.com/cv/work-one): snap a receipt, get ¥10; #1 overall on the Japanese App Store (2018 to 2019)
+- [ONE PAYMENT](https://www.aftworks.com/cv/work-onepay): in-person card payments on a phone with no card reader (2017 to 2018)
+- [AEON.com](https://www.aftworks.com/cv/work-aeon): corporate site on desktop and smartphone (2016)
+- [Cookpad 産地直送便](https://www.aftworks.com/cv/work-cookpad): renewal of a farm-direct grocery e-commerce flow (2014 to 2015)

@@ -137,3 +137,65 @@
   bar.addEventListener('pointerup',end);bar.addEventListener('pointercancel',end);
   if(location.hash==='#book')setTimeout(function(){try{history.replaceState({book:1},'','#book')}catch(e){}open(false)},300);
 })();
+
+/* METAJOB symbol: replay the build on hover or focus */
+(function(){function rp(p){p.classList.add('replay');void p.offsetWidth;p.classList.remove('replay')}
+document.addEventListener('mouseover',function(e){var p=e.target.closest&&e.target.closest('.p-metajob');if(p&&!p.contains(e.relatedTarget))rp(p)});
+document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target.closest('.p-metajob');if(p)rp(p)})})();
+
+/* METAJOB LP carousel: arrows, counter, mouse drag */
+(function(){
+  function setup(car){
+    var t=car.querySelector('.mj-track'),sl=[].slice.call(t.children),cnt=car.querySelector('.mj-count'),pv=car.querySelector('.mj-prev'),nx=car.querySelector('.mj-next'),n=sl.length,cur=0;
+    function pad(i){return(i<10?'0':'')+i}
+    function upd(){var c=t.scrollLeft+t.clientWidth/2,best=0,bd=1e9;sl.forEach(function(s,i){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;best=i}});cur=best;
+      sl.forEach(function(s,i){s.classList.toggle('on',i===cur)});cnt.textContent=pad(cur+1)+' / '+pad(n);pv.disabled=cur===0;nx.disabled=cur===n-1}
+    function go(i){i=Math.max(0,Math.min(n-1,i));var s=sl[i];t.scrollTo({left:s.offsetLeft-(t.clientWidth-s.offsetWidth)/2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+    pv.addEventListener('click',function(){go(cur-1)});nx.addEventListener('click',function(){go(cur+1)});
+    t.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
+    var x0=null,s0=0,moved=0;
+    t.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;x0=e.clientX;s0=t.scrollLeft;moved=0;t.classList.add('drag');t.setPointerCapture(e.pointerId)});
+    t.addEventListener('pointermove',function(e){if(x0===null)return;moved=Math.abs(e.clientX-x0);t.scrollLeft=s0-(e.clientX-x0)});
+    function end(){if(x0===null)return;x0=null;t.classList.remove('drag');upd();go(cur)}
+    t.addEventListener('pointerup',end);t.addEventListener('pointercancel',end);
+    addEventListener('resize',upd,{passive:true});upd();
+    car._mjUpd=upd;
+  }
+  function init(){[].forEach.call(document.querySelectorAll('.mj-car'),function(c){if(!c._mj){c._mj=1;setup(c)}})}
+  init();
+  /* the case sheet moves the article in later; re-check sizes when it becomes visible */
+  new MutationObserver(function(){[].forEach.call(document.querySelectorAll('.mj-car'),function(c){if(c._mjUpd)c._mjUpd()})}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+})();
+
+/* Jiffcy demo: play in view, highlight the current step, tap a step to jump */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [].forEach.call(document.querySelectorAll('.jf-demo'),function(box){
+    var v=box.querySelector('video'),items=[].slice.call(box.querySelectorAll('.jf-steps li')),bar=box.querySelector('.jf-bar i'),btn=box.querySelector('.jf-play'),T=items.map(function(li){return +li.querySelector('button').dataset.t}),user=false;
+    function mark(){var t=v.currentTime,k=0;T.forEach(function(x,i){if(t>=x-.05)k=i});items.forEach(function(li,i){li.classList.toggle('on',i===k)});if(v.duration)bar.style.width=(t/v.duration*100)+'%'}
+    function state(){box.classList.toggle('paused',v.paused);btn.setAttribute('aria-label',v.paused?'Play demo':'Pause demo')}
+    v.addEventListener('timeupdate',mark);v.addEventListener('play',state);v.addEventListener('pause',state);state();
+    btn.addEventListener('click',function(){user=true;if(v.paused)v.play().catch(function(){});else v.pause()});
+    items.forEach(function(li,i){li.querySelector('button').addEventListener('click',function(){v.currentTime=T[i];mark();user=false;v.play().catch(function(){})})});
+    if(reduce){v.removeAttribute('loop');return}
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!user)v.play().catch(function(){});else if(!e.isIntersecting)v.pause()})},{threshold:.35}).observe(v);
+  });
+})();
+
+/* WealthPark: screens scroll on their own while in view; touch, wheel or hover takes over */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  [].forEach.call(document.querySelectorAll('.wpd[data-auto],.wlw[data-auto]'),function(d,idx){
+    var s=d.querySelector('.wpd-scr,.wlw-scr'),speed=+d.dataset.auto||30,vis=false,hold=0,raf=0,last=0,phase='down',wait=1200+idx*400;
+    function pause(ms){hold=performance.now()+ms}
+    ['pointerdown','wheel','touchstart','keydown'].forEach(function(e){s.addEventListener(e,function(){pause(6000)},{passive:true})});
+    d.addEventListener('mouseenter',function(){pause(1e9)});d.addEventListener('mouseleave',function(){pause(1500)});
+    function tick(t){raf=requestAnimationFrame(tick);var dt=Math.min(64,t-(last||t));last=t;if(!vis||t<hold)return;
+      if(wait>0){wait-=dt;return}
+      var max=s.scrollHeight-s.clientHeight;if(max<=2)return;
+      if(phase==='down'){s.scrollTop=Math.min(max,s.scrollTop+speed*dt/1000*(s.clientWidth/240));if(s.scrollTop>=max-1){phase='up';wait=1800}}
+      else{s.scrollTo({top:0,behavior:'smooth'});phase='down';wait=2600}}
+    new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;if(vis&&!raf){last=0;raf=requestAnimationFrame(tick)}else if(!vis&&raf){cancelAnimationFrame(raf);raf=0}})},{threshold:.5}).observe(d);
+  });
+})();
