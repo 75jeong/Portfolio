@@ -586,3 +586,11 @@ html.motion .p-metajob .mj-legend{animation:mj-word .8s ease 1.9s both}
 .pf .shot,.pn-img{-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)}
 .pf .shot:not(.phone) img{inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px)}
 .pf .shot img{backface-visibility:hidden}
+
+/* added cases: Taxnap, PIKABON, ULINE, Link, Pairs */
+.p-tx{background:#0E2A1C}.p-pb{background:#0B0B0E}.p-ul{background:#191338}.p-lk{background:#10191D}.p-pr{background:#2A1609}.p-wh{background:#fff}
+.xd-devs{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:28px;padding:48px clamp(16px,4vw,64px);align-items:start}
+.xd-devs img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 26px rgba(0,0,0,.35))}
+.xd-devs.flat img{filter:none;border-radius:10px}
+.xd-devs.flat{gap:16px}
+@media (max-width:760px){.xd-devs{gap:10px;padding:24px 12px}.xd-devs.n4{--n:2!important;gap:16px}}
