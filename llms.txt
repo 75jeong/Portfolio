@@ -10,12 +10,18 @@
 - Contact: jinho@aftworks.com · 1:1 booking: https://cal.com/jeong75/30min
 
 ## Case studies
-- [ONE PAYMENT](https://www.aftworks.com/#onepay): In-person card payments on a phone with no card reader (2017–2018, Chief Designer / Creative Director)
-- [ONE](https://www.aftworks.com/#one): Receipt-buying app; snap a receipt, get ¥10. #1 overall on the Japanese App Store (2018–2019)
-- [Kyash Widget](https://www.aftworks.com/#kyash): iOS balance widget shipped from a low-priority roadmap item (2022, Product Designer)
-- [Cookpad 産地直送便](https://www.aftworks.com/#cookpad): Renewal of a farm-direct grocery e-commerce flow (2014–2015)
 - [Jiffcy](https://www.aftworks.com/#jiffcy): Closed social app for Gen Z; designing the first minutes with zero friends (2025–, Product Designer)
 - [RLWRLD](https://www.aftworks.com/#rlwrld): Brand identity built from a pixel grid for a robotics foundation-model company (2025, BX and web)
+- [YOKI](https://www.aftworks.com/#yoki): Experience service for active seniors: brand, mobile web and admin, designed solo (2025, in progress)
+- [WealthPark](https://www.aftworks.com/#wealthpark): Product detail redesign for a real-estate investment service, an internal proposal designed and planned solo (2023, mostly approved, not launched)
+- [WealthPark Lab](https://www.aftworks.com/#wplab): Magazine-style outward-facing media site (blog) for WealthPark, an internal proposal designed and planned solo (2023, not launched)
+- [Kyash Widget](https://www.aftworks.com/#kyash): iOS balance widget shipped from a low-priority roadmap item (2022, Product Designer)
+- [Croc](https://www.aftworks.com/#croc): Cross-border marketplace (cro-c): logo, buyer screens on desktop and smartphone, and the shop admin (2022, not launched)
+- [METAJOB](https://www.aftworks.com/#metajob): Brand identity and landing page for a new recruiting SaaS, designed and planned solo with two engineers (2021, BX and LP)
+- [ONE](https://www.aftworks.com/#one): Receipt-buying app; snap a receipt, get ¥10. #1 overall on the Japanese App Store (2018–2019)
+- [ONE PAYMENT](https://www.aftworks.com/#onepay): In-person card payments on a phone with no card reader (2017–2018, Chief Designer / Creative Director)
+- [AEON.com](https://www.aftworks.com/#aeon): Corporate site for AEON.com Co., Ltd. on desktop and smartphone, designed solo (2016, launched)
+- [Cookpad 産地直送便](https://www.aftworks.com/#cookpad): Renewal of a farm-direct grocery e-commerce flow (2014–2015)
 
 ## Elsewhere
 - LinkedIn: https://www.linkedin.com/in/jeong75/
