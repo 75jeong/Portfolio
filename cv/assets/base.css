@@ -594,3 +594,11 @@ html.motion .p-metajob .mj-legend{animation:mj-word .8s ease 1.9s both}
 .xd-devs.flat img{filter:none;border-radius:10px}
 .xd-devs.flat{gap:16px}
 @media (max-width:760px){.xd-devs{gap:10px;padding:24px 12px}.xd-devs.n4{--n:2!important;gap:16px}}
+
+.p-ws{background:#0B2A1D}
+.ws-two{max-width:620px;margin:0 auto}.ws-two img{filter:none}
+.case-t{overflow-wrap:anywhere}
+
+/* browser-window screens: no panel behind them */
+.cs-panel:has(> .wl-wrap),.cs-panel:has(> .wl-two),.cs-panel:has(> .op-lp){background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0}
+.cs-panel > .wl-wrap,.cs-panel > .wl-two,.cs-panel > .op-lp{padding-left:0!important;padding-right:0!important;padding-top:0!important;padding-bottom:0!important}
