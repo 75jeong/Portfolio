@@ -1143,6 +1143,8 @@ section.clients{position:relative;background:var(--bg);margin-inline:calc(var(--
 .fixband{position:relative;height:clamp(260px,36vw,520px);margin-inline:calc(var(--gutter) * -1);clip-path:inset(0);background:#0B0B0E}
 .fixband-img{position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;object-fit:cover;max-width:none;filter:saturate(.7)}
 .fixband .reel-shade,.fixband .reel-grain{position:absolute;inset:0}
+.fixband.fb-in{margin-inline:calc(-1 * var(--fedge,72px))}
+.fixband.fb-in + section{border-top:0}
 
 .drift{overflow:hidden;margin-inline:calc(-1 * var(--dedge,72px));padding-block:clamp(8px,2vw,24px) clamp(56px,7vw,112px)}
 .drift-track{display:flex;width:max-content;align-items:center;gap:.5em;font-size:clamp(2.6rem,6.4vw,6.4rem);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--ink);white-space:nowrap;animation:clm 48s linear infinite}
@@ -2635,6 +2637,7 @@ html.loading .badge,html.sheet-open .badge,body.menu-open .badge{opacity:0;visib
 </div>
 </section>
 <!-- CAREER -->
+<section class="fixband fb-in noprint" aria-hidden="true"><video class="fixband-img fb-vid" muted loop playsinline preload="none"></video><div class="reel-shade"></div><div class="reel-grain"></div></section>
 <section class="newpage" id="career">
 <div class="sec-head">
 <h2><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></h2>
@@ -2741,7 +2744,6 @@ html.loading .badge,html.sheet-open .badge,body.menu-open .badge{opacity:0;visib
 </div>
 </section>
 </main>
-<section class="fixband noprint" aria-hidden="true"><video class="fixband-img fb-vid" muted loop playsinline preload="none"></video><div class="reel-shade"></div><div class="reel-grain"></div></section>
 <section class="contact-v" id="contact">
 <div aria-hidden="true" class="contact-bg"></div>
 <div aria-hidden="true" class="contact-shade"></div>
@@ -3530,7 +3532,8 @@ document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target
   if(badge&&contact&&'IntersectionObserver' in window){new IntersectionObserver(function(es){badge.classList.toggle('hide',es[0].isIntersecting)},{threshold:.12}).observe(contact)}
   /* drift edge to the viewport */
   var dr=document.querySelector('.drift'),sec=document.getElementById('cases');
-  function edge(){if(dr&&sec)dr.style.setProperty('--dedge',Math.max(0,Math.round(sec.getBoundingClientRect().left))+'px')}
+  var fin=document.querySelector('.fixband.fb-in');
+  function edge(){if(dr&&sec)dr.style.setProperty('--dedge',Math.max(0,Math.round(sec.getBoundingClientRect().left))+'px');if(fin&&fin.parentNode)fin.style.setProperty('--fedge',Math.max(0,Math.round(fin.parentNode.getBoundingClientRect().left))+'px')}
   edge();addEventListener('resize',edge);
 })();
 </script>
