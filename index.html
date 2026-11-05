@@ -1127,7 +1127,7 @@ body{background:transparent}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .reel.off{visibility:hidden}
 .reel-space{height:calc(70vh - 66px);height:calc(70svh - 66px);margin-inline:calc(var(--gutter) * -1)}
-header.hero-v{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;box-shadow:0 -24px 60px rgba(0,0,0,.45)}
+header.hero-v{min-height:calc(100vh - 66px);min-height:calc(100svh - 66px);display:flex;flex-direction:column;justify-content:center}
 @media (max-width:640px){.reel-space{height:calc(70svh - 60px)}}
 
 section.clients,.fixband{border-top:0}
@@ -1218,8 +1218,6 @@ html.loading .badge,html.sheet-open .badge,body.menu-open .badge{opacity:0;visib
 <button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
 </div>
 </div></div>
-<div class="reel noprint" id="reel" aria-hidden="true"><video class="reel-video" muted autoplay loop playsinline preload="auto" poster="assets/reel-poster.jpg" data-d="assets/reel-d.mp4" data-m="assets/reel-m.mp4" data-pm="assets/reel-poster-m.jpg"></video><div class="reel-shade"></div><div class="reel-grain"></div><div class="reel-cap"><span>Jeong Jinho<br>Selected work 2014 — 2026</span><span class="reel-cue">Scroll</span></div></div>
-<div class="reel-space noprint" aria-hidden="true"></div>
 <a class="badge noprint" id="badge" href="https://cal.com/jeong75/30min" aria-label="Book a 1:1"><span class="bd-disc"></span><svg class="bd-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bd-c" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#bd-c" textLength="289">BOOK A 1:1 · JEONG JINHO · PRODUCT DESIGNER · </textPath></text></svg><span class="bd-ctr" aria-hidden="true"><svg viewBox="0 0 16 16" width="22" height="22"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
 <div class="menu-modal noprint" id="menu-modal" role="dialog" aria-modal="true" aria-label="Menu" hidden>
 <div class="menu-head">
@@ -3523,15 +3521,7 @@ document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target
 </script>
 <script>
 (function(){
-  var reel=document.getElementById('reel');if(!reel)return;
-  var v=reel.querySelector('video'),mob=matchMedia('(max-width:760px)').matches;
-  v.poster=mob?v.dataset.pm:v.poster;
-  var src=document.createElement('source');src.src=mob?v.dataset.m:v.dataset.d;src.type='video/mp4';v.appendChild(src);v.load();
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');reel.classList.add('on')}
-  else{var p=v.play();if(p&&p.catch)p.catch(function(){});v.addEventListener('playing',function(){reel.classList.add('on')},{once:true});setTimeout(function(){reel.classList.add('on')},1500)}
-  var off=false;
-  function tick(){var o=scrollY>innerHeight*.85;if(o!==off){off=o;reel.classList.toggle('off',o);if(o)v.pause();else if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var q=v.play();if(q&&q.catch)q.catch(function(){})}}}
-  addEventListener('scroll',tick,{passive:true});tick();
+  var mob=matchMedia('(max-width:760px)').matches,v={dataset:{d:'assets/reel-d.mp4',m:'assets/reel-m.mp4'},poster:mob?'assets/reel-poster-m.jpg':'assets/reel-poster.jpg'};
   document.querySelectorAll('.fb-vid').forEach(function(f){
     var s2=document.createElement('source');s2.src=mob?v.dataset.m:v.dataset.d;s2.type='video/mp4';f.appendChild(s2);f.poster=v.poster;
     if('IntersectionObserver' in window)new IntersectionObserver(function(es){if(es[0].isIntersecting){if(f.preload==='none'){f.preload='auto';f.load()}if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var q=f.play();if(q&&q.catch)q.catch(function(){})}}else f.pause()},{rootMargin:'200px 0px'}).observe(f.parentNode)});
