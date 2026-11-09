@@ -144,7 +144,7 @@
   --h1:48px;--lede:15.5px;--badge:12.5px;--stat:13.5px;--btn:13.5px;--hbtn:42px;--gap:72px;--sx:72px;--sy:36px;--copy:860px;--ledemax:470px}
 .hero-x .hx-photo{position:absolute;inset:0;z-index:-1;display:flex;justify-content:center;align-items:flex-start;pointer-events:none}
 .hero-x .hx-photo img{height:92%;width:auto;max-width:none;margin-top:1%;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 96%);mask-image:linear-gradient(180deg,#000 62%,transparent 96%);opacity:1;animation:hx-photo 1.6s cubic-bezier(.16,1,.3,1) both .05s}
-.hero-x::before{content:"";position:absolute;left:0;right:0;bottom:0;height:58%;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72) 55%,rgba(0,0,0,.9))}
+.hero-x::before{content:"";position:absolute;left:0;right:0;bottom:0;height:58%;z-index:-1;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 0%,transparent),color-mix(in srgb,var(--bg) 72%,transparent) 55%,var(--bg) 100%)}
 .hero-x .hx-reelwrap{position:absolute;inset:0;z-index:-3;opacity:.3;pointer-events:none;overflow:hidden}
 .hero-x .hx-reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-x .hx-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:1;pointer-events:none;mix-blend-mode:color}
@@ -237,7 +237,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   .hero-x{min-height:0;grid-template-rows:auto}
   .hero-x .hx-photo{align-items:flex-start}
   .hero-x .hx-photo img{width:min(64vw,300px);height:auto;margin-top:40px}
-  .hero-x .hx-main{display:block;min-height:0;padding:calc(min(64vw,300px) * 1.2 * .9 + 40px) 28px 96px}
+  .hero-x .hx-main{display:block;min-height:0;padding:calc(min(64vw,300px) * 1.403 * .62 + 40px) 28px 96px}
   .hero-x .hx-reelwrap{filter:grayscale(1)}
   .hero-x .hx-video{display:none}
   .hero-x .hx-h1{line-height:1.22}
@@ -1357,7 +1357,7 @@ html.loading .badge,html.sheet-open .badge,body.menu-open .badge{opacity:0;visib
 <header class="hero-x" id="top">
 <div class="hx-reelwrap" aria-hidden="true"><video class="hx-reel" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" poster="assets/reel-poster.jpg"><source src="assets/reel-d.mp4" type="video/mp4"></video></div>
 <video class="hx-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" poster="assets/hero-bg.jpg"><source src="assets/hero-bg.mp4" type="video/mp4"></video>
-<div class="hx-photo" aria-hidden="true"><img src="assets/photo-cut.webp" alt="" width="664" height="798"></div>
+<div class="hx-photo" aria-hidden="true"><img src="assets/photo-cut.webp" alt="" width="832" height="1167"></div>
 <div class="hero" hidden></div>
 <div class="hx-main">
 <div class="hx-copy">
