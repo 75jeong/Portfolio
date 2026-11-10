@@ -83,10 +83,11 @@
 #cases .bento-cases::-webkit-scrollbar{display:none}
 #cases .bento-cases.drag{cursor:grabbing;scroll-snap-type:none}
 #cases .bento-cases.drag .bc{pointer-events:none}
-#cases .bento-cases .bc{flex:0 0 calc((100% - 40px) / 3.12);aspect-ratio:4/5;max-height:calc(100vh - 160px);scroll-snap-align:start;grid-area:auto}
-#cases .bento-cases .bc-t{font-size:clamp(1.75rem,2.6vw,2.75rem)}
+#cases .bento-cases .bc{flex:0 0 calc((100% - 60px) / 4.3);aspect-ratio:4/5;max-height:calc(100vh - 160px);scroll-snap-align:start;grid-area:auto}
+#cases .bento-cases .bc-t{font-size:clamp(1.5rem,2vw,2.25rem)}
 #cases .bento-cases .bc-media.phone img{padding:32px 16px 168px;object-position:50% 0}
 @media (max-width:640px){#cases .bento-cases .bc-media.phone img{padding:24px 12px 150px}}
+@media (min-width:1024px) and (max-width:1279px){#cases .bento-cases .bc{flex-basis:calc((100% - 40px) / 3.3)}}
 @media (max-width:1023px){#cases .bento-cases{gap:16px}#cases .bento-cases .bc{flex-basis:calc((100% - 16px) / 2.1)}}
 @media (max-width:640px){#cases .sec-head{align-items:center}.cc-count{display:none}.cc-ctl button{width:40px;height:40px}#cases .bento-cases{gap:12px}#cases .bento-cases .bc{flex-basis:84%;aspect-ratio:4/5;max-height:none}}
 /* ONE PAYMENT landing page: desktop window and phone side by side */
@@ -223,13 +224,6 @@ h1,h2,h3,.hx-h1{text-wrap:balance}
 .drift:hover .drift-track{animation-play-state:paused}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid #FF4800;outline-offset:3px}
 
-/* case carousel: liquid-glass lens at the window edges (cards bend, blur and split colour as they leave) */
-@media (min-width:641px){
-  #cases .bento-cases{padding-top:96px;padding-bottom:110px;margin-top:-84px;margin-bottom:-82px}
-  #cases .bento-cases .bc{transform-origin:50% 50%;will-change:transform,filter;transition:none}
-  #cases .cc-filter,#cases .cc-ctl{position:relative;z-index:3}
-  #cases .bento-cases .bc.lg-edge .bc-txt,#cases .bento-cases .bc.lg-edge .bc-go{opacity:var(--lg-txt,1)}
-}
 @media (prefers-reduced-motion:reduce){#cases .bento-cases .bc{transform:none!important;filter:none!important}}
 
 /* mobile hero: smaller portrait, more air, no stat row */
@@ -252,6 +246,23 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .lg-notes b{display:block;font-family:var(--f-display);font-size:1.25rem;margin-bottom:8px}
 .lg-notes p{margin:0;color:var(--muted);line-height:1.7}
 @media (max-width:640px){.lg-notes{grid-template-columns:1fr}}
+
+/* case card hover: glass highlight + zoom */
+.bc-glare{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .35s ease;mix-blend-mode:soft-light;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.75),rgba(255,255,255,.18) 28%,transparent 58%)}
+.bc-glare::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 46%,transparent 62%);background-size:220% 100%;background-position:calc(100% - var(--gx,50%)) 0;mix-blend-mode:screen}
+.bc.hv .bc-glare{opacity:1}
+#cases .bento-cases .bc .bc-media img,#cases .bento-cases .bc .bc-reel{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+#cases .bento-cases .bc.hv .bc-media img,#cases .bento-cases .bc.hv .bc-reel{transform:scale(1.07)}
+@media (hover:hover) and (pointer:fine) and (min-width:641px){#cases .bento-cases .bc:hover{transform:none}}
+
+/* carousel: three cards in a row, the fourth half in view at the window edge */
+@media (min-width:641px){
+  #cases .bento-cases{--cg:clamp(20px,2vw,32px);--vis:3.5;--pad:var(--edge,72px);--cw:calc((100vw - var(--pad) - 3 * var(--cg)) / var(--vis));gap:var(--cg)!important}
+  #cases .bento-cases .bc{flex-basis:var(--cw)!important;max-height:none!important;scroll-snap-align:start!important}
+  #cases .bento-cases .bc-t{font-size:clamp(1.6rem,2.2vw,2.5rem)}
+}
+@media (min-width:641px) and (max-width:1023px){#cases .bento-cases{--vis:2.5;--cw:calc((100vw - var(--pad) - 2 * var(--cg)) / var(--vis))}}
 </style>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -3731,30 +3742,35 @@ document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target
 </script>
 <script>try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){[].forEach.call(document.querySelectorAll('.hx-video,.hx-reel'),function(hv){hv.removeAttribute('autoplay');hv.pause()})}}catch(e){}</script>
 <script>
-/* liquid-glass edges for the case carousel */
+/* case cards: hover tilt writes its transform through here */
+window.__lgApply=function(c){c.style.transform=c._tilt||''};
+</script>
+
+<script>
+/* case cards: 3D tilt toward the pointer, a glass highlight that follows it, image zoom and lift */
 (function(){
-  var t=document.querySelector('#cases .bento-cases');if(!t)return;
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
   try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){}
-  var mq=matchMedia('(min-width:641px)'),cards=[].slice.call(t.querySelectorAll('.bc')),q=0;
-  function ss(a,b,x){x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x)}
-  function run(){q=0;
-    if(!mq.matches){cards.forEach(function(c){c.style.transform='';c.style.filter='';c.classList.remove('lg-edge')});return}
-    var r=t.getBoundingClientRect(),cx=r.left+r.width/2,hw=r.width/2;
-    cards.forEach(function(c){
-      if(c.classList.contains('off'))return;
-      var b=c.getBoundingClientRect();if(b.right<r.left-50||b.left>r.right+50){c.style.transform='';c.style.filter='';return}
-      var n=(b.left+b.width/2-cx)/hw,a=Math.abs(n),e=ss(.6,1.15,a),sg=n<0?-1:1;
-      if(e<.002){c.style.transform='';c.style.filter='';c.classList.remove('lg-edge');return}
-      var ab=(e*18).toFixed(1);
-      c.style.transform='perspective(1100px) rotateY('+(-sg*e*48).toFixed(2)+'deg) scale('+(1+e*.12).toFixed(3)+','+(1+e*.3).toFixed(3)+')';
-      c.style.filter='blur('+(e*12).toFixed(2)+'px) saturate('+(1+e*.9).toFixed(2)+') drop-shadow('+(-sg*ab)+'px 0 '+(e*8).toFixed(1)+'px rgba(0,210,255,'+(e*.7).toFixed(2)+')) drop-shadow('+(sg*ab*.6).toFixed(1)+'px 0 '+(e*6).toFixed(1)+'px rgba(255,72,0,'+(e*.55).toFixed(2)+'))';
-      c.classList.add('lg-edge');c.style.setProperty('--lg-txt',(1-e*.85).toFixed(2));
-    });
-  }
-  function req(){if(!q){q=1;requestAnimationFrame(run)}}
-  t.addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
-  [].forEach.call(document.querySelectorAll('.ccf'),function(b){b.addEventListener('click',function(){setTimeout(req,30)})});
-  if(mq.addEventListener)mq.addEventListener('change',req);run();setTimeout(run,600);
+  var mq=matchMedia('(min-width:641px)');
+  [].forEach.call(document.querySelectorAll('#cases .bento-cases .bc'),function(c){
+    var g=document.createElement('span');g.className='bc-glare';g.setAttribute('aria-hidden','true');c.appendChild(g);
+    var tx=0,ty=0,tl=0,x=0,y=0,l=0,raf=0;
+    function frame(){
+      x+=(tx-x)*.14;y+=(ty-y)*.14;l+=(tl-l)*.14;
+      var done=Math.abs(tx-x)<.001&&Math.abs(ty-y)<.001&&Math.abs(tl-l)<.001;
+      if(done){x=tx;y=ty;l=tl}
+      c._tilt=l<.001?'':'perspective(1000px) translateY('+(-10*l).toFixed(2)+'px) rotateX('+(-y*7).toFixed(2)+'deg) rotateY('+(x*9).toFixed(2)+'deg) scale('+(1+l*.025).toFixed(4)+')';
+      if(window.__lgApply)window.__lgApply(c);else c.style.transform=c._tilt;
+      raf=done?0:requestAnimationFrame(frame);
+    }
+    function go(){if(!raf)raf=requestAnimationFrame(frame)}
+    c.addEventListener('pointerenter',function(){if(!mq.matches)return;tl=1;c.classList.add('hv');go()});
+    c.addEventListener('pointermove',function(e){if(!mq.matches)return;
+      var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+      tx=Math.max(-1,Math.min(1,px*2-1));ty=Math.max(-1,Math.min(1,py*2-1));
+      c.style.setProperty('--gx',(px*100).toFixed(1)+'%');c.style.setProperty('--gy',(py*100).toFixed(1)+'%');go()});
+    c.addEventListener('pointerleave',function(){tx=0;ty=0;tl=0;c.classList.remove('hv');go()});
+  });
 })();
 </script>
 </body>
