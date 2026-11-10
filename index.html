@@ -304,6 +304,10 @@ section.clients{border-left:0!important}
 
 /* 2:3 covers with the object re-centred above the title */
 #cases .bento-cases .bc-media.cv23 > img{object-fit:cover!important;object-position:50% 50%!important;padding:0!important;filter:none!important;width:100%;height:100%}
+
+/* footer: copyright left, location right on wide screens */
+@media (min-width:768px){footer .foot-loc{margin-left:auto}}
+@media (max-width:767px){footer .foot-loc{flex-basis:100%}}
 </style>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -2951,10 +2955,9 @@ html.loading .badge,html.sheet-open .badge,body.menu-open .badge{opacity:0;visib
 <a href="https://www.linkedin.com/in/jeong75/" rel="noopener" target="_blank">LinkedIn ↗</a>
 <a href="https://youtrust.jp/users/jeong75" rel="noopener" target="_blank">YOUTRUST ↗</a>
 <a href="https://www.behance.net/aftworks" rel="noopener" target="_blank">Behance ↗</a>
-<a href="https://aftworks.com/" rel="noopener" target="_blank">aftworks.com ↗</a>
 </div>
 </div>
-<footer><span class="foot-mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg></span><span>© 2026 Jeong Jinho · aftworks</span></footer>
+<footer><span class="foot-mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"/></svg></span><span class="foot-c">© Jeong Jinho · aftworks.</span><span class="foot-loc">Designed in Tokyo, Japan.</span></footer>
 </div>
 </section>
 <script>
