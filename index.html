@@ -1440,7 +1440,7 @@ html.motion #career .tl > li.in:not(.hot){opacity:.72}
 /* ================= AWAKE LAYER (panels, giant type, pill buttons) ================= */
 html[data-aw]{--aw-red:#FF4800;--aw-ink:#15171C;--aw-panel:#ECEDEF;--aw-panel-2:#181B21;--aw-frame:12px;--aw-r:24px;--aw-e:cubic-bezier(.2,.7,.2,1);--aw-land:cubic-bezier(.16,1,.3,1);--aw-io:cubic-bezier(.65,0,.35,1)}
 html[data-aw] body{background:#0B0C0F;word-break:keep-all;overflow-x:clip}
-html[data-aw] .cur,html[data-aw] .badge{display:none!important}
+html[data-aw] .cur{display:none!important}
 
 /* ---------- nav: logo + pills ---------- */
 html[data-aw] .bar{position:fixed!important;left:0;right:0;z-index:1000!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;top:calc(var(--aw-frame) + 14px)!important;transition:transform .5s var(--aw-e)}
@@ -1751,7 +1751,7 @@ html.pf-direct #loader{display:none!important}
 @media (max-width:760px){
   html[data-aw] .aw-h{font-size:clamp(2.4rem,14.4vw,4.4rem)}
   html[data-aw] .aw-h .ja,html[data-aw] .aw-h .ko{font-size:.8em;line-height:1.06}
-  html[data-aw] .menu-nav{gap:0!important;margin:28px 0 auto!important}
+  html[data-aw] .menu-nav{gap:0!important;margin:20px 0 auto!important;padding-top:8px!important}
   html[data-aw] .menu-nav a{padding:9px 0!important;white-space:nowrap}
   html[data-aw] .menu-nav a::before{display:none}
 }
@@ -1768,6 +1768,9 @@ html[data-aw] .contact-v .contact-inner{height:auto!important;min-height:0!impor
 html[data-aw] .contact-v .contact{margin-bottom:clamp(44px,5vw,72px)!important;min-height:0!important}
 html[data-aw] .contact-v footer{margin-top:0!important}
 @media (max-width:760px){html[data-aw] .aw-coins{z-index:3;pointer-events:none}html[data-aw] .aw-coin{pointer-events:auto}}
+
+/* booking badge from the previous design: hidden over the hero and the contact/footer panel */
+html[data-aw] .badge.hide-foot{opacity:0;visibility:hidden;transform:translateY(16px) scale(.92);pointer-events:none}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
@@ -4317,6 +4320,9 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
     [].forEach.call(document.querySelectorAll('[data-lang],.menu-lang'),function(b){b.addEventListener('click',function(){setTimeout(onScroll,30)})});
   }
 
+  /* booking badge: also step aside when the contact panel (with the footer) comes in */
+  var bdg=document.getElementById('badge'),cv=document.querySelector('section.contact-v');
+  if(bdg&&cv&&'IntersectionObserver' in window)new IntersectionObserver(function(es){bdg.classList.toggle('hide-foot',es[0].isIntersecting)},{threshold:0}).observe(cv);
   /* nav pills turn dark once the hero is behind */
   var hero=document.querySelector('.aw-hero');
   if(hero&&'IntersectionObserver' in window){new IntersectionObserver(function(es){root.classList.toggle('aw-past',!es[0].isIntersecting)},{rootMargin:'-80px 0px 0px 0px'}).observe(hero)}
