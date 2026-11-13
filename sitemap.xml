@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.aftworks.com/</loc>
-    <lastmod>2026-10-25</lastmod>
-    <image:image><image:loc>https://www.aftworks.com/assets/og.jpg</image:loc></image:image>
+    <lastmod>2026-11-13</lastmod>
+    <image:image><image:loc>https://www.aftworks.com/assets/og-2026b.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.aftworks.com/jeongjinho-cv</loc>
     <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://www.aftworks.com/projects</loc>
+    <lastmod>2026-11-13</lastmod>
   </url>
 </urlset>
