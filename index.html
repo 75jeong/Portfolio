@@ -1746,6 +1746,27 @@ html[data-aw] .aw-all .aw-va b{font-weight:400;font-size:13px;opacity:.55;margin
   html[data-aw] .aw-meta{order:3;margin-top:0;position:relative;z-index:2}
 }
 html.pf-direct #loader{display:none!important}
+
+/* ---------- mobile: bigger hero copy, tighter menu ---------- */
+@media (max-width:760px){
+  html[data-aw] .aw-h{font-size:clamp(2.4rem,14.4vw,4.4rem)}
+  html[data-aw] .aw-h .ja,html[data-aw] .aw-h .ko{font-size:.8em;line-height:1.06}
+  html[data-aw] .menu-nav{gap:0!important;margin:28px 0 auto!important}
+  html[data-aw] .menu-nav a{padding:9px 0!important;white-space:nowrap}
+  html[data-aw] .menu-nav a::before{display:none}
+}
+@media (max-width:760px){
+  /* nav sits as far from the top as from the sides */
+  html[data-aw] .bar{top:var(--aw-frame)!important}
+  html[data-aw] .menu-modal{padding-top:20px!important}
+}
+/* nothing from the page peeks out around the menu panel */
+html[data-aw] body.menu-open::before{content:"";position:fixed;inset:0;background:#0B0C0F;z-index:1199;pointer-events:none}
+/* contact + footer panel: height follows its content */
+html[data-aw] section.contact-v{height:auto!important;min-height:0!important}
+html[data-aw] .contact-v .contact-inner{height:auto!important;min-height:0!important;padding-top:clamp(64px,8vw,112px)!important;row-gap:0!important;justify-content:flex-start!important}
+html[data-aw] .contact-v .contact{margin-bottom:clamp(44px,5vw,72px)!important;min-height:0!important}
+html[data-aw] .contact-v footer{margin-top:0!important}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
