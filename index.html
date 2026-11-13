@@ -1767,6 +1767,7 @@ html[data-aw] section.contact-v{height:auto!important;min-height:0!important}
 html[data-aw] .contact-v .contact-inner{height:auto!important;min-height:0!important;padding-top:clamp(64px,8vw,112px)!important;row-gap:0!important;justify-content:flex-start!important}
 html[data-aw] .contact-v .contact{margin-bottom:clamp(44px,5vw,72px)!important;min-height:0!important}
 html[data-aw] .contact-v footer{margin-top:0!important}
+@media (max-width:760px){html[data-aw] .aw-coins{z-index:3;pointer-events:none}html[data-aw] .aw-coin{pointer-events:auto}}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
@@ -4348,10 +4349,15 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
   if(box){
     var svg='<svg class="aw-coin-l" viewBox="0 0 3406 1004" aria-hidden="true"><use href="#aktw"/></svg>';
     var TOP=86,mob=innerWidth<761,N=mob?5:9,C=[],W=0,H=0,mx=-999,my=-999,drag=null,last=0;
-    function size(){var r=box.getBoundingClientRect();W=r.width;H=r.height*(innerWidth<761?.42:1)}
-    size();addEventListener('resize',size);
+    /* on phones the copy fills the top half, so the coins stay in the photo area below it */
+    var ph=document.querySelector('.aw-photo'),mt=document.querySelector('.aw-meta');
+    function size(){var r=box.getBoundingClientRect();W=r.width;
+      if(innerWidth<761&&ph){var pr=ph.getBoundingClientRect();var sd=document.querySelector('.aw-side');TOP=Math.max(86,pr.top-r.top+20,sd?sd.getBoundingClientRect().bottom-r.top+24:0);H=(mt?mt.getBoundingClientRect().top:r.bottom)-r.top-6}
+      else{TOP=86;H=r.height}
+      C.forEach(function(c){if(c.y<TOP+c.r)c.y=TOP+c.r+Math.random()*Math.max(1,H-TOP-2*c.r)})}
+    size();addEventListener('resize',size);addEventListener('load',size);setTimeout(size,800);
     for(var i=0;i<N;i++){var rr=(mob?22:26)+Math.random()*(mob?10:16),el=document.createElement('span');el.className='aw-coin'+(i%2?' dk':'');el.style.width=el.style.height=(rr*2)+'px';el.innerHTML=svg;box.appendChild(el);
-      C.push({el:el,r:rr,x:rr+Math.random()*(W-2*rr),y:TOP+rr+Math.random()*Math.max(1,H*(mob?.8:.55)-2*rr),vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6,a:Math.random()*360,va:(Math.random()-.5)*.4})}
+      C.push({el:el,r:rr,x:rr+Math.random()*(W-2*rr),y:TOP+rr+Math.random()*Math.max(1,(mob?H-TOP:H*.55)-2*rr),vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6,a:Math.random()*360,va:(Math.random()-.5)*.4})}
     box.addEventListener('pointermove',function(e){var r=box.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;if(drag){drag.vx=(mx-drag.x)*.5;drag.vy=(my-drag.y)*.5;drag.x=mx;drag.y=my}});
     box.addEventListener('pointerleave',function(){mx=my=-999});
     hero.addEventListener('pointermove',function(e){var r=box.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
