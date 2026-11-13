@@ -4350,10 +4350,13 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
     var svg='<svg class="aw-coin-l" viewBox="0 0 3406 1004" aria-hidden="true"><use href="#aktw"/></svg>';
     var TOP=86,mob=innerWidth<761,N=mob?5:9,C=[],W=0,H=0,mx=-999,my=-999,drag=null,last=0;
     /* on phones the copy fills the top half, so the coins stay in the photo area below it */
-    var ph=document.querySelector('.aw-photo'),mt=document.querySelector('.aw-meta');
+    var ph=document.querySelector('.aw-photo'),mt=document.querySelector('.aw-meta'),FX=-9999,FY=-9999,FRX=0,FRY=0;
+    function face(c){var ax=FRX+c.r,ay=FRY+c.r,dx=(c.x-FX)/ax,dy=(c.y-FY)/ay,d=Math.sqrt(dx*dx+dy*dy);if(d>=1)return;if(d<1e-3){dx=1;dy=0;d=1}var nx=dx/d,ny=dy/d;c.x=FX+nx*ax;c.y=FY+ny*ay;var gx=nx/ax,gy=ny/ay,gl=Math.sqrt(gx*gx+gy*gy);gx/=gl;gy/=gl;var vn=c.vx*gx+c.vy*gy;if(vn<0){c.vx-=1.8*vn*gx;c.vy-=1.8*vn*gy}}
     function size(){var r=box.getBoundingClientRect();W=r.width;
       if(innerWidth<761&&ph){var pr=ph.getBoundingClientRect();var sd=document.querySelector('.aw-side');TOP=Math.max(86,pr.top-r.top+20,sd?sd.getBoundingClientRect().bottom-r.top+24:0);H=(mt?mt.getBoundingClientRect().top:r.bottom)-r.top-6}
       else{TOP=86;H=r.height}
+      /* face zone: the head sits at 49% / 31% of photo-cut.webp, about 28% x 31% of it */
+      if(ph){var q=ph.getBoundingClientRect();FX=q.left-r.left+q.width*.488;FY=q.top-r.top+q.height*.31;FRX=q.width*.16+10;FRY=q.height*.17+10}
       C.forEach(function(c){if(c.y<TOP+c.r)c.y=TOP+c.r+Math.random()*Math.max(1,H-TOP-2*c.r)})}
     size();addEventListener('resize',size);addEventListener('load',size);setTimeout(size,800);
     for(var i=0;i<N;i++){var rr=(mob?22:26)+Math.random()*(mob?10:16),el=document.createElement('span');el.className='aw-coin'+(i%2?' dk':'');el.style.width=el.style.height=(rr*2)+'px';el.innerHTML=svg;box.appendChild(el);
@@ -4379,6 +4382,7 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
         for(var i=0;i<C.length;i++)for(var j=i+1;j<C.length;j++){var a=C[i],b=C[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy),m=a.r+b.r;
           if(d<m&&d>0){var o=(m-d)/2,nx=dx/d,ny=dy/d;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;var p=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(p>0){a.vx-=p*nx*.9;a.vy-=p*ny*.9;b.vx+=p*nx*.9;b.vy+=p*ny*.9}}}
       }
+      C.forEach(face);
       C.forEach(function(c){c.el.style.transform='translate3d('+(c.x-c.r).toFixed(1)+'px,'+(c.y-c.r).toFixed(1)+'px,0) rotate('+c.a.toFixed(1)+'deg)'});
       requestAnimationFrame(step)}
     requestAnimationFrame(step);
