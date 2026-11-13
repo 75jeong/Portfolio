@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Projects · Jeong Jinho</title>
+<meta name="description" content="All case studies by Jeong Jinho (aftworks): drag the canvas to browse.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script>(function(){var r=document.documentElement,l,h=location.hash.slice(1);if(/^(ja|en|ko)$/.test(h))l=h;if(!l){try{l=localStorage.getItem('pf-lang-v2')}catch(e){}}if(!/^(ja|en|ko)$/.test(l||'')){var p=String((navigator.languages||[navigator.language||''])[0]||'').toLowerCase();l=p.indexOf('ja')===0?'ja':p.indexOf('ko')===0?'ko':'en'}r.dataset.lang=l;r.lang=l})()</script>
+<style>
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-3Light.subset.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-4Regular.subset.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-5Medium.subset.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-6SemiBold.subset.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-7Bold.subset.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('assets/fonts/Paperlogy-8ExtraBold.subset.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+:root{--red:#FF4800;--ink:#F4F4F6;--muted:#9BA2AE;--bg:#0E1013;--panel:#15181D;--frame:20px;--e:cubic-bezier(.2,.7,.2,1);--land:cubic-bezier(.16,1,.3,1);--io:cubic-bezier(.65,0,.35,1)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#0B0C0F;color:var(--ink);font-family:"Paperlogy","Noto Sans KR","Hiragino Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;overscroll-behavior:none}
+html:not([data-lang="ja"]) .ja,html:not([data-lang="en"]) .en,html:not([data-lang="ko"]) .ko{display:none!important}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+/* nav */
+.nav{position:fixed;z-index:20;top:calc(var(--frame) + 20px);left:calc(var(--frame) + 28px);right:calc(var(--frame) + 28px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.nav>*{pointer-events:auto}
+.logo{display:block;color:#fff}.logo svg{width:82px;height:24px;display:block}
+.acts{display:flex;gap:8px;align-items:center}
+.pill{height:40px;display:inline-flex;align-items:center;gap:10px;padding:0 20px;border-radius:40px;font-size:16px;background:rgba(24,27,33,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s}
+.pill:hover{background:rgba(44,48,56,.85)}
+.pill.solid{background:#fff;color:#15171C}.pill.solid:hover{background:#E6E7EA}
+.seg{display:flex;padding:3px;border-radius:40px;background:rgba(24,27,33,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.seg button{height:34px;padding:0 12px;border-radius:34px;font-size:13px;letter-spacing:.04em}
+.seg button[aria-pressed="true"]{background:#fff;color:#15171C}
+.sw{position:relative;display:inline-grid;width:1em;height:1em;overflow:hidden}.sw i{grid-area:1/1;font-style:normal;line-height:1;display:grid;place-items:center;transition:transform .45s var(--land)}.sw i:last-child{transform:translate(-100%,100%)}
+@media (hover:hover){[data-arrow]:hover .sw i:first-child{transform:translate(100%,-100%)}[data-arrow]:hover .sw i:last-child{transform:none}}
+/* stage */
+.root{position:fixed;inset:var(--frame);border-radius:32px;overflow:hidden;background-color:var(--bg);background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.2px);background-size:28px 28px}
+.scrim{position:absolute;left:0;right:0;top:0;height:168px;z-index:3;pointer-events:none;background:linear-gradient(rgba(14,16,19,.85),rgba(14,16,19,0))}
+.surface{position:absolute;inset:0;touch-action:none;cursor:grab;overflow:hidden}
+.surface.drag{cursor:grabbing}.surface.drag .tile{pointer-events:none}
+.camera{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0;will-change:transform}
+.tile{position:absolute;left:0;top:0;width:var(--tw,220px);display:block;will-change:transform;-webkit-user-drag:none;user-select:none}
+.th{position:relative;display:block;aspect-ratio:380/440;border-radius:14px;overflow:hidden;background:#1B1E24}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;transition:transform 1.1s var(--e),opacity .5s var(--e)}
+.th img.h{opacity:0}
+@media (hover:hover){.tile:hover .th img{transform:scale(1.04)}.tile:hover .th img.h{opacity:1}}
+.mt{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.dc{font-size:11px;font-weight:500;color:var(--muted);line-height:1}
+.tt{font-size:19px;font-weight:500;line-height:1.05;letter-spacing:-.01em}
+.tile.dim{opacity:.12;filter:grayscale(1);pointer-events:none;transition:opacity .4s,filter .4s}
+.tile{transition:opacity .4s,filter .4s}
+/* slider */
+.root[data-mode="slider"] .surface{display:none}
+.slider{position:absolute;inset:0;display:none;touch-action:pan-y;cursor:grab;overflow:hidden}
+.root[data-mode="slider"] .slider{display:block}
+.slider.drag{cursor:grabbing}.slider.drag .tile{pointer-events:none}
+.strip{position:absolute;left:0;top:50%;height:0}
+.slider .tile{--tw:25vw;top:0;transform-origin:50% 50%}
+.slider .tt{font-size:28px}.slider .dc{font-size:12px}
+/* controls */
+.ctl{position:absolute;z-index:5;right:24px;bottom:24px;display:flex;gap:6px;padding:4px;border-radius:40px;background:rgba(255,255,255,.92);color:#15171C;backdrop-filter:blur(8px)}
+.ctl button{width:36px;height:36px;border-radius:36px;display:grid;place-items:center;opacity:.55;transition:opacity .2s,background .2s}
+.ctl button:hover,.ctl button[aria-pressed="true"]{opacity:1}.ctl button[aria-pressed="true"]{background:#15171C;color:#fff}
+.ctl .sep{width:1px;background:rgba(21,23,28,.15);margin:6px 2px}
+.ctl svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.flt{position:absolute;z-index:5;left:24px;bottom:24px;display:flex;gap:6px;padding:4px;border-radius:40px;background:rgba(24,27,33,.8);backdrop-filter:blur(8px)}
+.flt button{height:36px;padding:0 16px;border-radius:36px;font-size:15px;color:var(--ink);opacity:.7}
+.flt button[aria-pressed="true"]{background:#fff;color:#15171C;opacity:1}
+.flt b{font-weight:400;font-size:12px;opacity:.6;margin-left:4px}
+.hint{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);padding:12px 20px;border-radius:40px;background:rgba(255,255,255,.92);color:#15171C;font-size:14px;pointer-events:none;transition:opacity .6s}
+.hint.off{opacity:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){:root{--frame:10px}.nav{top:22px;left:24px;right:24px}.seg{display:none}.pill{height:36px;padding:0 14px;font-size:14px}.flt{left:12px;right:12px;bottom:68px;justify-content:center}.flt button{padding:0 12px;font-size:14px}.ctl{right:50%;transform:translateX(50%);bottom:12px}.slider .tile{--tw:64vw}.root{border-radius:22px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="aktw" viewBox="0 0 3406 1004"><g transform="translate(0.000000,1004.000000) scale(0.100000,-0.100000)"><path fill="currentColor" d="M9126 10013 c-3 -16 -269 -1520 -591 -3343 -322 -1823 -591 -3341 -597 -3374 l-11 -58 -106 5 c-124 6 -190 25 -257 76 -94 71 -143 218 -129 391 4 47 205 1196 446 2555 241 1358 439 2476 439 2483 0 10 -239 12 -1187 10 l-1187 -3 -33 -195 c-17 -107 -35 -209 -38 -226 l-5 -31 -113 111 c-378 377 -962 550 -1852 550 -1038 -1 -1808 -295 -2445 -933 -501 -503 -830 -1126 -1005 -1908 -26 -114 -346 -1886 -390 -2158 -83 -512 -83 -1007 1 -1385 215 -963 917 -1466 2164 -1551 211 -14 608 -6 765 15 779 108 1395 498 1830 1159 l39 58 32 -128 c106 -429 320 -701 701 -891 455 -229 1251 -290 1838 -142 61 15 112 26 114 24 3 -3 -39 -253 -92 -557 -54 -303 -97 -555 -97 -560 0 -4 597 -6 1327 -5 l1327 3 472 2696 c259 1482 473 2702 476 2710 11 28 151 -304 248 -586 255 -745 491 -1925 579 -2890 58 -633 64 -1489 14 -1888 l-6 -47 1370 0 1370 0 7 48 c39 299 58 1003 37 1379 -21 368 -57 676 -117 992 -19 102 -37 200 -40 216 -2 17 10 -10 29 -60 391 -1045 1397 -1555 3067 -1555 1674 0 2857 549 3621 1682 l85 127 28 -137 c57 -281 174 -566 314 -761 425 -595 1335 -911 2627 -911 960 0 1716 299 2510 994 30 27 57 47 59 45 1 -2 30 -44 64 -94 442 -649 1303 -968 2547 -942 974 20 1766 273 2482 794 619 449 1008 930 1413 1748 509 1027 757 2088 777 3315 11 744 -42 1276 -178 1768 l-31 112 -1332 0 -1332 0 18 -112 c135 -832 187 -1947 128 -2759 -111 -1540 -530 -2375 -1289 -2567 -100 -25 -119 -27 -326 -26 -258 0 -348 18 -515 100 -286 141 -428 471 -390 906 6 73 164 993 390 2274 209 1183 380 2159 380 2168 0 15 -102 16 -1327 14 l-1328 -3 -87 -485 c-48 -267 -177 -991 -287 -1610 -214 -1196 -250 -1387 -312 -1654 -301 -1302 -668 -1738 -1437 -1713 -435 14 -690 170 -805 492 -55 156 -73 412 -43 630 12 86 747 4261 761 4323 l5 22 -3425 0 c-1935 0 -3425 4 -3425 9 0 10 208 1215 215 1249 l5 22 -1329 0 -1329 0 -6 -32 c-3 -18 -53 -302 -110 -631 -58 -329 -108 -602 -111 -607 -8 -12 -3635 -14 -3635 -2 0 9 217 1225 224 1255 4 16 -64 17 -1324 17 l-1328 0 -6 -27z m-4400 -3311 c217 -47 381 -152 471 -304 l32 -53 -234 -1310 c-129 -720 -240 -1320 -246 -1331 -32 -60 -255 -232 -389 -299 -191 -96 -352 -130 -605 -129 -432 2 -674 102 -853 356 -120 170 -154 341 -122 617 11 100 211 1260 242 1406 128 608 510 977 1093 1054 44 6 94 13 110 15 80 11 413 -3 501 -22z m10080 -169 c-27 -133 -439 -2506 -450 -2598 -40 -314 -44 -617 -11 -884 15 -119 15 -169 0 -99 -52 241 -247 768 -409 1103 -483 999 -1128 1837 -1916 2484 l-25 20 1408 1 1409 0 -6 -27z m6849 5 c-3 -13 -68 -381 -145 -818 -77 -437 -145 -819 -151 -847 l-10 -53 -1010 0 -1009 0 -4 -22 c-111 -526 -252 -851 -498 -1143 -282 -335 -689 -459 -1133 -345 -494 127 -696 608 -566 1348 110 623 333 1880 336 1890 4 9 432 12 2100 12 l2095 0 -5 -22z"/></g></symbol></svg>
+<header class="nav">
+<a class="logo" href="index.html" aria-label="aftworks, back to home"><svg viewBox="0 0 3406 1004" aria-hidden="true"><use href="#aktw"/></svg></a>
+<div class="acts">
+<div class="seg" role="group" aria-label="Language"><button type="button" data-l="ja">JA</button><button type="button" data-l="en">EN</button><button type="button" data-l="ko">KO</button></div>
+<a class="pill" data-arrow href="index.html#cases"><span class="ja">ホームへ</span><span class="en">Back home</span><span class="ko">홈으로</span><span class="sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
+<a class="pill solid" data-arrow href="https://cal.com/jeong75/30min"><span class="ja">1:1で相談</span><span class="en">Book a 1:1</span><span class="ko">1:1 상담</span><span class="sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
+</div>
+</header>
+<main class="root" id="root" data-mode="canvas">
+<h1 class="sr">Projects</h1>
+<ul class="sr"><li><a href="index.html#jiffcy">Jiffcy</a></li><li><a href="index.html#rlwrld">RLWRLD</a></li><li><a href="index.html#yoki">YOKI</a></li><li><a href="index.html#pikabon">PIKABON</a></li><li><a href="index.html#uline">ULINE</a></li><li><a href="index.html#link">Link</a></li><li><a href="index.html#workspot">WORKSPOT</a></li><li><a href="index.html#shuttlepay">ShuttlePay</a></li><li><a href="index.html#pairs">Pairs 町友</a></li><li><a href="index.html#taxnap">Taxnap</a></li><li><a href="index.html#wealthpark">WealthPark</a></li><li><a href="index.html#wplab">WealthPark Lab</a></li><li><a href="index.html#pokke">Pokke</a></li><li><a href="index.html#kyash">Kyash Widget</a></li><li><a href="index.html#croc">Croc</a></li><li><a href="index.html#metajob">METAJOB</a></li><li><a href="index.html#one">ONE</a></li><li><a href="index.html#onepay">ONE PAYMENT</a></li><li><a href="index.html#aeon">AEON.com</a></li><li><a href="index.html#cookpadvideo">Cookpad 料理動画</a></li><li><a href="index.html#cookpad">Cookpad 産地直送便</a></li><li><a href="index.html#logoideas">Logo ideas</a></li></ul>
+<div class="scrim" aria-hidden="true"></div>
+<div class="surface" id="surface"><div class="camera" id="camera"></div></div>
+<div class="slider" id="slider"><div class="strip" id="strip"></div></div>
+<p class="hint" id="hint"><span class="ja">ドラッグして見て回る</span><span class="en">Drag to explore</span><span class="ko">드래그해서 둘러보기</span></p>
+<div class="flt" role="group" aria-label="Filter" id="flt">
+<button type="button" data-f="all" aria-pressed="true"><span class="ja">すべて</span><span class="en">All</span><span class="ko">전체</span><b>(22)</b></button>
+<button type="button" data-f="web" aria-pressed="false">WEB<b>(12)</b></button>
+<button type="button" data-f="app" aria-pressed="false">APP<b>(08)</b></button>
+<button type="button" data-f="bx" aria-pressed="false">BX<b>(13)</b></button>
+</div>
+<div class="ctl" role="group" aria-label="View">
+<button type="button" id="zo" aria-label="Zoom out"><svg viewBox="0 0 20 20"><path d="M5 10h10"/></svg></button>
+<button type="button" id="zr" aria-label="Reset view"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="5.5"/><circle cx="10" cy="10" r="1.2"/></svg></button>
+<button type="button" id="zi" aria-label="Zoom in"><svg viewBox="0 0 20 20"><path d="M5 10h10M10 5v10"/></svg></button>
+<span class="sep"></span>
+<button type="button" id="mc" aria-label="Canvas view" aria-pressed="true"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1"/></svg></button>
+<button type="button" id="ms" aria-label="Slider view" aria-pressed="false"><svg viewBox="0 0 20 20"><rect x="6" y="4" width="8" height="12" rx="1.2"/><path d="M2.5 6v8M17.5 6v8"/></svg></button>
+</div>
+</main>
+<script>
+var ITEMS=[{"id":"jiffcy","tags":["app","bx"],"img":"assets/work/cv23-jiffcy.webp","hov":"assets/work/jfn-feed.webp","no":"CASE 01 · 2025–","t":"Jiffcy","year":"2025–","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"App · BX"},{"id":"rlwrld","tags":["bx","web"],"img":"assets/work/cv23-rlwrld.webp","hov":"assets/work/rwc-21.webp","no":"CASE 02 · 2025","t":"RLWRLD","year":"2025","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"BX · Web"},{"id":"yoki","tags":["bx","web"],"img":"assets/work/cv23-yoki.webp","hov":"assets/work/yk-s1.webp","no":"CASE 03 · 2025","t":"YOKI","year":"2025","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"BX · Web"},{"id":"pikabon","tags":["bx"],"img":"assets/work/cv23-pikabon.webp","hov":"assets/work/pbp-07.webp","no":"CASE 04 · 2024","t":"PIKABON","year":"2024","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"BX"},{"id":"uline","tags":["bx"],"img":"assets/work/cv23-uline.webp","hov":"assets/work/ul-03.webp","no":"CASE 05 · 2024","t":"ULINE","year":"2024","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"BX"},{"id":"link","tags":["bx"],"img":"assets/work/cv23-link.webp","hov":"assets/work/lk-6.webp","no":"CASE 06 · 2024","t":"Link","year":"2024","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"BX"},{"id":"workspot","tags":["bx","web"],"img":"assets/work/cv23-workspot.webp","hov":"assets/work/wsb-kv1.webp","no":"CASE 07 · 2024","t":"WORKSPOT","year":"2024","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"BX · Web"},{"id":"shuttlepay","tags":["app"],"img":"assets/work/cv23-shuttlepay.webp","hov":"assets/work/spc-rabbit.webp","no":"CASE 08 · 2024","t":"ShuttlePay","year":"2024","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"App"},{"id":"pairs","tags":["app"],"img":"assets/work/cv23-pairs.webp","hov":"assets/work/prf-groups.webp","no":"CASE 09 · 2024","t":"Pairs 町友","year":"2024","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"App"},{"id":"taxnap","tags":["app"],"img":"assets/work/cv23-taxnap.webp","hov":"assets/work/txf-splash.webp","no":"CASE 10 · 2023","t":"Taxnap","year":"2023","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"App"},{"id":"wealthpark","tags":["app"],"img":"assets/work/cv23-wealthpark.webp","hov":"assets/work/wps-home.webp","no":"CASE 11 · 2023","t":"WealthPark","year":"2023","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"App"},{"id":"wplab","tags":["web"],"img":"assets/work/cv23-wplab.webp","hov":"assets/work/wlx-home.webp","no":"CASE 12 · 2023","t":"WealthPark Lab","year":"2023","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"Web"},{"id":"pokke","tags":["bx","web"],"img":"assets/work/cv23-pokke.webp","hov":"assets/work/pkp-home.webp","no":"CASE 13 · 2023","t":"Pokke","year":"2023","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"BX · Web"},{"id":"kyash","tags":["app"],"img":"assets/work/cv23-kyash.webp","hov":"assets/work/ky-anatomy.webp","no":"CASE 14 · 2022","t":"Kyash Widget","year":"2022","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"App"},{"id":"croc","tags":["bx","web"],"img":"assets/work/cv23-croc.webp","hov":"assets/work/crs-shop.webp","no":"CASE 15 · 2022","t":"Croc","year":"2022","pr":"01","prt":{"ja":"「なぜ作るのか」を先に言葉にする","en":"Put \"why build this\" into words first","ko":""},"disc":"BX · Web"},{"id":"metajob","tags":["bx","web"],"img":"assets/work/cv23-metajob.webp","hov":"assets/work/mj-phone.webp","no":"CASE 16 · 2021","t":"METAJOB","year":"2021","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"BX · Web"},{"id":"one","tags":["app","bx","web"],"img":"assets/work/cv23-one.webp","hov":"assets/work/onx-home-hm.webp","no":"CASE 17 · 2018–2019","t":"ONE","year":"2018–2019","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"App · BX · Web"},{"id":"onepay","tags":["app","bx","web"],"img":"assets/work/cv23-onepay.webp","hov":"assets/work/opf-amount.webp","no":"CASE 18 · 2017–2018","t":"ONE PAYMENT","year":"2017–2018","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"App · BX · Web"},{"id":"aeon","tags":["web"],"img":"assets/work/cv23-aeon.webp","hov":"assets/work/aex-top.webp","no":"CASE 19 · 2016","t":"AEON.com","year":"2016","pr":"03","prt":{"ja":"自分が抜けても、組織に残る形にする","en":"Build what stays with the team after I leave","ko":""},"disc":"Web"},{"id":"cookpadvideo","tags":["web"],"img":"assets/work/cv23-cookpadvideo.webp","hov":"assets/work/cvs-top.webp","no":"CASE 20 · 2014","t":"Cookpad 料理動画","year":"2014","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"Web"},{"id":"cookpad","tags":["web"],"img":"assets/work/cv23-cookpad.webp","hov":"assets/work/ck-after.webp","no":"CASE 21 · 2014–2015","t":"Cookpad 産地直送便","year":"2014–2015","pr":"02","prt":{"ja":"速さは、足すより削ることで作る","en":"Speed comes from removing things","ko":""},"disc":"Web"},{"id":"logoideas","tags":["bx"],"img":"assets/work/cv23-logoideas.webp","hov":"assets/work/lg-aa-2.webp","no":"CASE 22 · Personal","t":"Logo ideas","year":"Personal","pr":"","prt":{},"disc":"BX"}];
+</script>
+<script>
+(function(){
+  var root=document.documentElement,reduce=false;try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  /* language */
+  function setLang(l){root.dataset.lang=l;root.lang=l;try{localStorage.setItem('pf-lang-v2',l)}catch(e){}
+    [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l))})}
+  setLang(root.dataset.lang||'ja');
+  [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+
+  var R=document.getElementById('root'),surf=document.getElementById('surface'),cam=document.getElementById('camera'),
+      sl=document.getElementById('slider'),strip=document.getElementById('strip'),hint=document.getElementById('hint');
+  var mob=innerWidth<761,TW=mob?150:220,GX=mob?210:330,GY=mob?280:400,COLS=6;
+  var filter='all';
+
+  function tileHTML(it){
+    return '<span class="th"><img src="'+it.img+'" alt="" draggable="false" loading="lazy">'+(it.hov&&it.hov!==it.img?'<img class="h" src="'+it.hov+'" alt="" draggable="false" loading="lazy">':'')+'</span>'+
+      '<span class="mt"><span class="dc">'+it.disc+' · '+it.year+'</span><span class="tt">'+it.t+'</span></span>';
+  }
+  function make(it){var a=document.createElement('a');a.className='tile';a.href='index.html#'+it.id;a.draggable=false;a.setAttribute('aria-label',it.t);a.innerHTML=tileHTML(it);a.dataset.tags=it.tags.join(' ');return a}
+
+  /* ---------- canvas: a jittered grid of all cases, repeated without end ---------- */
+  var N=ITEMS.length,ROWS=Math.ceil(N/COLS),PW=COLS*GX,PH=ROWS*GY,pool=[];
+  var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+  var base=ITEMS.map(function(it,i){var c=i%COLS,r=Math.floor(i/COLS);
+    return {it:it,x:c*GX+(r%2?GX*.5:0)+(rnd()-.5)*GX*.36,y:r*GY+(rnd()-.5)*GY*.3,d:.85+rnd()*.3}});
+  /* 3x3 copies of the pool so the view is always covered; positions wrap around the camera */
+  for(var cy=-1;cy<=1;cy++)for(var cx=-1;cx<=1;cx++)base.forEach(function(b){var el=make(b.it);el.style.setProperty('--tw',TW+'px');cam.appendChild(el);pool.push({el:el,b:b,ox:cx,oy:cy})});
+  var X=0,Y=0,Z=1,vx=0,vy=0,tz=1,W=0,H=0;
+  function size(){var r=surf.getBoundingClientRect();W=r.width;H=r.height}
+  size();addEventListener('resize',function(){size();lay()});
+  function wrap(v,p){return ((v%p)+p)%p}
+  function lay(){
+    cam.style.transform='scale('+Z.toFixed(4)+')';
+    var vw=W/Z,vh=H/Z;
+    pool.forEach(function(p){
+      var px=wrap(p.b.x-X*p.b.d+p.ox*PW+PW,PW*3)-PW,py=wrap(p.b.y-Y*p.b.d+p.oy*PH+PH,PH*3)-PH;
+      p.el.style.transform='translate3d('+(px-(PW-vw)/2).toFixed(1)+'px,'+(py-(PH-vh)/2).toFixed(1)+'px,0)';
+    });
+  }
+  var down=false,lx=0,ly=0,moved=0,lt=0,pid=0;
+  surf.addEventListener('pointerdown',function(e){down=true;moved=0;lx=e.clientX;ly=e.clientY;lt=performance.now();vx=vy=0;pid=e.pointerId});
+  surf.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-lx,dy=e.clientY-ly;moved+=Math.abs(dx)+Math.abs(dy);if(moved>6&&!surf.classList.contains('drag')){surf.classList.add('drag');try{surf.setPointerCapture(pid)}catch(_){}}
+    X-=dx/Z;Y-=dy/Z;var now=performance.now(),dt=Math.max(16,now-lt);vx=-dx/Z*16/dt;vy=-dy/Z*16/dt;lt=now;lx=e.clientX;ly=e.clientY;hideHint();lay()});
+  function up(){if(!down)return;down=false;setTimeout(function(){surf.classList.remove('drag')},0)}
+  surf.addEventListener('pointerup',up);surf.addEventListener('pointercancel',up);
+  surf.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
+  surf.addEventListener('wheel',function(e){e.preventDefault();if(e.ctrlKey){tz=Math.max(.5,Math.min(1.8,tz*(1-e.deltaY*.01)))}else{vx+=e.deltaX*.06/Z;vy+=e.deltaY*.06/Z}hideHint()},{passive:false});
+  function tick(){
+    if(!down){X+=vx;Y+=vy;vx*=.93;vy*=.93;if(Math.abs(vx)<.01)vx=0;if(Math.abs(vy)<.01)vy=0}
+    Z+=(tz-Z)*.14;if(Math.abs(tz-Z)<.0005)Z=tz;
+    if(R.dataset.mode==='canvas'&&(vx||vy||Z!==tz||down))lay();
+    stick();requestAnimationFrame(tick)}
+  lay();requestAnimationFrame(tick);
+  document.getElementById('zi').onclick=function(){tz=Math.min(1.8,tz*1.25)};
+  document.getElementById('zo').onclick=function(){tz=Math.max(.5,tz/1.25)};
+  document.getElementById('zr').onclick=function(){tz=1;X=0;Y=0;vx=vy=0;lay()};
+  /* a slow drift at rest, like the reference */
+  if(!reduce){vx=.35;vy=.12}
+
+  /* ---------- slider ---------- */
+  var sItems=[],SX=0,svx=0,sdown=false,slx=0,smoved=0,spid=0;
+  function buildSlider(){strip.innerHTML='';sItems=ITEMS.filter(function(it){return filter==='all'||it.tags.indexOf(filter)>=0}).map(function(it){var el=make(it);strip.appendChild(el);return el})}
+  buildSlider();
+  function stick(){if(R.dataset.mode!=='slider'||!sItems.length)return;
+    if(!sdown){SX+=svx;svx*=.92;if(Math.abs(svx)<.02)svx=0}
+    var w=sItems[0].offsetWidth,gap=Math.max(24,w*.16),step=w+gap,total=step*sItems.length,cx=sl.clientWidth/2;
+    sItems.forEach(function(el,i){var x=wrap(i*step-SX+total/2,total)-total/2;var d=Math.min(1,Math.abs(x)/(sl.clientWidth*.7));
+      el.style.transform='translate3d('+(cx+x-w/2).toFixed(1)+'px,-50%,0) scale('+(1-d*.12).toFixed(3)+')';el.style.opacity=(1-d*.35).toFixed(3)})}
+  sl.addEventListener('pointerdown',function(e){sdown=true;smoved=0;slx=e.clientX;svx=0;spid=e.pointerId});
+  sl.addEventListener('pointermove',function(e){if(!sdown)return;var dx=e.clientX-slx;smoved+=Math.abs(dx);if(smoved>6&&!sl.classList.contains('drag')){sl.classList.add('drag');try{sl.setPointerCapture(spid)}catch(_){}}SX-=dx;svx=-dx;slx=e.clientX;hideHint()});
+  function sup(){if(!sdown)return;sdown=false;setTimeout(function(){sl.classList.remove('drag')},0)}
+  sl.addEventListener('pointerup',sup);sl.addEventListener('pointercancel',sup);
+  sl.addEventListener('click',function(e){if(smoved>6){e.preventDefault();e.stopPropagation()}},true);
+  sl.addEventListener('wheel',function(e){e.preventDefault();svx+=(Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY)*.08},{passive:false});
+  addEventListener('keydown',function(e){if(R.dataset.mode!=='slider')return;var w=sItems[0]?sItems[0].offsetWidth*1.16:300;if(e.key==='ArrowRight')svx+=w*.08;if(e.key==='ArrowLeft')svx-=w*.08});
+
+  function mode(m){R.dataset.mode=m;document.getElementById('mc').setAttribute('aria-pressed',String(m==='canvas'));document.getElementById('ms').setAttribute('aria-pressed',String(m==='slider'));
+    [].forEach.call(document.querySelectorAll('#zo,#zr,#zi'),function(b){b.disabled=m!=='canvas';b.style.opacity=m==='canvas'?'':'.25'});if(m==='canvas')lay()}
+  document.getElementById('mc').onclick=function(){mode('canvas')};
+  document.getElementById('ms').onclick=function(){mode('slider')};
+
+  /* ---------- filter ---------- */
+  [].forEach.call(document.querySelectorAll('#flt button'),function(b){b.addEventListener('click',function(){
+    filter=b.dataset.f;[].forEach.call(document.querySelectorAll('#flt button'),function(o){o.setAttribute('aria-pressed',String(o===b))});
+    pool.forEach(function(p){p.el.classList.toggle('dim',filter!=='all'&&p.b.it.tags.indexOf(filter)<0)});
+    buildSlider();SX=0})});
+
+  var hid=false;function hideHint(){if(hid)return;hid=true;hint.classList.add('off')}
+  setTimeout(hideHint,3200);
+})();
+
+</script>
+</body>
+</html>
