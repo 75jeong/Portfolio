@@ -63,6 +63,9 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 .mt{display:flex;flex-direction:column;gap:7px;margin-top:10px}
 .dc{font-size:11px;font-weight:500;color:var(--muted);line-height:1}
 .tt{font-size:19px;font-weight:500;line-height:1.05;letter-spacing:-.01em}
+.tin{display:block}
+#camera .tile .tin{rotate:var(--rot,0deg);transition:rotate .5s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover){#camera .tile:hover .tin{rotate:0deg}}
 .tile.dim{opacity:.12;filter:grayscale(1);pointer-events:none;transition:opacity .4s,filter .4s}
 .tile{transition:opacity .4s,filter .4s}
 /* grid */
@@ -144,8 +147,8 @@ var ITEMS=[{"id":"jiffcy","tags":["app","bx"],"img":"assets/work/cv23-jiffcy.web
   var filter='all';
 
   function tileHTML(it){
-    return '<span class="th"><img src="'+it.img+'" alt="" draggable="false" loading="lazy">'+(it.hov&&it.hov!==it.img?'<img class="h" src="'+it.hov+'" alt="" draggable="false" loading="lazy">':'')+'</span>'+
-      '<span class="mt"><span class="dc">'+it.disc+' · '+it.year+'</span><span class="tt">'+it.t+'</span></span>';
+    return '<span class="tin"><span class="th"><img src="'+it.img+'" alt="" draggable="false" loading="lazy">'+(it.hov&&it.hov!==it.img?'<img class="h" src="'+it.hov+'" alt="" draggable="false" loading="lazy">':'')+'</span>'+
+      '<span class="mt"><span class="dc">'+it.disc+' · '+it.year+'</span><span class="tt">'+it.t+'</span></span></span>';
   }
   function make(it){var a=document.createElement('a');a.className='tile';a.href='index.html#'+it.id;a.draggable=false;a.setAttribute('aria-label',it.t);a.innerHTML=tileHTML(it);a.dataset.tags=it.tags.join(' ');return a}
 
@@ -154,13 +157,18 @@ var ITEMS=[{"id":"jiffcy","tags":["app","bx"],"img":"assets/work/cv23-jiffcy.web
   var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
   /* each tile gets a random offset, but only inside its own cell (minus the gap), so no two ever touch;
      every tile also moves at the same speed, so they cannot slide into each other while dragging */
-  var JX=(GX-TW-GAPX)/2,JY=(GY-TH-GAPY)/2;
-  /* fill the last row so the repeating pattern has no holes; the extra slots reuse cases from far-away cells */
-  var SLOTS=ITEMS.slice();for(var e=0;SLOTS.length<ROWS*COLS;e++)SLOTS.push(ITEMS[(8+e*6)%N]);
+  /* order is shuffled on every visit; each tile is either straight or tilted a little (up to 5deg).
+     The tilt widens a tile's footprint, so the free offset inside its cell shrinks by that much */
+  var TILT=5*Math.PI/180,EX=(TH*Math.sin(TILT))/2,EY=(TW*Math.sin(TILT))/2;
+  var JX=Math.max(0,(GX-TW-GAPX)/2-EX),JY=Math.max(0,(GY-TH-GAPY)/2-EY);
+  function rand(){return Math.random()}
+  var order=ITEMS.slice();for(var k=order.length-1;k>0;k--){var j=Math.floor(rand()*(k+1)),t=order[k];order[k]=order[j];order[j]=t}
+  var SLOTS=order.slice();for(var e=0;SLOTS.length<ROWS*COLS;e++)SLOTS.push(order[(8+e*6)%N]);
   var base=SLOTS.map(function(it,i){var c=i%COLS,r=Math.floor(i/COLS);
-    return {it:it,x:c*GX+(r%2?GX*.5:0)+(rnd()*2-1)*JX,y:r*GY+(rnd()*2-1)*JY,d:1}});
+    var rot=rand()<.35?0:(rand()<.5?-1:1)*(1+rand()*4);
+    return {it:it,x:c*GX+(r%2?GX*.5:0)+(rand()*2-1)*JX,y:r*GY+(rand()*2-1)*JY,d:1,rot:rot}});
   /* 3x3 copies of the pool so the view is always covered; positions wrap around the camera */
-  for(var cy=-1;cy<=1;cy++)for(var cx=-1;cx<=1;cx++)base.forEach(function(b){var el=make(b.it);el.style.setProperty('--tw',TW+'px');cam.appendChild(el);pool.push({el:el,b:b,ox:cx,oy:cy})});
+  for(var cy=-1;cy<=1;cy++)for(var cx=-1;cx<=1;cx++)base.forEach(function(b){var el=make(b.it);el.style.setProperty('--tw',TW+'px');el.style.setProperty('--rot',b.rot.toFixed(2)+'deg');cam.appendChild(el);pool.push({el:el,b:b,ox:cx,oy:cy})});
   var X=0,Y=0,Z=1,vx=0,vy=0,tz=1,W=0,H=0;
   function size(){var r=surf.getBoundingClientRect();W=r.width;H=r.height}
   size();addEventListener('resize',function(){size();lay()});
