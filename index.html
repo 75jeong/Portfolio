@@ -1804,6 +1804,23 @@ html[data-aw] .aw-tie.on circle{opacity:1}
 @media (min-width:761px){html[data-aw][data-lang="en"] .aw-side{max-width:460px}html[data-aw][data-lang="en"] .aw-lede{text-wrap:balance}}
 /* section titles: heavier weight */
 html[data-aw] #cases h2.aw-big,html[data-aw] #how h2.aw-big{font-weight:700!important}
+
+/* ---------- WHAT I VALUE cards: centred content, type scales with the viewport ---------- */
+html[data-aw] #how details.pr{display:flex!important;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(28px,3.4vw,72px) clamp(22px,4vw,88px)!important}
+html[data-aw] #how details.pr summary{display:flex!important;flex-direction:column;align-items:center;width:100%;text-align:center}
+html[data-aw] #how details.pr summary .label{font-size:clamp(11px,.84vw,16px)!important;margin-bottom:clamp(14px,1.5vw,30px)!important;text-align:center}
+html[data-aw] #how details.pr h3{font-size:clamp(26px,2.78vw,58px)!important;text-align:center;text-wrap:balance}
+html[data-aw] #how .pr-b{max-width:min(44em,100%)!important;margin:0 auto!important;text-align:center}
+html[data-aw] #how .pr-b p{font-size:clamp(15px,1.12vw,22px)!important;line-height:1.5!important;margin-top:clamp(14px,1.4vw,28px)!important;text-wrap:pretty}
+html[data-aw] #how .pr-cases{justify-content:center!important;gap:clamp(6px,.56vw,12px)!important}
+html[data-aw] #how .pr-cl{font-size:clamp(11px,.84vw,16px)!important;width:100%;text-align:center}
+html[data-aw] #how .pr-cases a{height:auto!important;padding:.62em 1.25em!important;font-size:clamp(14px,1.12vw,21px)!important}
+/* the drawn figure moves behind the centred text, faint */
+html[data-aw] #how .aw-pr-g{right:auto!important;bottom:auto!important;left:50%;top:50%;width:min(34vw,560px)!important;height:min(34vw,560px)!important;transform:translate(-50%,-50%);opacity:.32;z-index:0}
+html[data-aw] #how details.pr>summary,html[data-aw] #how details.pr>.pr-b{position:relative;z-index:1}
+@media (max-width:760px){html[data-aw] #how details.pr h3{font-size:clamp(24px,7vw,30px)!important}html[data-aw] #how .aw-pr-g{width:72vw!important;height:72vw!important;opacity:.22}}
+html[data-aw] #how .pr-b p{text-wrap:balance}
+html[data-aw] #how details.pr h3.ja,html[data-aw] #how .pr-b p.ja{word-break:auto-phrase}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
