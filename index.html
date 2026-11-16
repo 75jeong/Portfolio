@@ -1833,6 +1833,9 @@ html[data-aw] .contact-v .book,html[data-aw] .contact-v .ft-cv{transition:backgr
   html[data-aw] .contact-v .book:hover{background:#15171C!important;color:#fff!important}
   html[data-aw] .contact-v .ft-cv:hover{background:rgba(255,255,255,.34)!important}
 }
+/* the hand cursor also over the icons and text inside buttons and links (they inherited "auto" and showed the arrow) */
+html[data-aw].has-cur a *,html[data-aw].has-cur button *,html[data-aw].has-cur [role="button"] *,html[data-aw].has-cur label *,html[data-aw].has-cur .bc *{cursor:pointer!important}
+html[data-aw].has-cur #how details.pr summary,html[data-aw].has-cur #how details.pr summary *{cursor:default!important}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
