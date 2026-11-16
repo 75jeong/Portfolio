@@ -1823,6 +1823,16 @@ html[data-aw] #how .pr-b p{text-wrap:balance}
 html[data-aw] #how details.pr h3.ja,html[data-aw] #how .pr-b p.ja{word-break:auto-phrase}
 /* other works table: rows rise in with a small translate, which made the box scroll a little; it never needs to scroll */
 html[data-aw] .works-box{overflow:visible!important}
+/* contact panel sits on flat orange: no text shadows (left over from the old photo background) */
+html[data-aw] .contact-v,html[data-aw] .contact-v *{text-shadow:none!important}
+/* contact buttons: no shadow, no magnetic pull; a plain colour hover instead */
+html[data-aw] .contact-v .book{box-shadow:none!important}
+html[data-aw] .contact-v .book,html[data-aw] .contact-v .ft-cv,html[data-aw] .contact-v .book .book-in,html[data-aw] .contact-v .ft-cv>*{translate:none!important}
+html[data-aw] .contact-v .book,html[data-aw] .contact-v .ft-cv{transition:background-color .25s,color .25s!important}
+@media (hover:hover){
+  html[data-aw] .contact-v .book:hover{background:#15171C!important;color:#fff!important}
+  html[data-aw] .contact-v .ft-cv:hover{background:rgba(255,255,255,.34)!important}
+}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
