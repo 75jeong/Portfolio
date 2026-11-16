@@ -51,7 +51,7 @@
     var name=$('#f-name').value.trim(),topics=$$('input[name=topic]:checked',form).map(function(i){return i.value}),body=$('#f-msg').value.trim();
     var subj='[aftworks] '+(topics.length?topics.join(' / '):'Inquiry')+(name?' from '+name:'');
     var text=(name?'Name: '+name+'\n':'')+(topics.length?'Topic: '+topics.join(', ')+'\n':'')+'\n'+body;
-    location.href='mailto:jinho@aftworks.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text)});
+    location.href='mailto:'+['jinho','aftworks.com'].join(String.fromCharCode(64))+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text)});
 
   if(!motion)return;
   requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('ready')})});

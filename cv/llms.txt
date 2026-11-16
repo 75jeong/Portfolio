@@ -5,7 +5,7 @@
 ## Pages
 - [About](https://www.aftworks.com/cv/about): profile, work experience (14 roles), skills
 - [Portfolio](https://www.aftworks.com/cv/portfolio): six case studies
-- [Contact](https://www.aftworks.com/cv/contact): jinho@aftworks.com, 30-minute 1:1 booking
+- [Contact](https://www.aftworks.com/cv/contact): jinho [at] aftworks.com, 30-minute 1:1 booking
 
 ## Case studies
 - [Jiffcy](https://www.aftworks.com/cv/work-jiffcy): closed social app for Gen Z; designing the first minutes with zero friends (2025 to now)

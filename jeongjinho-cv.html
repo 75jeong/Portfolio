@@ -232,7 +232,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         <p class="tag ko"><span class="ln"><span class="ln-in" style="--i:2"><span class="hl">사업의 방향</span>을 함께 디자인한다.</span></span></p>
       </div>
       <dl class="contact rv" style="--d:500ms">
-        <dt>Mail</dt><dd><button type="button" class="copy" id="copy" data-mail="jinho@aftworks.com">jinho@aftworks.com</button><span class="toast" id="toast" role="status" aria-live="polite"></span></dd>
+        <dt>Mail</dt><dd><button type="button" class="copy" id="copy" data-mail=""><span class="em-x">jinho [at] aftworks.com</span></button><span class="toast" id="toast" role="status" aria-live="polite"></span></dd>
         <dt>1:1</dt><dd><a href="https://cal.com/jeong75/30min" target="_blank" rel="noopener">cal.com/jeong75/30min</a></dd>
         <dt>Web</dt><dd><a href="https://www.aftworks.com/" target="_blank" rel="noopener">aftworks.com</a></dd>
         <dt>Links</dt><dd><a href="https://www.linkedin.com/in/jeong75/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://youtrust.jp/users/jeong75" target="_blank" rel="noopener">YOUTRUST</a> · <a href="https://www.behance.net/aftworks" target="_blank" rel="noopener">Behance</a></dd>
@@ -425,5 +425,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   addEventListener('beforeprint',function(){top.classList.add('in')});
 })();
 </script>
+<script>/* e-mail is assembled here, never stored whole in the source */(function(){var a=['jinho','aftworks.com'].join(String.fromCharCode(64));function run(){[].forEach.call(document.querySelectorAll('.em-x'),function(e){e.textContent=e.getAttribute('data-c')==='u'?a.toUpperCase():a});[].forEach.call(document.querySelectorAll('[data-mail]'),function(e){e.setAttribute('data-mail',a)});[].forEach.call(document.querySelectorAll('[data-mail-link]'),function(e){e.setAttribute('href','mailto:'+a)});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();</script>
 </body>
 </html>
