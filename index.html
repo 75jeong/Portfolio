@@ -1836,6 +1836,8 @@ html[data-aw] .contact-v .book,html[data-aw] .contact-v .ft-cv{transition:backgr
 /* the hand cursor also over the icons and text inside buttons and links (they inherited "auto" and showed the arrow) */
 html[data-aw].has-cur a *,html[data-aw].has-cur button *,html[data-aw].has-cur [role="button"] *,html[data-aw].has-cur label *,html[data-aw].has-cur .bc *{cursor:pointer!important}
 html[data-aw].has-cur #how details.pr summary,html[data-aw].has-cur #how details.pr summary *{cursor:default!important}
+/* hero tie line: stays hidden until it is measured and drawn */
+html[data-aw] .aw-tie:not(.on) line{stroke-dashoffset:9999}
 </style>
 <script>(function(){try{localStorage.removeItem('pf-theme')}catch(e){}document.documentElement.dataset.theme='dark'})()</script>
 <script>/* pick language before first paint: URL hash > saved choice > browser language (ja / ko / everything else → en) */
@@ -4483,7 +4485,9 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
     svg.style.display='';svg.setAttribute('width',h.width);svg.setAttribute('height',h.height);svg.setAttribute('viewBox','0 0 '+h.width+' '+h.height);
     ln.setAttribute('x1',x1);ln.setAttribute('y1',y1);ln.setAttribute('x2',x2);ln.setAttribute('y2',y2);
     d1.setAttribute('cx',x1);d1.setAttribute('cy',y1);d2.setAttribute('cx',x2);d2.setAttribute('cy',y2);
-    var len=Math.hypot(x2-x1,y2-y1);ln.style.strokeDasharray=len;if(!svg.classList.contains('on'))ln.style.strokeDashoffset=len;
+    var len=Math.hypot(x2-x1,y2-y1);ln.style.strokeDasharray=len;
+    /* before the draw-in, hide the line instantly: animating the offset here made it flash in and retract first */
+    if(!svg.classList.contains('on')){ln.style.transition='none';ln.style.strokeDashoffset=len;ln.getBoundingClientRect();ln.style.transition=''}
   }
   /* the headline lines rise into place first; measure after they have settled, then draw */
   var shown=false;function show(){if(shown)return;shown=true;setTimeout(function(){place();requestAnimationFrame(function(){svg.classList.add('on');ln.style.strokeDashoffset=0})},1300)}
