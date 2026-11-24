@@ -168,7 +168,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 }
 
 /* print: A4, light, the current language only, everything visible */
-@page{size:A4;margin:14mm 14mm 16mm}
+@page{size:A4;margin:12mm 13mm 13mm}
 @media print{
   :root,:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--ink:#111;--muted:#555;--line:#ddd;--accent:#FF4800;color-scheme:light}
   body{font-size:8.5pt;line-height:1.5}
@@ -194,7 +194,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .work a{padding-block:6px}
   .work li,.side > div{break-inside:avoid}
   .cta{margin-top:24px}
-  .book{background:none;color:#111;border:1px solid #111;padding:8px 12px}
   a{text-decoration:none}
 }
 
@@ -203,7 +202,22 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .work .aw{color:#FF4800;font-size:.8125rem;margin-top:6px}</style>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<style>@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-400.subset.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-500.subset.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-700.subset.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}</style>
+<style>@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-400.subset.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-500.subset.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-700.subset.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+/* print-fit */
+@media print{
+  body{font-size:8pt;line-height:1.45}
+  .name{font-size:24pt}.tag{font-size:12pt}
+  .top{padding-bottom:12px}.bar{padding-bottom:10px}
+  .sec{padding-top:12px}.sec-head{margin-bottom:6px}
+  .facts{margin-top:8px}.facts b{font-size:14pt}
+  .tl > li{padding-block:4px}.work a{padding-block:4px}
+  .tl > li:nth-child(2),.tl > li:nth-child(2) .job,.clients{break-inside:auto}
+  .clients dt,.clients dd{break-inside:avoid}
+  .clients dt{break-after:avoid}
+  .cta{margin-top:12px}
+}
+/* /print-fit */
+</style>
 </head>
 <body>
 <a class="skip" href="#main"><span class="ja">本文へ</span><span class="en">Skip to content</span><span class="ko">본문으로</span></a>
