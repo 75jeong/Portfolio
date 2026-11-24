@@ -168,7 +168,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 }
 
 /* print: A4, light, the current language only, everything visible */
-@page{size:A4;margin:12mm 13mm 13mm}
+@page{size:A4;margin:12mm 14mm 12mm}
 @media print{
   :root,:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--ink:#111;--muted:#555;--line:#ddd;--accent:#FF4800;color-scheme:light}
   body{font-size:8.5pt;line-height:1.5}
@@ -205,16 +205,16 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <style>@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-400.subset.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-500.subset.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-700.subset.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 /* print-fit */
 @media print{
-  body{font-size:8pt;line-height:1.45}
-  .name{font-size:24pt}.tag{font-size:12pt}
-  .top{padding-bottom:12px}.bar{padding-bottom:10px}
-  .sec{padding-top:12px}.sec-head{margin-bottom:6px}
-  .facts{margin-top:8px}.facts b{font-size:14pt}
-  .tl > li{padding-block:4px}.work a{padding-block:4px}
+  body{font-size:9pt;line-height:1.5}
+  .name{font-size:26pt}.tag{font-size:13pt}
+  .top{padding-bottom:16px}.bar{padding-bottom:14px}
+  .sec{padding-top:16px}.sec-head{margin-bottom:10px}
+  .facts{margin-top:12px}.facts b{font-size:16pt}
+  .tl > li{padding-block:6px}
   .tl > li:nth-child(2),.tl > li:nth-child(2) .job,.clients{break-inside:auto}
   .clients dt,.clients dd{break-inside:avoid}
   .clients dt{break-after:avoid}
-  .cta{margin-top:12px}
+  .cta{margin-top:18px}
 }
 /* /print-fit */
 </style>
