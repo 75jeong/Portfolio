@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-lang="ja">
+<html lang="ja" data-lang="ja" data-aw>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -36,17 +36,6 @@
 *{box-sizing:border-box}html,body{margin:0;height:100%;background:#0B0C0F;color:var(--ink);font-family:"Paperlogy","Noto Sans KR","Hiragino Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;overscroll-behavior:none}
 html:not([data-lang="ja"]) .ja,html:not([data-lang="en"]) .en,html:not([data-lang="ko"]) .ko{display:none!important}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-/* nav */
-.nav{position:fixed;z-index:20;top:calc(var(--frame) + 20px);left:calc(var(--frame) + 28px);right:calc(var(--frame) + 28px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-.nav>*{pointer-events:auto}
-.logo{display:block;color:#fff}.logo svg{width:82px;height:24px;display:block}
-.acts{display:flex;gap:8px;align-items:center}
-.pill{height:40px;display:inline-flex;align-items:center;gap:10px;padding:0 20px;border-radius:40px;font-size:16px;background:rgba(24,27,33,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s}
-.pill:hover{background:rgba(44,48,56,.85)}
-.pill.solid{background:#fff;color:#15171C}.pill.solid:hover{background:#E6E7EA}
-.seg{display:flex;padding:3px;border-radius:40px;background:rgba(24,27,33,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.seg button{height:34px;padding:0 12px;border-radius:34px;font-size:13px;letter-spacing:.04em}
-.seg button[aria-pressed="true"]{background:#fff;color:#15171C}
 .sw{position:relative;display:inline-grid;width:1em;height:1em;overflow:hidden}.sw i{grid-area:1/1;font-style:normal;line-height:1;display:grid;place-items:center;transition:transform .45s var(--land)}.sw i:last-child{transform:translate(-100%,100%)}
 @media (hover:hover){[data-arrow]:hover .sw i:first-child{transform:translate(100%,-100%)}[data-arrow]:hover .sw i:last-child{transform:none}}
 /* stage */
@@ -86,29 +75,187 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 .ctl button:hover,.ctl button[aria-pressed="true"]{opacity:1}.ctl button[aria-pressed="true"]{background:#15171C;color:#fff}
 .ctl .sep{width:1px;background:rgba(21,23,28,.15);margin:6px 2px}
 .ctl svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
-.flt{position:absolute;z-index:5;left:24px;bottom:24px;display:flex;gap:6px;padding:4px;border-radius:40px;background:rgba(24,27,33,.8);backdrop-filter:blur(8px)}
+.dock{position:absolute;z-index:5;left:24px;bottom:24px;display:flex;gap:8px;align-items:center}
+.home{height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 18px 0 14px;border-radius:44px;font-size:15px;background:rgba(24,27,33,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);transition:background .25s,color .25s}
+.home .ar{font-size:16px;line-height:1;transition:transform .3s}
+@media (hover:hover){.home:hover{background:#fff;color:#15171C}.home:hover .ar{transform:translateX(-3px)}}
+.flt{display:flex;gap:6px;padding:4px;border-radius:40px;background:rgba(24,27,33,.8);backdrop-filter:blur(8px)}
 .flt button{height:36px;padding:0 16px;border-radius:36px;font-size:15px;color:var(--ink);opacity:.7}
 .flt button[aria-pressed="true"]{background:#fff;color:#15171C;opacity:1}
 .flt b{font-weight:400;font-size:12px;opacity:.6;margin-left:4px}
 .hint{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);padding:12px 20px;border-radius:40px;background:rgba(255,255,255,.92);color:#15171C;font-size:14px;pointer-events:none;transition:opacity .6s}
 .hint.off{opacity:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:760px){:root{--frame:10px}.nav{top:22px;left:24px;right:24px}.seg{display:none}.pill{height:36px;padding:0 14px;font-size:14px}.flt{left:12px;right:12px;bottom:68px;justify-content:center}.flt button{padding:0 12px;font-size:14px}.ctl{right:50%;transform:translateX(50%);bottom:12px}.gridv{padding:96px 16px 150px}.gwrap{grid-template-columns:1fr 1fr;gap:28px 12px}.gwrap .tt{font-size:16px}.gwrap .dc{font-size:10px}.root{border-radius:22px}}
+@media (max-width:760px){:root{--frame:10px}.dock{left:12px;right:12px;bottom:68px;justify-content:center;gap:6px}.home{width:44px;padding:0;justify-content:center;flex:none}.home .hl{display:none}.flt{min-width:0;gap:2px}.dock .flt button{padding:0 9px;font-size:13px}.dock .flt b{font-size:10px;margin-left:2px}.flt button{padding:0 12px;font-size:14px}.ctl{right:50%;transform:translateX(50%);bottom:12px}.gridv{padding:96px 16px 150px}.gwrap{grid-template-columns:1fr 1fr;gap:28px 12px}.gwrap .tt{font-size:16px}.gwrap .dc{font-size:10px}.root{border-radius:22px}}
+@media (max-width:340px){.dock{left:8px;right:8px;gap:4px}.dock .flt button{padding:0 6px;font-size:12px}.dock .flt b{font-size:9px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* top bar + menu: same as the home page (generated from it) */
+body.menu-open::before{content:'';position:fixed;inset:0;background:#0B0C0F;z-index:39}
+@font-face { font-family: "Pretendard JP"; font-weight: 400; font-style: normal; font-display: swap; src: url("assets/fonts/PretendardJP-Regular.subset.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard JP"; font-weight: 500; font-style: normal; font-display: swap; src: url("assets/fonts/PretendardJP-Medium.subset.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard JP"; font-weight: 700; font-style: normal; font-display: swap; src: url("assets/fonts/PretendardJP-Bold.subset.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard JP"; font-weight: 800; font-style: normal; font-display: swap; src: url("assets/fonts/PretendardJP-ExtraBold.subset.woff2") format("woff2"); }
+@keyframes awSweep { 
+  0% { transform: translateX(0px); }
+  46% { transform: translateX(26px); }
+  47% { transform: translateX(-26px); }
+  100% { transform: translateX(0px); }
+}
+@keyframes awMenu { 
+  100% { clip-path: inset(0 0 0 0 round var(--aw-r)); }
+}
+@keyframes awIn { 
+  100% { opacity: 1; translate: 0px; }
+}
+.bar,.menu-modal{--snap:cubic-bezier(.65,0,.35,1);--g17:24px;--s-5:clamp(2.4rem,6vw,4.25rem);--g21:48px;--s-3:1.375rem;--s-2:1.0625rem;--decide-bg:#3A3413;--g6:256px;--g8:160px;--f-body:"Paperlogy","Pretendard JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;--g11:104px;--g14:120px;--aw-panel:#ECEDEF;--s-1:.9375rem;--decide-edge:#E5C400;--accent:#FF4800;--decide-ink:#FFF3B0;--g1:72px;--g23:32px;--aw-ink:#15171C;--g24:80px;--g4:56px;--g9:320px;--spring:cubic-bezier(.2,.7,.2,1);--aw-frame:20px;--aw-red:#FF4800;--ease-io:cubic-bezier(.65,0,.35,1);--g18:56px;--g19:16px;--s-0:.8125rem;--line:#2A2F37;--g13:120px;--g5:104px;--g15:176px;--ink:#ECEEF2;--bg:#0E1013;--g16:224px;--aw-io:cubic-bezier(.65,0,.35,1);--photo-bg:#0B0B0C;--g10:160px;--muted:#9BA2AE;--g22:48px;--f-mono:"Paperlogy","Pretendard JP",system-ui,sans-serif;--aw-land:cubic-bezier(.16,1,.3,1);--aw-panel-2:#181B21;--wrap:84rem;--g12:72px;--f-display:"Paperlogy","Pretendard JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;--surface:#16191E;--aw-e:cubic-bezier(.2,.7,.2,1);--g7:120px;--ease-out:cubic-bezier(.2,.7,.2,1);--g2:64px;--aw-r:32px;--bg-page:#0E1013;--gutter:72px;--g20:32px;--g25:88px;--g3:88px;--s-4:1.875rem}
+@media (max-width:760px){.bar,.menu-modal{--g17:16px;--g21:16px;--g6:152px;--g8:72px;--g11:32px;--g14:40px;--g1:16px;--g23:16px;--g24:48px;--g4:16px;--g9:176px;--aw-frame:12px;--g18:32px;--g13:64px;--g5:48px;--g15:96px;--g16:120px;--g10:80px;--g22:24px;--g12:32px;--g7:32px;--g2:24px;--aw-r:24px;--gutter:16px;--g20:8px;--g25:48px;--g3:40px}}
+.scroll-prog{position: absolute; left: 0px; right: 0px; top: 0px; height: 2px; z-index: 5; pointer-events: none;}
+.scroll-prog i{display: block; height: 100%; transform-origin: 0px 50%; transform: scaleX(var(--sp,0)); background: linear-gradient(90deg, rgb(255, 72, 0), rgb(255, 72, 0) 55%, rgb(255, 72, 0));}
+.wrap{max-width: var(--wrap); margin-inline: auto;}
+.bar{position: sticky; top: env(safe-area-inset-top,0px); z-index: 5; background: color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-inline: calc(var(--gutter) * -1); padding: 16px var(--gutter);}
+.bar .wrap{display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;}
+.bar .mark{font-family: var(--f-display); font-weight: 800; font-size: 1rem; letter-spacing: -0.01em;}
+.bar nav{display: flex; gap: 16px; flex-wrap: wrap;}
+.bar nav a{color: var(--muted); text-decoration: none; font-size: var(--s-0);}
+.bar nav a:hover{color: var(--ink);}
+.toggles{display: flex; gap: 8px; align-items: center;}
+.seg{display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;}
+.seg button{font: 600 .75rem/1 var(--f-mono); letter-spacing: 0.06em; background: transparent; color: var(--muted); border: 0px; padding: 8px; cursor: pointer;}
+.seg button[aria-pressed="true"]{background: var(--ink); color: var(--bg);}
+.cta{display: inline-flex; align-items: center; font: 600 .75rem/1 var(--f-mono); letter-spacing: 0.06em; background: var(--ink); color: var(--bg); text-decoration: none; border-radius: 999px; padding: 8px 16px; border: 1px solid var(--ink);}
+.cta:hover{background: transparent; color: var(--ink);}
+a.mark{color: var(--ink); text-decoration: none;}
+.menu-btn,.menu-close{display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer;}
+.menu-modal{position: fixed; inset: 0px; z-index: 40; background: var(--bg); color: var(--ink); display: flex; flex-direction: column; padding: calc(env(safe-area-inset-top,0) + 16px) var(--gutter) calc(env(safe-area-inset-bottom,0) + 32px); overflow-y: auto;}
+.menu-modal[hidden]{display: none !important;}
+.menu-head{display: flex; align-items: center; justify-content: space-between; min-height: 44px;}
+.menu-head .menu-close{display: inline-flex;}
+.menu-head .mark{font-family: var(--f-display); font-weight: 800; font-size: 1rem;}
+.menu-nav{display: flex; flex-direction: column; margin-top: 32px; border-top: 1px solid var(--line);}
+.menu-nav a{display: block; padding: 16px 0px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.01em;}
+.menu-nav a:active{color: var(--accent);}
+.menu-foot{margin-top: auto; padding-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;}
+.menu-foot .cta{padding: 16px; font-size: 0.875rem;}
+.menu-foot .seg button{padding: 8px 16px;}
+.aktw{display: block; height: 1.05em; width: auto; aspect-ratio: 3406 / 1004; fill: currentcolor; color: inherit; flex: 0 0 auto;}
+.bar .mark,.menu-head .mark{display: inline-flex; align-items: center; gap: 16px;}
+.bar .mark .aktw,.menu-head .mark .aktw{height: 20px;}
+.mark-name{display: inline-flex; align-items: center; gap: 16px; font-family: var(--f-display); font-weight: 600; font-size: 0.875rem; letter-spacing: -0.01em; color: var(--muted);}
+.mark-name::before{content: ""; width: 1px; height: 14px; background: var(--line);}
+a.mark:hover .mark-name{color: var(--ink);}
+.menu-btn,.menu-close{padding: 0px;}
+html[data-aw] .bar{left: 0px; right: 0px; transition: transform .5s var(--aw-e); position: fixed !important; z-index: 1000 !important; background: transparent !important; border: 0px !important; box-shadow: none !important; backdrop-filter: none !important; top: calc(var(--aw-frame) + 14px) !important;}
+html[data-aw] .bar > .wrap{max-width: none; padding-inline: calc(var(--aw-frame) + clamp(16px,2.4vw,36px)) !important;}
+html[data-aw] .bar nav{display: none !important;}
+html[data-aw] .bar .mark{color: rgb(255, 255, 255); mix-blend-mode: difference;}
+html[data-aw] .bar .mark-name{display: none;}
+html[data-aw] .bar .seg{background: rgba(255, 255, 255, 0.18); border: 0px; border-radius: 999px; padding: 3px; backdrop-filter: blur(8px);}
+html[data-aw] .bar .seg button{color: rgb(255, 255, 255); border-radius: 999px;}
+html[data-aw] .bar .seg button[aria-pressed="true"]{background: rgb(255, 255, 255); color: var(--aw-ink);}
+html[data-aw] .bar .cta{background: rgba(255, 255, 255, 0.22); color: rgb(255, 255, 255); border: 0px; border-radius: 999px; padding: 11px 18px; backdrop-filter: blur(8px); transition: background 0.3s;}
+html[data-aw] .bar .cta:hover{background: rgba(255, 255, 255, 0.4);}
+html[data-aw] .bar .menu-btn{width: auto; height: auto; gap: 10px; padding: 11px 18px; border: 0px; border-radius: 999px; background: rgb(255, 255, 255); color: var(--aw-ink); font: 600 .875rem/1 var(--f-body); display: inline-flex !important;}
+html[data-aw] .bar .menu-btn svg{display: none;}
+html[data-aw] .bar .menu-btn::before{content: "menu";}
+html[data-aw] .aw-burger{display: inline-grid; gap: 4px; width: 18px; overflow: hidden;}
+html[data-aw] .aw-burger i{display: block; height: 1.6px; background: currentcolor; border-radius: 2px;}
+html[data-aw] .aw-burger i:nth-child(2){width: 70%; justify-self: end;}
+html[data-aw] .menu-modal{position: fixed; inset: var(--aw-frame); border-radius: var(--aw-r); background: var(--aw-red); color: rgb(255, 255, 255); padding: 28px clamp(20px, 3vw, 40px); display: flex; flex-direction: column; z-index: 1200; clip-path: inset(0 0 100% 0 round var(--aw-r)); animation: awMenu .7s var(--aw-land) forwards;}
+html[data-aw] .menu-modal[hidden]{display: none;}
+html[data-aw] .menu-head .mark{color: rgb(255, 255, 255);}
+html[data-aw] .menu-close{background: rgb(255, 255, 255); color: var(--aw-ink); border: 0px; display: inline-flex !important;}
+html[data-aw] .menu-nav{margin: auto 0px auto 52%; display: flex; flex-direction: column; gap: clamp(10px, 2.2vh, 26px);}
+html[data-aw] .menu-nav a{display: flex; align-items: center; color: rgb(255, 255, 255); text-decoration: none; font: 800 clamp(2rem,4.4vw,3.6rem)/1.05 var(--f-display); letter-spacing: -0.035em; transform-origin: 0px 50%; transition: transform .5s var(--aw-land);}
+html[data-aw] .menu-nav a::after{content: ""; width: 150px; height: 1.5px; background: rgb(255, 255, 255); margin-left: 18px; transform: scaleX(0); transform-origin: 0px 50%; transition: transform .5s var(--aw-land);}
+html[data-aw] .menu-nav a::before{content: ""; width: 7px; height: 7px; background: rgb(255, 255, 255); margin-right: 16px; transform: rotate(45deg) scale(0); transition: transform .5s var(--aw-land);}
+html[data-aw] .menu-nav a{opacity: 0; translate: 0px 30px; animation: awIn .6s var(--aw-land) forwards;}
+html[data-aw] .menu-nav a:nth-child(2){animation-delay: 0.05s;}
+html[data-aw] .menu-nav a:nth-child(3){animation-delay: 0.1s;}
+html[data-aw] .menu-nav a:nth-child(4){animation-delay: 0.15s;}
+html[data-aw] .menu-nav a:nth-child(5){animation-delay: 0.2s;}
+html[data-aw] .menu-nav a:nth-child(6){animation-delay: 0.25s;}
+html[data-aw] .menu-foot{display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.4); padding-top: 16px;}
+html[data-aw] .menu-foot .seg{background: rgba(255, 255, 255, 0.18); border: 0px;}
+html[data-aw] .menu-foot .seg button{color: rgb(255, 255, 255);}
+html[data-aw] .menu-foot .seg button[aria-pressed="true"]{background: rgb(255, 255, 255); color: var(--aw-ink);}
+html[data-aw] .menu-foot .cta{background: rgb(255, 255, 255); color: var(--aw-ink); border: 0px; border-radius: 999px;}
+html[data-aw] .aw-sw{position: relative; display: inline-grid; width: 1em; height: 1em; overflow: hidden; flex: 0 0 auto;}
+html[data-aw] .aw-sw i{grid-area: 1 / 1; display: grid; place-items: center; font-style: normal; line-height: 1; transition: transform .45s var(--aw-land);}
+html[data-aw] .aw-sw i:last-child{transform: translate(-100%, 100%);}
+html[data-aw] .menu-nav a{border: 0px !important;}
+html[data-aw] .scroll-prog{display: none !important;}
+html[data-aw] .menu-head .mark-name{color: rgb(255, 255, 255) !important; opacity: 1 !important;}
+html[data-aw] .menu-head .mark-name::before{background: rgba(255, 255, 255, 0.55) !important; border-color: rgba(255, 255, 255, 0.55) !important; color: rgba(255, 255, 255, 0.55) !important;}
+html[data-aw] .menu-nav{border-top: 0px !important;}
+@media (max-width: 520px){.bar nav{display: none;}}
+@media print{.bar{display: none !important;}
+.bar{display: none;}}
+@media (max-width: 760px){.bar nav,.bar .toggles .seg,.bar .toggles .cta{display: none;}
+.bar .menu-btn{display: inline-flex;}
+html[data-aw] .menu-nav{margin: auto 0px;}
+html[data-aw] .menu-nav{gap: 0px !important; margin: 20px 0px auto !important; padding-top: 8px !important; border-top: 0px !important;}
+html[data-aw] .menu-nav a{white-space: nowrap; padding: 9px 0px !important;}
+html[data-aw] .menu-nav a::before{display: none;}
+html[data-aw] .bar{top: var(--aw-frame) !important;}
+html[data-aw] .menu-modal{padding-top: 20px !important;}}
+@media (prefers-reduced-motion: no-preference){.bar .mark .aktw{transition: transform .35s var(--ease-out);}
+a.mark:hover .aktw{transform: skewX(-6deg);}
+.menu-modal:not([hidden]){animation: 0.22s ease-out 0s 1 normal none running menu-in;}}
+@media (hover: hover){html[data-aw] .bar .menu-btn:hover .aw-burger i{animation: awSweep .52s var(--aw-io) both;}
+html[data-aw] .bar .menu-btn:hover .aw-burger i:nth-child(2){animation-delay: 70ms;}
+html[data-aw] .menu-nav a:hover{transform: translateX(12px);}
+html[data-aw] .menu-nav a:hover::after{transform: scaleX(1);}
+html[data-aw] .menu-nav a:hover::before{transform: rotate(45deg) scale(1);}
+html[data-aw] [data-arrow]:hover .aw-sw i:first-child{transform: translate(100%, -100%);}
+html[data-aw] [data-arrow]:hover .aw-sw i:last-child{transform: none;}}
 </style>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="aktw" viewBox="0 0 3406 1004"><g transform="translate(0.000000,1004.000000) scale(0.100000,-0.100000)"><path fill="currentColor" d="M9126 10013 c-3 -16 -269 -1520 -591 -3343 -322 -1823 -591 -3341 -597 -3374 l-11 -58 -106 5 c-124 6 -190 25 -257 76 -94 71 -143 218 -129 391 4 47 205 1196 446 2555 241 1358 439 2476 439 2483 0 10 -239 12 -1187 10 l-1187 -3 -33 -195 c-17 -107 -35 -209 -38 -226 l-5 -31 -113 111 c-378 377 -962 550 -1852 550 -1038 -1 -1808 -295 -2445 -933 -501 -503 -830 -1126 -1005 -1908 -26 -114 -346 -1886 -390 -2158 -83 -512 -83 -1007 1 -1385 215 -963 917 -1466 2164 -1551 211 -14 608 -6 765 15 779 108 1395 498 1830 1159 l39 58 32 -128 c106 -429 320 -701 701 -891 455 -229 1251 -290 1838 -142 61 15 112 26 114 24 3 -3 -39 -253 -92 -557 -54 -303 -97 -555 -97 -560 0 -4 597 -6 1327 -5 l1327 3 472 2696 c259 1482 473 2702 476 2710 11 28 151 -304 248 -586 255 -745 491 -1925 579 -2890 58 -633 64 -1489 14 -1888 l-6 -47 1370 0 1370 0 7 48 c39 299 58 1003 37 1379 -21 368 -57 676 -117 992 -19 102 -37 200 -40 216 -2 17 10 -10 29 -60 391 -1045 1397 -1555 3067 -1555 1674 0 2857 549 3621 1682 l85 127 28 -137 c57 -281 174 -566 314 -761 425 -595 1335 -911 2627 -911 960 0 1716 299 2510 994 30 27 57 47 59 45 1 -2 30 -44 64 -94 442 -649 1303 -968 2547 -942 974 20 1766 273 2482 794 619 449 1008 930 1413 1748 509 1027 757 2088 777 3315 11 744 -42 1276 -178 1768 l-31 112 -1332 0 -1332 0 18 -112 c135 -832 187 -1947 128 -2759 -111 -1540 -530 -2375 -1289 -2567 -100 -25 -119 -27 -326 -26 -258 0 -348 18 -515 100 -286 141 -428 471 -390 906 6 73 164 993 390 2274 209 1183 380 2159 380 2168 0 15 -102 16 -1327 14 l-1328 -3 -87 -485 c-48 -267 -177 -991 -287 -1610 -214 -1196 -250 -1387 -312 -1654 -301 -1302 -668 -1738 -1437 -1713 -435 14 -690 170 -805 492 -55 156 -73 412 -43 630 12 86 747 4261 761 4323 l5 22 -3425 0 c-1935 0 -3425 4 -3425 9 0 10 208 1215 215 1249 l5 22 -1329 0 -1329 0 -6 -32 c-3 -18 -53 -302 -110 -631 -58 -329 -108 -602 -111 -607 -8 -12 -3635 -14 -3635 -2 0 9 217 1225 224 1255 4 16 -64 17 -1324 17 l-1328 0 -6 -27z m-4400 -3311 c217 -47 381 -152 471 -304 l32 -53 -234 -1310 c-129 -720 -240 -1320 -246 -1331 -32 -60 -255 -232 -389 -299 -191 -96 -352 -130 -605 -129 -432 2 -674 102 -853 356 -120 170 -154 341 -122 617 11 100 211 1260 242 1406 128 608 510 977 1093 1054 44 6 94 13 110 15 80 11 413 -3 501 -22z m10080 -169 c-27 -133 -439 -2506 -450 -2598 -40 -314 -44 -617 -11 -884 15 -119 15 -169 0 -99 -52 241 -247 768 -409 1103 -483 999 -1128 1837 -1916 2484 l-25 20 1408 1 1409 0 -6 -27z m6849 5 c-3 -13 -68 -381 -145 -818 -77 -437 -145 -819 -151 -847 l-10 -53 -1010 0 -1009 0 -4 -22 c-111 -526 -252 -851 -498 -1143 -282 -335 -689 -459 -1133 -345 -494 127 -696 608 -566 1348 110 623 333 1880 336 1890 4 9 432 12 2100 12 l2095 0 -5 -22z"/></g></symbol></svg>
-<header class="nav">
-<a class="logo" href="index.html" aria-label="aftworks, back to home"><svg viewBox="0 0 3406 1004" aria-hidden="true"><use href="#aktw"/></svg></a>
-<div class="acts">
-<div class="seg" role="group" aria-label="Language"><button type="button" data-l="ja">JA</button><button type="button" data-l="en">EN</button><button type="button" data-l="ko">KO</button></div>
-<a class="pill" data-arrow href="index.html#cases"><span class="ja">ホームへ</span><span class="en">Back home</span><span class="ko">홈으로</span><span class="sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
-<a class="pill solid" data-arrow href="https://cal.com/jeong75/30min"><span class="ja">1:1で相談</span><span class="en">Book a 1:1</span><span class="ko">1:1 상담</span><span class="sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
+<div class="bar noprint"><div class="scroll-prog" aria-hidden="true"><i id="scroll-prog" ></i></div><div class="wrap">
+<a class="mark" href="index.html#top" id="home-link" aria-label="aftworks, Jeong Jinho: back to top"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"></use></svg><span class="mark-name">Jeong Jinho</span></a>
+<nav aria-label="sections">
+<a href="index.html#cases"><span class="ja">作品</span><span class="en">Work</span><span class="ko">작업</span></a>
+<a href="index.html#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="index.html#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="index.html#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="index.html#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="toggles">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="false" data-lang="ja" id="lang-ja" type="button">JA</button>
+<button aria-pressed="true" data-lang="en" id="lang-en" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" id="lang-ko" type="button">KO</button>
 </div>
-</header>
+<a class="cta" href="https://cal.com/jeong75/30min" data-arrow=""><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span><span class="aw-sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
+
+<button type="button" class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="menu-modal" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg><span class="aw-burger"><i></i><i></i></span></button>
+</div>
+</div></div>
+<div class="menu-modal noprint" id="menu-modal" role="dialog" aria-modal="true" aria-label="Menu" hidden="">
+<div class="menu-head">
+<span class="mark"><svg class="aktw" viewBox="0 0 3406 1004" aria-hidden="true" focusable="false"><use href="#aktw"></use></svg><span class="mark-name">Jeong Jinho</span></span>
+<button type="button" class="menu-close" id="menu-close" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg></button>
+</div>
+<nav class="menu-nav" aria-label="sections (mobile)">
+<a href="index.html#top"><span class="ja">トップ</span><span class="en">Top</span><span class="ko">처음으로</span></a>
+<a href="index.html#cases"><span class="ja">作品</span><span class="en">Work</span><span class="ko">작업</span></a>
+<a href="index.html#how"><span class="ja">大切にしていること</span><span class="en">What I value</span><span class="ko">중요하게 생각하는 점</span></a>
+<a href="index.html#works"><span class="ja">その他の仕事</span><span class="en">Other work</span><span class="ko">그 밖의 작업</span></a>
+<a href="index.html#career"><span class="ja">経歴</span><span class="en">Career</span><span class="ko">경력</span></a>
+<a href="index.html#contact"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></a>
+</nav>
+<div class="menu-foot">
+<div aria-label="Language" class="seg" role="group">
+<button aria-pressed="false" data-lang="ja" class="menu-lang" type="button">JA</button>
+<button aria-pressed="true" data-lang="en" class="menu-lang" type="button">EN</button>
+<button aria-pressed="false" data-lang="ko" class="menu-lang" type="button">KO</button>
+</div>
+<a class="cta" href="https://cal.com/jeong75/30min" data-arrow=""><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span><span class="aw-sw" aria-hidden="true"><i>↗</i><i>↗</i></span></a>
+</div>
+</div>
 <main class="root" id="root" data-mode="canvas">
 <h1 class="sr">Projects</h1>
 <ul class="sr"><li><a href="index.html#jiffcy">Jiffcy</a></li><li><a href="index.html#rlwrld">RLWRLD</a></li><li><a href="index.html#yoki">YOKI</a></li><li><a href="index.html#pikabon">PIKABON</a></li><li><a href="index.html#uline">ULINE</a></li><li><a href="index.html#link">Link</a></li><li><a href="index.html#workspot">WORKSPOT</a></li><li><a href="index.html#shuttlepay">ShuttlePay</a></li><li><a href="index.html#pairs">Pairs 町友</a></li><li><a href="index.html#taxnap">Taxnap</a></li><li><a href="index.html#wealthpark">WealthPark</a></li><li><a href="index.html#wplab">WealthPark Lab</a></li><li><a href="index.html#pokke">Pokke</a></li><li><a href="index.html#kyash">Kyash Widget</a></li><li><a href="index.html#croc">Croc</a></li><li><a href="index.html#metajob">METAJOB</a></li><li><a href="index.html#one">ONE</a></li><li><a href="index.html#onepay">ONE PAYMENT</a></li><li><a href="index.html#aeon">AEON.com</a></li><li><a href="index.html#cookpadvideo">Cookpad 料理動画</a></li><li><a href="index.html#cookpad">Cookpad 産地直送便</a></li><li><a href="index.html#logoideas">Logo ideas</a></li></ul>
@@ -116,11 +263,14 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 <div class="surface" id="surface"><div class="camera" id="camera"></div></div>
 <div class="gridv" id="gridv"><div class="gwrap" id="gwrap"></div></div>
 <p class="hint" id="hint"><span class="ja">ドラッグして見て回る</span><span class="en">Drag to explore</span><span class="ko">드래그해서 둘러보기</span></p>
+<div class="dock">
+<a class="home" href="index.html#cases" aria-label="Back home"><span class="ar" aria-hidden="true">←</span><span class="hl"><span class="ja">ホームへ</span><span class="en">Back home</span><span class="ko">홈으로</span></span></a>
 <div class="flt" role="group" aria-label="Filter" id="flt">
 <button type="button" data-f="all" aria-pressed="true"><span class="ja">すべて</span><span class="en">All</span><span class="ko">전체</span><b>(22)</b></button>
 <button type="button" data-f="web" aria-pressed="false">WEB<b>(12)</b></button>
 <button type="button" data-f="app" aria-pressed="false">APP<b>(08)</b></button>
 <button type="button" data-f="bx" aria-pressed="false">BX<b>(13)</b></button>
+</div>
 </div>
 <div class="ctl" role="group" aria-label="View">
 <button type="button" id="zo" aria-label="Zoom out"><svg viewBox="0 0 20 20"><path d="M5 10h10"/></svg></button>
@@ -139,9 +289,9 @@ var ITEMS=[{"id":"jiffcy","tags":["app","bx"],"img":"assets/work/th-jiffcy.webp"
   var root=document.documentElement,reduce=false;try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
   /* language */
   function setLang(l){root.dataset.lang=l;root.lang=l;try{localStorage.setItem('pf-lang-v2',l)}catch(e){}
-    [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l))})}
+    [].forEach.call(document.querySelectorAll('[data-lang]'),function(b){if(b.tagName==='BUTTON')b.setAttribute('aria-pressed',String(b.dataset.lang===l))})}
   setLang(root.dataset.lang||'ja');
-  [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+  [].forEach.call(document.querySelectorAll('button[data-lang]'),function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
 
   var R=document.getElementById('root'),surf=document.getElementById('surface'),cam=document.getElementById('camera'),
       gv=document.getElementById('gridv'),gw=document.getElementById('gwrap'),hint=document.getElementById('hint');
@@ -226,5 +376,14 @@ var ITEMS=[{"id":"jiffcy","tags":["app","bx"],"img":"assets/work/th-jiffcy.webp"
 })();
 
 </script>
+<script>(function(){
+  var modal=document.getElementById('menu-modal'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
+  if(!modal||!openBtn)return;
+  function openMenu(){modal.hidden=false;document.body.classList.add('menu-open');openBtn.setAttribute('aria-expanded','true');closeBtn.focus()}
+  function closeMenu(r){modal.hidden=true;document.body.classList.remove('menu-open');openBtn.setAttribute('aria-expanded','false');if(r)openBtn.focus()}
+  openBtn.addEventListener('click',openMenu);closeBtn.addEventListener('click',function(){closeMenu(true)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closeMenu(true)});
+  [].forEach.call(modal.querySelectorAll('a'),function(a){a.addEventListener('click',function(){closeMenu(false)})});
+})();</script>
 </body>
 </html>
