@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://www.aftworks.com/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="profile">
-<meta property="og:site_name" content="Jeong Jinho Portfolio">
+<meta property="og:site_name" content="aftworks · Jeong Jinho">
 <meta property="og:url" content="https://www.aftworks.com/">
 <meta property="og:title" content="Jeong Jinho（鄭 珍昊）| Product / UI/UX Designer in Tokyo">
 <meta property="og:description" content="東京のプロダクト / UI/UXデザイナー、Jeong Jinho（鄭 珍昊）のポートフォリオ。LINE、Kyash、Cookpadなど20年以上の0→1プロダクト設計を「なぜそう決めたか」から紹介します。">
@@ -1516,7 +1516,7 @@ html[data-aw] .aw-r{text-align:right}
 html[data-aw] html[lang] .aw-h{}
 html[data-aw] .aw-h .ja,html[data-aw] .aw-h .ko{font-size:.78em;line-height:1.08;letter-spacing:-.03em}
 html[data-aw] .aw-side{grid-column:2;justify-self:end;text-align:right;max-width:360px;margin-top:26px;pointer-events:auto}
-html[data-aw] .aw-lede{margin:0;font-size:1rem;line-height:1.65;color:rgba(255,255,255,.92)}
+html[data-aw] .aw-lede{margin:0;font-size:1rem;line-height:1.65;color:rgba(255,255,255,.92);text-wrap:balance}
 html[data-aw] .aw-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
 html[data-aw] .aw-meta{position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px;margin-top:40px;padding-top:14px;border-top:1px solid rgba(255,255,255,.4);font:500 .75rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
 html[data-aw] .aw-meta b{font-weight:600}
@@ -1937,6 +1937,82 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-400.subset.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-500.subset.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:'Noto Sans KR';src:url('/assets/fonts/NotoSansKR-700.subset.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}</style>
+<style id="v2-sample">
+/* ================= v2 sample (feat/v2-sample) ================= */
+/* 1) hero brand lockup */
+html[data-aw] header.aw-hero .aw-brand{position:relative;z-index:3;display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:8px 10px;align-self:flex-start;margin:0 0 auto;padding:9px 16px;border-radius:999px;background:rgba(10,11,14,.86);font:500 11px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:none;color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+html[data-aw] .aw-brand b{font-weight:700;letter-spacing:.01em;font-size:15px;text-transform:lowercase}
+html[data-aw] .aw-brand .aw-brand-x{opacity:.5;letter-spacing:0}
+html[data-aw] .aw-brand .aw-brand-d{font:500 12.5px/1.5 var(--f-body);letter-spacing:0;text-transform:none;color:rgba(255,255,255,.88)}
+/* 2) featured grid: 6 cases, 3 columns (2 under 1100px, 1 on phones) */
+html[data-aw] #cases .bento-cases.aw-feat{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;column-gap:clamp(14px,1.6vw,26px)!important;row-gap:clamp(34px,3.4vw,54px)!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;overflow:visible!important;align-items:start}
+html[data-aw] #cases .bento-cases.aw-feat .bc{width:auto!important;max-width:none!important;text-align:left!important;margin:0!important;justify-self:stretch!important;aspect-ratio:auto!important;display:block!important;transform:none!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc .bc-media{aspect-ratio:380/440!important;border-radius:18px!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc-txt,html[data-aw] #cases .bento-cases.aw-feat .bc-t{text-align:left!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc-t{font:500 clamp(1.2rem,1.85vw,1.85rem)/1 var(--f-display)!important;letter-spacing:-.015em!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc-k{display:-webkit-box!important;font-size:.9375rem!important;line-height:1.55!important;color:#9BA2AE!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+html[data-aw] #cases .bento-cases.aw-feat .bc-pr{font-size:.6875rem}
+html[data-aw] #cases .bento-cases.aw-feat .bc-media .bc-pr{display:block}
+@media (min-width:761px) and (max-width:1099px){html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:760px){
+  html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:1fr!important;width:auto!important;margin:0!important;padding:0!important;row-gap:38px!important}
+  html[data-aw] #cases .bento-cases.aw-feat .bc-t{font-size:1.35rem!important}
+  html[data-aw] header.aw-hero .aw-brand{font-size:10px;letter-spacing:.1em;gap:2px 0;padding:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  html[data-aw] .aw-brand .aw-brand-x{display:none}
+  html[data-aw] .aw-brand .aw-brand-d{font:500 11.5px/1.45 var(--f-body);flex-basis:100%}
+  /* the section title has to fit a phone: 11vw keeps it on one line at 390px */
+  html[data-aw] #cases h2.aw-big{font-size:11vw!important;letter-spacing:-.045em!important}
+  /* four filters in two rows instead of a sideways scroller */
+  html[data-aw] #cases .cc-filter{flex-wrap:wrap!important;overflow:visible!important;margin-inline:0!important;padding-inline:0!important;justify-content:flex-start!important;gap:6px!important}
+  html[data-aw] #cases .ccf{height:34px!important;font-size:14px!important;padding:0 14px!important}
+}
+/* 3) archive index */
+html[data-aw] .aw-arch-wrap{margin:clamp(52px,6vw,92px) 0 0}
+html[data-aw] .aw-arch-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 clamp(14px,1.4vw,22px);font:500 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:#9BA2AE}
+html[data-aw] .aw-arch-n{font-variant-numeric:tabular-nums;opacity:.65;letter-spacing:.08em}
+html[data-aw] .aw-arch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,3.2vw,64px);row-gap:0;list-style:none;margin:0;padding:0}
+html[data-aw] .aw-arch .ar{display:grid;grid-template-columns:3.1rem 3.25rem minmax(6.5rem,10.5rem) minmax(0,1fr) auto;align-items:center;min-height:4.6rem;gap:clamp(10px,1vw,16px);padding:14px 0;text-decoration:none;color:inherit;text-align:left}
+html[data-aw] .aw-arch .ar-y{font:500 11px/1 var(--f-body);color:#7D838E;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+html[data-aw] .aw-arch .ar-th{width:3.25rem;height:3.25rem;border-radius:8px;overflow:hidden;background:#181B21;display:block}
+html[data-aw] .aw-arch .ar-th img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--aw-e)}
+html[data-aw] .aw-arch .ar-b{display:contents}
+html[data-aw] .aw-arch .ar-t{display:block;font:500 clamp(1rem,1.08vw,1.125rem)/1.3 var(--f-display);letter-spacing:-.01em;color:#DCDFE4;transition:color .25s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[data-aw] .aw-arch .ar-k{display:-webkit-box;font:400 .8125rem/1.5 var(--f-body);color:#7D838E;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding-right:4px}
+html[data-aw] .aw-arch .ar-t br{display:none}
+html[data-aw] .aw-arch .ar-go{font:400 .875rem/1 var(--f-body);color:#4C525C;transition:color .25s,transform .4s var(--aw-e)}
+@media (hover:hover){
+  html[data-aw] .aw-arch .ar:hover .ar-t{color:#FF4800}
+  html[data-aw] .aw-arch .ar:hover .ar-th img{transform:scale(1.08)}
+  html[data-aw] .aw-arch .ar:hover .ar-go{color:#fff;transform:translate(2px,-2px)}
+}
+@media (max-width:760px){
+  html[data-aw] .aw-arch{grid-template-columns:1fr;column-gap:0}
+  html[data-aw] .aw-arch .ar{grid-template-columns:2.9rem 2.9rem minmax(0,1fr) auto}
+  html[data-aw] .aw-arch .ar-th{width:2.9rem;height:2.9rem}
+  html[data-aw] .aw-arch .ar-k{display:none}
+}
+/* 4) the ALL/WEB/APP/BX filters stay visible and now also filter the archive */
+html[data-aw] #cases .cc-filter{display:flex!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc.off{display:none!important}
+html[data-aw] #cases .aw-arch .ar.off,html[data-aw] #cases .aw-arch li.off{display:none!important}
+/* 5) HOW WE WORK */
+html[data-aw] section#collab{padding-top:clamp(56px,7vw,104px)!important}
+html[data-aw] #collab .sec-head{padding-top:0!important;margin-bottom:clamp(26px,2.8vw,44px)!important}
+html[data-aw] #collab .sec-head>p{max-width:56ch}
+html[data-aw] #collab .cw-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.3vw,20px)}
+html[data-aw] #collab .cw{display:flex;flex-direction:column;gap:12px;background:#161D25;border-radius:24px;padding:clamp(20px,2.1vw,30px);min-height:clamp(230px,21vw,290px)}
+html[data-aw] #collab .cw-n{font:500 11px/1 var(--f-mono);letter-spacing:.16em;color:#FF4800}
+html[data-aw] #collab .cw h3{margin:0;font:600 clamp(1.1rem,1.45vw,1.45rem)/1.28 var(--f-display);letter-spacing:-.01em;color:#EEF0F3}
+html[data-aw] #collab .cw p{margin:0;font-size:.9375rem;line-height:1.65;color:#9BA2AE}
+html[data-aw] #collab .cw-m{margin-top:auto;padding-top:10px;font:500 11px/1.35 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#5F6672}
+@media (max-width:900px){html[data-aw] #collab .cw-grid{grid-template-columns:1fr}html[data-aw] #collab .cw{min-height:0}}
+/* 6) contact: concrete scope line + a mail button next to "copy" */
+html[data-aw] .contact-v .contact>div:first-child>.aw-cta-sub{flex-basis:100%;margin:2px 0 4px!important;font:400 clamp(.9375rem,1.05vw,1.0625rem)/1.55 var(--f-body);color:rgba(255,255,255,.84);letter-spacing:0}
+html[data-aw] .contact-v .ft-mail{display:inline-flex;align-items:center;gap:8px;height:48px;margin:8px 0 0!important;padding:0 18px;border-radius:999px;background:rgba(255,255,255,.2);color:#fff;font:600 .9375rem/1 var(--f-body);text-decoration:none;transition:background .25s,scale .16s}
+html[data-aw] .contact-v .ft-mail:hover{background:rgba(255,255,255,.36)}
+html[data-aw] .contact-v .ft-mail:active{scale:.97}
+@media (max-width:760px){html[data-aw] .contact-v .ft-mail{width:100%;justify-content:center;margin-top:0!important}}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="aktw" viewBox="0 0 3406 1004"><g transform="translate(0.000000,1004.000000) scale(0.100000,-0.100000)"><path fill="currentColor" d="M9126 10013 c-3 -16 -269 -1520 -591 -3343 -322 -1823 -591 -3341 -597 -3374 l-11 -58 -106 5 c-124 6 -190 25 -257 76 -94 71 -143 218 -129 391 4 47 205 1196 446 2555 241 1358 439 2476 439 2483 0 10 -239 12 -1187 10 l-1187 -3 -33 -195 c-17 -107 -35 -209 -38 -226 l-5 -31 -113 111 c-378 377 -962 550 -1852 550 -1038 -1 -1808 -295 -2445 -933 -501 -503 -830 -1126 -1005 -1908 -26 -114 -346 -1886 -390 -2158 -83 -512 -83 -1007 1 -1385 215 -963 917 -1466 2164 -1551 211 -14 608 -6 765 15 779 108 1395 498 1830 1159 l39 58 32 -128 c106 -429 320 -701 701 -891 455 -229 1251 -290 1838 -142 61 15 112 26 114 24 3 -3 -39 -253 -92 -557 -54 -303 -97 -555 -97 -560 0 -4 597 -6 1327 -5 l1327 3 472 2696 c259 1482 473 2702 476 2710 11 28 151 -304 248 -586 255 -745 491 -1925 579 -2890 58 -633 64 -1489 14 -1888 l-6 -47 1370 0 1370 0 7 48 c39 299 58 1003 37 1379 -21 368 -57 676 -117 992 -19 102 -37 200 -40 216 -2 17 10 -10 29 -60 391 -1045 1397 -1555 3067 -1555 1674 0 2857 549 3621 1682 l85 127 28 -137 c57 -281 174 -566 314 -761 425 -595 1335 -911 2627 -911 960 0 1716 299 2510 994 30 27 57 47 59 45 1 -2 30 -44 64 -94 442 -649 1303 -968 2547 -942 974 20 1766 273 2482 794 619 449 1008 930 1413 1748 509 1027 757 2088 777 3315 11 744 -42 1276 -178 1768 l-31 112 -1332 0 -1332 0 18 -112 c135 -832 187 -1947 128 -2759 -111 -1540 -530 -2375 -1289 -2567 -100 -25 -119 -27 -326 -26 -258 0 -348 18 -515 100 -286 141 -428 471 -390 906 6 73 164 993 390 2274 209 1183 380 2159 380 2168 0 15 -102 16 -1327 14 l-1328 -3 -87 -485 c-48 -267 -177 -991 -287 -1610 -214 -1196 -250 -1387 -312 -1654 -301 -1302 -668 -1738 -1437 -1713 -435 14 -690 170 -805 492 -55 156 -73 412 -43 630 12 86 747 4261 761 4323 l5 22 -3425 0 c-1935 0 -3425 4 -3425 9 0 10 208 1215 215 1249 l5 22 -1329 0 -1329 0 -6 -32 c-3 -18 -53 -302 -110 -631 -58 -329 -108 -602 -111 -607 -8 -12 -3635 -14 -3635 -2 0 9 217 1225 224 1255 4 16 -64 17 -1324 17 l-1328 0 -6 -27z m-4400 -3311 c217 -47 381 -152 471 -304 l32 -53 -234 -1310 c-129 -720 -240 -1320 -246 -1331 -32 -60 -255 -232 -389 -299 -191 -96 -352 -130 -605 -129 -432 2 -674 102 -853 356 -120 170 -154 341 -122 617 11 100 211 1260 242 1406 128 608 510 977 1093 1054 44 6 94 13 110 15 80 11 413 -3 501 -22z m10080 -169 c-27 -133 -439 -2506 -450 -2598 -40 -314 -44 -617 -11 -884 15 -119 15 -169 0 -99 -52 241 -247 768 -409 1103 -483 999 -1128 1837 -1916 2484 l-25 20 1408 1 1409 0 -6 -27z m6849 5 c-3 -13 -68 -381 -145 -818 -77 -437 -145 -819 -151 -847 l-10 -53 -1010 0 -1009 0 -4 -22 c-111 -526 -252 -851 -498 -1143 -282 -335 -689 -459 -1133 -345 -494 127 -696 608 -566 1348 110 623 333 1880 336 1890 4 9 432 12 2100 12 l2095 0 -5 -22z"/></g></symbol></svg>
@@ -1995,10 +2071,11 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <div class="hero" hidden></div>
 <div class="aw-coins" aria-hidden="true"></div>
 <img class="aw-photo" src="/assets/photo-cut.webp" alt="" width="832" height="1167" aria-hidden="true">
+<p class="aw-brand"><b>aftworks</b><span class="aw-brand-x" aria-hidden="true">&#8212;</span><span class="aw-brand-d"><span class="ja">プロダクト＆UXデザインスタジオ（Jinho Jeong）</span><span class="en">Product &amp; UX Design Studio by Jinho Jeong</span><span class="ko">Jinho Jeong의 프로덕트 &amp; UX 디자인 스튜디오</span></span></p>
 <div class="aw-hl">
 <h1 class="aw-h aw-l"><span class="aw-rv ja">画面ではなく、</span><span class="aw-rv en">Designing<br>business</span><span class="aw-rv ko">사업의 방향을</span></h1>
 <p class="aw-h aw-r"><span class="aw-rv ja">事業の判断を<br>デザインする。</span><span class="aw-rv en">decisions,<em>not just interfaces.</em></span><span class="aw-rv ko">함께<br>디자인한다.</span></p>
-<div class="aw-side"><p class="aw-lede"><span class="ja">このポートフォリオは成果の大きさよりも「なぜそう決めたか」を中心にまとめています。</span><span class="en">This portfolio focuses less on the size of outcomes and more on why I made each call.</span><span class="ko">이 포트폴리오는 성과가 얼마나 컸는지보다 “왜 그렇게 결정했는지”에 초점을 맞췄습니다.</span></p>
+<div class="aw-side"><p class="aw-lede"><span class="ja">ビジネスの成果を決めてきたのは、結局のところ「なぜそう決めたか」という判断でした。このポートフォリオは、その判断の記録です。</span><span class="en">What moved the business was never the size of the output. It was the judgement behind each call. This portfolio is the record of those calls.</span><span class="ko">비즈니스 결과를 만든 건 결국 “왜 그렇게 결정했는지”라는 판단이었습니다. 이 포트폴리오는 그 판단의 기록입니다.</span></p>
 <div class="aw-acts"><a class="aw-pill aw-solid" data-arrow href="https://cal.com/jeong75/30min"><span class="ja">1:1で相談する</span><span class="en">Book a 1:1</span><span class="ko">1:1 상담 예약</span></a><a class="aw-pill aw-ghost" data-arrow href="/jeongjinho-cv.html" target="_blank" rel="noopener"><span class="ja">CVを見る</span><span class="en">Download CV</span><span class="ko">CV 보기</span></a></div></div>
 </div>
 <div class="aw-meta"><span>Based in <b>TOKYO</b> <b class="aw-clock" id="aw-clock">--:--</b></span><span class="aw-meta-m"><span class="ja">プロダクト / UI/UX デザイナー</span><span class="en">Product / UI/UX Designer</span><span class="ko">프로덕트 / UI/UX 디자이너</span></span><a class="aw-meta-r" href="#" data-mail-link><span class="em-x" data-c="u">JINHO [at] AFTWORKS.COM</span></a></div>
@@ -2013,16 +2090,14 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <section id="cases">
 <div class="sec-head">
 <h2 class="aw-big"><span class="aw-rv ja">SELECTED WORK</span><span class="aw-rv en">SELECTED WORK</span><span class="aw-rv ko">SELECTED WORK</span></h2>
-<div class="cc-ctl noprint"><span class="cc-count" aria-live="polite">01 / 12</span><button type="button" class="cc-prev" aria-label="Previous case studies"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><button type="button" class="cc-next" aria-label="Next case studies"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
-</div>
 <div class="cc-filter noprint" role="group" aria-label="Filter case studies"><button type="button" class="ccf on" data-f="all" aria-pressed="true"><span class="ja">すべて</span><span class="en">All</span><span class="ko">모두</span><span class="ccf-n">(22)</span></button><button type="button" class="ccf" data-f="web" aria-pressed="false"><span class="ja">WEB</span><span class="en">WEB</span><span class="ko">WEB</span><span class="ccf-n">(12)</span></button><button type="button" class="ccf" data-f="app" aria-pressed="false"><span class="ja">APP</span><span class="en">APP</span><span class="ko">APP</span><span class="ccf-n">(08)</span></button><button type="button" class="ccf" data-f="bx" aria-pressed="false"><span class="ja">BX</span><span class="en">BX</span><span class="ko">BX</span><span class="ccf-n">(13)</span></button></div>
-<div class="bento-cases">
+<div class="bento-cases aw-feat">
 <a class="bc bc-jiffcy" href="#jiffcy" data-case="jiffcy" data-tags="app bx" aria-haspopup="dialog">
 <span class="bc-media cv23" style="background:#1FB5A6"><img class="aw-gp" src="/assets/work/gp-best2026.webp" width="240" height="240" alt="Google Play Best of 2026" loading="lazy" decoding="async"><img src="/assets/work/th-jiffcy.webp" alt="" loading="lazy" decoding="async"></span>
 <span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2025–</span><span class="bc-t">Jiffcy</span><span class="bc-aw"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.3l-3.8 2 .7-4.3-3.1-3 4.3-.6z" fill="currentColor"/></svg><span class="ja">Google Play ベスト オブ 2026 隠れた名作部門 受賞</span><span class="en">Google Play Best of 2026, Best Under the Radar winner</span><span class="ko">Google Play 베스트 오브 2026 숨은 명작 부문 수상</span></span><span class="bc-k"><span class="ja">知っている友だちだけのクローズドSNS。友だちがゼロの最初の数分を、どう設計するか。</span><span class="en">A closed social app for friends who already know each other. How to design the first minutes, when you have zero friends.</span><span class="ko">서로 아는 친구끼리만 연결되는 폐쇄형 SNS. 아직 친구가 한 명도 없는 첫 몇 분을 어떻게 설계할 것인가.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
 </a>
-<a class="bc bc-rlwrld aw-more" href="#rlwrld" data-case="rlwrld" data-tags="bx web" aria-haspopup="dialog">
+<a class="bc bc-rlwrld" href="#rlwrld" data-case="rlwrld" data-tags="bx web" aria-haspopup="dialog">
 <span class="bc-media cv23" style="background:#51EACD"><img src="/assets/work/th-rlwrld.webp" alt="" loading="lazy" decoding="async"></span>
 <span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2025</span><span class="bc-t">RLWRLD</span><span class="bc-k"><span class="ja">ロボットの「手」を鍛える基盤モデルの会社に、ピクセルで「根本」を描いたブランドを。</span><span class="en">A brand drawn in pixels for a company building the foundation model behind robot hands.</span><span class="ko">로봇의 "손"을 학습시키는 파운데이션 모델 회사에, 픽셀로 "근본"을 그린 브랜드.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
@@ -2032,54 +2107,9 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2025</span><span class="bc-t">YOKI</span><span class="bc-k"><span class="ja">「余生」を「ヨキ」と読み替える。アクティブシニアの新しい一日を提案する体験サービスを、ブランドから予約、管理画面まで。</span><span class="en">Rereading "the rest of life" as YOKI: an experience service that suggests a new day for active seniors, from the brand to booking and admin.</span><span class="ko">"여생"을 "요키"로 다시 읽는다. 액티브 시니어에게 새로운 하루를 제안하는 체험 서비스를, 브랜드부터 예약, 관리자 화면까지.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
 </a>
-<a class="bc bc-pikabon" href="#pikabon" data-case="pikabon" data-tags="bx" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#7A1A8C"><img src="/assets/work/th-pikabon.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">PIKABON</span><span class="bc-k"><span class="ja">ペンライトを、アーティストとファンが光で話すための道具に。PIKABONのブランドリニューアルを、コンセプトからガイドラインまで。</span><span class="en">A light stick as a way for artists and fans to talk in light: PIKABON's brand renewal, from the concept to the guidelines.</span><span class="ko">응원봉을 아티스트와 팬이 빛으로 대화하는 도구로. PIKABON의 브랜드 리뉴얼을 콘셉트부터 가이드라인까지.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-uline aw-more" href="#uline" data-case="uline" data-tags="bx" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#4B3BC6"><img src="/assets/work/th-uline.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">ULINE</span><span class="bc-k"><span class="ja">「波」と「次の世代」で「U」をつくる。韓国カルチャーの製品を届けるULINEのロゴとアイデンティティ。</span><span class="en">A U made of a wave and the next generation: the logo and identity for ULINE, a company bringing Korean culture products to Japan.</span><span class="ko">"물결"과 "다음 세대"로 "U"를 만든다. 한국 문화 제품을 전하는 ULINE의 로고와 아이덴티티.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-link aw-more" href="#link" data-case="link" data-tags="bx" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#333333"><img src="/assets/work/th-link.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">Link</span><span class="bc-k"><span class="ja">30度に傾いた旗で、顧客と一緒に前へ進む。ビジネスパートナー企業Linkのロゴとアイデンティティ。</span><span class="en">A flag tilted at 30 degrees, moving forward with the client: the logo and identity for Link, a business partner company.</span><span class="ko">30도로 기운 깃발로 고객과 함께 앞으로 나아간다. 비즈니스 파트너 기업 Link의 로고와 아이덴티티.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-workspot aw-more" href="#workspot" data-case="workspot" data-tags="bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#16CF83"><img src="/assets/work/th-workspot.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">WORKSPOT</span><span class="bc-k"><span class="ja">美容師のためのスキマバイト。PoC段階で、ブランドから求職者向けの画面、サロン向けの管理画面までを設計。</span><span class="en">Short shifts for hairdressers: at the proof-of-concept stage, I designed the brand, the screens for job seekers and the admin for salons.</span><span class="ko">미용사를 위한 짧은 아르바이트. PoC 단계에서 브랜드부터 구직자용 화면, 살롱용 관리자 화면까지 설계.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-shuttlepay aw-more" href="#shuttlepay" data-case="shuttlepay" data-tags="app" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#56303F"><img src="/assets/work/th-shuttlepay.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">ShuttlePay</span><span class="bc-k"><span class="ja">「貯金」を「チャレンジ」と言い換える。子ども向けキャッシュレス「シャトルペイ」の貯金画面を、ホームからカードデザインまで考え直した提案。</span><span class="en">Calling savings a "challenge": a proposal that rethinks the savings screens of ShuttlePay, a cashless service for children, from the home screen to the card design.</span><span class="ko">"저금"을 "챌린지"로 바꿔 부른다. 어린이용 캐시리스 서비스 "셔틀페이"의 저금 화면을 홈부터 카드 디자인까지 다시 생각한 제안.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-pairs aw-more" href="#pairs" data-case="pairs" data-tags="app" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#2C56E8"><img src="/assets/work/th-pairs.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2024</span><span class="bc-t">Pairs 町友</span><span class="bc-k"><span class="ja">恋愛は少し重い、でも誰かと出会いたい。マッチングアプリ「ペアーズ」に、近くの人と気軽に遊べる「町友」機能を提案。</span><span class="en">Romance feels a bit heavy, but you still want to meet someone: a proposal for Machitomo, a feature in the dating app Pairs for hanging out with people nearby.</span><span class="ko">연애는 조금 무겁지만 누군가를 만나고 싶다. 매칭 앱 "페어즈"에 근처 사람과 가볍게 놀 수 있는 "마치토모" 기능을 제안.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-taxnap aw-more" href="#taxnap" data-case="taxnap" data-tags="app" aria-haspopup="dialog">
+<a class="bc bc-taxnap" href="#taxnap" data-case="taxnap" data-tags="app" aria-haspopup="dialog">
 <span class="bc-media cv23" style="background:#27BA74"><img src="/assets/work/th-taxnap.webp" alt="" loading="lazy" decoding="async"></span>
 <span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2023</span><span class="bc-t">Taxnap</span><span class="bc-k"><span class="ja">知識がなくても、スワイプで仕分けられる。フリーランスのための確定申告アプリを、公式リリースまでのUI/UXとスタイルガイドから。</span><span class="en">Sort your expenses with a swipe, no accounting knowledge needed: the UI/UX and style guide of a tax return app for freelancers, up to its official release.</span><span class="ko">지식이 없어도 스와이프로 분류할 수 있다. 프리랜서를 위한 확정신고 앱을, 공식 릴리스까지의 UI/UX와 스타일 가이드부터.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-wealthpark aw-more" href="#wealthpark" data-case="wealthpark" data-tags="app" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#213A9F"><img src="/assets/work/th-wealthpark.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2023</span><span class="bc-t">WealthPark</span><span class="bc-k"><span class="ja">買収後、手つかずだった投資サービスの商品詳細を、状態ごとに「いま何ができるか」が伝わる画面に。</span><span class="en">An investment product page, rebuilt so each state of an offering tells you what you can do right now.</span><span class="ko">인수 후 손대지 못했던 투자 서비스의 상품 상세를, 상태마다 "지금 무엇을 할 수 있는지" 전해지는 화면으로.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-wplab aw-more" href="#wplab" data-case="wplab" data-tags="web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#213A9F"><img src="/assets/work/th-wplab.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2023</span><span class="bc-t">WealthPark Lab</span><span class="bc-k"><span class="ja">古いブログを別のサイトで更新し続けていた投資サービスに、雑誌のように読める社外向けメディアを。</span><span class="en">An outward-facing media site that reads like a magazine, for an investment service whose old blog was being updated somewhere else.</span><span class="ko">오래된 블로그를 다른 사이트에서 업데이트해 오던 투자 서비스에, 잡지처럼 읽히는 사외용 미디어를.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-pokke aw-more" href="#pokke" data-case="pokke" data-tags="bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#F85B07"><img src="/assets/work/th-pokke.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2023</span><span class="bc-t">Pokke</span><span class="bc-k"><span class="ja">いつもの買い物のまま、最安値とポイントを教えてくれる「お得情報チャットボット」。ブランドからLP、ブラウザ拡張、ストア素材まで。</span><span class="en">A "deals chatbot" that tells you the lowest price and the points to earn while you shop as usual, from the brand and landing page to the browser extension and store assets.</span><span class="ko">평소 쇼핑 그대로 최저가와 포인트를 알려주는 "알뜰 정보 챗봇". 브랜드부터 LP, 브라우저 확장, 스토어 소재까지.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
 </a>
 <a class="bc bc-kyash" href="#kyash" data-case="kyash" data-tags="app" aria-haspopup="dialog">
@@ -2087,46 +2117,32 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2022</span><span class="bc-t">Kyash Widget</span><span class="bc-k"><span class="ja">事業の優先度は低かった。それでも「なぜ作るのか」を言葉にして、残高ウィジェットをリリースした。</span><span class="en">It was low on the business roadmap. I put "why build this" into words and shipped the balance widget anyway.</span><span class="ko">사업 우선순위에서는 밀려 있었다. 그래도 "왜 만들어야 하는지"를 분명히 해서 잔액 위젯을 출시까지 끌고 갔다.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
 </a>
-<a class="bc bc-croc aw-more" href="#croc" data-case="croc" data-tags="bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#E43D18"><img src="/assets/work/th-croc.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 01"><b>01</b><span class="ja">「なぜ作るのか」を先に言葉にする</span><span class="en">Put "why build this" into words first</span><span class="ko">"왜 만드는가"부터 말로 정리한다</span></span><span class="bc-txt"><span class="bc-no">2022</span><span class="bc-t">Croc</span><span class="bc-k"><span class="ja">言葉の壁を越えて、海外の個人販売者と日本の買い手をつなぐ越境EC。ロゴからショップ管理画面まで。</span><span class="en">A cross-border marketplace that connects overseas sellers with buyers in Japan across the language barrier, from the logo to the shop admin.</span><span class="ko">언어의 벽을 넘어 해외 개인 판매자와 일본 구매자를 잇는 크로스보더 EC. 로고부터 숍 관리자 화면까지.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-metajob aw-more" href="#metajob" data-case="metajob" data-tags="bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#0A82E7"><img src="/assets/work/th-metajob.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2021</span><span class="bc-t">METAJOB</span><span class="bc-k"><span class="ja">ゼロから立ち上げた採用管理SaaSに、ブランドと最初の顧客接点を同時につくった。</span><span class="en">A brand and a first front door, built together for a recruiting SaaS that started from zero.</span><span class="ko">0에서 시작한 채용관리 SaaS에 브랜드와 첫 고객 접점을 함께 만들었다.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-one" href="#one" data-case="one" data-tags="app bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#F6B400"><img src="/assets/work/th-one.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2018–2019</span><span class="bc-t">ONE</span><span class="bc-k"><span class="ja">レシートを撮るだけで10円。お金が届くまでの速さを、細部まで削って作ったフィンテック。</span><span class="en">Snap a receipt, get ¥10. A fintech app where I cut every extra step so the money arrives fast.</span><span class="ko">영수증 한 장을 찍으면 10엔. 돈이 빨리 들어오도록 군더더기를 하나하나 덜어낸 핀테크 앱.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-onepay aw-more" href="#onepay" data-case="onepay" data-tags="app bx web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#0047DC"><img src="/assets/work/th-onepay.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2017–2018</span><span class="bc-t">ONE PAYMENT</span><span class="bc-k"><span class="ja">スマホがそのままレジになる。カードリーダーなしで、対面でカード決済を受けられるアプリ。</span><span class="en">Your phone becomes the register. An app for taking card payments in person, with no card reader.</span><span class="ko">스마트폰이 곧 계산대가 된다. 카드 리더기 없이 얼굴을 마주하고 카드 결제를 받을 수 있는 앱.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-aeon aw-more" href="#aeon" data-case="aeon" data-tags="web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#B90C89"><img src="/assets/work/th-aeon.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 03"><b>03</b><span class="ja">自分が抜けても、組織に残る形にする</span><span class="en">Build what stays with the team after I leave</span><span class="ko">사람이 떠나도 조직에 남게 만든다</span></span><span class="bc-txt"><span class="bc-no">2016</span><span class="bc-t">AEON.com</span><span class="bc-k"><span class="ja">社名変更と「デジタルシフト」を伝える、イオンドットコムのコーポレートサイトをPCとスマートフォンで。</span><span class="en">A corporate site for AEON.com, on desktop and smartphone, to announce a new name and the group's digital shift.</span><span class="ko">사명 변경과 "디지털 시프트"를 알리는 이온닷컴의 코퍼레이트 사이트를 PC와 스마트폰으로.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-cookpadvideo aw-more" href="#cookpadvideo" data-case="cookpadvideo" data-tags="web" aria-haspopup="dialog">
+<a class="bc bc-cookpadvideo" href="#cookpadvideo" data-case="cookpadvideo" data-tags="web" aria-haspopup="dialog">
 <span class="bc-media cv23" style="background:#EF8A2E"><img src="/assets/work/th-cookpadvideo.webp" alt="" loading="lazy" decoding="async"></span>
 <span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2014</span><span class="bc-t">Cookpad 料理動画</span><span class="bc-k"><span class="ja">話題のレシピや裏ワザを、動画でわかりやすく。クックパッドの料理動画サービスを、PCとスマートフォンのレイアウトからデザインガイドまでリード。</span><span class="en">Popular recipes and kitchen tricks, made easy to follow on video: I led the design of Cookpad's cooking video service, from the PC and smartphone layouts to the design guide.</span><span class="ko">화제의 레시피와 꿀팁을 동영상으로 알기 쉽게. 쿡패드 요리 동영상 서비스를 PC와 스마트폰 레이아웃부터 디자인 가이드까지 리드.</span></span></span>
 <span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
 </a>
-<a class="bc bc-cookpad aw-more" href="#cookpad" data-case="cookpad" data-tags="web" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#EF8A2E"><img src="/assets/work/th-cookpad.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-pr" aria-label="Principle 02"><b>02</b><span class="ja">速さは、足すより削ることで作る</span><span class="en">Speed comes from removing things</span><span class="ko">속도는 덜어낼 때 생긴다</span></span><span class="bc-txt"><span class="bc-no">2014–2015</span><span class="bc-t">Cookpad<br>産地直送便</span><span class="bc-k"><span class="ja">「注文までが分かりにくい」という声に、画面の数ではなく「一目で分かる」ビジュアルで応えた。</span><span class="en">Users said ordering was confusing. I answered with visuals that explain the service at a glance instead of adding screens.</span><span class="ko">"주문하기가 어렵다"는 목소리에, 화면을 늘리는 대신 "한눈에 이해되는" 비주얼로 답했다.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
-<a class="bc bc-logoideas aw-more" href="#logoideas" data-case="logoideas" data-tags="bx" aria-haspopup="dialog">
-<span class="bc-media cv23" style="background:#1F2033"><img src="/assets/work/th-logoideas.webp" alt="" loading="lazy" decoding="async"></span>
-<span class="bc-txt"><span class="bc-no">Personal</span><span class="bc-t">Logo ideas</span><span class="bc-k"><span class="ja">個人作業として残してきたロゴのアイデア4つ。</span><span class="en">Four logo ideas I kept as personal work.</span><span class="ko">개인 작업으로 남겨 둔 로고 아이디어 네 가지.</span></span></span>
-<span class="bc-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-</a>
+</div>
+<div class="aw-arch-wrap">
+<div class="aw-arch-head"><span class="aw-arch-t"><span class="ja">そのほかのケース</span><span class="en">More cases</span><span class="ko">그 밖의 케이스</span></span><span class="aw-arch-n">16</span></div>
+<ul class="aw-arch">
+<li><a class="ar" href="#pikabon" data-case="pikabon" data-tags="bx"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-pikabon.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">PIKABON</span><span class="ar-k"><span class="ja">ペンライトを、アーティストとファンが光で話すための道具に。PIKABONのブランドリニューアルを、コンセプトからガイドラインまで。</span><span class="en">A light stick as a way for artists and fans to talk in light: PIKABON's brand renewal, from the concept to the guidelines.</span><span class="ko">응원봉을 아티스트와 팬이 빛으로 대화하는 도구로. PIKABON의 브랜드 리뉴얼을 콘셉트부터 가이드라인까지.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#uline" data-case="uline" data-tags="bx"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-uline.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">ULINE</span><span class="ar-k"><span class="ja">「波」と「次の世代」で「U」をつくる。韓国カルチャーの製品を届けるULINEのロゴとアイデンティティ。</span><span class="en">A U made of a wave and the next generation: the logo and identity for ULINE, a company bringing Korean culture products to Japan.</span><span class="ko">"물결"과 "다음 세대"로 "U"를 만든다. 한국 문화 제품을 전하는 ULINE의 로고와 아이덴티티.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#link" data-case="link" data-tags="bx"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-link.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Link</span><span class="ar-k"><span class="ja">30度に傾いた旗で、顧客と一緒に前へ進む。ビジネスパートナー企業Linkのロゴとアイデンティティ。</span><span class="en">A flag tilted at 30 degrees, moving forward with the client: the logo and identity for Link, a business partner company.</span><span class="ko">30도로 기운 깃발로 고객과 함께 앞으로 나아간다. 비즈니스 파트너 기업 Link의 로고와 아이덴티티.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#workspot" data-case="workspot" data-tags="bx web"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-workspot.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">WORKSPOT</span><span class="ar-k"><span class="ja">美容師のためのスキマバイト。PoC段階で、ブランドから求職者向けの画面、サロン向けの管理画面までを設計。</span><span class="en">Short shifts for hairdressers: at the proof-of-concept stage, I designed the brand, the screens for job seekers and the admin for salons.</span><span class="ko">미용사를 위한 짧은 아르바이트. PoC 단계에서 브랜드부터 구직자용 화면, 살롱용 관리자 화면까지 설계.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#shuttlepay" data-case="shuttlepay" data-tags="app"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-shuttlepay.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">ShuttlePay</span><span class="ar-k"><span class="ja">「貯金」を「チャレンジ」と言い換える。子ども向けキャッシュレス「シャトルペイ」の貯金画面を、ホームからカードデザインまで考え直した提案。</span><span class="en">Calling savings a "challenge": a proposal that rethinks the savings screens of ShuttlePay, a cashless service for children, from the home screen to the card design.</span><span class="ko">"저금"을 "챌린지"로 바꿔 부른다. 어린이용 캐시리스 서비스 "셔틀페이"의 저금 화면을 홈부터 카드 디자인까지 다시 생각한 제안.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#pairs" data-case="pairs" data-tags="app"><span class="ar-y">2024</span><span class="ar-th"><img src="/assets/work/th-pairs.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Pairs 町友</span><span class="ar-k"><span class="ja">恋愛は少し重い、でも誰かと出会いたい。マッチングアプリ「ペアーズ」に、近くの人と気軽に遊べる「町友」機能を提案。</span><span class="en">Romance feels a bit heavy, but you still want to meet someone: a proposal for Machitomo, a feature in the dating app Pairs for hanging out with people nearby.</span><span class="ko">연애는 조금 무겁지만 누군가를 만나고 싶다. 매칭 앱 "페어즈"에 근처 사람과 가볍게 놀 수 있는 "마치토모" 기능을 제안.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#wealthpark" data-case="wealthpark" data-tags="app"><span class="ar-y">2023</span><span class="ar-th"><img src="/assets/work/th-wealthpark.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">WealthPark</span><span class="ar-k"><span class="ja">買収後、手つかずだった投資サービスの商品詳細を、状態ごとに「いま何ができるか」が伝わる画面に。</span><span class="en">An investment product page, rebuilt so each state of an offering tells you what you can do right now.</span><span class="ko">인수 후 손대지 못했던 투자 서비스의 상품 상세를, 상태마다 "지금 무엇을 할 수 있는지" 전해지는 화면으로.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#wplab" data-case="wplab" data-tags="web"><span class="ar-y">2023</span><span class="ar-th"><img src="/assets/work/th-wplab.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">WealthPark Lab</span><span class="ar-k"><span class="ja">古いブログを別のサイトで更新し続けていた投資サービスに、雑誌のように読める社外向けメディアを。</span><span class="en">An outward-facing media site that reads like a magazine, for an investment service whose old blog was being updated somewhere else.</span><span class="ko">오래된 블로그를 다른 사이트에서 업데이트해 오던 투자 서비스에, 잡지처럼 읽히는 사외용 미디어를.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#pokke" data-case="pokke" data-tags="bx web"><span class="ar-y">2023</span><span class="ar-th"><img src="/assets/work/th-pokke.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Pokke</span><span class="ar-k"><span class="ja">いつもの買い物のまま、最安値とポイントを教えてくれる「お得情報チャットボット」。ブランドからLP、ブラウザ拡張、ストア素材まで。</span><span class="en">A "deals chatbot" that tells you the lowest price and the points to earn while you shop as usual, from the brand and landing page to the browser extension and store assets.</span><span class="ko">평소 쇼핑 그대로 최저가와 포인트를 알려주는 "알뜰 정보 챗봇". 브랜드부터 LP, 브라우저 확장, 스토어 소재까지.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#croc" data-case="croc" data-tags="bx web"><span class="ar-y">2022</span><span class="ar-th"><img src="/assets/work/th-croc.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Croc</span><span class="ar-k"><span class="ja">言葉の壁を越えて、海外の個人販売者と日本の買い手をつなぐ越境EC。ロゴからショップ管理画面まで。</span><span class="en">A cross-border marketplace that connects overseas sellers with buyers in Japan across the language barrier, from the logo to the shop admin.</span><span class="ko">언어의 벽을 넘어 해외 개인 판매자와 일본 구매자를 잇는 크로스보더 EC. 로고부터 숍 관리자 화면까지.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#metajob" data-case="metajob" data-tags="bx web"><span class="ar-y">2021</span><span class="ar-th"><img src="/assets/work/th-metajob.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">METAJOB</span><span class="ar-k"><span class="ja">ゼロから立ち上げた採用管理SaaSに、ブランドと最初の顧客接点を同時につくった。</span><span class="en">A brand and a first front door, built together for a recruiting SaaS that started from zero.</span><span class="ko">0에서 시작한 채용관리 SaaS에 브랜드와 첫 고객 접점을 함께 만들었다.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#one" data-case="one" data-tags="app bx web"><span class="ar-y">2018–2019</span><span class="ar-th"><img src="/assets/work/th-one.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">ONE</span><span class="ar-k"><span class="ja">レシートを撮るだけで10円。お金が届くまでの速さを、細部まで削って作ったフィンテック。</span><span class="en">Snap a receipt, get ¥10. A fintech app where I cut every extra step so the money arrives fast.</span><span class="ko">영수증 한 장을 찍으면 10엔. 돈이 빨리 들어오도록 군더더기를 하나하나 덜어낸 핀테크 앱.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#onepay" data-case="onepay" data-tags="app bx web"><span class="ar-y">2017–2018</span><span class="ar-th"><img src="/assets/work/th-onepay.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">ONE PAYMENT</span><span class="ar-k"><span class="ja">スマホがそのままレジになる。カードリーダーなしで、対面でカード決済を受けられるアプリ。</span><span class="en">Your phone becomes the register. An app for taking card payments in person, with no card reader.</span><span class="ko">스마트폰이 곧 계산대가 된다. 카드 리더기 없이 얼굴을 마주하고 카드 결제를 받을 수 있는 앱.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#aeon" data-case="aeon" data-tags="web"><span class="ar-y">2016</span><span class="ar-th"><img src="/assets/work/th-aeon.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">AEON.com</span><span class="ar-k"><span class="ja">社名変更と「デジタルシフト」を伝える、イオンドットコムのコーポレートサイトをPCとスマートフォンで。</span><span class="en">A corporate site for AEON.com, on desktop and smartphone, to announce a new name and the group's digital shift.</span><span class="ko">사명 변경과 "디지털 시프트"를 알리는 이온닷컴의 코퍼레이트 사이트를 PC와 스마트폰으로.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#cookpad" data-case="cookpad" data-tags="web"><span class="ar-y">2014–2015</span><span class="ar-th"><img src="/assets/work/th-cookpad.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Cookpad 産地直送便</span><span class="ar-k"><span class="ja">「注文までが分かりにくい」という声に、画面の数ではなく「一目で分かる」ビジュアルで応えた。</span><span class="en">Users said ordering was confusing. I answered with visuals that explain the service at a glance instead of adding screens.</span><span class="ko">"주문하기가 어렵다"는 목소리에, 화면을 늘리는 대신 "한눈에 이해되는" 비주얼로 답했다.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+<li><a class="ar" href="#logoideas" data-case="logoideas" data-tags="bx"><span class="ar-y">Personal</span><span class="ar-th"><img src="/assets/work/th-logoideas.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span class="ar-b"><span class="ar-t">Logo ideas</span><span class="ar-k"><span class="ja">個人作業として残してきたロゴのアイデア4つ。</span><span class="en">Four logo ideas I kept as personal work.</span><span class="ko">개인 작업으로 남겨 둔 로고 아이디어 네 가지.</span></span><span class="ar-go" aria-hidden="true">&#8599;</span></a></li>
+</ul>
 </div>
 <div class="aw-all"><a class="aw-pill aw-solid aw-va" data-arrow href="/projects.html">VIEW ALL <b>(22)</b></a></div>
 <div class="case-store">
@@ -3495,6 +3511,34 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 </div>
 </div>
 </section>
+<section id="collab">
+<div class="sec-head">
+<h2><span class="ja">関わり方</span><span class="en">How we work</span><span class="ko">협업 방식</span></h2>
+<p class="ja">案件の大きさに合わせて、関わり方を3つに分けています。どれも最初の30分で、いまの状況と次の判断を一緒に整理するところから始めます。</p>
+<p class="en">Three ways to work together, depending on the size of the problem. Each one starts with 30 minutes to lay out where things stand and what the next call is.</p>
+<p class="ko">일의 크기에 맞춰 협업 방식을 세 가지로 나눴습니다. 어느 쪽이든 30분 동안 지금 상황과 다음 판단을 함께 정리하는 것에서 시작합니다.</p>
+</div>
+<div class="cw-grid">
+<article class="cw"><span class="cw-n">01</span>
+<h3><span class="ja">0→1のプロダクト設計</span><span class="en">0→1 product &amp; MVP design</span><span class="ko">0→1 제품 · MVP 설계</span></h3>
+<p class="ja">事業の仮説を、触れるプロトタイプまで。業務の整理とBPMN、IA、主要画面、検証を一続きで設計します。</p>
+<p class="en">From a business hypothesis to something you can touch: workflow mapping, IA, key screens and validation, designed as one flow.</p>
+<p class="ko">사업 가설을 만질 수 있는 프로토타입까지. 업무 정리와 BPMN, IA, 핵심 화면, 검증을 하나의 흐름으로 설계합니다.</p>
+<span class="cw-m"><span class="ja">目安 4〜8週間</span><span class="en">Typical: 4–8 weeks</span><span class="ko">보통 4~8주</span></span></article>
+<article class="cw"><span class="cw-n">02</span>
+<h3><span class="ja">週次のデザインパートナー</span><span class="en">Weekly design partner &amp; UX review</span><span class="ko">주간 디자인 파트너 · UX 리뷰</span></h3>
+<p class="ja">社内にデザイナーがいる前提で、外から判断を支えます。月2〜4回のレビューと、必要なときの画面設計。</p>
+<p class="en">Assuming you already have a designer inside, I support the decisions from outside: two to four reviews a month, and screens when you need them.</p>
+<p class="ko">사내에 디자이너가 있다는 전제로, 밖에서 판단을 돕습니다. 월 2~4회 리뷰와 필요할 때의 화면 설계.</p>
+<span class="cw-m"><span class="ja">目安 月2〜4回・継続</span><span class="en">Typical: 2–4 sessions a month, ongoing</span><span class="ko">보통 월 2~4회 · 지속</span></span></article>
+<article class="cw"><span class="cw-n">03</span>
+<h3><span class="ja">AI × UX プロトタイピング</span><span class="en">AI × UX prototyping</span><span class="ko">AI × UX 프로토타이핑</span></h3>
+<p class="ja">プロンプト設計からUI、信頼の設計、失敗したときの戻し方まで。2〜3週間で社内が触れる形にします。</p>
+<p class="en">Prompt design, UI, trust, and the way back when it fails — built into something the team can use in two to three weeks.</p>
+<p class="ko">프롬프트 설계부터 UI, 신뢰 설계, 실패했을 때의 복구까지. 2~3주 안에 팀이 직접 만져볼 수 있는 형태로 만듭니다.</p>
+<span class="cw-m"><span class="ja">目安 2〜3週間</span><span class="en">Typical: 2–3 weeks</span><span class="ko">보통 2~3주</span></span></article>
+</div>
+</section>
 </main>
 <section class="contact-v" id="contact">
 <div aria-hidden="true" class="contact-bg"></div>
@@ -3502,9 +3546,9 @@ html[data-aw] a.bc:active .bc-media{scale:.985}
 <div class="wrap contact-inner">
 <div class="contact">
 <div>
-<h2 class="aw-cta"><span class="aw-rv ja">次の判断を、<br>一緒に。</span><span class="aw-rv en">LET'S DESIGN<br>THE NEXT CALL.</span><span class="aw-rv ko">다음 판단을,<br>함께.</span></h2><span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span>
+<h2 class="aw-cta"><span class="aw-rv ja">次の判断を、<br>一緒に。</span><span class="aw-rv en">LET'S DESIGN<br>THE NEXT CALL.</span><span class="aw-rv ko">다음 판단을,<br>함께.</span></h2><span class="label"><span class="ja">連絡先</span><span class="en">Contact</span><span class="ko">연락처</span></span><p class="aw-cta-sub"><span class="ja">0→1の設計 · UI改善 · デザイン相談（オンライン30分）</span><span class="en">0→1 design · UI improvement · design advisory (30 min, online)</span><span class="ko">0→1 설계 · UI 개선 · 디자인 자문 (30분 온라인)</span></p>
 <button type="button" class="big copy-mail aw-mail" id="copy-mail" aria-label="Copy email address"><span class="aw-m-a"><span class="em-x">jinho [at] aftworks.com</span></span><span class="aw-m-b" aria-hidden="true"><span class="ja">クリックでコピー</span><span class="en">Click to copy</span><span class="ko">클릭해서 복사</span></span></button>
-<a class="book" href="https://cal.com/jeong75/30min" rel="noopener"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></span></a><a class="btn ft-cv" href="/jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
+<a class="book" href="https://cal.com/jeong75/30min" rel="noopener"><span class="book-in"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="ja">面談を予約する</span><span class="en">Book a 1:1</span><span class="ko">면담 예약하기</span></span></a><a class="btn ft-mail" data-mail-link href="#" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">メールを書く</span><span class="en">Write an email</span><span class="ko">메일 쓰기</span></a><a class="btn ft-cv" href="/jeongjinho-cv.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ja">CVをダウンロード</span><span class="en">Download CV</span><span class="ko">CV 다운로드</span></a>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="ja">コピーしました。</span><span class="en">Copied.</span><span class="ko">복사되었습니다.</span></div>
 </div>
 <div class="links" style="display:flex;gap:16px;flex-wrap:wrap">
@@ -4019,7 +4063,7 @@ document.querySelectorAll('.case .cmore').forEach(function(b){b.addEventListener
 (function(){
   var sheet=document.getElementById('case-sheet');if(!sheet)return;
   var root=document.documentElement,store=document.querySelector('.case-store'),panel=sheet.querySelector('.sheet-panel'),bodyEl=sheet.querySelector('.sheet-body'),titleEl=document.getElementById('sheet-title');
-  var ids=Array.prototype.map.call(document.querySelectorAll('.bento-cases .bc'),function(c){return c.dataset.case});
+  var ids=Array.prototype.map.call(document.querySelectorAll('#cases [data-case]'),function(c){return c.dataset.case});
   var cur=null,lastFocus=null,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,closing=0;
   /* /work/<id> direct URLs: the same sheet, addressed by path instead of a hash */
   var pm=location.pathname.match(/^\/work\/([^\/]+)\/?$/),fromPath=!!(pm&&ids.indexOf(pm[1])>=0);
@@ -4251,16 +4295,16 @@ document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target
 /* case studies carousel: buttons, counter, mouse drag; the track bleeds to both edges of the window */
 (function(){
   var t=document.querySelector('#cases .bento-cases');if(!t)return;
-  var sec=t.parentElement,prev=document.querySelector('.cc-prev'),next=document.querySelector('.cc-next'),cnt=document.querySelector('.cc-count'),all=[].slice.call(t.querySelectorAll('.bc')),cards=all;
+  var sec=t.parentElement,prev=document.querySelector('.cc-prev'),next=document.querySelector('.cc-next'),cnt=document.querySelector('.cc-count'),all=[].slice.call(document.querySelectorAll('#cases .bc, #cases .ar')),cards=all;
   function edge(){var l=Math.max(0,Math.round(sec.getBoundingClientRect().left));t.style.setProperty('--edge',l+'px')}
   function step(){var c=cards[0];if(!c)return 300;var g=parseFloat(getComputedStyle(t).columnGap)||0;return c.getBoundingClientRect().width+g}
   function per(){var pd=parseFloat(getComputedStyle(t).paddingLeft)||0;return Math.max(1,Math.floor((t.clientWidth-2*pd+8)/step()))}
-  function upd(){var s=step(),i=Math.round(t.scrollLeft/s),max=t.scrollWidth-t.clientWidth-2;prev.disabled=t.scrollLeft<=2;next.disabled=t.scrollLeft>=max;
+  function upd(){if(!prev||!next||!cnt)return;var s=step(),i=Math.round(t.scrollLeft/s),max=t.scrollWidth-t.clientWidth-2;prev.disabled=t.scrollLeft<=2;next.disabled=t.scrollLeft>=max;
     var a=Math.min(cards.length,i+1),b=Math.min(cards.length,i+per());cnt.textContent=(a<10?'0':'')+a+(b>a?'–'+(b<10?'0':'')+b:'')+' / '+cards.length}
-  prev.addEventListener('click',function(){t.scrollBy({left:-step()*per(),behavior:'smooth'})});
+  if(prev&&next&&cnt){prev.addEventListener('click',function(){t.scrollBy({left:-step()*per(),behavior:'smooth'})});
   next.addEventListener('click',function(){t.scrollBy({left:step()*per(),behavior:'smooth'})});
   t.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});
-  addEventListener('resize',function(){edge();upd()});edge();upd();
+  addEventListener('resize',function(){edge();upd()});edge();upd();}
   [].forEach.call(document.querySelectorAll('.ccf'),function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');
     [].forEach.call(document.querySelectorAll('.ccf'),function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false')});
     all.forEach(function(c){var ok=f==='all'||(' '+(c.getAttribute('data-tags')||'')+' ').indexOf(' '+f+' ')>=0;c.classList.toggle('off',!ok)});
@@ -4459,7 +4503,7 @@ setTimeout(function(){var d=document.querySelectorAll('#how details.pr')[(+a.dat
 
   /* case grid: every second visible tile drops into the right column */
   var grid=document.querySelector('#cases .bento-cases');
-  function stagger(){if(!grid)return;var k=0,two=innerWidth>760;[].forEach.call(grid.querySelectorAll('.bc'),function(c){
+  function stagger(){if(!grid||grid.classList.contains('aw-feat'))return;var k=0,two=innerWidth>760;[].forEach.call(grid.querySelectorAll('.bc'),function(c){
     if(c.classList.contains('off')||c.classList.contains('aw-more')){c.style.gridRow=c.style.gridColumn='';return}
     var pair=Math.floor(k/2),right=k%2===1;
     /* each tile spans two half-rows; the right column starts one half-row lower, so tiles stagger without overlapping */

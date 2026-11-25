@@ -1,54 +1,126 @@
 {
   "cleanUrls": true,
   "headers": [
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ],
   "redirects": [
-    { "source": "/work/jiffcy/", "destination": "/work/jiffcy", "permanent": false },
-    { "source": "/work/rlwrld/", "destination": "/work/rlwrld", "permanent": false },
-    { "source": "/work/yoki/", "destination": "/work/yoki", "permanent": false },
-    { "source": "/work/pikabon/", "destination": "/work/pikabon", "permanent": false },
-    { "source": "/work/uline/", "destination": "/work/uline", "permanent": false },
-    { "source": "/work/link/", "destination": "/work/link", "permanent": false },
-    { "source": "/work/workspot/", "destination": "/work/workspot", "permanent": false },
-    { "source": "/work/shuttlepay/", "destination": "/work/shuttlepay", "permanent": false },
-    { "source": "/work/pairs/", "destination": "/work/pairs", "permanent": false },
-    { "source": "/work/taxnap/", "destination": "/work/taxnap", "permanent": false },
-    { "source": "/work/wealthpark/", "destination": "/work/wealthpark", "permanent": false },
-    { "source": "/work/wplab/", "destination": "/work/wplab", "permanent": false },
-    { "source": "/work/pokke/", "destination": "/work/pokke", "permanent": false },
-    { "source": "/work/kyash/", "destination": "/work/kyash", "permanent": false },
-    { "source": "/work/croc/", "destination": "/work/croc", "permanent": false },
-    { "source": "/work/metajob/", "destination": "/work/metajob", "permanent": false },
-    { "source": "/work/one/", "destination": "/work/one", "permanent": false },
-    { "source": "/work/onepay/", "destination": "/work/onepay", "permanent": false },
-    { "source": "/work/aeon/", "destination": "/work/aeon", "permanent": false },
-    { "source": "/work/cookpadvideo/", "destination": "/work/cookpadvideo", "permanent": false },
-    { "source": "/work/cookpad/", "destination": "/work/cookpad", "permanent": false },
-    { "source": "/work/logoideas/", "destination": "/work/logoideas", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/work/jiffcy", "destination": "/" },
-    { "source": "/work/rlwrld", "destination": "/" },
-    { "source": "/work/yoki", "destination": "/" },
-    { "source": "/work/pikabon", "destination": "/" },
-    { "source": "/work/uline", "destination": "/" },
-    { "source": "/work/link", "destination": "/" },
-    { "source": "/work/workspot", "destination": "/" },
-    { "source": "/work/shuttlepay", "destination": "/" },
-    { "source": "/work/pairs", "destination": "/" },
-    { "source": "/work/taxnap", "destination": "/" },
-    { "source": "/work/wealthpark", "destination": "/" },
-    { "source": "/work/wplab", "destination": "/" },
-    { "source": "/work/pokke", "destination": "/" },
-    { "source": "/work/kyash", "destination": "/" },
-    { "source": "/work/croc", "destination": "/" },
-    { "source": "/work/metajob", "destination": "/" },
-    { "source": "/work/one", "destination": "/" },
-    { "source": "/work/onepay", "destination": "/" },
-    { "source": "/work/aeon", "destination": "/" },
-    { "source": "/work/cookpadvideo", "destination": "/" },
-    { "source": "/work/cookpad", "destination": "/" },
-    { "source": "/work/logoideas", "destination": "/" }
+    {
+      "source": "/work/jiffcy/",
+      "destination": "/work/jiffcy",
+      "permanent": false
+    },
+    {
+      "source": "/work/rlwrld/",
+      "destination": "/work/rlwrld",
+      "permanent": false
+    },
+    {
+      "source": "/work/yoki/",
+      "destination": "/work/yoki",
+      "permanent": false
+    },
+    {
+      "source": "/work/pikabon/",
+      "destination": "/work/pikabon",
+      "permanent": false
+    },
+    {
+      "source": "/work/uline/",
+      "destination": "/work/uline",
+      "permanent": false
+    },
+    {
+      "source": "/work/link/",
+      "destination": "/work/link",
+      "permanent": false
+    },
+    {
+      "source": "/work/workspot/",
+      "destination": "/work/workspot",
+      "permanent": false
+    },
+    {
+      "source": "/work/shuttlepay/",
+      "destination": "/work/shuttlepay",
+      "permanent": false
+    },
+    {
+      "source": "/work/pairs/",
+      "destination": "/work/pairs",
+      "permanent": false
+    },
+    {
+      "source": "/work/taxnap/",
+      "destination": "/work/taxnap",
+      "permanent": false
+    },
+    {
+      "source": "/work/wealthpark/",
+      "destination": "/work/wealthpark",
+      "permanent": false
+    },
+    {
+      "source": "/work/wplab/",
+      "destination": "/work/wplab",
+      "permanent": false
+    },
+    {
+      "source": "/work/pokke/",
+      "destination": "/work/pokke",
+      "permanent": false
+    },
+    {
+      "source": "/work/kyash/",
+      "destination": "/work/kyash",
+      "permanent": false
+    },
+    {
+      "source": "/work/croc/",
+      "destination": "/work/croc",
+      "permanent": false
+    },
+    {
+      "source": "/work/metajob/",
+      "destination": "/work/metajob",
+      "permanent": false
+    },
+    {
+      "source": "/work/one/",
+      "destination": "/work/one",
+      "permanent": false
+    },
+    {
+      "source": "/work/onepay/",
+      "destination": "/work/onepay",
+      "permanent": false
+    },
+    {
+      "source": "/work/aeon/",
+      "destination": "/work/aeon",
+      "permanent": false
+    },
+    {
+      "source": "/work/cookpadvideo/",
+      "destination": "/work/cookpadvideo",
+      "permanent": false
+    },
+    {
+      "source": "/work/cookpad/",
+      "destination": "/work/cookpad",
+      "permanent": false
+    },
+    {
+      "source": "/work/logoideas/",
+      "destination": "/work/logoideas",
+      "permanent": false
+    }
   ]
 }
