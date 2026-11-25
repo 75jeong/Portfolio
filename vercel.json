@@ -4,11 +4,28 @@
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
   ],
   "redirects": [
-    {
-      "source": "/work/(?<id>jiffcy|rlwrld|yoki|pikabon|uline|link|workspot|shuttlepay|pairs|taxnap|wealthpark|wplab|pokke|kyash|croc|metajob|one|onepay|aeon|cookpadvideo|cookpad|logoideas)/",
-      "destination": "/work/:id",
-      "permanent": false
-    }
+    { "source": "/work/jiffcy/", "destination": "/work/jiffcy", "permanent": false },
+    { "source": "/work/rlwrld/", "destination": "/work/rlwrld", "permanent": false },
+    { "source": "/work/yoki/", "destination": "/work/yoki", "permanent": false },
+    { "source": "/work/pikabon/", "destination": "/work/pikabon", "permanent": false },
+    { "source": "/work/uline/", "destination": "/work/uline", "permanent": false },
+    { "source": "/work/link/", "destination": "/work/link", "permanent": false },
+    { "source": "/work/workspot/", "destination": "/work/workspot", "permanent": false },
+    { "source": "/work/shuttlepay/", "destination": "/work/shuttlepay", "permanent": false },
+    { "source": "/work/pairs/", "destination": "/work/pairs", "permanent": false },
+    { "source": "/work/taxnap/", "destination": "/work/taxnap", "permanent": false },
+    { "source": "/work/wealthpark/", "destination": "/work/wealthpark", "permanent": false },
+    { "source": "/work/wplab/", "destination": "/work/wplab", "permanent": false },
+    { "source": "/work/pokke/", "destination": "/work/pokke", "permanent": false },
+    { "source": "/work/kyash/", "destination": "/work/kyash", "permanent": false },
+    { "source": "/work/croc/", "destination": "/work/croc", "permanent": false },
+    { "source": "/work/metajob/", "destination": "/work/metajob", "permanent": false },
+    { "source": "/work/one/", "destination": "/work/one", "permanent": false },
+    { "source": "/work/onepay/", "destination": "/work/onepay", "permanent": false },
+    { "source": "/work/aeon/", "destination": "/work/aeon", "permanent": false },
+    { "source": "/work/cookpadvideo/", "destination": "/work/cookpadvideo", "permanent": false },
+    { "source": "/work/cookpad/", "destination": "/work/cookpad", "permanent": false },
+    { "source": "/work/logoideas/", "destination": "/work/logoideas", "permanent": false }
   ],
   "rewrites": [
     { "source": "/work/jiffcy", "destination": "/" },
