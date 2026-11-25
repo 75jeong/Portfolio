@@ -1909,18 +1909,30 @@ html[data-aw] header.aw-hero .aw-brand{position:relative;z-index:3;display:inlin
 html[data-aw] .aw-brand b{font-weight:700;letter-spacing:.01em;font-size:15px;text-transform:lowercase}
 html[data-aw] .aw-brand .aw-brand-x{opacity:.5;letter-spacing:0}
 html[data-aw] .aw-brand .aw-brand-d{font:500 12.5px/1.5 var(--f-body);letter-spacing:0;text-transform:none;color:rgba(255,255,255,.88)}
-/* 2) featured grid: 6 cases, 3 columns (2 under 1100px, 1 on phones) */
-html[data-aw] #cases .bento-cases.aw-feat{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;column-gap:clamp(14px,1.6vw,26px)!important;row-gap:clamp(34px,3.4vw,54px)!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;overflow:visible!important;align-items:start}
+/* 2) featured grid: 6 cases — one column on phones, two on tablets, and an editorial 12-column grid on desktop */
+html[data-aw] #cases .bento-cases.aw-feat{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:clamp(24px,3vw,40px)!important;row-gap:clamp(48px,5vw,64px)!important;width:auto!important;max-width:none!important;margin:clamp(32px,3.4vw,52px) 0 0!important;padding:0!important;overflow:visible!important;align-items:start}
 html[data-aw] #cases .bento-cases.aw-feat .bc{width:auto!important;max-width:none!important;text-align:left!important;margin:0!important;justify-self:stretch!important;aspect-ratio:auto!important;display:block!important;transform:none!important}
-html[data-aw] #cases .bento-cases.aw-feat .bc .bc-media{aspect-ratio:380/440!important;border-radius:18px!important}
+html[data-aw] #cases .bento-cases.aw-feat .bc .bc-media{aspect-ratio:380/440!important;border-radius:20px!important}
 html[data-aw] #cases .bento-cases.aw-feat .bc-txt,html[data-aw] #cases .bento-cases.aw-feat .bc-t{text-align:left!important}
 html[data-aw] #cases .bento-cases.aw-feat .bc-t{font:500 clamp(1.2rem,1.85vw,1.85rem)/1 var(--f-display)!important;letter-spacing:-.015em!important}
 html[data-aw] #cases .bento-cases.aw-feat .bc-k{display:-webkit-box!important;font-size:.9375rem!important;line-height:1.55!important;color:#9BA2AE!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
 html[data-aw] #cases .bento-cases.aw-feat .bc-pr{font-size:.6875rem}
 html[data-aw] #cases .bento-cases.aw-feat .bc-media .bc-pr{display:block}
-@media (min-width:761px) and (max-width:1099px){html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* desktop: 12 columns. Wide cards take 7, narrow ones take 5 — 7+5 / 5+7 / 7+5 — with wide gutters
+   and tall row gaps so each cover sits alone in the eye. Spans (not line numbers) keep the rows full
+   if a card is ever hidden. */
+@media (min-width:1100px){
+  html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:repeat(12,minmax(0,1fr))!important;column-gap:clamp(36px,3.4vw,48px)!important;row-gap:clamp(72px,6.6vw,96px)!important}
+  html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+1),html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+4){grid-column:span 7}
+  html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+2),html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+3){grid-column:span 5}
+  /* a wider card runs a little shorter, so the two covers in a row end on the same line */
+  html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+1) .bc-media,html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+4) .bc-media{aspect-ratio:8/7!important}
+  html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+1) .bc-t,html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+4) .bc-t{font-size:clamp(1.5rem,2.15vw,2.35rem)!important}
+  /* the second card of each row hangs a little lower, so the eye travels down the page instead of across a band */
+  html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+2),html[data-aw] #cases .bento-cases.aw-feat .bc:nth-child(4n+4){margin-top:clamp(36px,3.8vw,56px)!important}
+}
 @media (max-width:760px){
-  html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:1fr!important;width:auto!important;margin:0!important;padding:0!important;row-gap:38px!important}
+  html[data-aw] #cases .bento-cases.aw-feat{grid-template-columns:1fr!important;width:auto!important;margin:0!important;padding:0!important;row-gap:44px!important}
   html[data-aw] #cases .bento-cases.aw-feat .bc-t{font-size:1.35rem!important}
   html[data-aw] header.aw-hero .aw-brand{font-size:10px;letter-spacing:.1em;gap:2px 0;padding:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
   html[data-aw] .aw-brand .aw-brand-x{display:none}
@@ -1979,11 +1991,10 @@ html[data-aw] .contact-v .ft-mail:active{scale:.97}
 @media (max-width:760px){html[data-aw] .contact-v .ft-mail{width:100%;justify-content:center;margin-top:0!important}}
 
 /* home: 6 selected cases + a single VIEW ALL (the 16-item archive list moved to /projects) */
-html[data-aw] .aw-all-v{flex-direction:column;align-items:center;gap:clamp(12px,1.4vw,18px);margin:clamp(40px,5vw,80px) 0 clamp(24px,4vw,60px)}
-html[data-aw] .aw-all-n{margin:0;font:400 clamp(.875rem,.95vw,1rem)/1.5 var(--f-body);color:#7D838E;text-align:center}
+html[data-aw] .aw-all-v{flex-direction:column;align-items:center;gap:clamp(12px,1.4vw,18px);margin:clamp(56px,6.4vw,104px) 0 clamp(24px,4vw,60px)}
 html[data-aw] .aw-all .aw-va{height:44px;font-size:18px;padding:0 26px}
 html[data-aw] .aw-all .aw-va .aw-sw{width:1.05em;height:1.05em;font-size:.95em;color:#FF4800}
-@media (max-width:760px){html[data-aw] .aw-all-v{gap:10px}html[data-aw] .aw-all-n{padding:0 8px;font-size:.8125rem}}
+@media (max-width:760px){html[data-aw] .aw-all-v{gap:10px}}
 </style>
 </head>
 <body>
@@ -2095,7 +2106,6 @@ html[data-aw] .aw-all .aw-va .aw-sw{width:1.05em;height:1.05em;font-size:.95em;c
 </a>
 </div>
 <div class="aw-all aw-all-v">
-<p class="aw-all-n"><span class="ja">代表的な6件を掲載しています。全21件は一覧でご覧いただけます。</span><span class="en">Six selected cases are shown here. All 21 are in the index.</span><span class="ko">대표 6개를 골라 실었습니다. 전체 21개는 전체보기에서 볼 수 있습니다.</span></p>
 <a class="aw-pill aw-solid aw-va" data-arrow href="/projects.html">VIEW ALL <b>(21)</b><span class="aw-sw" aria-hidden="true"><i>&#8599;</i><i>&#8599;</i></span></a>
 </div>
 <div class="case-store">
@@ -3311,6 +3321,7 @@ html[data-aw] .aw-all .aw-va .aw-sw{width:1.05em;height:1.05em;font-size:.95em;c
 <div class="job-h"><b><span class="ja">フリーランス</span><span class="en">Freelance</span><span class="ko">프리랜스</span> · aftworks</b><span class="role"><span class="ja">プロダクト / BXデザイナー</span><span class="en">Product / BX Designer</span><span class="ko">프로덕트 / BX 디자이너</span></span></div>
 <p class="desc"><span class="ja">スタートアップの0→1を中心に、プロダクト、ブランド、コーポレートサイトを担当</span><span class="en">Product, brand and corporate sites, mostly for startups at 0→1</span><span class="ko">주로 0에서 1을 만드는 스타트업의 프로덕트, 브랜드, 기업 사이트를 맡고 있다</span></p>
 <dl class="clients">
+<dt><b>Jiffcy</b><span class="mono">2025.07 —</span></dt><dd><span class="ja">UI/UX/CXデザイナーとして、10代後半〜20代前半の女性向けメッセージ＆通話アプリのデザインアーキテクチャとブランディング、写真機能「Dots」のUI/UX設計を担当</span><span class="en">As UI/UX/CX Designer, responsible for the design architecture and branding of a messaging and calling app for women in their late teens to early 20s, and for the UI/UX of the photo feature Dots</span><span class="ko">UI/UX/CX 디자이너로서 10대 후반~20대 초반 여성용 메시지·통화 앱의 디자인 구조와 브랜딩, 사진 기능 "Dots"의 UI/UX 설계를 담당했다</span></dd>
 <dt><b>Findy</b><span class="mono">2025.02 — 11</span></dt><dd><span class="ja">Findy Conferenceのサービスデザイン。0→1で設計し、事業は10→50フェーズへ成長</span><span class="en">Service design for Findy Conference, from 0→1 through the business's growth into the 10→50 phase</span><span class="ko">Findy Conference의 서비스 디자인. 0에서 1을 만드는 단계부터 맡았고 사업은 10에서 50으로 커지는 단계까지 성장했다</span></dd>
 <dt><b>JELLNESS</b><span class="mono">2025.07 — 11</span></dt><dd><span class="ja">50〜60代のアクティブシニア向け旅行サービス。ユーザーインタビューをもとにサービス、ブランド、管理ツール、コーポレートサイトを設計</span><span class="en">Travel service for active seniors in their 50s and 60s. Designed the service, brand, admin tool and corporate site from user interviews</span><span class="ko">50~60대 액티브 시니어를 위한 여행 서비스. 사용자 인터뷰를 바탕으로 서비스, 브랜드, 관리 툴, 기업 사이트를 설계했다</span></dd>
 <dt><b>RLWRLD</b><span class="mono">2025.04 — 10</span></dt><dd><span class="ja">ロゴ、Webサイト、名刺、リーフレットなど、事業初期に必要なアセット一式</span><span class="en">Logo, website, business cards and leaflets: the full early-stage brand kit</span><span class="ko">로고, 웹사이트, 명함, 리플렛 등 사업 초기에 필요한 브랜드 요소 전반</span></dd>
