@@ -168,21 +168,6 @@ document.addEventListener('focusin',function(e){var p=e.target.closest&&e.target
   new MutationObserver(function(){[].forEach.call(document.querySelectorAll('.mj-car'),function(c){if(c._mjUpd)c._mjUpd()})}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
 })();
 
-/* Jiffcy demo: play in view, highlight the current step, tap a step to jump */
-(function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  [].forEach.call(document.querySelectorAll('.jf-demo'),function(box){
-    var v=box.querySelector('video'),items=[].slice.call(box.querySelectorAll('.jf-steps li')),bar=box.querySelector('.jf-bar i'),btn=box.querySelector('.jf-play'),T=items.map(function(li){return +li.querySelector('button').dataset.t}),user=false;
-    function mark(){var t=v.currentTime,k=0;T.forEach(function(x,i){if(t>=x-.05)k=i});items.forEach(function(li,i){li.classList.toggle('on',i===k)});if(v.duration)bar.style.width=(t/v.duration*100)+'%'}
-    function state(){box.classList.toggle('paused',v.paused);btn.setAttribute('aria-label',v.paused?'Play demo':'Pause demo')}
-    v.addEventListener('timeupdate',mark);v.addEventListener('play',state);v.addEventListener('pause',state);state();
-    btn.addEventListener('click',function(){user=true;if(v.paused)v.play().catch(function(){});else v.pause()});
-    items.forEach(function(li,i){li.querySelector('button').addEventListener('click',function(){v.currentTime=T[i];mark();user=false;v.play().catch(function(){})})});
-    if(reduce){v.removeAttribute('loop');return}
-    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!user)v.play().catch(function(){});else if(!e.isIntersecting)v.pause()})},{threshold:.35}).observe(v);
-  });
-})();
-
 /* WealthPark: screens scroll on their own while in view; touch, wheel or hover takes over */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
