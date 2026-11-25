@@ -13,11 +13,6 @@
   ],
   "redirects": [
     {
-      "source": "/work/jiffcy/",
-      "destination": "/work/jiffcy",
-      "permanent": false
-    },
-    {
       "source": "/work/rlwrld/",
       "destination": "/work/rlwrld",
       "permanent": false
